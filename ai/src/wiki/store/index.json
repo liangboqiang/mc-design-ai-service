@@ -1,0 +1,6419 @@
+{
+  "entities": {
+    "agent/general_chat": {
+      "kind": "agent",
+      "title": "智能体：通用对话智能体",
+      "summary": "摘要：通用对话智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "src/agent/general_chat/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/general/root"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "agent/parts_design_chat": {
+      "kind": "agent",
+      "title": "智能体：零部件设计对话智能体",
+      "summary": "摘要：零部件设计对话智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "src/agent/parts_design_chat/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/parts_design/root"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "agent/review_agent": {
+      "kind": "agent",
+      "title": "智能体：审查智能体",
+      "summary": "摘要：审查智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "src/agent/review_agent/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/general/root"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "agent/wiki_front_chat": {
+      "kind": "agent",
+      "title": "智能体：Wiki 前端对话智能体",
+      "summary": "摘要：Wiki 前端对话智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "src/agent/wiki_front_chat/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "agent/wiki_workbench": {
+      "kind": "agent",
+      "title": "智能体：Wiki Workbench Agent",
+      "summary": "摘要：Wiki Workbench Agent 负责系统 Wiki 的检索、阅读、中文页面治理、依赖更新、用户文件建页、图谱抽取、诊断修复、版本审查和发布辅助。",
+      "path": "src/agent/wiki_workbench/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/root",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/external/wiki",
+        "tool/wiki",
+        "wiki/schema/lexicon"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['系统 Wiki', '用户文件 Wiki', '工具页面', '技能页面和知识图谱']",
+      "local_relations": [
+        "根技能为 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "agent/worker_agent": {
+      "kind": "agent",
+      "title": "智能体：员工智能体",
+      "summary": "摘要：员工智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "src/agent/worker_agent/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/general/root"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "llm": {
+      "kind": "llm",
+      "title": "系统页面：模型服务",
+      "summary": "摘要：模型服务是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/llm/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/core/memory": {
+      "kind": "skill",
+      "title": "技能：记忆技能",
+      "summary": "摘要：记忆技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/core/memory/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/core/query": {
+      "kind": "skill",
+      "title": "技能：查询",
+      "summary": "摘要：查询用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/core/query/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/core/report": {
+      "kind": "skill",
+      "title": "技能：报告",
+      "summary": "摘要：报告用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/core/report/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/core/routing": {
+      "kind": "skill",
+      "title": "技能：路由技能",
+      "summary": "摘要：路由技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/core/routing/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/core/task": {
+      "kind": "skill",
+      "title": "技能：任务技能",
+      "summary": "摘要：任务技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/core/task/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/general/root": {
+      "kind": "skill",
+      "title": "技能：通用根技能",
+      "summary": "摘要：通用根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/general/root/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/core/query",
+        "skill/core/report",
+        "skill/core/task"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/governance/agent_build": {
+      "kind": "skill",
+      "title": "技能：智能体构建治理",
+      "summary": "摘要：智能体构建治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/governance/agent_build/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/governance/compact_guard": {
+      "kind": "skill",
+      "title": "技能：上下文压缩守护",
+      "summary": "摘要：上下文压缩守护用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/governance/compact_guard/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/governance/protocol_governance": {
+      "kind": "skill",
+      "title": "技能：协议治理",
+      "summary": "摘要：协议治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/governance/protocol_governance/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/governance/refs_bridge": {
+      "kind": "skill",
+      "title": "技能：引用桥接",
+      "summary": "摘要：引用桥接用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/governance/refs_bridge/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/governance/task_governance": {
+      "kind": "skill",
+      "title": "技能：任务治理",
+      "summary": "摘要：任务治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/governance/task_governance/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/governance/tool_surface": {
+      "kind": "skill",
+      "title": "技能：工具表面治理",
+      "summary": "摘要：工具表面治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/governance/tool_surface/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/governance/workspace_governance": {
+      "kind": "skill",
+      "title": "技能：工作区治理",
+      "summary": "摘要：工作区治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/governance/workspace_governance/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/parts_design/camshaft/root": {
+      "kind": "skill",
+      "title": "技能：凸轮轴设计根技能",
+      "summary": "摘要：凸轮轴设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/parts_design/camshaft/root/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/parts_design/common/report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/parts_design/common/report": {
+      "kind": "skill",
+      "title": "技能：报告生成",
+      "summary": "摘要：报告生成用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/parts_design/common/report/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/parts_design/common/requirement_parse": {
+      "kind": "skill",
+      "title": "技能：需求解析",
+      "summary": "摘要：需求解析用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/parts_design/common/requirement_parse/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/parts_design/conrod/root": {
+      "kind": "skill",
+      "title": "技能：连杆设计根技能",
+      "summary": "摘要：连杆设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/parts_design/conrod/root/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/parts_design/common/report",
+        "skill/parts_design/common/requirement_parse"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/parts_design/crankshaft/root": {
+      "kind": "skill",
+      "title": "技能：曲轴设计根技能",
+      "summary": "摘要：曲轴设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/parts_design/crankshaft/root/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/parts_design/common/report",
+        "skill/parts_design/common/requirement_parse"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/skill/parts_design/root/knowledge/README.md": {
+      "kind": "skill",
+      "title": "Parts Design Knowledge",
+      "summary": "Place domain-specific notes, parameter dictionaries, and reference documents for parts-design skills here.",
+      "path": "src/skill/parts_design/root/knowledge/README.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": []
+    },
+    "skill/parts_design/root": {
+      "kind": "skill",
+      "title": "技能：零部件设计根技能",
+      "summary": "摘要：零部件设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "src/skill/parts_design/root/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/core/query",
+        "skill/core/report",
+        "skill/core/task",
+        "skill/parts_design/camshaft/root",
+        "skill/parts_design/common/report",
+        "skill/parts_design/common/requirement_parse",
+        "skill/parts_design/conrod/root",
+        "skill/parts_design/crankshaft/root"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "skill/wiki/batch_governance": {
+      "kind": "skill",
+      "title": "技能：批量治理技能",
+      "summary": "摘要：批量检查和治理 Wiki 页面，优先生成报告和草稿，不直接批量发布。",
+      "path": "src/skill/wiki/batch_governance/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/external/wiki/search",
+        "tool/wiki",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/diagnose_page",
+        "tool/wiki/extract_knowledge_graph",
+        "tool/wiki/normalize_page_to_chinese",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/dependency_update": {
+      "kind": "skill",
+      "title": "技能：依赖变化更新技能",
+      "summary": "摘要：管理 wiki.md 与真实文件之间的联系，只对关系变化或内容变化的文件参与页面更新。",
+      "path": "src/skill/wiki/dependency_update/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/diff_draft",
+        "tool/wiki/diff_versions",
+        "tool/wiki/page_file_status",
+        "tool/wiki/page_history",
+        "tool/wiki/update_system_page_from_files",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/diagnosis_repair": {
+      "kind": "skill",
+      "title": "技能：诊断修复技能",
+      "summary": "摘要：根据页面诊断建议执行可控修复动作，点击修复选项后生成草稿或候选结果。",
+      "path": "src/skill/wiki/diagnosis_repair/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/apply_diagnosis_fix",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/diagnose_page",
+        "tool/wiki/diff_draft",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/draft_publish_review": {
+      "kind": "skill",
+      "title": "技能：草稿发布审查技能",
+      "summary": "摘要：审查草稿差异、页面元结构、链接和真相状态；只有用户明确授权时才发布。",
+      "path": "src/skill/wiki/draft_publish_review/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/check_truth_status",
+        "tool/wiki/diff_draft",
+        "tool/wiki/publish_draft",
+        "tool/wiki/release_history",
+        "tool/wiki/resolve_page_links",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/graph_extraction": {
+      "kind": "skill",
+      "title": "技能：知识图谱抽取技能",
+      "summary": "摘要：根据全部 wiki.md 和元结构自动形成三元组，禁用页面默认不参与图谱。",
+      "path": "src/skill/wiki/graph_extraction/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/extract_knowledge_graph",
+        "tool/wiki/page_scope_relations",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/graph_search": {
+      "kind": "skill",
+      "title": "技能：图谱增强检索技能",
+      "summary": "摘要：结合文本检索、页面关系和三元组进行增强检索。",
+      "path": "src/skill/wiki/graph_search/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/external/wiki/search",
+        "tool/wiki",
+        "tool/wiki/alias_query",
+        "tool/wiki/graph_enhanced_search",
+        "tool/wiki/page_scope_relations",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/link_governance": {
+      "kind": "skill",
+      "title": "技能：链接治理技能",
+      "summary": "摘要：治理正文自然名称链接、断链、歧义链接和显式目标链接。",
+      "path": "src/skill/wiki/link_governance/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/external/wiki/search",
+        "tool/wiki",
+        "tool/wiki/alias_query",
+        "tool/wiki/diff_draft",
+        "tool/wiki/resolve_page_links",
+        "tool/wiki/save_draft",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/page_diagnosis": {
+      "kind": "skill",
+      "title": "技能：页面诊断技能",
+      "summary": "摘要：检查页面中文元结构、自然链接、锁定禁用状态、依赖文件和局部关系。",
+      "path": "src/skill/wiki/page_diagnosis/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/diagnose_page",
+        "tool/wiki/page_file_status",
+        "tool/wiki/page_scope_relations",
+        "tool/wiki/resolve_page_links",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/page_rewrite": {
+      "kind": "skill",
+      "title": "技能：页面重写技能",
+      "summary": "摘要：基于中文元结构、页面真相和用户要求生成可审查草稿。",
+      "path": "src/skill/wiki/page_rewrite/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/external/wiki/read_source",
+        "tool/wiki",
+        "tool/wiki/alias_query",
+        "tool/wiki/diff_draft",
+        "tool/wiki/read_schema",
+        "tool/wiki/save_draft",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/rollback_assist": {
+      "kind": "skill",
+      "title": "技能：回滚辅助技能",
+      "summary": "摘要：基于历史版本创建回滚草稿，解释回滚影响，不直接覆盖真相文件。",
+      "path": "src/skill/wiki/rollback_assist/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/create_rollback_draft",
+        "tool/wiki/diff_draft",
+        "tool/wiki/diff_versions",
+        "tool/wiki/page_history",
+        "tool/wiki/read_version",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/root": {
+      "kind": "skill",
+      "title": "技能：Wiki 治理根技能",
+      "summary": "摘要：统一调度 Wiki Agent 的检索、阅读、页面诊断、中文元结构治理、依赖更新、用户文件建页、图谱抽取、草稿审查和回滚辅助。",
+      "path": "src/skill/wiki/root/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/batch_governance",
+        "skill/wiki/dependency_update",
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/draft_publish_review",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/graph_search",
+        "skill/wiki/link_governance",
+        "skill/wiki/page_diagnosis",
+        "skill/wiki/page_rewrite",
+        "skill/wiki/rollback_assist",
+        "skill/wiki/root",
+        "skill/wiki/schema_governance",
+        "skill/wiki/search_read",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "skill/wiki/version_review",
+        "tool/external/wiki",
+        "tool/external/wiki/answer",
+        "tool/external/wiki/read_page",
+        "tool/external/wiki/read_source",
+        "tool/external/wiki/search",
+        "tool/wiki",
+        "tool/wiki/alias_query",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/diagnose_page",
+        "tool/wiki/read_schema",
+        "tool/wiki/resolve_page_links",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/schema_governance": {
+      "kind": "skill",
+      "title": "技能：元结构治理技能",
+      "summary": "摘要：根据中文元结构检查和规范化 Wiki 页面，使页面保持统一格式。",
+      "path": "src/skill/wiki/schema_governance/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/diff_draft",
+        "tool/wiki/normalize_page_to_chinese",
+        "tool/wiki/read_schema",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/search_read": {
+      "kind": "skill",
+      "title": "技能：检索阅读技能",
+      "summary": "摘要：负责检索 Wiki、读取渲染页面和源文，并用中文整理依据。",
+      "path": "src/skill/wiki/search_read/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/external/wiki/answer",
+        "tool/external/wiki/read_page",
+        "tool/external/wiki/read_source",
+        "tool/external/wiki/search",
+        "tool/wiki",
+        "tool/wiki/alias_query",
+        "tool/wiki/graph_enhanced_search",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/system_file_update": {
+      "kind": "skill",
+      "title": "技能：系统页面更新技能",
+      "summary": "摘要：当系统页面同目录真实文件发生变化时，基于旧版本、依赖文件差异和页面更新要求生成更新草稿。",
+      "path": "src/skill/wiki/system_file_update/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/external/wiki/read_source",
+        "tool/wiki",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/diff_draft",
+        "tool/wiki/page_file_status",
+        "tool/wiki/update_system_page_from_files",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/user_file_generation": {
+      "kind": "skill",
+      "title": "技能：用户文件建页技能",
+      "summary": "摘要：面向用户文件目录自底向上生成 wiki.md 候选页面，空目录和纯下级目录不自动建页。",
+      "path": "src/skill/wiki/user_file_generation/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/generate_user_folder_wikis",
+        "tool/wiki/read_schema",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "skill/wiki/version_review": {
+      "kind": "skill",
+      "title": "技能：版本审查技能",
+      "summary": "摘要：查询页面历史、读取历史版本、比较版本差异，并解释变更风险。",
+      "path": "src/skill/wiki/version_review/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki",
+        "tool/wiki/check_truth_status",
+        "tool/wiki/diff_versions",
+        "tool/wiki/page_history",
+        "tool/wiki/read_version",
+        "tool/wiki/release_detail",
+        "tool/wiki/release_history",
+        "wiki/schema/common"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '真实文件', '草稿', '版本和图谱']",
+      "local_relations": [
+        "属于 [[Wiki 治理根技能|skill/wiki/root]]"
+      ]
+    },
+    "tool/external/cloude/connect_qpp": {
+      "kind": "tool",
+      "title": "工具：连接 QPP",
+      "summary": "摘要：连接 QPP用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/cloude/connect_qpp/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/cloude"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/cloude/query_ecr_list": {
+      "kind": "tool",
+      "title": "工具：查询 ECR 列表",
+      "summary": "摘要：查询 ECR 列表用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/cloude/query_ecr_list/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/cloude"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/cloude/query_ipm_list": {
+      "kind": "tool",
+      "title": "工具：查询 IPM 列表",
+      "summary": "摘要：查询 IPM 列表用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/cloude/query_ipm_list/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/cloude"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/cloude": {
+      "kind": "toolbox",
+      "title": "工具箱：Cloude 企业接口工具箱",
+      "summary": "摘要：Cloude 企业接口工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/cloude/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/cloude/connect_qpp",
+        "tool/external/cloude/query_ecr_list",
+        "tool/external/cloude/query_ipm_list"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/design_report/create_image": {
+      "kind": "tool",
+      "title": "工具：创建报告图片",
+      "summary": "摘要：创建报告图片用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/design_report/create_image/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/design_report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/design_report/create_report": {
+      "kind": "tool",
+      "title": "工具：创建设计报告",
+      "summary": "摘要：创建设计报告用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/design_report/create_report/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/design_report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/design_report/export_report": {
+      "kind": "tool",
+      "title": "工具：导出报告",
+      "summary": "摘要：导出报告用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/design_report/export_report/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/design_report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/design_report/get_report_detail": {
+      "kind": "tool",
+      "title": "工具：获取报告详情",
+      "summary": "摘要：获取报告详情用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/design_report/get_report_detail/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/design_report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/design_report/list_reports": {
+      "kind": "tool",
+      "title": "工具：列出报告",
+      "summary": "摘要：列出报告用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/design_report/list_reports/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/design_report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/design_report/update_report": {
+      "kind": "tool",
+      "title": "工具：更新设计报告",
+      "summary": "摘要：更新设计报告用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/design_report/update_report/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/design_report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/design_report": {
+      "kind": "toolbox",
+      "title": "工具箱：设计报告工具箱",
+      "summary": "摘要：设计报告工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/design_report/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/design_report/create_image",
+        "tool/external/design_report/create_report",
+        "tool/external/design_report/export_report",
+        "tool/external/design_report/get_report_detail",
+        "tool/external/design_report/list_reports",
+        "tool/external/design_report/update_report"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/fs/diff_text": {
+      "kind": "tool",
+      "title": "工具：差异文本",
+      "summary": "摘要：差异文本用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/fs/diff_text/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/fs"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/fs/edit_text": {
+      "kind": "tool",
+      "title": "工具：编辑文本",
+      "summary": "摘要：编辑文本用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/fs/edit_text/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/fs"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/fs/list_dir": {
+      "kind": "tool",
+      "title": "工具：列出目录",
+      "summary": "摘要：列出目录用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/fs/list_dir/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/fs"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/fs/read_text": {
+      "kind": "tool",
+      "title": "工具：读取文本",
+      "summary": "摘要：读取文本用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/fs/read_text/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/fs"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/fs": {
+      "kind": "toolbox",
+      "title": "工具箱：f工具箱",
+      "summary": "摘要：f工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/fs/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/fs/diff_text",
+        "tool/external/fs/edit_text",
+        "tool/external/fs/list_dir",
+        "tool/external/fs/read_text",
+        "tool/external/fs/write_text"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/fs/write_text": {
+      "kind": "tool",
+      "title": "工具：写入文本",
+      "summary": "摘要：写入文本用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/fs/write_text/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/fs"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BatchUpdateParams": {
+      "kind": "tool",
+      "title": "工具：NX批量更新参数",
+      "summary": "摘要：NX批量更新参数用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BatchUpdateParams/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BlendShaftEndEdges": {
+      "kind": "tool",
+      "title": "工具：NX倒圆轴端部边",
+      "summary": "摘要：NX倒圆轴端部边用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BlendShaftEndEdges/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BuildCamLobe": {
+      "kind": "tool",
+      "title": "工具：NXBuildCamLobe",
+      "summary": "摘要：NXBuildCamLobe用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BuildCamLobe/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BuildCamLobeArray": {
+      "kind": "tool",
+      "title": "工具：NXBuildCamLobeArray",
+      "summary": "摘要：NXBuildCamLobeArray用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BuildCamLobeArray/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BuildCamshaft": {
+      "kind": "tool",
+      "title": "工具：NXBuildCamhaft",
+      "summary": "摘要：NXBuildCamhaft用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BuildCamshaft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BuildCamshaftOneClick": {
+      "kind": "tool",
+      "title": "工具：NXBuildCamhaftOneClick",
+      "summary": "摘要：NXBuildCamhaftOneClick用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BuildCamshaftOneClick/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BuildJournalFace": {
+      "kind": "tool",
+      "title": "工具：NXBuildJournalFace",
+      "summary": "摘要：NXBuildJournalFace用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BuildJournalFace/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/BuildOrUpdateEndBoss": {
+      "kind": "tool",
+      "title": "工具：NXBuildOr更新端部Bo",
+      "summary": "摘要：NXBuildOr更新端部Bo用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/BuildOrUpdateEndBoss/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/CreateImage": {
+      "kind": "tool",
+      "title": "工具：NX创建Image",
+      "summary": "摘要：NX创建Image用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/CreateImage/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/CreateNewPart": {
+      "kind": "tool",
+      "title": "工具：NX创建新建零件",
+      "summary": "摘要：NX创建新建零件用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/CreateNewPart/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/CreateParam": {
+      "kind": "tool",
+      "title": "工具：NX创建参数",
+      "summary": "摘要：NX创建参数用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/CreateParam/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/CutShaftGrooveByBlock": {
+      "kind": "tool",
+      "title": "工具：NXCut轴GrooveByBlock",
+      "summary": "摘要：NXCut轴GrooveByBlock用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/CutShaftGrooveByBlock/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/ExitAnimation": {
+      "kind": "tool",
+      "title": "工具：NXExitAnimation",
+      "summary": "摘要：NXExitAnimation用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/ExitAnimation/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/ExportSnapshot": {
+      "kind": "tool",
+      "title": "工具：NXExportSnaphot",
+      "summary": "摘要：NXExportSnaphot用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/ExportSnapshot/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/FindParams": {
+      "kind": "tool",
+      "title": "工具：NXFind参数",
+      "summary": "摘要：NXFind参数用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/FindParams/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/FitView": {
+      "kind": "tool",
+      "title": "工具：NXFit查看",
+      "summary": "摘要：NXFit查看用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/FitView/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/GetAllParamsList": {
+      "kind": "tool",
+      "title": "工具：NXGetAll参数Lit",
+      "summary": "摘要：NXGetAll参数Lit用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/GetAllParamsList/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/GetAllViewNames": {
+      "kind": "tool",
+      "title": "工具：NXGetAll查看Name",
+      "summary": "摘要：NXGetAll查看Name用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/GetAllViewNames/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/GetDrawingSheetNameList": {
+      "kind": "tool",
+      "title": "工具：NXGetDrawingSheetNameLit",
+      "summary": "摘要：NXGetDrawingSheetNameLit用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/GetDrawingSheetNameList/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/GetDriveParamsList": {
+      "kind": "tool",
+      "title": "工具：NXGetDrive参数Lit",
+      "summary": "摘要：NXGetDrive参数Lit用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/GetDriveParamsList/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/GetViewStyle": {
+      "kind": "tool",
+      "title": "工具：NXGet查看Style",
+      "summary": "摘要：NXGet查看Style用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/GetViewStyle/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/GetWorkPartInfo": {
+      "kind": "tool",
+      "title": "工具：NXGetWork零件Info",
+      "summary": "摘要：NXGetWork零件Info用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/GetWorkPartInfo/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/HighLightDim": {
+      "kind": "tool",
+      "title": "工具：NXHighLightDim",
+      "summary": "摘要：NXHighLightDim用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/HighLightDim/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/ImportCamProfile": {
+      "kind": "tool",
+      "title": "工具：NXImportCamProfile",
+      "summary": "摘要：NXImportCamProfile用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/ImportCamProfile/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/ListSnapshotNames": {
+      "kind": "tool",
+      "title": "工具：NXLitSnaphotName",
+      "summary": "摘要：NXLitSnaphotName用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/ListSnapshotNames/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/MountBossToShaft": {
+      "kind": "tool",
+      "title": "工具：NXMountBoTo轴",
+      "summary": "摘要：NXMountBoTo轴用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/MountBossToShaft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/MountCamLobesToShaft": {
+      "kind": "tool",
+      "title": "工具：NXMountCamLobeTo轴",
+      "summary": "摘要：NXMountCamLobeTo轴用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/MountCamLobesToShaft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/OpenDrawingSheet": {
+      "kind": "tool",
+      "title": "工具：NXOpenDrawingSheet",
+      "summary": "摘要：NXOpenDrawingSheet用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/OpenDrawingSheet/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/OpenPart": {
+      "kind": "tool",
+      "title": "工具：NXOpen零件",
+      "summary": "摘要：NXOpen零件用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/OpenPart/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/OpenTCPart": {
+      "kind": "tool",
+      "title": "工具：NXOpenTC零件",
+      "summary": "摘要：NXOpenTC零件用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/OpenTCPart/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/RotateAndScaleView": {
+      "kind": "tool",
+      "title": "工具：NXRotateAndScale查看",
+      "summary": "摘要：NXRotateAndScale查看用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/RotateAndScaleView/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/SetViewStyle": {
+      "kind": "tool",
+      "title": "工具：NXSet查看Style",
+      "summary": "摘要：NXSet查看Style用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/SetViewStyle/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/SmoothSwitchToView": {
+      "kind": "tool",
+      "title": "工具：NXSmoothSwitchTo查看",
+      "summary": "摘要：NXSmoothSwitchTo查看用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/SmoothSwitchToView/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/SwitchView": {
+      "kind": "tool",
+      "title": "工具：NXSwitch查看",
+      "summary": "摘要：NXSwitch查看用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/SwitchView/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/Test": {
+      "kind": "tool",
+      "title": "工具：NXTet",
+      "summary": "摘要：NXTet用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/Test/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/UniteLobesToShaft": {
+      "kind": "tool",
+      "title": "工具：NXUniteLobeTo轴",
+      "summary": "摘要：NXUniteLobeTo轴用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/UniteLobesToShaft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/UpdateParam": {
+      "kind": "tool",
+      "title": "工具：NX更新参数",
+      "summary": "摘要：NX更新参数用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/UpdateParam/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/UpdateView": {
+      "kind": "tool",
+      "title": "工具：NX更新查看",
+      "summary": "摘要：NX更新查看用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/UpdateView/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/build_feature": {
+      "kind": "tool",
+      "title": "工具：NXbuildfeature",
+      "summary": "摘要：NXbuildfeature用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/build_feature/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/create_prt": {
+      "kind": "tool",
+      "title": "工具：NX创建prt",
+      "summary": "摘要：NX创建prt用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/create_prt/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx/modify_parameter": {
+      "kind": "tool",
+      "title": "工具：NXmodify参数",
+      "summary": "摘要：NXmodify参数用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/nx/modify_parameter/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/nx": {
+      "kind": "toolbox",
+      "title": "工具箱：NX工具箱",
+      "summary": "摘要：NX工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/nx/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/nx/BatchUpdateParams",
+        "tool/external/nx/BlendShaftEndEdges",
+        "tool/external/nx/BuildCamLobe",
+        "tool/external/nx/BuildCamLobeArray",
+        "tool/external/nx/BuildCamshaft",
+        "tool/external/nx/BuildCamshaftOneClick",
+        "tool/external/nx/BuildJournalFace",
+        "tool/external/nx/BuildOrUpdateEndBoss",
+        "tool/external/nx/CreateImage",
+        "tool/external/nx/CreateNewPart",
+        "tool/external/nx/CreateParam",
+        "tool/external/nx/CutShaftGrooveByBlock",
+        "tool/external/nx/ExitAnimation",
+        "tool/external/nx/ExportSnapshot",
+        "tool/external/nx/FindParams",
+        "tool/external/nx/FitView",
+        "tool/external/nx/GetAllParamsList",
+        "tool/external/nx/GetAllViewNames",
+        "tool/external/nx/GetDrawingSheetNameList",
+        "tool/external/nx/GetDriveParamsList",
+        "tool/external/nx/GetViewStyle",
+        "tool/external/nx/GetWorkPartInfo",
+        "tool/external/nx/HighLightDim",
+        "tool/external/nx/ImportCamProfile",
+        "tool/external/nx/ListSnapshotNames",
+        "tool/external/nx/MountBossToShaft",
+        "tool/external/nx/MountCamLobesToShaft",
+        "tool/external/nx/OpenDrawingSheet",
+        "tool/external/nx/OpenPart",
+        "tool/external/nx/OpenTCPart",
+        "tool/external/nx/RotateAndScaleView",
+        "tool/external/nx/SetViewStyle",
+        "tool/external/nx/SmoothSwitchToView",
+        "tool/external/nx/SwitchView",
+        "tool/external/nx/Test",
+        "tool/external/nx/UniteLobesToShaft",
+        "tool/external/nx/UpdateParam",
+        "tool/external/nx/UpdateView",
+        "tool/external/nx/build_feature",
+        "tool/external/nx/create_prt",
+        "tool/external/nx/modify_parameter"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/shell/run": {
+      "kind": "tool",
+      "title": "工具：运行命令",
+      "summary": "摘要：运行命令用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/shell/run/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/shell"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/shell": {
+      "kind": "toolbox",
+      "title": "工具箱：命令工具箱",
+      "summary": "摘要：命令工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/shell/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/shell/run"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/design_rule_lookup": {
+      "kind": "tool",
+      "title": "工具：设计规则查找",
+      "summary": "摘要：设计规则查找用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/design_rule_lookup/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/estimate_action_cost": {
+      "kind": "tool",
+      "title": "工具：操作成本估算",
+      "summary": "摘要：操作成本估算用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/estimate_action_cost/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/knowledge_catalog_query": {
+      "kind": "tool",
+      "title": "工具：知识目录查询",
+      "summary": "摘要：知识目录查询用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/knowledge_catalog_query/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/parameter_check": {
+      "kind": "tool",
+      "title": "工具：参数检查",
+      "summary": "摘要：参数检查用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/parameter_check/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/parse_docx_from_url": {
+      "kind": "tool",
+      "title": "工具：从链接解析文档",
+      "summary": "摘要：从链接解析文档用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/parse_docx_from_url/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/parse_text_from_url": {
+      "kind": "tool",
+      "title": "工具：从链接解析文本",
+      "summary": "摘要：从链接解析文本用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/parse_text_from_url/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/preview_replace": {
+      "kind": "tool",
+      "title": "工具：预览替换",
+      "summary": "摘要：预览替换用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/preview_replace/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/search": {
+      "kind": "tool",
+      "title": "工具：文本检索",
+      "summary": "摘要：文本检索用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/search/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops/tool_catalog_query": {
+      "kind": "tool",
+      "title": "工具：工具目录查询",
+      "summary": "摘要：工具目录查询用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/textops/tool_catalog_query/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/textops": {
+      "kind": "toolbox",
+      "title": "工具箱：文本处理工具箱",
+      "summary": "摘要：文本处理工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/textops/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/textops/design_rule_lookup",
+        "tool/external/textops/estimate_action_cost",
+        "tool/external/textops/knowledge_catalog_query",
+        "tool/external/textops/parameter_check",
+        "tool/external/textops/parse_docx_from_url",
+        "tool/external/textops/parse_text_from_url",
+        "tool/external/textops/preview_replace",
+        "tool/external/textops/search",
+        "tool/external/textops/tool_catalog_query"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/wiki/answer": {
+      "kind": "tool",
+      "title": "工具：Wiki 问答",
+      "summary": "摘要：Wiki 问答用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/wiki/answer/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/wiki/read_page": {
+      "kind": "tool",
+      "title": "工具：读取 Wiki 页面",
+      "summary": "摘要：读取 Wiki 页面用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/wiki/read_page/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/wiki/read_source": {
+      "kind": "tool",
+      "title": "工具：读取 Wiki 源文",
+      "summary": "摘要：读取 Wiki 源文用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/wiki/read_source/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/wiki/search": {
+      "kind": "tool",
+      "title": "工具：Wiki 检索",
+      "summary": "摘要：Wiki 检索用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/wiki/search/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/wiki": {
+      "kind": "toolbox",
+      "title": "工具箱：Wiki 只读工具箱",
+      "summary": "摘要：Wiki 只读工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/wiki/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/wiki/answer",
+        "tool/external/wiki/read_page",
+        "tool/external/wiki/read_source",
+        "tool/external/wiki/search"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/workspace/create": {
+      "kind": "tool",
+      "title": "工具：创建工作区",
+      "summary": "摘要：创建工作区用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/workspace/create/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/workspace"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/workspace/keep": {
+      "kind": "tool",
+      "title": "工具：保留工作区",
+      "summary": "摘要：保留工作区用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/workspace/keep/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/workspace"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/workspace/list": {
+      "kind": "tool",
+      "title": "工具：列出工作区",
+      "summary": "摘要：列出工作区用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/workspace/list/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/workspace"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/workspace/remove": {
+      "kind": "tool",
+      "title": "工具：删除工作区",
+      "summary": "摘要：删除工作区用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/workspace/remove/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/workspace"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/workspace/run": {
+      "kind": "tool",
+      "title": "工具：运行工作区",
+      "summary": "摘要：运行工作区用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/external/workspace/run/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/workspace"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/external/workspace": {
+      "kind": "toolbox",
+      "title": "工具箱：工作区工具箱",
+      "summary": "摘要：工作区工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/external/workspace/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/external/workspace/create",
+        "tool/external/workspace/keep",
+        "tool/external/workspace/list",
+        "tool/external/workspace/remove",
+        "tool/external/workspace/run"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/autonomy/claim_next_task": {
+      "kind": "tool",
+      "title": "工具：领取下一项任务",
+      "summary": "摘要：领取下一项任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/autonomy/claim_next_task/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/autonomy"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/autonomy": {
+      "kind": "toolbox",
+      "title": "工具箱：自主任务工具箱",
+      "summary": "摘要：自主任务工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/autonomy/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/autonomy/claim_next_task"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/background/check": {
+      "kind": "tool",
+      "title": "工具：检查后台任务",
+      "summary": "摘要：检查后台任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/background/check/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/background"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/background/run": {
+      "kind": "tool",
+      "title": "工具：运行后台任务",
+      "summary": "摘要：运行后台任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/background/run/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/background"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/background": {
+      "kind": "toolbox",
+      "title": "工具箱：后台任务工具箱",
+      "summary": "摘要：后台任务工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/background/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/background/check",
+        "tool/system/background/run"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/compact/now": {
+      "kind": "tool",
+      "title": "工具：立即压缩",
+      "summary": "摘要：立即压缩用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/compact/now/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/compact"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/compact": {
+      "kind": "toolbox",
+      "title": "工具箱：上下文压缩工具箱",
+      "summary": "摘要：上下文压缩工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/compact/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/compact/now"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/inspect/inspect_tool_surface": {
+      "kind": "tool",
+      "title": "工具：检查工具表面",
+      "summary": "摘要：检查工具表面用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/inspect/inspect_tool_surface/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/inspect"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/inspect": {
+      "kind": "toolbox",
+      "title": "工具箱：检查工具箱",
+      "summary": "摘要：检查工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/inspect/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/inspect/inspect_tool_surface"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/isolation": {
+      "kind": "toolbox",
+      "title": "工具箱：隔离工具箱",
+      "summary": "摘要：隔离工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/isolation/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/normalize/normalize_tool_result": {
+      "kind": "tool",
+      "title": "工具：标准化工具结果",
+      "summary": "摘要：标准化工具结果用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/normalize/normalize_tool_result/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/normalize"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/normalize": {
+      "kind": "toolbox",
+      "title": "工具箱：标准化工具箱",
+      "summary": "摘要：标准化工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/normalize/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/normalize/normalize_tool_result"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/protocol/request_shutdown": {
+      "kind": "tool",
+      "title": "工具：请求关闭",
+      "summary": "摘要：请求关闭用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/protocol/request_shutdown/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/protocol"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/protocol/respond_shutdown": {
+      "kind": "tool",
+      "title": "工具：响应关闭",
+      "summary": "摘要：响应关闭用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/protocol/respond_shutdown/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/protocol"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/protocol/review_plan": {
+      "kind": "tool",
+      "title": "工具：审查计划",
+      "summary": "摘要：审查计划用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/protocol/review_plan/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/protocol"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/protocol/submit_plan": {
+      "kind": "tool",
+      "title": "工具：提交计划",
+      "summary": "摘要：提交计划用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/protocol/submit_plan/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/protocol"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/protocol": {
+      "kind": "toolbox",
+      "title": "工具箱：协议工具箱",
+      "summary": "摘要：协议工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/protocol/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/protocol/request_shutdown",
+        "tool/system/protocol/respond_shutdown",
+        "tool/system/protocol/review_plan",
+        "tool/system/protocol/submit_plan"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/refs/load_refs": {
+      "kind": "tool",
+      "title": "工具：加载引用",
+      "summary": "摘要：加载引用用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/refs/load_refs/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/refs"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/refs": {
+      "kind": "toolbox",
+      "title": "工具箱：引用工具箱",
+      "summary": "摘要：引用工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/refs/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/refs/load_refs"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/runtime/enter_skill": {
+      "kind": "tool",
+      "title": "工具：进入技能",
+      "summary": "摘要：进入技能用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/runtime/enter_skill/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/runtime"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/runtime/inspect_skill": {
+      "kind": "tool",
+      "title": "工具：检查技能",
+      "summary": "摘要：检查技能用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/runtime/inspect_skill/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/runtime"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/runtime/inspect_tool": {
+      "kind": "tool",
+      "title": "工具：检查工具",
+      "summary": "摘要：检查工具用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/runtime/inspect_tool/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/runtime"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/runtime/list_child_skills": {
+      "kind": "tool",
+      "title": "工具：列出下级技能",
+      "summary": "摘要：列出下级技能用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/system/runtime/list_child_skills/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/runtime"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/system/runtime": {
+      "kind": "toolbox",
+      "title": "工具箱：引擎工具箱",
+      "summary": "摘要：引擎工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/system/runtime/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/system/runtime/enter_skill",
+        "tool/system/runtime/inspect_skill",
+        "tool/system/runtime/inspect_tool",
+        "tool/system/runtime/list_child_skills"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/alias_query": {
+      "kind": "tool",
+      "title": "工具：查询别名索引",
+      "summary": "摘要：查询别名索引用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/alias_query/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki",
+        "wiki/schema/common",
+        "wiki/schema/lexicon"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/apply_diagnosis_fix": {
+      "kind": "tool",
+      "title": "工具：执行诊断修复",
+      "summary": "摘要：根据诊断建议执行指定修复动作，所有修复都生成草稿或候选结果，不绕过锁定、禁用和发布机制。",
+      "path": "src/tool/wiki/apply_diagnosis_fix/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki/check_page_schema": {
+      "kind": "tool",
+      "title": "工具：检查页面元结构",
+      "summary": "摘要：检查页面元结构用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/check_page_schema/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki",
+        "wiki/schema/common",
+        "wiki/schema/lexicon"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/check_truth_status": {
+      "kind": "tool",
+      "title": "工具：真相状态检查",
+      "summary": "摘要：真相状态检查用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/check_truth_status/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/create_rollback_draft": {
+      "kind": "tool",
+      "title": "工具：创建回滚草稿",
+      "summary": "摘要：创建回滚草稿用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/create_rollback_draft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/diagnose_page": {
+      "kind": "tool",
+      "title": "工具：诊断页面问题",
+      "summary": "摘要：诊断页面元结构、链接、依赖文件和图谱关系，并给出可执行的消除问题建议。",
+      "path": "src/tool/wiki/diagnose_page/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki/diff_draft": {
+      "kind": "tool",
+      "title": "工具：草稿差异查看",
+      "summary": "摘要：草稿差异查看用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/diff_draft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/diff_versions": {
+      "kind": "tool",
+      "title": "工具：版本差异对比",
+      "summary": "摘要：版本差异对比用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/diff_versions/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/extract_knowledge_graph": {
+      "kind": "tool",
+      "title": "工具：抽取知识图谱",
+      "summary": "摘要：根据全部 wiki.md 和元结构抽取三元组，禁用页面默认不参与图谱生成。",
+      "path": "src/tool/wiki/extract_knowledge_graph/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki/generate_user_folder_wikis": {
+      "kind": "tool",
+      "title": "工具：用户文件夹建页",
+      "summary": "摘要：面向用户文件目录自底向上生成 wiki.md 候选页面；下层目录已有 wiki.md 时只引用该页面，不重复读取全部下层文件。",
+      "path": "src/tool/wiki/generate_user_folder_wikis/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki/graph_enhanced_search": {
+      "kind": "tool",
+      "title": "工具：图谱增强检索",
+      "summary": "摘要：结合页面文本、作用范围、局部关系和三元组进行增强检索。",
+      "path": "src/tool/wiki/graph_enhanced_search/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki/normalize_page_to_chinese": {
+      "kind": "tool",
+      "title": "工具：规范化中文页面",
+      "summary": "摘要：规范化中文页面用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/normalize_page_to_chinese/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki",
+        "wiki/schema/common",
+        "wiki/schema/lexicon"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/page_file_status": {
+      "kind": "tool",
+      "title": "工具：页面依赖状态检查",
+      "summary": "摘要：检查页面所在文件夹中除 wiki.md 之外的依赖文件是否发生版本变化，并给出是否需要更新页面的提示。",
+      "path": "src/tool/wiki/page_file_status/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki/page_history": {
+      "kind": "tool",
+      "title": "工具：页面历史查询",
+      "summary": "摘要：页面历史查询用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/page_history/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/page_scope_relations": {
+      "kind": "tool",
+      "title": "工具：页面局部关系",
+      "summary": "摘要：读取页面的作用范围、局部关系和链接关系，用于前端小范围关系图展示。",
+      "path": "src/tool/wiki/page_scope_relations/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki/publish_draft": {
+      "kind": "tool",
+      "title": "工具：发布草稿",
+      "summary": "摘要：发布草稿用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/publish_draft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/read_schema": {
+      "kind": "tool",
+      "title": "工具：读取页面元结构",
+      "summary": "摘要：读取页面元结构用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/read_schema/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki",
+        "wiki/schema/common",
+        "wiki/schema/lexicon"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/read_version": {
+      "kind": "tool",
+      "title": "工具：读取历史版本",
+      "summary": "摘要：读取历史版本用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/read_version/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/release_detail": {
+      "kind": "tool",
+      "title": "工具：发布详情查询",
+      "summary": "摘要：发布详情查询用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/release_detail/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/release_history": {
+      "kind": "tool",
+      "title": "工具：发布历史查询",
+      "summary": "摘要：发布历史查询用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/release_history/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/resolve_page_links": {
+      "kind": "tool",
+      "title": "工具：解析页面链接",
+      "summary": "摘要：解析页面链接用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/resolve_page_links/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki",
+        "wiki/schema/common",
+        "wiki/schema/lexicon"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/save_draft": {
+      "kind": "tool",
+      "title": "工具：保存草稿",
+      "summary": "摘要：保存草稿用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki/save_draft/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/wiki/update_system_page_from_files": {
+      "kind": "tool",
+      "title": "工具：系统页面依赖更新",
+      "summary": "摘要：根据系统页面同目录依赖文件的新旧版本差异生成页面更新草稿。系统文件不自动新建页面，只更新已有 wiki.md 页面。",
+      "path": "src/tool/wiki/update_system_page_from_files/wiki.md",
+      "source_type": "system",
+      "links": [
+        "skill/wiki/diagnosis_repair",
+        "skill/wiki/graph_extraction",
+        "skill/wiki/system_file_update",
+        "skill/wiki/user_file_generation",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "['Wiki 页面', '依赖文件', '局部关系和图谱治理']",
+      "local_relations": [
+        "属于 [[Wiki 治理工具箱|tool/wiki]]"
+      ]
+    },
+    "tool/wiki": {
+      "kind": "toolbox",
+      "title": "工具箱：Wiki 治理工具箱",
+      "summary": "摘要：Wiki 治理工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/wiki/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki/alias_query",
+        "tool/wiki/apply_diagnosis_fix",
+        "tool/wiki/check_page_schema",
+        "tool/wiki/check_truth_status",
+        "tool/wiki/create_rollback_draft",
+        "tool/wiki/diagnose_page",
+        "tool/wiki/diff_draft",
+        "tool/wiki/diff_versions",
+        "tool/wiki/extract_knowledge_graph",
+        "tool/wiki/generate_user_folder_wikis",
+        "tool/wiki/graph_enhanced_search",
+        "tool/wiki/normalize_page_to_chinese",
+        "tool/wiki/page_file_status",
+        "tool/wiki/page_history",
+        "tool/wiki/page_scope_relations",
+        "tool/wiki/publish_draft",
+        "tool/wiki/read_schema",
+        "tool/wiki/read_version",
+        "tool/wiki/release_detail",
+        "tool/wiki/release_history",
+        "tool/wiki/resolve_page_links",
+        "tool/wiki/save_draft",
+        "tool/wiki/update_system_page_from_files",
+        "wiki/workbench"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool": {
+      "kind": "tool",
+      "title": "工具：工具",
+      "summary": "摘要：工具用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/subagent/ask": {
+      "kind": "tool",
+      "title": "工具：询问子智能体",
+      "summary": "摘要：询问子智能体用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/subagent/ask/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/subagent"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/subagent/batch_run": {
+      "kind": "tool",
+      "title": "工具：批量运行子智能体",
+      "summary": "摘要：批量运行子智能体用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/subagent/batch_run/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/subagent"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/subagent": {
+      "kind": "toolbox",
+      "title": "工具箱：子智能体工具箱",
+      "summary": "摘要：子智能体工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/workflow/subagent/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/subagent/ask",
+        "tool/workflow/subagent/batch_run"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/task/claim": {
+      "kind": "tool",
+      "title": "工具：领取任务",
+      "summary": "摘要：领取任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/task/claim/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/task"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/task/create": {
+      "kind": "tool",
+      "title": "工具：创建任务",
+      "summary": "摘要：创建任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/task/create/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/task"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/task/get": {
+      "kind": "tool",
+      "title": "工具：获取任务",
+      "summary": "摘要：获取任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/task/get/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/task"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/task/list": {
+      "kind": "tool",
+      "title": "工具：列出任务",
+      "summary": "摘要：列出任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/task/list/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/task"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/task/update": {
+      "kind": "tool",
+      "title": "工具：更新任务",
+      "summary": "摘要：更新任务用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/task/update/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/task"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/task": {
+      "kind": "toolbox",
+      "title": "工具箱：任务工作流工具箱",
+      "summary": "摘要：任务工作流工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/workflow/task/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/task/claim",
+        "tool/workflow/task/create",
+        "tool/workflow/task/get",
+        "tool/workflow/task/list",
+        "tool/workflow/task/update"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/team/broadcast": {
+      "kind": "tool",
+      "title": "工具：广播消息",
+      "summary": "摘要：广播消息用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/team/broadcast/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/team"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/team/list_workers": {
+      "kind": "tool",
+      "title": "工具：列出员工",
+      "summary": "摘要：列出员工用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/team/list_workers/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/team"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/team/read_inbox": {
+      "kind": "tool",
+      "title": "工具：读取收件箱",
+      "summary": "摘要：读取收件箱用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/team/read_inbox/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/team"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/team/send_message": {
+      "kind": "tool",
+      "title": "工具：发送消息",
+      "summary": "摘要：发送消息用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/team/send_message/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/team"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/team/spawn_worker": {
+      "kind": "tool",
+      "title": "工具：创建员工",
+      "summary": "摘要：创建员工用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/team/spawn_worker/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/team"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/team": {
+      "kind": "toolbox",
+      "title": "工具箱：团队协作工具箱",
+      "summary": "摘要：团队协作工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/workflow/team/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/team/broadcast",
+        "tool/workflow/team/list_workers",
+        "tool/workflow/team/read_inbox",
+        "tool/workflow/team/send_message",
+        "tool/workflow/team/spawn_worker"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/todo/update": {
+      "kind": "tool",
+      "title": "工具：更新待办",
+      "summary": "摘要：更新待办用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/todo/update/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/todo"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/todo/view": {
+      "kind": "tool",
+      "title": "工具：查看待办",
+      "summary": "摘要：查看待办用于支撑系统中的相关能力，页面采用中文 Wiki 真相格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "src/tool/workflow/todo/view/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/todo"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "tool/workflow/todo": {
+      "kind": "toolbox",
+      "title": "工具箱：待办工作流工具箱",
+      "summary": "摘要：待办工作流工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "src/tool/workflow/todo/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/workflow/todo/update",
+        "tool/workflow/todo/view"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/index": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki 索引",
+      "summary": "摘要：Wiki 索引是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/index/wiki.md",
+      "source_type": "system",
+      "links": [
+        "control/protocol_index",
+        "wiki/store"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/link": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki 链接",
+      "summary": "摘要：Wiki 链接是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/link/wiki.md",
+      "source_type": "system",
+      "links": [
+        "page",
+        "wiki/render",
+        "wiki/store"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/mcp": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki MCP 后台工具包",
+      "summary": "摘要：该页面描述 App 客户端调用 Wiki 后台能力的 MCP 服务。服务只占用 `/mcp/wiki` 路径，并通过统一端口与其他未来 MCP 共存。",
+      "path": "src/wiki/mcp/wiki.md",
+      "source_type": "system",
+      "links": [
+        "agent/wiki_workbench",
+        "skill/wiki/root",
+        "tool/external/wiki",
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "/mcp/wiki",
+      "local_relations": [
+        "挂载 [[Wiki 治理工具箱|tool/wiki]] 的能力"
+      ]
+    },
+    "wiki/planner": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki 规划",
+      "summary": "摘要：Wiki 规划是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/planner/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/render": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki 渲染",
+      "summary": "摘要：Wiki 渲染是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/render/wiki.md",
+      "source_type": "system",
+      "links": [
+        "...",
+        "wiki/service"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/schema/agent": {
+      "kind": "knowledge",
+      "title": "元结构：智能体页面元结构",
+      "summary": "摘要：定义智能体页面必须包含的使命、技能、工具箱和安全边界。",
+      "path": "src/wiki/schema/agent/wiki.md",
+      "source_type": "system",
+      "links": [
+        "wiki/schema/common",
+        "wiki/schema/lexicon",
+        "wiki/workbench"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": []
+    },
+    "wiki/schema/common": {
+      "kind": "knowledge",
+      "title": "元结构：通用页面元结构",
+      "summary": "摘要：所有 Wiki 页面共同遵守的中文页面骨架。",
+      "path": "src/wiki/schema/common/wiki.md",
+      "source_type": "system",
+      "links": [
+        "wiki/schema/common",
+        "wiki/schema/lexicon",
+        "wiki/workbench"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": []
+    },
+    "wiki/schema/lexicon": {
+      "kind": "knowledge",
+      "title": "元结构：中文协议词典",
+      "summary": "摘要：定义中文字段、中文实体类型、权限等级和激活方式到系统协议字段的映射。",
+      "path": "src/wiki/schema/lexicon/wiki.md",
+      "source_type": "system",
+      "links": [
+        "wiki/schema/common",
+        "wiki/schema/lexicon",
+        "wiki/workbench"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": []
+    },
+    "wiki/schema/skill": {
+      "kind": "knowledge",
+      "title": "元结构：技能页面元结构",
+      "summary": "摘要：定义技能页面必须包含的目标、流程和工具引用。",
+      "path": "src/wiki/schema/skill/wiki.md",
+      "source_type": "system",
+      "links": [
+        "wiki/schema/common",
+        "wiki/schema/lexicon",
+        "wiki/workbench"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": []
+    },
+    "wiki/schema/tool": {
+      "kind": "knowledge",
+      "title": "元结构：工具页面元结构",
+      "summary": "摘要：定义工具类 Wiki 页面必须包含的字段和推荐章节。",
+      "path": "src/wiki/schema/tool/wiki.md",
+      "source_type": "system",
+      "links": [
+        "wiki/schema/common",
+        "wiki/schema/lexicon",
+        "wiki/workbench"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": []
+    },
+    "wiki/schema/toolbox": {
+      "kind": "knowledge",
+      "title": "元结构：工具箱页面元结构",
+      "summary": "摘要：定义工具箱页面必须包含的字段和工具清单表达方式。",
+      "path": "src/wiki/schema/toolbox/wiki.md",
+      "source_type": "system",
+      "links": [
+        "wiki/schema/common",
+        "wiki/schema/lexicon",
+        "wiki/workbench"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": []
+    },
+    "wiki/search": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki 检索",
+      "summary": "摘要：Wiki 检索是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/search/wiki.md",
+      "source_type": "system",
+      "links": [
+        "wiki/store"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/source_policy": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki 来源策略",
+      "summary": "摘要：Wiki 来源策略是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/source_policy/wiki.md",
+      "source_type": "system",
+      "links": [],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/version_test": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki 版本测试页",
+      "summary": "摘要：Wiki 版本测试页是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/version_test/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    },
+    "wiki/workbench": {
+      "kind": "knowledge",
+      "title": "系统页面：Wiki Workbench",
+      "summary": "摘要：Wiki Workbench是系统 Wiki 中的知识页面，采用中文真相格式维护。",
+      "path": "src/wiki/workbench/wiki.md",
+      "source_type": "system",
+      "links": [
+        "tool/wiki"
+      ],
+      "locked": false,
+      "disabled": false,
+      "scope": "当前页面及直接关联对象",
+      "local_relations": [
+        "见关联页面"
+      ]
+    }
+  },
+  "aliases": {
+    "智能体：通用对话智能体": [
+      "agent/general_chat"
+    ],
+    "通用对话智能体": [
+      "agent/general_chat"
+    ],
+    "general_chat": [
+      "agent/general_chat"
+    ],
+    "中文 Wiki": [
+      "agent/general_chat",
+      "agent/parts_design_chat",
+      "agent/review_agent",
+      "agent/wiki_front_chat",
+      "agent/wiki_workbench",
+      "agent/worker_agent",
+      "llm",
+      "skill/core/memory",
+      "skill/core/query",
+      "skill/core/report",
+      "skill/core/routing",
+      "skill/core/task",
+      "skill/general/root",
+      "skill/governance/agent_build",
+      "skill/governance/compact_guard",
+      "skill/governance/protocol_governance",
+      "skill/governance/refs_bridge",
+      "skill/governance/task_governance",
+      "skill/governance/tool_surface",
+      "skill/governance/workspace_governance",
+      "skill/parts_design/camshaft/root",
+      "skill/parts_design/common/report",
+      "skill/parts_design/common/requirement_parse",
+      "skill/parts_design/conrod/root",
+      "skill/parts_design/crankshaft/root",
+      "skill/parts_design/root",
+      "skill/wiki/batch_governance",
+      "skill/wiki/dependency_update",
+      "skill/wiki/diagnosis_repair",
+      "skill/wiki/draft_publish_review",
+      "skill/wiki/graph_extraction",
+      "skill/wiki/graph_search",
+      "skill/wiki/link_governance",
+      "skill/wiki/page_diagnosis",
+      "skill/wiki/page_rewrite",
+      "skill/wiki/rollback_assist",
+      "skill/wiki/root",
+      "skill/wiki/schema_governance",
+      "skill/wiki/search_read",
+      "skill/wiki/system_file_update",
+      "skill/wiki/user_file_generation",
+      "skill/wiki/version_review",
+      "tool/external/cloude/connect_qpp",
+      "tool/external/cloude/query_ecr_list",
+      "tool/external/cloude/query_ipm_list",
+      "tool/external/cloude",
+      "tool/external/design_report/create_image",
+      "tool/external/design_report/create_report",
+      "tool/external/design_report/export_report",
+      "tool/external/design_report/get_report_detail",
+      "tool/external/design_report/list_reports",
+      "tool/external/design_report/update_report",
+      "tool/external/design_report",
+      "tool/external/fs/diff_text",
+      "tool/external/fs/edit_text",
+      "tool/external/fs/list_dir",
+      "tool/external/fs/read_text",
+      "tool/external/fs",
+      "tool/external/fs/write_text",
+      "tool/external/nx/BatchUpdateParams",
+      "tool/external/nx/BlendShaftEndEdges",
+      "tool/external/nx/BuildCamLobe",
+      "tool/external/nx/BuildCamLobeArray",
+      "tool/external/nx/BuildCamshaft",
+      "tool/external/nx/BuildCamshaftOneClick",
+      "tool/external/nx/BuildJournalFace",
+      "tool/external/nx/BuildOrUpdateEndBoss",
+      "tool/external/nx/CreateImage",
+      "tool/external/nx/CreateNewPart",
+      "tool/external/nx/CreateParam",
+      "tool/external/nx/CutShaftGrooveByBlock",
+      "tool/external/nx/ExitAnimation",
+      "tool/external/nx/ExportSnapshot",
+      "tool/external/nx/FindParams",
+      "tool/external/nx/FitView",
+      "tool/external/nx/GetAllParamsList",
+      "tool/external/nx/GetAllViewNames",
+      "tool/external/nx/GetDrawingSheetNameList",
+      "tool/external/nx/GetDriveParamsList",
+      "tool/external/nx/GetViewStyle",
+      "tool/external/nx/GetWorkPartInfo",
+      "tool/external/nx/HighLightDim",
+      "tool/external/nx/ImportCamProfile",
+      "tool/external/nx/ListSnapshotNames",
+      "tool/external/nx/MountBossToShaft",
+      "tool/external/nx/MountCamLobesToShaft",
+      "tool/external/nx/OpenDrawingSheet",
+      "tool/external/nx/OpenPart",
+      "tool/external/nx/OpenTCPart",
+      "tool/external/nx/RotateAndScaleView",
+      "tool/external/nx/SetViewStyle",
+      "tool/external/nx/SmoothSwitchToView",
+      "tool/external/nx/SwitchView",
+      "tool/external/nx/Test",
+      "tool/external/nx/UniteLobesToShaft",
+      "tool/external/nx/UpdateParam",
+      "tool/external/nx/UpdateView",
+      "tool/external/nx/build_feature",
+      "tool/external/nx/create_prt",
+      "tool/external/nx/modify_parameter",
+      "tool/external/nx",
+      "tool/external/shell/run",
+      "tool/external/shell",
+      "tool/external/textops/design_rule_lookup",
+      "tool/external/textops/estimate_action_cost",
+      "tool/external/textops/knowledge_catalog_query",
+      "tool/external/textops/parameter_check",
+      "tool/external/textops/parse_docx_from_url",
+      "tool/external/textops/parse_text_from_url",
+      "tool/external/textops/preview_replace",
+      "tool/external/textops/search",
+      "tool/external/textops/tool_catalog_query",
+      "tool/external/textops",
+      "tool/external/wiki/answer",
+      "tool/external/wiki/read_page",
+      "tool/external/wiki/read_source",
+      "tool/external/wiki/search",
+      "tool/external/wiki",
+      "tool/external/workspace/create",
+      "tool/external/workspace/keep",
+      "tool/external/workspace/list",
+      "tool/external/workspace/remove",
+      "tool/external/workspace/run",
+      "tool/external/workspace",
+      "tool/system/autonomy/claim_next_task",
+      "tool/system/autonomy",
+      "tool/system/background/check",
+      "tool/system/background/run",
+      "tool/system/background",
+      "tool/system/compact/now",
+      "tool/system/compact",
+      "tool/system/inspect/inspect_tool_surface",
+      "tool/system/inspect",
+      "tool/system/isolation",
+      "tool/system/normalize/normalize_tool_result",
+      "tool/system/normalize",
+      "tool/system/protocol/request_shutdown",
+      "tool/system/protocol/respond_shutdown",
+      "tool/system/protocol/review_plan",
+      "tool/system/protocol/submit_plan",
+      "tool/system/protocol",
+      "tool/system/refs/load_refs",
+      "tool/system/refs",
+      "tool/system/runtime/enter_skill",
+      "tool/system/runtime/inspect_skill",
+      "tool/system/runtime/inspect_tool",
+      "tool/system/runtime/list_child_skills",
+      "tool/system/runtime",
+      "tool/wiki/alias_query",
+      "tool/wiki/check_page_schema",
+      "tool/wiki/check_truth_status",
+      "tool/wiki/create_rollback_draft",
+      "tool/wiki/diff_draft",
+      "tool/wiki/diff_versions",
+      "tool/wiki/normalize_page_to_chinese",
+      "tool/wiki/page_history",
+      "tool/wiki/publish_draft",
+      "tool/wiki/read_schema",
+      "tool/wiki/read_version",
+      "tool/wiki/release_detail",
+      "tool/wiki/release_history",
+      "tool/wiki/resolve_page_links",
+      "tool/wiki/save_draft",
+      "tool/wiki",
+      "tool",
+      "tool/workflow/subagent/ask",
+      "tool/workflow/subagent/batch_run",
+      "tool/workflow/subagent",
+      "tool/workflow/task/claim",
+      "tool/workflow/task/create",
+      "tool/workflow/task/get",
+      "tool/workflow/task/list",
+      "tool/workflow/task/update",
+      "tool/workflow/task",
+      "tool/workflow/team/broadcast",
+      "tool/workflow/team/list_workers",
+      "tool/workflow/team/read_inbox",
+      "tool/workflow/team/send_message",
+      "tool/workflow/team/spawn_worker",
+      "tool/workflow/team",
+      "tool/workflow/todo/update",
+      "tool/workflow/todo/view",
+      "tool/workflow/todo",
+      "wiki/index",
+      "wiki/link",
+      "wiki/planner",
+      "wiki/render",
+      "wiki/schema/agent",
+      "wiki/schema/common",
+      "wiki/schema/lexicon",
+      "wiki/schema/skill",
+      "wiki/schema/tool",
+      "wiki/schema/toolbox",
+      "wiki/search",
+      "wiki/source_policy",
+      "wiki/version_test",
+      "wiki/workbench"
+    ],
+    "agent/general_chat": [
+      "agent/general_chat"
+    ],
+    "真相治理": [
+      "agent/general_chat",
+      "agent/parts_design_chat",
+      "agent/review_agent",
+      "agent/wiki_front_chat",
+      "agent/wiki_workbench",
+      "agent/worker_agent",
+      "llm",
+      "skill/core/memory",
+      "skill/core/query",
+      "skill/core/report",
+      "skill/core/routing",
+      "skill/core/task",
+      "skill/general/root",
+      "skill/governance/agent_build",
+      "skill/governance/compact_guard",
+      "skill/governance/protocol_governance",
+      "skill/governance/refs_bridge",
+      "skill/governance/task_governance",
+      "skill/governance/tool_surface",
+      "skill/governance/workspace_governance",
+      "skill/parts_design/camshaft/root",
+      "skill/parts_design/common/report",
+      "skill/parts_design/common/requirement_parse",
+      "skill/parts_design/conrod/root",
+      "skill/parts_design/crankshaft/root",
+      "skill/parts_design/root",
+      "skill/wiki/batch_governance",
+      "skill/wiki/dependency_update",
+      "skill/wiki/diagnosis_repair",
+      "skill/wiki/draft_publish_review",
+      "skill/wiki/graph_extraction",
+      "skill/wiki/graph_search",
+      "skill/wiki/link_governance",
+      "skill/wiki/page_diagnosis",
+      "skill/wiki/page_rewrite",
+      "skill/wiki/rollback_assist",
+      "skill/wiki/root",
+      "skill/wiki/schema_governance",
+      "skill/wiki/search_read",
+      "skill/wiki/system_file_update",
+      "skill/wiki/user_file_generation",
+      "skill/wiki/version_review",
+      "tool/external/cloude/connect_qpp",
+      "tool/external/cloude/query_ecr_list",
+      "tool/external/cloude/query_ipm_list",
+      "tool/external/cloude",
+      "tool/external/design_report/create_image",
+      "tool/external/design_report/create_report",
+      "tool/external/design_report/export_report",
+      "tool/external/design_report/get_report_detail",
+      "tool/external/design_report/list_reports",
+      "tool/external/design_report/update_report",
+      "tool/external/design_report",
+      "tool/external/fs/diff_text",
+      "tool/external/fs/edit_text",
+      "tool/external/fs/list_dir",
+      "tool/external/fs/read_text",
+      "tool/external/fs",
+      "tool/external/fs/write_text",
+      "tool/external/nx/BatchUpdateParams",
+      "tool/external/nx/BlendShaftEndEdges",
+      "tool/external/nx/BuildCamLobe",
+      "tool/external/nx/BuildCamLobeArray",
+      "tool/external/nx/BuildCamshaft",
+      "tool/external/nx/BuildCamshaftOneClick",
+      "tool/external/nx/BuildJournalFace",
+      "tool/external/nx/BuildOrUpdateEndBoss",
+      "tool/external/nx/CreateImage",
+      "tool/external/nx/CreateNewPart",
+      "tool/external/nx/CreateParam",
+      "tool/external/nx/CutShaftGrooveByBlock",
+      "tool/external/nx/ExitAnimation",
+      "tool/external/nx/ExportSnapshot",
+      "tool/external/nx/FindParams",
+      "tool/external/nx/FitView",
+      "tool/external/nx/GetAllParamsList",
+      "tool/external/nx/GetAllViewNames",
+      "tool/external/nx/GetDrawingSheetNameList",
+      "tool/external/nx/GetDriveParamsList",
+      "tool/external/nx/GetViewStyle",
+      "tool/external/nx/GetWorkPartInfo",
+      "tool/external/nx/HighLightDim",
+      "tool/external/nx/ImportCamProfile",
+      "tool/external/nx/ListSnapshotNames",
+      "tool/external/nx/MountBossToShaft",
+      "tool/external/nx/MountCamLobesToShaft",
+      "tool/external/nx/OpenDrawingSheet",
+      "tool/external/nx/OpenPart",
+      "tool/external/nx/OpenTCPart",
+      "tool/external/nx/RotateAndScaleView",
+      "tool/external/nx/SetViewStyle",
+      "tool/external/nx/SmoothSwitchToView",
+      "tool/external/nx/SwitchView",
+      "tool/external/nx/Test",
+      "tool/external/nx/UniteLobesToShaft",
+      "tool/external/nx/UpdateParam",
+      "tool/external/nx/UpdateView",
+      "tool/external/nx/build_feature",
+      "tool/external/nx/create_prt",
+      "tool/external/nx/modify_parameter",
+      "tool/external/nx",
+      "tool/external/shell/run",
+      "tool/external/shell",
+      "tool/external/textops/design_rule_lookup",
+      "tool/external/textops/estimate_action_cost",
+      "tool/external/textops/knowledge_catalog_query",
+      "tool/external/textops/parameter_check",
+      "tool/external/textops/parse_docx_from_url",
+      "tool/external/textops/parse_text_from_url",
+      "tool/external/textops/preview_replace",
+      "tool/external/textops/search",
+      "tool/external/textops/tool_catalog_query",
+      "tool/external/textops",
+      "tool/external/wiki/answer",
+      "tool/external/wiki/read_page",
+      "tool/external/wiki/read_source",
+      "tool/external/wiki/search",
+      "tool/external/wiki",
+      "tool/external/workspace/create",
+      "tool/external/workspace/keep",
+      "tool/external/workspace/list",
+      "tool/external/workspace/remove",
+      "tool/external/workspace/run",
+      "tool/external/workspace",
+      "tool/system/autonomy/claim_next_task",
+      "tool/system/autonomy",
+      "tool/system/background/check",
+      "tool/system/background/run",
+      "tool/system/background",
+      "tool/system/compact/now",
+      "tool/system/compact",
+      "tool/system/inspect/inspect_tool_surface",
+      "tool/system/inspect",
+      "tool/system/isolation",
+      "tool/system/normalize/normalize_tool_result",
+      "tool/system/normalize",
+      "tool/system/protocol/request_shutdown",
+      "tool/system/protocol/respond_shutdown",
+      "tool/system/protocol/review_plan",
+      "tool/system/protocol/submit_plan",
+      "tool/system/protocol",
+      "tool/system/refs/load_refs",
+      "tool/system/refs",
+      "tool/system/runtime/enter_skill",
+      "tool/system/runtime/inspect_skill",
+      "tool/system/runtime/inspect_tool",
+      "tool/system/runtime/list_child_skills",
+      "tool/system/runtime",
+      "tool/wiki/alias_query",
+      "tool/wiki/check_page_schema",
+      "tool/wiki/check_truth_status",
+      "tool/wiki/create_rollback_draft",
+      "tool/wiki/diff_draft",
+      "tool/wiki/diff_versions",
+      "tool/wiki/normalize_page_to_chinese",
+      "tool/wiki/page_history",
+      "tool/wiki/publish_draft",
+      "tool/wiki/read_schema",
+      "tool/wiki/read_version",
+      "tool/wiki/release_detail",
+      "tool/wiki/release_history",
+      "tool/wiki/resolve_page_links",
+      "tool/wiki/save_draft",
+      "tool/wiki",
+      "tool",
+      "tool/workflow/subagent/ask",
+      "tool/workflow/subagent/batch_run",
+      "tool/workflow/subagent",
+      "tool/workflow/task/claim",
+      "tool/workflow/task/create",
+      "tool/workflow/task/get",
+      "tool/workflow/task/list",
+      "tool/workflow/task/update",
+      "tool/workflow/task",
+      "tool/workflow/team/broadcast",
+      "tool/workflow/team/list_workers",
+      "tool/workflow/team/read_inbox",
+      "tool/workflow/team/send_message",
+      "tool/workflow/team/spawn_worker",
+      "tool/workflow/team",
+      "tool/workflow/todo/update",
+      "tool/workflow/todo/view",
+      "tool/workflow/todo",
+      "wiki/index",
+      "wiki/link",
+      "wiki/planner",
+      "wiki/render",
+      "wiki/search",
+      "wiki/source_policy",
+      "wiki/version_test",
+      "wiki/workbench"
+    ],
+    "智能体：零部件设计对话智能体": [
+      "agent/parts_design_chat"
+    ],
+    "parts_design_chat": [
+      "agent/parts_design_chat"
+    ],
+    "agent/parts_design_chat": [
+      "agent/parts_design_chat"
+    ],
+    "零部件设计对话智能体": [
+      "agent/parts_design_chat"
+    ],
+    "智能体：审查智能体": [
+      "agent/review_agent"
+    ],
+    "review_agent": [
+      "agent/review_agent"
+    ],
+    "agent/review_agent": [
+      "agent/review_agent"
+    ],
+    "审查智能体": [
+      "agent/review_agent"
+    ],
+    "wiki_front_chat": [
+      "agent/wiki_front_chat"
+    ],
+    "Wiki 前端对话智能体": [
+      "agent/wiki_front_chat"
+    ],
+    "agent/wiki_front_chat": [
+      "agent/wiki_front_chat"
+    ],
+    "智能体：Wiki 前端对话智能体": [
+      "agent/wiki_front_chat"
+    ],
+    "知识图谱": [
+      "agent/wiki_workbench",
+      "tool/wiki/apply_diagnosis_fix",
+      "tool/wiki/diagnose_page",
+      "tool/wiki/extract_knowledge_graph",
+      "tool/wiki/generate_user_folder_wikis",
+      "tool/wiki/graph_enhanced_search",
+      "tool/wiki/page_file_status",
+      "tool/wiki/page_scope_relations",
+      "tool/wiki/update_system_page_from_files"
+    ],
+    "Wiki Agent": [
+      "agent/wiki_workbench",
+      "skill/wiki/batch_governance",
+      "skill/wiki/dependency_update",
+      "skill/wiki/diagnosis_repair",
+      "skill/wiki/draft_publish_review",
+      "skill/wiki/graph_extraction",
+      "skill/wiki/graph_search",
+      "skill/wiki/link_governance",
+      "skill/wiki/page_diagnosis",
+      "skill/wiki/page_rewrite",
+      "skill/wiki/rollback_assist",
+      "skill/wiki/root",
+      "skill/wiki/schema_governance",
+      "skill/wiki/search_read",
+      "skill/wiki/system_file_update",
+      "skill/wiki/user_file_generation",
+      "skill/wiki/version_review",
+      "tool/wiki/apply_diagnosis_fix",
+      "tool/wiki/diagnose_page",
+      "tool/wiki/extract_knowledge_graph",
+      "tool/wiki/generate_user_folder_wikis",
+      "tool/wiki/graph_enhanced_search",
+      "tool/wiki/page_file_status",
+      "tool/wiki/page_scope_relations",
+      "tool/wiki/update_system_page_from_files"
+    ],
+    "Wiki 治理智能体": [
+      "agent/wiki_workbench"
+    ],
+    "wiki_workbench": [
+      "agent/wiki_workbench"
+    ],
+    "智能体：Wiki Workbench Agent": [
+      "agent/wiki_workbench"
+    ],
+    "Wiki Workbench Agent": [
+      "agent/wiki_workbench"
+    ],
+    "agent/wiki_workbench": [
+      "agent/wiki_workbench"
+    ],
+    "版本管理": [
+      "agent/wiki_workbench"
+    ],
+    "worker_agent": [
+      "agent/worker_agent"
+    ],
+    "员工智能体": [
+      "agent/worker_agent"
+    ],
+    "智能体：员工智能体": [
+      "agent/worker_agent"
+    ],
+    "agent/worker_agent": [
+      "agent/worker_agent"
+    ],
+    "llm/provider_switch": [
+      "llm"
+    ],
+    "模型服务": [
+      "llm"
+    ],
+    "llm": [
+      "llm"
+    ],
+    "系统页面：模型服务": [
+      "llm"
+    ],
+    "技能：记忆技能": [
+      "skill/core/memory"
+    ],
+    "skill/core/memory": [
+      "skill/core/memory"
+    ],
+    "记忆技能": [
+      "skill/core/memory"
+    ],
+    "技能：查询": [
+      "skill/core/query"
+    ],
+    "查询": [
+      "skill/core/query"
+    ],
+    "skill/core/query": [
+      "skill/core/query"
+    ],
+    "skill/core/report": [
+      "skill/core/report"
+    ],
+    "报告": [
+      "skill/core/report"
+    ],
+    "技能：报告": [
+      "skill/core/report"
+    ],
+    "skill/core/routing": [
+      "skill/core/routing"
+    ],
+    "路由技能": [
+      "skill/core/routing"
+    ],
+    "技能：路由技能": [
+      "skill/core/routing"
+    ],
+    "skill/core/task": [
+      "skill/core/task"
+    ],
+    "任务技能": [
+      "skill/core/task"
+    ],
+    "技能：任务技能": [
+      "skill/core/task"
+    ],
+    "通用根技能": [
+      "skill/general/root"
+    ],
+    "技能：通用根技能": [
+      "skill/general/root"
+    ],
+    "skill/general/root": [
+      "skill/general/root"
+    ],
+    "技能：智能体构建治理": [
+      "skill/governance/agent_build"
+    ],
+    "skill/governance/agent_build": [
+      "skill/governance/agent_build"
+    ],
+    "智能体构建治理": [
+      "skill/governance/agent_build"
+    ],
+    "上下文压缩守护": [
+      "skill/governance/compact_guard"
+    ],
+    "skill/governance/compact_guard": [
+      "skill/governance/compact_guard"
+    ],
+    "技能：上下文压缩守护": [
+      "skill/governance/compact_guard"
+    ],
+    "技能：协议治理": [
+      "skill/governance/protocol_governance"
+    ],
+    "协议治理": [
+      "skill/governance/protocol_governance"
+    ],
+    "skill/governance/protocol_governance": [
+      "skill/governance/protocol_governance"
+    ],
+    "skill/governance/refs_bridge": [
+      "skill/governance/refs_bridge"
+    ],
+    "引用桥接": [
+      "skill/governance/refs_bridge"
+    ],
+    "技能：引用桥接": [
+      "skill/governance/refs_bridge"
+    ],
+    "skill/governance/task_governance": [
+      "skill/governance/task_governance"
+    ],
+    "技能：任务治理": [
+      "skill/governance/task_governance"
+    ],
+    "任务治理": [
+      "skill/governance/task_governance"
+    ],
+    "技能：工具表面治理": [
+      "skill/governance/tool_surface"
+    ],
+    "工具表面治理": [
+      "skill/governance/tool_surface"
+    ],
+    "skill/governance/tool_surface": [
+      "skill/governance/tool_surface"
+    ],
+    "技能：工作区治理": [
+      "skill/governance/workspace_governance"
+    ],
+    "工作区治理": [
+      "skill/governance/workspace_governance"
+    ],
+    "skill/governance/workspace_governance": [
+      "skill/governance/workspace_governance"
+    ],
+    "凸轮轴设计根技能": [
+      "skill/parts_design/camshaft/root"
+    ],
+    "技能：凸轮轴设计根技能": [
+      "skill/parts_design/camshaft/root"
+    ],
+    "skill/parts_design/camshaft/root": [
+      "skill/parts_design/camshaft/root"
+    ],
+    "技能：报告生成": [
+      "skill/parts_design/common/report"
+    ],
+    "报告生成": [
+      "skill/parts_design/common/report"
+    ],
+    "skill/parts_design/common/report": [
+      "skill/parts_design/common/report"
+    ],
+    "需求解析": [
+      "skill/parts_design/common/requirement_parse"
+    ],
+    "技能：需求解析": [
+      "skill/parts_design/common/requirement_parse"
+    ],
+    "skill/parts_design/common/requirement_parse": [
+      "skill/parts_design/common/requirement_parse"
+    ],
+    "连杆设计根技能": [
+      "skill/parts_design/conrod/root"
+    ],
+    "skill/parts_design/conrod/root": [
+      "skill/parts_design/conrod/root"
+    ],
+    "技能：连杆设计根技能": [
+      "skill/parts_design/conrod/root"
+    ],
+    "skill/parts_design/crankshaft/root": [
+      "skill/parts_design/crankshaft/root"
+    ],
+    "技能：曲轴设计根技能": [
+      "skill/parts_design/crankshaft/root"
+    ],
+    "曲轴设计根技能": [
+      "skill/parts_design/crankshaft/root"
+    ],
+    "Parts Design Knowledge": [
+      "wiki/skill/parts_design/root/knowledge/README.md"
+    ],
+    "wiki/skill/parts_design/root/knowledge/README.md": [
+      "wiki/skill/parts_design/root/knowledge/README.md"
+    ],
+    "技能：零部件设计根技能": [
+      "skill/parts_design/root"
+    ],
+    "零部件设计根技能": [
+      "skill/parts_design/root"
+    ],
+    "skill/parts_design/root": [
+      "skill/parts_design/root"
+    ],
+    "skill/wiki/batch_governance": [
+      "skill/wiki/batch_governance"
+    ],
+    "技能：批量治理技能": [
+      "skill/wiki/batch_governance"
+    ],
+    "批量治理技能": [
+      "skill/wiki/batch_governance"
+    ],
+    "skill/wiki/dependency_update": [
+      "skill/wiki/dependency_update"
+    ],
+    "技能：依赖变化更新技能": [
+      "skill/wiki/dependency_update"
+    ],
+    "依赖变化更新技能": [
+      "skill/wiki/dependency_update"
+    ],
+    "技能：诊断修复技能": [
+      "skill/wiki/diagnosis_repair"
+    ],
+    "诊断修复技能": [
+      "skill/wiki/diagnosis_repair"
+    ],
+    "skill/wiki/diagnosis_repair": [
+      "skill/wiki/diagnosis_repair"
+    ],
+    "草稿发布审查技能": [
+      "skill/wiki/draft_publish_review"
+    ],
+    "技能：草稿发布审查技能": [
+      "skill/wiki/draft_publish_review"
+    ],
+    "skill/wiki/draft_publish_review": [
+      "skill/wiki/draft_publish_review"
+    ],
+    "知识图谱抽取技能": [
+      "skill/wiki/graph_extraction"
+    ],
+    "技能：知识图谱抽取技能": [
+      "skill/wiki/graph_extraction"
+    ],
+    "skill/wiki/graph_extraction": [
+      "skill/wiki/graph_extraction"
+    ],
+    "skill/wiki/graph_search": [
+      "skill/wiki/graph_search"
+    ],
+    "技能：图谱增强检索技能": [
+      "skill/wiki/graph_search"
+    ],
+    "图谱增强检索技能": [
+      "skill/wiki/graph_search"
+    ],
+    "技能：链接治理技能": [
+      "skill/wiki/link_governance"
+    ],
+    "链接治理技能": [
+      "skill/wiki/link_governance"
+    ],
+    "skill/wiki/link_governance": [
+      "skill/wiki/link_governance"
+    ],
+    "技能：页面诊断技能": [
+      "skill/wiki/page_diagnosis"
+    ],
+    "skill/wiki/page_diagnosis": [
+      "skill/wiki/page_diagnosis"
+    ],
+    "页面诊断技能": [
+      "skill/wiki/page_diagnosis"
+    ],
+    "技能：页面重写技能": [
+      "skill/wiki/page_rewrite"
+    ],
+    "页面重写技能": [
+      "skill/wiki/page_rewrite"
+    ],
+    "skill/wiki/page_rewrite": [
+      "skill/wiki/page_rewrite"
+    ],
+    "技能：回滚辅助技能": [
+      "skill/wiki/rollback_assist"
+    ],
+    "回滚辅助技能": [
+      "skill/wiki/rollback_assist"
+    ],
+    "skill/wiki/rollback_assist": [
+      "skill/wiki/rollback_assist"
+    ],
+    "技能：Wiki 治理根技能": [
+      "skill/wiki/root"
+    ],
+    "Wiki 治理根技能": [
+      "skill/wiki/root"
+    ],
+    "skill/wiki/root": [
+      "skill/wiki/root"
+    ],
+    "元结构治理技能": [
+      "skill/wiki/schema_governance"
+    ],
+    "技能：元结构治理技能": [
+      "skill/wiki/schema_governance"
+    ],
+    "skill/wiki/schema_governance": [
+      "skill/wiki/schema_governance"
+    ],
+    "skill/wiki/search_read": [
+      "skill/wiki/search_read"
+    ],
+    "技能：检索阅读技能": [
+      "skill/wiki/search_read"
+    ],
+    "检索阅读技能": [
+      "skill/wiki/search_read"
+    ],
+    "技能：系统页面更新技能": [
+      "skill/wiki/system_file_update"
+    ],
+    "系统页面更新技能": [
+      "skill/wiki/system_file_update"
+    ],
+    "skill/wiki/system_file_update": [
+      "skill/wiki/system_file_update"
+    ],
+    "skill/wiki/user_file_generation": [
+      "skill/wiki/user_file_generation"
+    ],
+    "用户文件建页技能": [
+      "skill/wiki/user_file_generation"
+    ],
+    "技能：用户文件建页技能": [
+      "skill/wiki/user_file_generation"
+    ],
+    "技能：版本审查技能": [
+      "skill/wiki/version_review"
+    ],
+    "版本审查技能": [
+      "skill/wiki/version_review"
+    ],
+    "skill/wiki/version_review": [
+      "skill/wiki/version_review"
+    ],
+    "工具：连接 QPP": [
+      "tool/external/cloude/connect_qpp"
+    ],
+    "tool/external/cloude/connect_qpp": [
+      "tool/external/cloude/connect_qpp"
+    ],
+    "连接 QPP": [
+      "tool/external/cloude/connect_qpp"
+    ],
+    "cloude.connect_qpp": [
+      "tool/external/cloude/connect_qpp"
+    ],
+    "查询 ECR 列表": [
+      "tool/external/cloude/query_ecr_list"
+    ],
+    "tool/external/cloude/query_ecr_list": [
+      "tool/external/cloude/query_ecr_list"
+    ],
+    "cloude.query_ecr_list": [
+      "tool/external/cloude/query_ecr_list"
+    ],
+    "工具：查询 ECR 列表": [
+      "tool/external/cloude/query_ecr_list"
+    ],
+    "工具：查询 IPM 列表": [
+      "tool/external/cloude/query_ipm_list"
+    ],
+    "查询 IPM 列表": [
+      "tool/external/cloude/query_ipm_list"
+    ],
+    "tool/external/cloude/query_ipm_list": [
+      "tool/external/cloude/query_ipm_list"
+    ],
+    "cloude.query_ipm_list": [
+      "tool/external/cloude/query_ipm_list"
+    ],
+    "cloude": [
+      "tool/external/cloude"
+    ],
+    "Cloude 企业接口工具箱": [
+      "tool/external/cloude"
+    ],
+    "工具箱：Cloude 企业接口工具箱": [
+      "tool/external/cloude"
+    ],
+    "tool/external/cloude": [
+      "tool/external/cloude"
+    ],
+    "design_report.create_image": [
+      "tool/external/design_report/create_image"
+    ],
+    "tool/external/design_report/create_image": [
+      "tool/external/design_report/create_image"
+    ],
+    "创建报告图片": [
+      "tool/external/design_report/create_image"
+    ],
+    "工具：创建报告图片": [
+      "tool/external/design_report/create_image"
+    ],
+    "design_report.create_report": [
+      "tool/external/design_report/create_report"
+    ],
+    "创建设计报告": [
+      "tool/external/design_report/create_report"
+    ],
+    "tool/external/design_report/create_report": [
+      "tool/external/design_report/create_report"
+    ],
+    "工具：创建设计报告": [
+      "tool/external/design_report/create_report"
+    ],
+    "tool/external/design_report/export_report": [
+      "tool/external/design_report/export_report"
+    ],
+    "导出报告": [
+      "tool/external/design_report/export_report"
+    ],
+    "design_report.export_report": [
+      "tool/external/design_report/export_report"
+    ],
+    "工具：导出报告": [
+      "tool/external/design_report/export_report"
+    ],
+    "工具：获取报告详情": [
+      "tool/external/design_report/get_report_detail"
+    ],
+    "tool/external/design_report/get_report_detail": [
+      "tool/external/design_report/get_report_detail"
+    ],
+    "获取报告详情": [
+      "tool/external/design_report/get_report_detail"
+    ],
+    "design_report.get_report_detail": [
+      "tool/external/design_report/get_report_detail"
+    ],
+    "design_report.list_reports": [
+      "tool/external/design_report/list_reports"
+    ],
+    "tool/external/design_report/list_reports": [
+      "tool/external/design_report/list_reports"
+    ],
+    "工具：列出报告": [
+      "tool/external/design_report/list_reports"
+    ],
+    "列出报告": [
+      "tool/external/design_report/list_reports"
+    ],
+    "更新设计报告": [
+      "tool/external/design_report/update_report"
+    ],
+    "design_report.update_report": [
+      "tool/external/design_report/update_report"
+    ],
+    "tool/external/design_report/update_report": [
+      "tool/external/design_report/update_report"
+    ],
+    "工具：更新设计报告": [
+      "tool/external/design_report/update_report"
+    ],
+    "工具箱：设计报告工具箱": [
+      "tool/external/design_report"
+    ],
+    "tool/external/design_report": [
+      "tool/external/design_report"
+    ],
+    "design_report": [
+      "tool/external/design_report"
+    ],
+    "设计报告工具箱": [
+      "tool/external/design_report"
+    ],
+    "fs.diff_text": [
+      "tool/external/fs/diff_text"
+    ],
+    "工具：差异文本": [
+      "tool/external/fs/diff_text"
+    ],
+    "tool/external/fs/diff_text": [
+      "tool/external/fs/diff_text"
+    ],
+    "差异文本": [
+      "tool/external/fs/diff_text"
+    ],
+    "fs.edit_text": [
+      "tool/external/fs/edit_text"
+    ],
+    "编辑文本": [
+      "tool/external/fs/edit_text"
+    ],
+    "工具：编辑文本": [
+      "tool/external/fs/edit_text"
+    ],
+    "tool/external/fs/edit_text": [
+      "tool/external/fs/edit_text"
+    ],
+    "tool/external/fs/list_dir": [
+      "tool/external/fs/list_dir"
+    ],
+    "fs.list_dir": [
+      "tool/external/fs/list_dir"
+    ],
+    "工具：列出目录": [
+      "tool/external/fs/list_dir"
+    ],
+    "列出目录": [
+      "tool/external/fs/list_dir"
+    ],
+    "读取文本": [
+      "tool/external/fs/read_text"
+    ],
+    "fs.read_text": [
+      "tool/external/fs/read_text"
+    ],
+    "工具：读取文本": [
+      "tool/external/fs/read_text"
+    ],
+    "tool/external/fs/read_text": [
+      "tool/external/fs/read_text"
+    ],
+    "工具箱：f工具箱": [
+      "tool/external/fs"
+    ],
+    "tool/external/fs": [
+      "tool/external/fs"
+    ],
+    "fs": [
+      "tool/external/fs"
+    ],
+    "f工具箱": [
+      "tool/external/fs"
+    ],
+    "工具：写入文本": [
+      "tool/external/fs/write_text"
+    ],
+    "tool/external/fs/write_text": [
+      "tool/external/fs/write_text"
+    ],
+    "写入文本": [
+      "tool/external/fs/write_text"
+    ],
+    "fs.write_text": [
+      "tool/external/fs/write_text"
+    ],
+    "tool/external/nx/BatchUpdateParams": [
+      "tool/external/nx/BatchUpdateParams"
+    ],
+    "NX批量更新参数": [
+      "tool/external/nx/BatchUpdateParams"
+    ],
+    "工具：NX批量更新参数": [
+      "tool/external/nx/BatchUpdateParams"
+    ],
+    "nx.BatchUpdateParams": [
+      "tool/external/nx/BatchUpdateParams"
+    ],
+    "工具：NX倒圆轴端部边": [
+      "tool/external/nx/BlendShaftEndEdges"
+    ],
+    "tool/external/nx/BlendShaftEndEdges": [
+      "tool/external/nx/BlendShaftEndEdges"
+    ],
+    "NX倒圆轴端部边": [
+      "tool/external/nx/BlendShaftEndEdges"
+    ],
+    "nx.BlendShaftEndEdges": [
+      "tool/external/nx/BlendShaftEndEdges"
+    ],
+    "NXBuildCamLobe": [
+      "tool/external/nx/BuildCamLobe"
+    ],
+    "tool/external/nx/BuildCamLobe": [
+      "tool/external/nx/BuildCamLobe"
+    ],
+    "nx.BuildCamLobe": [
+      "tool/external/nx/BuildCamLobe"
+    ],
+    "工具：NXBuildCamLobe": [
+      "tool/external/nx/BuildCamLobe"
+    ],
+    "tool/external/nx/BuildCamLobeArray": [
+      "tool/external/nx/BuildCamLobeArray"
+    ],
+    "工具：NXBuildCamLobeArray": [
+      "tool/external/nx/BuildCamLobeArray"
+    ],
+    "NXBuildCamLobeArray": [
+      "tool/external/nx/BuildCamLobeArray"
+    ],
+    "nx.BuildCamLobeArray": [
+      "tool/external/nx/BuildCamLobeArray"
+    ],
+    "工具：NXBuildCamhaft": [
+      "tool/external/nx/BuildCamshaft"
+    ],
+    "tool/external/nx/BuildCamshaft": [
+      "tool/external/nx/BuildCamshaft"
+    ],
+    "nx.BuildCamshaft": [
+      "tool/external/nx/BuildCamshaft"
+    ],
+    "NXBuildCamhaft": [
+      "tool/external/nx/BuildCamshaft"
+    ],
+    "nx.BuildCamshaftOneClick": [
+      "tool/external/nx/BuildCamshaftOneClick"
+    ],
+    "NXBuildCamhaftOneClick": [
+      "tool/external/nx/BuildCamshaftOneClick"
+    ],
+    "工具：NXBuildCamhaftOneClick": [
+      "tool/external/nx/BuildCamshaftOneClick"
+    ],
+    "tool/external/nx/BuildCamshaftOneClick": [
+      "tool/external/nx/BuildCamshaftOneClick"
+    ],
+    "tool/external/nx/BuildJournalFace": [
+      "tool/external/nx/BuildJournalFace"
+    ],
+    "NXBuildJournalFace": [
+      "tool/external/nx/BuildJournalFace"
+    ],
+    "nx.BuildJournalFace": [
+      "tool/external/nx/BuildJournalFace"
+    ],
+    "工具：NXBuildJournalFace": [
+      "tool/external/nx/BuildJournalFace"
+    ],
+    "nx.BuildOrUpdateEndBoss": [
+      "tool/external/nx/BuildOrUpdateEndBoss"
+    ],
+    "NXBuildOr更新端部Bo": [
+      "tool/external/nx/BuildOrUpdateEndBoss"
+    ],
+    "tool/external/nx/BuildOrUpdateEndBoss": [
+      "tool/external/nx/BuildOrUpdateEndBoss"
+    ],
+    "工具：NXBuildOr更新端部Bo": [
+      "tool/external/nx/BuildOrUpdateEndBoss"
+    ],
+    "nx.CreateImage": [
+      "tool/external/nx/CreateImage"
+    ],
+    "tool/external/nx/CreateImage": [
+      "tool/external/nx/CreateImage"
+    ],
+    "工具：NX创建Image": [
+      "tool/external/nx/CreateImage"
+    ],
+    "NX创建Image": [
+      "tool/external/nx/CreateImage"
+    ],
+    "工具：NX创建新建零件": [
+      "tool/external/nx/CreateNewPart"
+    ],
+    "NX创建新建零件": [
+      "tool/external/nx/CreateNewPart"
+    ],
+    "nx.CreateNewPart": [
+      "tool/external/nx/CreateNewPart"
+    ],
+    "tool/external/nx/CreateNewPart": [
+      "tool/external/nx/CreateNewPart"
+    ],
+    "nx.CreateParam": [
+      "tool/external/nx/CreateParam"
+    ],
+    "工具：NX创建参数": [
+      "tool/external/nx/CreateParam"
+    ],
+    "NX创建参数": [
+      "tool/external/nx/CreateParam"
+    ],
+    "tool/external/nx/CreateParam": [
+      "tool/external/nx/CreateParam"
+    ],
+    "NXCut轴GrooveByBlock": [
+      "tool/external/nx/CutShaftGrooveByBlock"
+    ],
+    "nx.CutShaftGrooveByBlock": [
+      "tool/external/nx/CutShaftGrooveByBlock"
+    ],
+    "工具：NXCut轴GrooveByBlock": [
+      "tool/external/nx/CutShaftGrooveByBlock"
+    ],
+    "tool/external/nx/CutShaftGrooveByBlock": [
+      "tool/external/nx/CutShaftGrooveByBlock"
+    ],
+    "nx.ExitAnimation": [
+      "tool/external/nx/ExitAnimation"
+    ],
+    "工具：NXExitAnimation": [
+      "tool/external/nx/ExitAnimation"
+    ],
+    "NXExitAnimation": [
+      "tool/external/nx/ExitAnimation"
+    ],
+    "tool/external/nx/ExitAnimation": [
+      "tool/external/nx/ExitAnimation"
+    ],
+    "工具：NXExportSnaphot": [
+      "tool/external/nx/ExportSnapshot"
+    ],
+    "tool/external/nx/ExportSnapshot": [
+      "tool/external/nx/ExportSnapshot"
+    ],
+    "nx.ExportSnapshot": [
+      "tool/external/nx/ExportSnapshot"
+    ],
+    "NXExportSnaphot": [
+      "tool/external/nx/ExportSnapshot"
+    ],
+    "nx.FindParams": [
+      "tool/external/nx/FindParams"
+    ],
+    "tool/external/nx/FindParams": [
+      "tool/external/nx/FindParams"
+    ],
+    "工具：NXFind参数": [
+      "tool/external/nx/FindParams"
+    ],
+    "NXFind参数": [
+      "tool/external/nx/FindParams"
+    ],
+    "工具：NXFit查看": [
+      "tool/external/nx/FitView"
+    ],
+    "NXFit查看": [
+      "tool/external/nx/FitView"
+    ],
+    "nx.FitView": [
+      "tool/external/nx/FitView"
+    ],
+    "tool/external/nx/FitView": [
+      "tool/external/nx/FitView"
+    ],
+    "NXGetAll参数Lit": [
+      "tool/external/nx/GetAllParamsList"
+    ],
+    "nx.GetAllParamsList": [
+      "tool/external/nx/GetAllParamsList"
+    ],
+    "tool/external/nx/GetAllParamsList": [
+      "tool/external/nx/GetAllParamsList"
+    ],
+    "工具：NXGetAll参数Lit": [
+      "tool/external/nx/GetAllParamsList"
+    ],
+    "NXGetAll查看Name": [
+      "tool/external/nx/GetAllViewNames"
+    ],
+    "nx.GetAllViewNames": [
+      "tool/external/nx/GetAllViewNames"
+    ],
+    "tool/external/nx/GetAllViewNames": [
+      "tool/external/nx/GetAllViewNames"
+    ],
+    "工具：NXGetAll查看Name": [
+      "tool/external/nx/GetAllViewNames"
+    ],
+    "nx.GetDrawingSheetNameList": [
+      "tool/external/nx/GetDrawingSheetNameList"
+    ],
+    "tool/external/nx/GetDrawingSheetNameList": [
+      "tool/external/nx/GetDrawingSheetNameList"
+    ],
+    "工具：NXGetDrawingSheetNameLit": [
+      "tool/external/nx/GetDrawingSheetNameList"
+    ],
+    "NXGetDrawingSheetNameLit": [
+      "tool/external/nx/GetDrawingSheetNameList"
+    ],
+    "NXGetDrive参数Lit": [
+      "tool/external/nx/GetDriveParamsList"
+    ],
+    "工具：NXGetDrive参数Lit": [
+      "tool/external/nx/GetDriveParamsList"
+    ],
+    "tool/external/nx/GetDriveParamsList": [
+      "tool/external/nx/GetDriveParamsList"
+    ],
+    "nx.GetDriveParamsList": [
+      "tool/external/nx/GetDriveParamsList"
+    ],
+    "NXGet查看Style": [
+      "tool/external/nx/GetViewStyle"
+    ],
+    "工具：NXGet查看Style": [
+      "tool/external/nx/GetViewStyle"
+    ],
+    "nx.GetViewStyle": [
+      "tool/external/nx/GetViewStyle"
+    ],
+    "tool/external/nx/GetViewStyle": [
+      "tool/external/nx/GetViewStyle"
+    ],
+    "tool/external/nx/GetWorkPartInfo": [
+      "tool/external/nx/GetWorkPartInfo"
+    ],
+    "nx.GetWorkPartInfo": [
+      "tool/external/nx/GetWorkPartInfo"
+    ],
+    "工具：NXGetWork零件Info": [
+      "tool/external/nx/GetWorkPartInfo"
+    ],
+    "NXGetWork零件Info": [
+      "tool/external/nx/GetWorkPartInfo"
+    ],
+    "工具：NXHighLightDim": [
+      "tool/external/nx/HighLightDim"
+    ],
+    "nx.HighLightDim": [
+      "tool/external/nx/HighLightDim"
+    ],
+    "NXHighLightDim": [
+      "tool/external/nx/HighLightDim"
+    ],
+    "tool/external/nx/HighLightDim": [
+      "tool/external/nx/HighLightDim"
+    ],
+    "工具：NXImportCamProfile": [
+      "tool/external/nx/ImportCamProfile"
+    ],
+    "tool/external/nx/ImportCamProfile": [
+      "tool/external/nx/ImportCamProfile"
+    ],
+    "NXImportCamProfile": [
+      "tool/external/nx/ImportCamProfile"
+    ],
+    "nx.ImportCamProfile": [
+      "tool/external/nx/ImportCamProfile"
+    ],
+    "tool/external/nx/ListSnapshotNames": [
+      "tool/external/nx/ListSnapshotNames"
+    ],
+    "NXLitSnaphotName": [
+      "tool/external/nx/ListSnapshotNames"
+    ],
+    "nx.ListSnapshotNames": [
+      "tool/external/nx/ListSnapshotNames"
+    ],
+    "工具：NXLitSnaphotName": [
+      "tool/external/nx/ListSnapshotNames"
+    ],
+    "tool/external/nx/MountBossToShaft": [
+      "tool/external/nx/MountBossToShaft"
+    ],
+    "NXMountBoTo轴": [
+      "tool/external/nx/MountBossToShaft"
+    ],
+    "nx.MountBossToShaft": [
+      "tool/external/nx/MountBossToShaft"
+    ],
+    "工具：NXMountBoTo轴": [
+      "tool/external/nx/MountBossToShaft"
+    ],
+    "nx.MountCamLobesToShaft": [
+      "tool/external/nx/MountCamLobesToShaft"
+    ],
+    "tool/external/nx/MountCamLobesToShaft": [
+      "tool/external/nx/MountCamLobesToShaft"
+    ],
+    "NXMountCamLobeTo轴": [
+      "tool/external/nx/MountCamLobesToShaft"
+    ],
+    "工具：NXMountCamLobeTo轴": [
+      "tool/external/nx/MountCamLobesToShaft"
+    ],
+    "NXOpenDrawingSheet": [
+      "tool/external/nx/OpenDrawingSheet"
+    ],
+    "工具：NXOpenDrawingSheet": [
+      "tool/external/nx/OpenDrawingSheet"
+    ],
+    "tool/external/nx/OpenDrawingSheet": [
+      "tool/external/nx/OpenDrawingSheet"
+    ],
+    "nx.OpenDrawingSheet": [
+      "tool/external/nx/OpenDrawingSheet"
+    ],
+    "工具：NXOpen零件": [
+      "tool/external/nx/OpenPart"
+    ],
+    "NXOpen零件": [
+      "tool/external/nx/OpenPart"
+    ],
+    "nx.OpenPart": [
+      "tool/external/nx/OpenPart"
+    ],
+    "tool/external/nx/OpenPart": [
+      "tool/external/nx/OpenPart"
+    ],
+    "nx.OpenTCPart": [
+      "tool/external/nx/OpenTCPart"
+    ],
+    "tool/external/nx/OpenTCPart": [
+      "tool/external/nx/OpenTCPart"
+    ],
+    "工具：NXOpenTC零件": [
+      "tool/external/nx/OpenTCPart"
+    ],
+    "NXOpenTC零件": [
+      "tool/external/nx/OpenTCPart"
+    ],
+    "NXRotateAndScale查看": [
+      "tool/external/nx/RotateAndScaleView"
+    ],
+    "nx.RotateAndScaleView": [
+      "tool/external/nx/RotateAndScaleView"
+    ],
+    "tool/external/nx/RotateAndScaleView": [
+      "tool/external/nx/RotateAndScaleView"
+    ],
+    "工具：NXRotateAndScale查看": [
+      "tool/external/nx/RotateAndScaleView"
+    ],
+    "NXSet查看Style": [
+      "tool/external/nx/SetViewStyle"
+    ],
+    "工具：NXSet查看Style": [
+      "tool/external/nx/SetViewStyle"
+    ],
+    "nx.SetViewStyle": [
+      "tool/external/nx/SetViewStyle"
+    ],
+    "tool/external/nx/SetViewStyle": [
+      "tool/external/nx/SetViewStyle"
+    ],
+    "NXSmoothSwitchTo查看": [
+      "tool/external/nx/SmoothSwitchToView"
+    ],
+    "tool/external/nx/SmoothSwitchToView": [
+      "tool/external/nx/SmoothSwitchToView"
+    ],
+    "工具：NXSmoothSwitchTo查看": [
+      "tool/external/nx/SmoothSwitchToView"
+    ],
+    "nx.SmoothSwitchToView": [
+      "tool/external/nx/SmoothSwitchToView"
+    ],
+    "tool/external/nx/SwitchView": [
+      "tool/external/nx/SwitchView"
+    ],
+    "NXSwitch查看": [
+      "tool/external/nx/SwitchView"
+    ],
+    "工具：NXSwitch查看": [
+      "tool/external/nx/SwitchView"
+    ],
+    "nx.SwitchView": [
+      "tool/external/nx/SwitchView"
+    ],
+    "nx.Test": [
+      "tool/external/nx/Test"
+    ],
+    "工具：NXTet": [
+      "tool/external/nx/Test"
+    ],
+    "tool/external/nx/Test": [
+      "tool/external/nx/Test"
+    ],
+    "NXTet": [
+      "tool/external/nx/Test"
+    ],
+    "tool/external/nx/UniteLobesToShaft": [
+      "tool/external/nx/UniteLobesToShaft"
+    ],
+    "nx.UniteLobesToShaft": [
+      "tool/external/nx/UniteLobesToShaft"
+    ],
+    "工具：NXUniteLobeTo轴": [
+      "tool/external/nx/UniteLobesToShaft"
+    ],
+    "NXUniteLobeTo轴": [
+      "tool/external/nx/UniteLobesToShaft"
+    ],
+    "tool/external/nx/UpdateParam": [
+      "tool/external/nx/UpdateParam"
+    ],
+    "nx.UpdateParam": [
+      "tool/external/nx/UpdateParam"
+    ],
+    "工具：NX更新参数": [
+      "tool/external/nx/UpdateParam"
+    ],
+    "NX更新参数": [
+      "tool/external/nx/UpdateParam"
+    ],
+    "tool/external/nx/UpdateView": [
+      "tool/external/nx/UpdateView"
+    ],
+    "工具：NX更新查看": [
+      "tool/external/nx/UpdateView"
+    ],
+    "nx.UpdateView": [
+      "tool/external/nx/UpdateView"
+    ],
+    "NX更新查看": [
+      "tool/external/nx/UpdateView"
+    ],
+    "工具：NXbuildfeature": [
+      "tool/external/nx/build_feature"
+    ],
+    "tool/external/nx/build_feature": [
+      "tool/external/nx/build_feature"
+    ],
+    "NXbuildfeature": [
+      "tool/external/nx/build_feature"
+    ],
+    "nx.build_feature": [
+      "tool/external/nx/build_feature"
+    ],
+    "nx.create_prt": [
+      "tool/external/nx/create_prt"
+    ],
+    "NX创建prt": [
+      "tool/external/nx/create_prt"
+    ],
+    "工具：NX创建prt": [
+      "tool/external/nx/create_prt"
+    ],
+    "tool/external/nx/create_prt": [
+      "tool/external/nx/create_prt"
+    ],
+    "nx.modify_parameter": [
+      "tool/external/nx/modify_parameter"
+    ],
+    "工具：NXmodify参数": [
+      "tool/external/nx/modify_parameter"
+    ],
+    "NXmodify参数": [
+      "tool/external/nx/modify_parameter"
+    ],
+    "tool/external/nx/modify_parameter": [
+      "tool/external/nx/modify_parameter"
+    ],
+    "NX工具箱": [
+      "tool/external/nx"
+    ],
+    "tool/external/nx": [
+      "tool/external/nx"
+    ],
+    "nx": [
+      "tool/external/nx"
+    ],
+    "工具箱：NX工具箱": [
+      "tool/external/nx"
+    ],
+    "工具：运行命令": [
+      "tool/external/shell/run"
+    ],
+    "运行命令": [
+      "tool/external/shell/run"
+    ],
+    "shell.run": [
+      "tool/external/shell/run"
+    ],
+    "tool/external/shell/run": [
+      "tool/external/shell/run"
+    ],
+    "shell": [
+      "tool/external/shell"
+    ],
+    "命令工具箱": [
+      "tool/external/shell"
+    ],
+    "tool/external/shell": [
+      "tool/external/shell"
+    ],
+    "工具箱：命令工具箱": [
+      "tool/external/shell"
+    ],
+    "设计规则查找": [
+      "tool/external/textops/design_rule_lookup"
+    ],
+    "textops.design_rule_lookup": [
+      "tool/external/textops/design_rule_lookup"
+    ],
+    "tool/external/textops/design_rule_lookup": [
+      "tool/external/textops/design_rule_lookup"
+    ],
+    "工具：设计规则查找": [
+      "tool/external/textops/design_rule_lookup"
+    ],
+    "tool/external/textops/estimate_action_cost": [
+      "tool/external/textops/estimate_action_cost"
+    ],
+    "textops.estimate_action_cost": [
+      "tool/external/textops/estimate_action_cost"
+    ],
+    "工具：操作成本估算": [
+      "tool/external/textops/estimate_action_cost"
+    ],
+    "操作成本估算": [
+      "tool/external/textops/estimate_action_cost"
+    ],
+    "知识目录查询": [
+      "tool/external/textops/knowledge_catalog_query"
+    ],
+    "tool/external/textops/knowledge_catalog_query": [
+      "tool/external/textops/knowledge_catalog_query"
+    ],
+    "textops.knowledge_catalog_query": [
+      "tool/external/textops/knowledge_catalog_query"
+    ],
+    "工具：知识目录查询": [
+      "tool/external/textops/knowledge_catalog_query"
+    ],
+    "tool/external/textops/parameter_check": [
+      "tool/external/textops/parameter_check"
+    ],
+    "参数检查": [
+      "tool/external/textops/parameter_check"
+    ],
+    "工具：参数检查": [
+      "tool/external/textops/parameter_check"
+    ],
+    "textops.parameter_check": [
+      "tool/external/textops/parameter_check"
+    ],
+    "tool/external/textops/parse_docx_from_url": [
+      "tool/external/textops/parse_docx_from_url"
+    ],
+    "textops.parse_docx_from_url": [
+      "tool/external/textops/parse_docx_from_url"
+    ],
+    "工具：从链接解析文档": [
+      "tool/external/textops/parse_docx_from_url"
+    ],
+    "从链接解析文档": [
+      "tool/external/textops/parse_docx_from_url"
+    ],
+    "textops.parse_text_from_url": [
+      "tool/external/textops/parse_text_from_url"
+    ],
+    "tool/external/textops/parse_text_from_url": [
+      "tool/external/textops/parse_text_from_url"
+    ],
+    "从链接解析文本": [
+      "tool/external/textops/parse_text_from_url"
+    ],
+    "工具：从链接解析文本": [
+      "tool/external/textops/parse_text_from_url"
+    ],
+    "tool/external/textops/preview_replace": [
+      "tool/external/textops/preview_replace"
+    ],
+    "工具：预览替换": [
+      "tool/external/textops/preview_replace"
+    ],
+    "textops.preview_replace": [
+      "tool/external/textops/preview_replace"
+    ],
+    "预览替换": [
+      "tool/external/textops/preview_replace"
+    ],
+    "textops.search": [
+      "tool/external/textops/search"
+    ],
+    "文本检索": [
+      "tool/external/textops/search"
+    ],
+    "tool/external/textops/search": [
+      "tool/external/textops/search"
+    ],
+    "工具：文本检索": [
+      "tool/external/textops/search"
+    ],
+    "工具目录查询": [
+      "tool/external/textops/tool_catalog_query"
+    ],
+    "textops.tool_catalog_query": [
+      "tool/external/textops/tool_catalog_query"
+    ],
+    "tool/external/textops/tool_catalog_query": [
+      "tool/external/textops/tool_catalog_query"
+    ],
+    "工具：工具目录查询": [
+      "tool/external/textops/tool_catalog_query"
+    ],
+    "tool/external/textops": [
+      "tool/external/textops"
+    ],
+    "textops": [
+      "tool/external/textops"
+    ],
+    "文本处理工具箱": [
+      "tool/external/textops"
+    ],
+    "工具箱：文本处理工具箱": [
+      "tool/external/textops"
+    ],
+    "tool/external/wiki/answer": [
+      "tool/external/wiki/answer"
+    ],
+    "Wiki 问答": [
+      "tool/external/wiki/answer"
+    ],
+    "工具：Wiki 问答": [
+      "tool/external/wiki/answer"
+    ],
+    "wiki.answer": [
+      "tool/external/wiki/answer"
+    ],
+    "工具：读取 Wiki 页面": [
+      "tool/external/wiki/read_page"
+    ],
+    "wiki.read_page": [
+      "tool/external/wiki/read_page"
+    ],
+    "tool/external/wiki/read_page": [
+      "tool/external/wiki/read_page"
+    ],
+    "读取 Wiki 页面": [
+      "tool/external/wiki/read_page"
+    ],
+    "wiki.read_source": [
+      "tool/external/wiki/read_source"
+    ],
+    "工具：读取 Wiki 源文": [
+      "tool/external/wiki/read_source"
+    ],
+    "tool/external/wiki/read_source": [
+      "tool/external/wiki/read_source"
+    ],
+    "读取 Wiki 源文": [
+      "tool/external/wiki/read_source"
+    ],
+    "Wiki 检索": [
+      "tool/external/wiki/search",
+      "wiki/search"
+    ],
+    "工具：Wiki 检索": [
+      "tool/external/wiki/search"
+    ],
+    "tool/external/wiki/search": [
+      "tool/external/wiki/search"
+    ],
+    "wiki.search": [
+      "tool/external/wiki/search"
+    ],
+    "tool/external/wiki": [
+      "tool/external/wiki"
+    ],
+    "工具箱：Wiki 只读工具箱": [
+      "tool/external/wiki"
+    ],
+    "wiki": [
+      "tool/external/wiki"
+    ],
+    "Wiki 只读工具箱": [
+      "tool/external/wiki"
+    ],
+    "tool/external/workspace/create": [
+      "tool/external/workspace/create"
+    ],
+    "工具：创建工作区": [
+      "tool/external/workspace/create"
+    ],
+    "创建工作区": [
+      "tool/external/workspace/create"
+    ],
+    "workspace.create": [
+      "tool/external/workspace/create"
+    ],
+    "保留工作区": [
+      "tool/external/workspace/keep"
+    ],
+    "tool/external/workspace/keep": [
+      "tool/external/workspace/keep"
+    ],
+    "workspace.keep": [
+      "tool/external/workspace/keep"
+    ],
+    "工具：保留工作区": [
+      "tool/external/workspace/keep"
+    ],
+    "列出工作区": [
+      "tool/external/workspace/list"
+    ],
+    "tool/external/workspace/list": [
+      "tool/external/workspace/list"
+    ],
+    "workspace.list": [
+      "tool/external/workspace/list"
+    ],
+    "工具：列出工作区": [
+      "tool/external/workspace/list"
+    ],
+    "workspace.remove": [
+      "tool/external/workspace/remove"
+    ],
+    "tool/external/workspace/remove": [
+      "tool/external/workspace/remove"
+    ],
+    "删除工作区": [
+      "tool/external/workspace/remove"
+    ],
+    "工具：删除工作区": [
+      "tool/external/workspace/remove"
+    ],
+    "tool/external/workspace/run": [
+      "tool/external/workspace/run"
+    ],
+    "workspace.run": [
+      "tool/external/workspace/run"
+    ],
+    "工具：运行工作区": [
+      "tool/external/workspace/run"
+    ],
+    "运行工作区": [
+      "tool/external/workspace/run"
+    ],
+    "工作区工具箱": [
+      "tool/external/workspace"
+    ],
+    "workspace": [
+      "tool/external/workspace"
+    ],
+    "tool/external/workspace": [
+      "tool/external/workspace"
+    ],
+    "工具箱：工作区工具箱": [
+      "tool/external/workspace"
+    ],
+    "tool/system/autonomy/claim_next_task": [
+      "tool/system/autonomy/claim_next_task"
+    ],
+    "工具：领取下一项任务": [
+      "tool/system/autonomy/claim_next_task"
+    ],
+    "autonomy.claim_next_task": [
+      "tool/system/autonomy/claim_next_task"
+    ],
+    "领取下一项任务": [
+      "tool/system/autonomy/claim_next_task"
+    ],
+    "自主任务工具箱": [
+      "tool/system/autonomy"
+    ],
+    "autonomy": [
+      "tool/system/autonomy"
+    ],
+    "tool/system/autonomy": [
+      "tool/system/autonomy"
+    ],
+    "工具箱：自主任务工具箱": [
+      "tool/system/autonomy"
+    ],
+    "tool/system/background/check": [
+      "tool/system/background/check"
+    ],
+    "background.check": [
+      "tool/system/background/check"
+    ],
+    "检查后台任务": [
+      "tool/system/background/check"
+    ],
+    "工具：检查后台任务": [
+      "tool/system/background/check"
+    ],
+    "tool/system/background/run": [
+      "tool/system/background/run"
+    ],
+    "工具：运行后台任务": [
+      "tool/system/background/run"
+    ],
+    "background.run": [
+      "tool/system/background/run"
+    ],
+    "运行后台任务": [
+      "tool/system/background/run"
+    ],
+    "tool/system/background": [
+      "tool/system/background"
+    ],
+    "后台任务工具箱": [
+      "tool/system/background"
+    ],
+    "background": [
+      "tool/system/background"
+    ],
+    "工具箱：后台任务工具箱": [
+      "tool/system/background"
+    ],
+    "立即压缩": [
+      "tool/system/compact/now"
+    ],
+    "compact.now": [
+      "tool/system/compact/now"
+    ],
+    "tool/system/compact/now": [
+      "tool/system/compact/now"
+    ],
+    "工具：立即压缩": [
+      "tool/system/compact/now"
+    ],
+    "工具箱：上下文压缩工具箱": [
+      "tool/system/compact"
+    ],
+    "tool/system/compact": [
+      "tool/system/compact"
+    ],
+    "compact": [
+      "tool/system/compact"
+    ],
+    "上下文压缩工具箱": [
+      "tool/system/compact"
+    ],
+    "inspect.inspect_tool_surface": [
+      "tool/system/inspect/inspect_tool_surface"
+    ],
+    "工具：检查工具表面": [
+      "tool/system/inspect/inspect_tool_surface"
+    ],
+    "tool/system/inspect/inspect_tool_surface": [
+      "tool/system/inspect/inspect_tool_surface"
+    ],
+    "检查工具表面": [
+      "tool/system/inspect/inspect_tool_surface"
+    ],
+    "检查工具箱": [
+      "tool/system/inspect"
+    ],
+    "inspect": [
+      "tool/system/inspect"
+    ],
+    "工具箱：检查工具箱": [
+      "tool/system/inspect"
+    ],
+    "tool/system/inspect": [
+      "tool/system/inspect"
+    ],
+    "隔离工具箱": [
+      "tool/system/isolation"
+    ],
+    "tool/system/isolation": [
+      "tool/system/isolation"
+    ],
+    "工具箱：隔离工具箱": [
+      "tool/system/isolation"
+    ],
+    "isolation": [
+      "tool/system/isolation"
+    ],
+    "tool/system/normalize/normalize_tool_result": [
+      "tool/system/normalize/normalize_tool_result"
+    ],
+    "normalize.normalize_tool_result": [
+      "tool/system/normalize/normalize_tool_result"
+    ],
+    "标准化工具结果": [
+      "tool/system/normalize/normalize_tool_result"
+    ],
+    "工具：标准化工具结果": [
+      "tool/system/normalize/normalize_tool_result"
+    ],
+    "标准化工具箱": [
+      "tool/system/normalize"
+    ],
+    "工具箱：标准化工具箱": [
+      "tool/system/normalize"
+    ],
+    "tool/system/normalize": [
+      "tool/system/normalize"
+    ],
+    "normalize": [
+      "tool/system/normalize"
+    ],
+    "请求关闭": [
+      "tool/system/protocol/request_shutdown"
+    ],
+    "protocol.request_shutdown": [
+      "tool/system/protocol/request_shutdown"
+    ],
+    "tool/system/protocol/request_shutdown": [
+      "tool/system/protocol/request_shutdown"
+    ],
+    "工具：请求关闭": [
+      "tool/system/protocol/request_shutdown"
+    ],
+    "工具：响应关闭": [
+      "tool/system/protocol/respond_shutdown"
+    ],
+    "protocol.respond_shutdown": [
+      "tool/system/protocol/respond_shutdown"
+    ],
+    "tool/system/protocol/respond_shutdown": [
+      "tool/system/protocol/respond_shutdown"
+    ],
+    "响应关闭": [
+      "tool/system/protocol/respond_shutdown"
+    ],
+    "tool/system/protocol/review_plan": [
+      "tool/system/protocol/review_plan"
+    ],
+    "工具：审查计划": [
+      "tool/system/protocol/review_plan"
+    ],
+    "审查计划": [
+      "tool/system/protocol/review_plan"
+    ],
+    "protocol.review_plan": [
+      "tool/system/protocol/review_plan"
+    ],
+    "工具：提交计划": [
+      "tool/system/protocol/submit_plan"
+    ],
+    "提交计划": [
+      "tool/system/protocol/submit_plan"
+    ],
+    "tool/system/protocol/submit_plan": [
+      "tool/system/protocol/submit_plan"
+    ],
+    "protocol.submit_plan": [
+      "tool/system/protocol/submit_plan"
+    ],
+    "protocol": [
+      "tool/system/protocol"
+    ],
+    "协议工具箱": [
+      "tool/system/protocol"
+    ],
+    "tool/system/protocol": [
+      "tool/system/protocol"
+    ],
+    "工具箱：协议工具箱": [
+      "tool/system/protocol"
+    ],
+    "工具：加载引用": [
+      "tool/system/refs/load_refs"
+    ],
+    "加载引用": [
+      "tool/system/refs/load_refs"
+    ],
+    "refs.load_refs": [
+      "tool/system/refs/load_refs"
+    ],
+    "tool/system/refs/load_refs": [
+      "tool/system/refs/load_refs"
+    ],
+    "引用工具箱": [
+      "tool/system/refs"
+    ],
+    "refs": [
+      "tool/system/refs"
+    ],
+    "工具箱：引用工具箱": [
+      "tool/system/refs"
+    ],
+    "tool/system/refs": [
+      "tool/system/refs"
+    ],
+    "进入技能": [
+      "tool/system/runtime/enter_skill"
+    ],
+    "tool/system/runtime/enter_skill": [
+      "tool/system/runtime/enter_skill"
+    ],
+    "engine.enter_skill": [
+      "tool/system/runtime/enter_skill"
+    ],
+    "工具：进入技能": [
+      "tool/system/runtime/enter_skill"
+    ],
+    "工具：检查技能": [
+      "tool/system/runtime/inspect_skill"
+    ],
+    "检查技能": [
+      "tool/system/runtime/inspect_skill"
+    ],
+    "engine.inspect_skill": [
+      "tool/system/runtime/inspect_skill"
+    ],
+    "tool/system/runtime/inspect_skill": [
+      "tool/system/runtime/inspect_skill"
+    ],
+    "工具：检查工具": [
+      "tool/system/runtime/inspect_tool"
+    ],
+    "tool/system/runtime/inspect_tool": [
+      "tool/system/runtime/inspect_tool"
+    ],
+    "检查工具": [
+      "tool/system/runtime/inspect_tool"
+    ],
+    "engine.inspect_tool": [
+      "tool/system/runtime/inspect_tool"
+    ],
+    "engine.list_child_skills": [
+      "tool/system/runtime/list_child_skills"
+    ],
+    "列出下级技能": [
+      "tool/system/runtime/list_child_skills"
+    ],
+    "tool/system/runtime/list_child_skills": [
+      "tool/system/runtime/list_child_skills"
+    ],
+    "工具：列出下级技能": [
+      "tool/system/runtime/list_child_skills"
+    ],
+    "工具箱：引擎工具箱": [
+      "tool/system/runtime"
+    ],
+    "引擎工具箱": [
+      "tool/system/runtime"
+    ],
+    "tool/system/runtime": [
+      "tool/system/runtime"
+    ],
+    "engine": [
+      "tool/system/runtime"
+    ],
+    "wiki_app.alias_query": [
+      "tool/wiki/alias_query"
+    ],
+    "工具：查询别名索引": [
+      "tool/wiki/alias_query"
+    ],
+    "查询别名索引": [
+      "tool/wiki/alias_query"
+    ],
+    "tool/wiki/alias_query": [
+      "tool/wiki/alias_query"
+    ],
+    "执行诊断修复": [
+      "tool/wiki/apply_diagnosis_fix"
+    ],
+    "工具：执行诊断修复": [
+      "tool/wiki/apply_diagnosis_fix"
+    ],
+    "页面治理": [
+      "tool/wiki/apply_diagnosis_fix",
+      "tool/wiki/diagnose_page",
+      "tool/wiki/extract_knowledge_graph",
+      "tool/wiki/generate_user_folder_wikis",
+      "tool/wiki/graph_enhanced_search",
+      "tool/wiki/page_file_status",
+      "tool/wiki/page_scope_relations",
+      "tool/wiki/update_system_page_from_files",
+      "wiki/schema/agent",
+      "wiki/schema/common",
+      "wiki/schema/lexicon",
+      "wiki/schema/skill",
+      "wiki/schema/tool",
+      "wiki/schema/toolbox"
+    ],
+    "wiki_app.apply_diagnosis_fix": [
+      "tool/wiki/apply_diagnosis_fix"
+    ],
+    "tool/wiki/apply_diagnosis_fix": [
+      "tool/wiki/apply_diagnosis_fix"
+    ],
+    "wiki_app.check_page_schema": [
+      "tool/wiki/check_page_schema"
+    ],
+    "tool/wiki/check_page_schema": [
+      "tool/wiki/check_page_schema"
+    ],
+    "工具：检查页面元结构": [
+      "tool/wiki/check_page_schema"
+    ],
+    "检查页面元结构": [
+      "tool/wiki/check_page_schema"
+    ],
+    "真相状态检查": [
+      "tool/wiki/check_truth_status"
+    ],
+    "wiki_app.check_truth_status": [
+      "tool/wiki/check_truth_status"
+    ],
+    "工具：真相状态检查": [
+      "tool/wiki/check_truth_status"
+    ],
+    "tool/wiki/check_truth_status": [
+      "tool/wiki/check_truth_status"
+    ],
+    "创建回滚草稿": [
+      "tool/wiki/create_rollback_draft"
+    ],
+    "tool/wiki/create_rollback_draft": [
+      "tool/wiki/create_rollback_draft"
+    ],
+    "wiki_app.create_rollback_draft": [
+      "tool/wiki/create_rollback_draft"
+    ],
+    "工具：创建回滚草稿": [
+      "tool/wiki/create_rollback_draft"
+    ],
+    "wiki_app.diagnose_page": [
+      "tool/wiki/diagnose_page"
+    ],
+    "工具：诊断页面问题": [
+      "tool/wiki/diagnose_page"
+    ],
+    "tool/wiki/diagnose_page": [
+      "tool/wiki/diagnose_page"
+    ],
+    "诊断页面问题": [
+      "tool/wiki/diagnose_page"
+    ],
+    "wiki_app.diff_draft": [
+      "tool/wiki/diff_draft"
+    ],
+    "tool/wiki/diff_draft": [
+      "tool/wiki/diff_draft"
+    ],
+    "工具：草稿差异查看": [
+      "tool/wiki/diff_draft"
+    ],
+    "草稿差异查看": [
+      "tool/wiki/diff_draft"
+    ],
+    "工具：版本差异对比": [
+      "tool/wiki/diff_versions"
+    ],
+    "版本差异对比": [
+      "tool/wiki/diff_versions"
+    ],
+    "wiki_app.diff_versions": [
+      "tool/wiki/diff_versions"
+    ],
+    "tool/wiki/diff_versions": [
+      "tool/wiki/diff_versions"
+    ],
+    "tool/wiki/extract_knowledge_graph": [
+      "tool/wiki/extract_knowledge_graph"
+    ],
+    "抽取知识图谱": [
+      "tool/wiki/extract_knowledge_graph"
+    ],
+    "wiki_app.extract_knowledge_graph": [
+      "tool/wiki/extract_knowledge_graph"
+    ],
+    "工具：抽取知识图谱": [
+      "tool/wiki/extract_knowledge_graph"
+    ],
+    "工具：用户文件夹建页": [
+      "tool/wiki/generate_user_folder_wikis"
+    ],
+    "用户文件夹建页": [
+      "tool/wiki/generate_user_folder_wikis"
+    ],
+    "tool/wiki/generate_user_folder_wikis": [
+      "tool/wiki/generate_user_folder_wikis"
+    ],
+    "wiki_app.generate_user_folder_wikis": [
+      "tool/wiki/generate_user_folder_wikis"
+    ],
+    "tool/wiki/graph_enhanced_search": [
+      "tool/wiki/graph_enhanced_search"
+    ],
+    "图谱增强检索": [
+      "tool/wiki/graph_enhanced_search"
+    ],
+    "工具：图谱增强检索": [
+      "tool/wiki/graph_enhanced_search"
+    ],
+    "wiki_app.graph_enhanced_search": [
+      "tool/wiki/graph_enhanced_search"
+    ],
+    "wiki_app.normalize_page_to_chinese": [
+      "tool/wiki/normalize_page_to_chinese"
+    ],
+    "tool/wiki/normalize_page_to_chinese": [
+      "tool/wiki/normalize_page_to_chinese"
+    ],
+    "工具：规范化中文页面": [
+      "tool/wiki/normalize_page_to_chinese"
+    ],
+    "规范化中文页面": [
+      "tool/wiki/normalize_page_to_chinese"
+    ],
+    "工具：页面依赖状态检查": [
+      "tool/wiki/page_file_status"
+    ],
+    "wiki_app.page_file_status": [
+      "tool/wiki/page_file_status"
+    ],
+    "tool/wiki/page_file_status": [
+      "tool/wiki/page_file_status"
+    ],
+    "页面依赖状态检查": [
+      "tool/wiki/page_file_status"
+    ],
+    "wiki_app.page_history": [
+      "tool/wiki/page_history"
+    ],
+    "tool/wiki/page_history": [
+      "tool/wiki/page_history"
+    ],
+    "页面历史查询": [
+      "tool/wiki/page_history"
+    ],
+    "工具：页面历史查询": [
+      "tool/wiki/page_history"
+    ],
+    "页面局部关系": [
+      "tool/wiki/page_scope_relations"
+    ],
+    "工具：页面局部关系": [
+      "tool/wiki/page_scope_relations"
+    ],
+    "tool/wiki/page_scope_relations": [
+      "tool/wiki/page_scope_relations"
+    ],
+    "wiki_app.page_scope_relations": [
+      "tool/wiki/page_scope_relations"
+    ],
+    "tool/wiki/publish_draft": [
+      "tool/wiki/publish_draft"
+    ],
+    "工具：发布草稿": [
+      "tool/wiki/publish_draft"
+    ],
+    "发布草稿": [
+      "tool/wiki/publish_draft"
+    ],
+    "wiki_app.publish_draft": [
+      "tool/wiki/publish_draft"
+    ],
+    "wiki_app.read_schema": [
+      "tool/wiki/read_schema"
+    ],
+    "读取页面元结构": [
+      "tool/wiki/read_schema"
+    ],
+    "tool/wiki/read_schema": [
+      "tool/wiki/read_schema"
+    ],
+    "工具：读取页面元结构": [
+      "tool/wiki/read_schema"
+    ],
+    "工具：读取历史版本": [
+      "tool/wiki/read_version"
+    ],
+    "tool/wiki/read_version": [
+      "tool/wiki/read_version"
+    ],
+    "读取历史版本": [
+      "tool/wiki/read_version"
+    ],
+    "wiki_app.read_version": [
+      "tool/wiki/read_version"
+    ],
+    "工具：发布详情查询": [
+      "tool/wiki/release_detail"
+    ],
+    "发布详情查询": [
+      "tool/wiki/release_detail"
+    ],
+    "wiki_app.release_detail": [
+      "tool/wiki/release_detail"
+    ],
+    "tool/wiki/release_detail": [
+      "tool/wiki/release_detail"
+    ],
+    "发布历史查询": [
+      "tool/wiki/release_history"
+    ],
+    "工具：发布历史查询": [
+      "tool/wiki/release_history"
+    ],
+    "wiki_app.release_history": [
+      "tool/wiki/release_history"
+    ],
+    "tool/wiki/release_history": [
+      "tool/wiki/release_history"
+    ],
+    "wiki_app.resolve_page_links": [
+      "tool/wiki/resolve_page_links"
+    ],
+    "解析页面链接": [
+      "tool/wiki/resolve_page_links"
+    ],
+    "工具：解析页面链接": [
+      "tool/wiki/resolve_page_links"
+    ],
+    "tool/wiki/resolve_page_links": [
+      "tool/wiki/resolve_page_links"
+    ],
+    "工具：保存草稿": [
+      "tool/wiki/save_draft"
+    ],
+    "wiki_app.save_draft": [
+      "tool/wiki/save_draft"
+    ],
+    "保存草稿": [
+      "tool/wiki/save_draft"
+    ],
+    "tool/wiki/save_draft": [
+      "tool/wiki/save_draft"
+    ],
+    "工具：系统页面依赖更新": [
+      "tool/wiki/update_system_page_from_files"
+    ],
+    "系统页面依赖更新": [
+      "tool/wiki/update_system_page_from_files"
+    ],
+    "wiki_app.update_system_page_from_files": [
+      "tool/wiki/update_system_page_from_files"
+    ],
+    "tool/wiki/update_system_page_from_files": [
+      "tool/wiki/update_system_page_from_files"
+    ],
+    "tool/wiki": [
+      "tool/wiki"
+    ],
+    "wiki_app": [
+      "tool/wiki"
+    ],
+    "工具箱：Wiki 治理工具箱": [
+      "tool/wiki"
+    ],
+    "Wiki 治理工具箱": [
+      "tool/wiki"
+    ],
+    "tool": [
+      "tool"
+    ],
+    "工具：工具": [
+      "tool"
+    ],
+    "工具": [
+      "tool"
+    ],
+    "tool/workflow/subagent/ask": [
+      "tool/workflow/subagent/ask"
+    ],
+    "询问子智能体": [
+      "tool/workflow/subagent/ask"
+    ],
+    "subagent.ask": [
+      "tool/workflow/subagent/ask"
+    ],
+    "工具：询问子智能体": [
+      "tool/workflow/subagent/ask"
+    ],
+    "tool/workflow/subagent/batch_run": [
+      "tool/workflow/subagent/batch_run"
+    ],
+    "subagent.batch_run": [
+      "tool/workflow/subagent/batch_run"
+    ],
+    "工具：批量运行子智能体": [
+      "tool/workflow/subagent/batch_run"
+    ],
+    "批量运行子智能体": [
+      "tool/workflow/subagent/batch_run"
+    ],
+    "子智能体工具箱": [
+      "tool/workflow/subagent"
+    ],
+    "tool/workflow/subagent": [
+      "tool/workflow/subagent"
+    ],
+    "工具箱：子智能体工具箱": [
+      "tool/workflow/subagent"
+    ],
+    "subagent": [
+      "tool/workflow/subagent"
+    ],
+    "领取任务": [
+      "tool/workflow/task/claim"
+    ],
+    "工具：领取任务": [
+      "tool/workflow/task/claim"
+    ],
+    "task.claim": [
+      "tool/workflow/task/claim"
+    ],
+    "tool/workflow/task/claim": [
+      "tool/workflow/task/claim"
+    ],
+    "创建任务": [
+      "tool/workflow/task/create"
+    ],
+    "task.create": [
+      "tool/workflow/task/create"
+    ],
+    "tool/workflow/task/create": [
+      "tool/workflow/task/create"
+    ],
+    "工具：创建任务": [
+      "tool/workflow/task/create"
+    ],
+    "工具：获取任务": [
+      "tool/workflow/task/get"
+    ],
+    "tool/workflow/task/get": [
+      "tool/workflow/task/get"
+    ],
+    "获取任务": [
+      "tool/workflow/task/get"
+    ],
+    "task.get": [
+      "tool/workflow/task/get"
+    ],
+    "工具：列出任务": [
+      "tool/workflow/task/list"
+    ],
+    "task.list": [
+      "tool/workflow/task/list"
+    ],
+    "列出任务": [
+      "tool/workflow/task/list"
+    ],
+    "tool/workflow/task/list": [
+      "tool/workflow/task/list"
+    ],
+    "task.update": [
+      "tool/workflow/task/update"
+    ],
+    "tool/workflow/task/update": [
+      "tool/workflow/task/update"
+    ],
+    "工具：更新任务": [
+      "tool/workflow/task/update"
+    ],
+    "更新任务": [
+      "tool/workflow/task/update"
+    ],
+    "工具箱：任务工作流工具箱": [
+      "tool/workflow/task"
+    ],
+    "tool/workflow/task": [
+      "tool/workflow/task"
+    ],
+    "任务工作流工具箱": [
+      "tool/workflow/task"
+    ],
+    "task": [
+      "tool/workflow/task"
+    ],
+    "team.broadcast": [
+      "tool/workflow/team/broadcast"
+    ],
+    "广播消息": [
+      "tool/workflow/team/broadcast"
+    ],
+    "工具：广播消息": [
+      "tool/workflow/team/broadcast"
+    ],
+    "tool/workflow/team/broadcast": [
+      "tool/workflow/team/broadcast"
+    ],
+    "列出员工": [
+      "tool/workflow/team/list_workers"
+    ],
+    "team.list_workers": [
+      "tool/workflow/team/list_workers"
+    ],
+    "tool/workflow/team/list_workers": [
+      "tool/workflow/team/list_workers"
+    ],
+    "工具：列出员工": [
+      "tool/workflow/team/list_workers"
+    ],
+    "读取收件箱": [
+      "tool/workflow/team/read_inbox"
+    ],
+    "工具：读取收件箱": [
+      "tool/workflow/team/read_inbox"
+    ],
+    "team.read_inbox": [
+      "tool/workflow/team/read_inbox"
+    ],
+    "tool/workflow/team/read_inbox": [
+      "tool/workflow/team/read_inbox"
+    ],
+    "team.send_message": [
+      "tool/workflow/team/send_message"
+    ],
+    "工具：发送消息": [
+      "tool/workflow/team/send_message"
+    ],
+    "tool/workflow/team/send_message": [
+      "tool/workflow/team/send_message"
+    ],
+    "发送消息": [
+      "tool/workflow/team/send_message"
+    ],
+    "工具：创建员工": [
+      "tool/workflow/team/spawn_worker"
+    ],
+    "创建员工": [
+      "tool/workflow/team/spawn_worker"
+    ],
+    "team.spawn_worker": [
+      "tool/workflow/team/spawn_worker"
+    ],
+    "tool/workflow/team/spawn_worker": [
+      "tool/workflow/team/spawn_worker"
+    ],
+    "团队协作工具箱": [
+      "tool/workflow/team"
+    ],
+    "工具箱：团队协作工具箱": [
+      "tool/workflow/team"
+    ],
+    "tool/workflow/team": [
+      "tool/workflow/team"
+    ],
+    "team": [
+      "tool/workflow/team"
+    ],
+    "更新待办": [
+      "tool/workflow/todo/update"
+    ],
+    "工具：更新待办": [
+      "tool/workflow/todo/update"
+    ],
+    "tool/workflow/todo/update": [
+      "tool/workflow/todo/update"
+    ],
+    "todo.update": [
+      "tool/workflow/todo/update"
+    ],
+    "tool/workflow/todo/view": [
+      "tool/workflow/todo/view"
+    ],
+    "查看待办": [
+      "tool/workflow/todo/view"
+    ],
+    "todo.view": [
+      "tool/workflow/todo/view"
+    ],
+    "工具：查看待办": [
+      "tool/workflow/todo/view"
+    ],
+    "待办工作流工具箱": [
+      "tool/workflow/todo"
+    ],
+    "todo": [
+      "tool/workflow/todo"
+    ],
+    "工具箱：待办工作流工具箱": [
+      "tool/workflow/todo"
+    ],
+    "tool/workflow/todo": [
+      "tool/workflow/todo"
+    ],
+    "系统页面：Wiki 索引": [
+      "wiki/index"
+    ],
+    "Wiki 索引": [
+      "wiki/index"
+    ],
+    "wiki/index": [
+      "wiki/index"
+    ],
+    "Wiki 链接": [
+      "wiki/link"
+    ],
+    "系统页面：Wiki 链接": [
+      "wiki/link"
+    ],
+    "wiki/link": [
+      "wiki/link"
+    ],
+    "Wiki App": [
+      "wiki/mcp"
+    ],
+    "后台工具包": [
+      "wiki/mcp"
+    ],
+    "统一端口": [
+      "wiki/mcp"
+    ],
+    "Wiki MCP": [
+      "wiki/mcp"
+    ],
+    "系统页面：Wiki MCP 后台工具包": [
+      "wiki/mcp"
+    ],
+    "wiki/mcp": [
+      "wiki/mcp"
+    ],
+    "App 后台工具包": [
+      "wiki/mcp"
+    ],
+    "Wiki MCP 后台工具包": [
+      "wiki/mcp"
+    ],
+    "MCP": [
+      "wiki/mcp"
+    ],
+    "系统页面：Wiki 规划": [
+      "wiki/planner"
+    ],
+    "wiki/planner": [
+      "wiki/planner"
+    ],
+    "Wiki 规划": [
+      "wiki/planner"
+    ],
+    "Wiki 渲染": [
+      "wiki/render"
+    ],
+    "系统页面：Wiki 渲染": [
+      "wiki/render"
+    ],
+    "wiki/render": [
+      "wiki/render"
+    ],
+    "元结构：智能体页面元结构": [
+      "wiki/schema/agent"
+    ],
+    "wiki/schema/agent": [
+      "wiki/schema/agent"
+    ],
+    "元结构": [
+      "wiki/schema/agent",
+      "wiki/schema/common",
+      "wiki/schema/lexicon",
+      "wiki/schema/skill",
+      "wiki/schema/tool",
+      "wiki/schema/toolbox"
+    ],
+    "智能体页面元结构": [
+      "wiki/schema/agent"
+    ],
+    "schema/agent": [
+      "wiki/schema/agent"
+    ],
+    "协议映射": [
+      "wiki/schema/agent",
+      "wiki/schema/common",
+      "wiki/schema/lexicon",
+      "wiki/schema/skill",
+      "wiki/schema/tool",
+      "wiki/schema/toolbox"
+    ],
+    "wiki/schema/common": [
+      "wiki/schema/common"
+    ],
+    "通用页面元结构": [
+      "wiki/schema/common"
+    ],
+    "schema/common": [
+      "wiki/schema/common"
+    ],
+    "元结构：通用页面元结构": [
+      "wiki/schema/common"
+    ],
+    "元结构：中文协议词典": [
+      "wiki/schema/lexicon"
+    ],
+    "中文协议词典": [
+      "wiki/schema/lexicon"
+    ],
+    "schema/lexicon": [
+      "wiki/schema/lexicon"
+    ],
+    "wiki/schema/lexicon": [
+      "wiki/schema/lexicon"
+    ],
+    "wiki/schema/skill": [
+      "wiki/schema/skill"
+    ],
+    "schema/skill": [
+      "wiki/schema/skill"
+    ],
+    "技能页面元结构": [
+      "wiki/schema/skill"
+    ],
+    "元结构：技能页面元结构": [
+      "wiki/schema/skill"
+    ],
+    "wiki/schema/tool": [
+      "wiki/schema/tool"
+    ],
+    "元结构：工具页面元结构": [
+      "wiki/schema/tool"
+    ],
+    "工具页面元结构": [
+      "wiki/schema/tool"
+    ],
+    "schema/tool": [
+      "wiki/schema/tool"
+    ],
+    "schema/toolbox": [
+      "wiki/schema/toolbox"
+    ],
+    "工具箱页面元结构": [
+      "wiki/schema/toolbox"
+    ],
+    "元结构：工具箱页面元结构": [
+      "wiki/schema/toolbox"
+    ],
+    "wiki/schema/toolbox": [
+      "wiki/schema/toolbox"
+    ],
+    "系统页面：Wiki 检索": [
+      "wiki/search"
+    ],
+    "wiki/search": [
+      "wiki/search"
+    ],
+    "wiki/source_policy": [
+      "wiki/source_policy"
+    ],
+    "Wiki 来源策略": [
+      "wiki/source_policy"
+    ],
+    "系统页面：Wiki 来源策略": [
+      "wiki/source_policy"
+    ],
+    "Wiki 版本测试页": [
+      "wiki/version_test"
+    ],
+    "系统页面：Wiki 版本测试页": [
+      "wiki/version_test"
+    ],
+    "wiki/version_test": [
+      "wiki/version_test"
+    ],
+    "Wiki Workbench": [
+      "wiki/workbench"
+    ],
+    "系统页面：Wiki Workbench": [
+      "wiki/workbench"
+    ],
+    "wiki/workbench": [
+      "wiki/workbench"
+    ]
+  }
+}

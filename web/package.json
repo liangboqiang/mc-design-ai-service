@@ -1,0 +1,12 @@
+{
+  "name": "mc-design-ai-service-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python ../scripts/build_web.py",
+    "check": "python ../scripts/check_frontend.py"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

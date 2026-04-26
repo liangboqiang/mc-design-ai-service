@@ -1,0 +1,2579 @@
+{
+  "edges": [
+    {
+      "from": "agent/general_chat",
+      "to": "skill/general/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/parts_design_chat",
+      "to": "skill/parts_design/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/review_agent",
+      "to": "skill/general/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_front_chat",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/wiki_workbench",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "agent/worker_agent",
+      "to": "skill/general/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/general/root",
+      "to": "skill/core/query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/general/root",
+      "to": "skill/core/report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/general/root",
+      "to": "skill/core/task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/camshaft/root",
+      "to": "skill/parts_design/common/report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/conrod/root",
+      "to": "skill/parts_design/common/report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/conrod/root",
+      "to": "skill/parts_design/common/requirement_parse",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/crankshaft/root",
+      "to": "skill/parts_design/common/report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/crankshaft/root",
+      "to": "skill/parts_design/common/requirement_parse",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/core/query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/core/report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/core/task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/parts_design/camshaft/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/parts_design/common/report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/parts_design/common/requirement_parse",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/parts_design/conrod/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/parts_design/root",
+      "to": "skill/parts_design/crankshaft/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "tool/external/wiki/search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "tool/wiki/diagnose_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "tool/wiki/extract_knowledge_graph",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "tool/wiki/normalize_page_to_chinese",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/batch_governance",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "tool/wiki/diff_versions",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "tool/wiki/page_file_status",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "tool/wiki/page_history",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "tool/wiki/update_system_page_from_files",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/dependency_update",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "tool/wiki/apply_diagnosis_fix",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "tool/wiki/diagnose_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/diagnosis_repair",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/wiki/check_truth_status",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/wiki/publish_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/wiki/release_history",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "tool/wiki/resolve_page_links",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/draft_publish_review",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_extraction",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_extraction",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_extraction",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_extraction",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_extraction",
+      "to": "tool/wiki/extract_knowledge_graph",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_extraction",
+      "to": "tool/wiki/page_scope_relations",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_extraction",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "tool/external/wiki/search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "tool/wiki/alias_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "tool/wiki/graph_enhanced_search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "tool/wiki/page_scope_relations",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/graph_search",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "tool/external/wiki/search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "tool/wiki/alias_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "tool/wiki/resolve_page_links",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "tool/wiki/save_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/link_governance",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "tool/wiki/diagnose_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "tool/wiki/page_file_status",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "tool/wiki/page_scope_relations",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "tool/wiki/resolve_page_links",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_diagnosis",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "tool/external/wiki/read_source",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "tool/wiki/alias_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "tool/wiki/read_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "tool/wiki/save_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/page_rewrite",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "tool/wiki/create_rollback_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "tool/wiki/diff_versions",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "tool/wiki/page_history",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "tool/wiki/read_version",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/rollback_assist",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/batch_governance",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/dependency_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/draft_publish_review",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/graph_search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/link_governance",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/page_diagnosis",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/page_rewrite",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/rollback_assist",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/schema_governance",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/search_read",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "skill/wiki/version_review",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/external/wiki/answer",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/external/wiki/read_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/external/wiki/read_source",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/external/wiki/search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/wiki/alias_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/wiki/diagnose_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/wiki/read_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "tool/wiki/resolve_page_links",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/root",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "tool/wiki/normalize_page_to_chinese",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "tool/wiki/read_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/schema_governance",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/external/wiki/answer",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/external/wiki/read_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/external/wiki/read_source",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/external/wiki/search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/wiki/alias_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "tool/wiki/graph_enhanced_search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/search_read",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "tool/external/wiki/read_source",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "tool/wiki/page_file_status",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "tool/wiki/update_system_page_from_files",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/system_file_update",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/user_file_generation",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/user_file_generation",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/user_file_generation",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/user_file_generation",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/user_file_generation",
+      "to": "tool/wiki/generate_user_folder_wikis",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/user_file_generation",
+      "to": "tool/wiki/read_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/user_file_generation",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/wiki/check_truth_status",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/wiki/diff_versions",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/wiki/page_history",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/wiki/read_version",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/wiki/release_detail",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "tool/wiki/release_history",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "skill/wiki/version_review",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/cloude/connect_qpp",
+      "to": "tool/external/cloude",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/cloude/query_ecr_list",
+      "to": "tool/external/cloude",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/cloude/query_ipm_list",
+      "to": "tool/external/cloude",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/cloude",
+      "to": "tool/external/cloude/connect_qpp",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/cloude",
+      "to": "tool/external/cloude/query_ecr_list",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/cloude",
+      "to": "tool/external/cloude/query_ipm_list",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report/create_image",
+      "to": "tool/external/design_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report/create_report",
+      "to": "tool/external/design_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report/export_report",
+      "to": "tool/external/design_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report/get_report_detail",
+      "to": "tool/external/design_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report/list_reports",
+      "to": "tool/external/design_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report/update_report",
+      "to": "tool/external/design_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report",
+      "to": "tool/external/design_report/create_image",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report",
+      "to": "tool/external/design_report/create_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report",
+      "to": "tool/external/design_report/export_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report",
+      "to": "tool/external/design_report/get_report_detail",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report",
+      "to": "tool/external/design_report/list_reports",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/design_report",
+      "to": "tool/external/design_report/update_report",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs/diff_text",
+      "to": "tool/external/fs",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs/edit_text",
+      "to": "tool/external/fs",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs/list_dir",
+      "to": "tool/external/fs",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs/read_text",
+      "to": "tool/external/fs",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs",
+      "to": "tool/external/fs/diff_text",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs",
+      "to": "tool/external/fs/edit_text",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs",
+      "to": "tool/external/fs/list_dir",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs",
+      "to": "tool/external/fs/read_text",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs",
+      "to": "tool/external/fs/write_text",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/fs/write_text",
+      "to": "tool/external/fs",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BatchUpdateParams",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BlendShaftEndEdges",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BuildCamLobe",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BuildCamLobeArray",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BuildCamshaft",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BuildCamshaftOneClick",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BuildJournalFace",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/BuildOrUpdateEndBoss",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/CreateImage",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/CreateNewPart",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/CreateParam",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/CutShaftGrooveByBlock",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/ExitAnimation",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/ExportSnapshot",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/FindParams",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/FitView",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/GetAllParamsList",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/GetAllViewNames",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/GetDrawingSheetNameList",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/GetDriveParamsList",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/GetViewStyle",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/GetWorkPartInfo",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/HighLightDim",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/ImportCamProfile",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/ListSnapshotNames",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/MountBossToShaft",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/MountCamLobesToShaft",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/OpenDrawingSheet",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/OpenPart",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/OpenTCPart",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/RotateAndScaleView",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/SetViewStyle",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/SmoothSwitchToView",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/SwitchView",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/Test",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/UniteLobesToShaft",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/UpdateParam",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/UpdateView",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/build_feature",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/create_prt",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx/modify_parameter",
+      "to": "tool/external/nx",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BatchUpdateParams",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BlendShaftEndEdges",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BuildCamLobe",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BuildCamLobeArray",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BuildCamshaft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BuildCamshaftOneClick",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BuildJournalFace",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/BuildOrUpdateEndBoss",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/CreateImage",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/CreateNewPart",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/CreateParam",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/CutShaftGrooveByBlock",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/ExitAnimation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/ExportSnapshot",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/FindParams",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/FitView",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/GetAllParamsList",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/GetAllViewNames",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/GetDrawingSheetNameList",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/GetDriveParamsList",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/GetViewStyle",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/GetWorkPartInfo",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/HighLightDim",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/ImportCamProfile",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/ListSnapshotNames",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/MountBossToShaft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/MountCamLobesToShaft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/OpenDrawingSheet",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/OpenPart",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/OpenTCPart",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/RotateAndScaleView",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/SetViewStyle",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/SmoothSwitchToView",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/SwitchView",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/Test",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/UniteLobesToShaft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/UpdateParam",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/UpdateView",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/build_feature",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/create_prt",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/nx",
+      "to": "tool/external/nx/modify_parameter",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/shell/run",
+      "to": "tool/external/shell",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/shell",
+      "to": "tool/external/shell/run",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/design_rule_lookup",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/estimate_action_cost",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/knowledge_catalog_query",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/parameter_check",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/parse_docx_from_url",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/parse_text_from_url",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/preview_replace",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/search",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops/tool_catalog_query",
+      "to": "tool/external/textops",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/design_rule_lookup",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/estimate_action_cost",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/knowledge_catalog_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/parameter_check",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/parse_docx_from_url",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/parse_text_from_url",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/preview_replace",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/textops",
+      "to": "tool/external/textops/tool_catalog_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki/answer",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki/read_page",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki/read_source",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki/search",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki",
+      "to": "tool/external/wiki/answer",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki",
+      "to": "tool/external/wiki/read_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki",
+      "to": "tool/external/wiki/read_source",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/wiki",
+      "to": "tool/external/wiki/search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace/create",
+      "to": "tool/external/workspace",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace/keep",
+      "to": "tool/external/workspace",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace/list",
+      "to": "tool/external/workspace",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace/remove",
+      "to": "tool/external/workspace",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace/run",
+      "to": "tool/external/workspace",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace",
+      "to": "tool/external/workspace/create",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace",
+      "to": "tool/external/workspace/keep",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace",
+      "to": "tool/external/workspace/list",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace",
+      "to": "tool/external/workspace/remove",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/external/workspace",
+      "to": "tool/external/workspace/run",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/autonomy/claim_next_task",
+      "to": "tool/system/autonomy",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/autonomy",
+      "to": "tool/system/autonomy/claim_next_task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/background/check",
+      "to": "tool/system/background",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/background/run",
+      "to": "tool/system/background",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/background",
+      "to": "tool/system/background/check",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/background",
+      "to": "tool/system/background/run",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/compact/now",
+      "to": "tool/system/compact",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/compact",
+      "to": "tool/system/compact/now",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/inspect/inspect_tool_surface",
+      "to": "tool/system/inspect",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/inspect",
+      "to": "tool/system/inspect/inspect_tool_surface",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/normalize/normalize_tool_result",
+      "to": "tool/system/normalize",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/normalize",
+      "to": "tool/system/normalize/normalize_tool_result",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol/request_shutdown",
+      "to": "tool/system/protocol",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol/respond_shutdown",
+      "to": "tool/system/protocol",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol/review_plan",
+      "to": "tool/system/protocol",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol/submit_plan",
+      "to": "tool/system/protocol",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol",
+      "to": "tool/system/protocol/request_shutdown",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol",
+      "to": "tool/system/protocol/respond_shutdown",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol",
+      "to": "tool/system/protocol/review_plan",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/protocol",
+      "to": "tool/system/protocol/submit_plan",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/refs/load_refs",
+      "to": "tool/system/refs",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/refs",
+      "to": "tool/system/refs/load_refs",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime/enter_skill",
+      "to": "tool/system/runtime",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime/inspect_skill",
+      "to": "tool/system/runtime",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime/inspect_tool",
+      "to": "tool/system/runtime",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime/list_child_skills",
+      "to": "tool/system/runtime",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime",
+      "to": "tool/system/runtime/enter_skill",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime",
+      "to": "tool/system/runtime/inspect_skill",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime",
+      "to": "tool/system/runtime/inspect_tool",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/system/runtime",
+      "to": "tool/system/runtime/list_child_skills",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/alias_query",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/alias_query",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/alias_query",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/apply_diagnosis_fix",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/apply_diagnosis_fix",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/apply_diagnosis_fix",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/apply_diagnosis_fix",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/apply_diagnosis_fix",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/check_page_schema",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/check_page_schema",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/check_page_schema",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/check_truth_status",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/create_rollback_draft",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/diagnose_page",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/diagnose_page",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/diagnose_page",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/diagnose_page",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/diagnose_page",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/diff_draft",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/diff_versions",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/extract_knowledge_graph",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/extract_knowledge_graph",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/extract_knowledge_graph",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/extract_knowledge_graph",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/extract_knowledge_graph",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/generate_user_folder_wikis",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/generate_user_folder_wikis",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/generate_user_folder_wikis",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/generate_user_folder_wikis",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/generate_user_folder_wikis",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/graph_enhanced_search",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/graph_enhanced_search",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/graph_enhanced_search",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/graph_enhanced_search",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/graph_enhanced_search",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/normalize_page_to_chinese",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/normalize_page_to_chinese",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/normalize_page_to_chinese",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_file_status",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_file_status",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_file_status",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_file_status",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_file_status",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_history",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_scope_relations",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_scope_relations",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_scope_relations",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_scope_relations",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/page_scope_relations",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/publish_draft",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/read_schema",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/read_schema",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/read_schema",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/read_version",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/release_detail",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/release_history",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/resolve_page_links",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/resolve_page_links",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/resolve_page_links",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/save_draft",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/update_system_page_from_files",
+      "to": "skill/wiki/diagnosis_repair",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/update_system_page_from_files",
+      "to": "skill/wiki/graph_extraction",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/update_system_page_from_files",
+      "to": "skill/wiki/system_file_update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/update_system_page_from_files",
+      "to": "skill/wiki/user_file_generation",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki/update_system_page_from_files",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/alias_query",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/apply_diagnosis_fix",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/check_page_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/check_truth_status",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/create_rollback_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/diagnose_page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/diff_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/diff_versions",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/extract_knowledge_graph",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/generate_user_folder_wikis",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/graph_enhanced_search",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/normalize_page_to_chinese",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/page_file_status",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/page_history",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/page_scope_relations",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/publish_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/read_schema",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/read_version",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/release_detail",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/release_history",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/resolve_page_links",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/save_draft",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "tool/wiki/update_system_page_from_files",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/wiki",
+      "to": "wiki/workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/subagent/ask",
+      "to": "tool/workflow/subagent",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/subagent/batch_run",
+      "to": "tool/workflow/subagent",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/subagent",
+      "to": "tool/workflow/subagent/ask",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/subagent",
+      "to": "tool/workflow/subagent/batch_run",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task/claim",
+      "to": "tool/workflow/task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task/create",
+      "to": "tool/workflow/task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task/get",
+      "to": "tool/workflow/task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task/list",
+      "to": "tool/workflow/task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task/update",
+      "to": "tool/workflow/task",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task",
+      "to": "tool/workflow/task/claim",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task",
+      "to": "tool/workflow/task/create",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task",
+      "to": "tool/workflow/task/get",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task",
+      "to": "tool/workflow/task/list",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/task",
+      "to": "tool/workflow/task/update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team/broadcast",
+      "to": "tool/workflow/team",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team/list_workers",
+      "to": "tool/workflow/team",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team/read_inbox",
+      "to": "tool/workflow/team",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team/send_message",
+      "to": "tool/workflow/team",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team/spawn_worker",
+      "to": "tool/workflow/team",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team",
+      "to": "tool/workflow/team/broadcast",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team",
+      "to": "tool/workflow/team/list_workers",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team",
+      "to": "tool/workflow/team/read_inbox",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team",
+      "to": "tool/workflow/team/send_message",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/team",
+      "to": "tool/workflow/team/spawn_worker",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/todo/update",
+      "to": "tool/workflow/todo",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/todo/view",
+      "to": "tool/workflow/todo",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/todo",
+      "to": "tool/workflow/todo/update",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "tool/workflow/todo",
+      "to": "tool/workflow/todo/view",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/index",
+      "to": "control/protocol_index",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/index",
+      "to": "wiki/store",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/link",
+      "to": "page",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/link",
+      "to": "wiki/render",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/link",
+      "to": "wiki/store",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/mcp",
+      "to": "agent/wiki_workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/mcp",
+      "to": "skill/wiki/root",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/mcp",
+      "to": "tool/external/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/mcp",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/render",
+      "to": "...",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/render",
+      "to": "wiki/service",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/agent",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/agent",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/agent",
+      "to": "wiki/workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/common",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/common",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/common",
+      "to": "wiki/workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/lexicon",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/lexicon",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/lexicon",
+      "to": "wiki/workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/skill",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/skill",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/skill",
+      "to": "wiki/workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/tool",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/tool",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/tool",
+      "to": "wiki/workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/toolbox",
+      "to": "wiki/schema/common",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/toolbox",
+      "to": "wiki/schema/lexicon",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/schema/toolbox",
+      "to": "wiki/workbench",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/search",
+      "to": "wiki/store",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/version_test",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    },
+    {
+      "from": "wiki/workbench",
+      "to": "tool/wiki",
+      "kind": "wiki_link"
+    }
+  ]
+}

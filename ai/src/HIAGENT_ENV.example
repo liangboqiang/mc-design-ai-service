@@ -1,0 +1,19 @@
+# LLM provider switch
+DESIGN_AGENTS_PROVIDER=hiagent
+DESIGN_AGENTS_MODEL=hiagent
+
+# Option A: call FastAPI wrapper service exposed by your model server.
+# If this is set, the client calls:
+#   ${DESIGN_AGENTS_BASE_URL}/dictAssistant/ai-assistant
+DESIGN_AGENTS_BASE_URL=http://127.0.0.1:8000/mc-design/ai-api
+
+# Option B: direct HiAgent endpoints.
+# HIAGENT_API_KEY=...
+# CREATE_CONVERSATION_URL=https://aidev.linkskycloud.com/api/proxy/api/v1/chat_query_v2
+# CHAT_QUERY_URL=https://aidev.linkskycloud.com/api/proxy/api/v1/create_conversation
+# CHAT_USER_ID=parameter
+
+# Optional
+# HIAGENT_VERIFY_SSL=false
+# HIAGENT_INIT_TIMEOUT=60
+# HIAGENT_CHAT_TIMEOUT=600
