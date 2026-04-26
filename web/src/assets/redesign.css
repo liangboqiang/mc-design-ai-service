@@ -1,0 +1,522 @@
+/*
+ * Content-first front-end redesign.
+ * Goal: give the main content the largest visual field, demote auxiliary controls,
+ * and keep the product minimal without making the page feel empty or cramped.
+ */
+
+:root {
+  --bg: #f7f8fa;
+  --panel: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --soft-border: #eef0f4;
+  --primary: #1f4fd8;
+  --primary-2: #173fb0;
+  --surface: rgba(255, 255, 255, 0.86);
+  --shadow: 0 14px 34px rgba(15, 23, 42, 0.045);
+  --shadow-strong: 0 22px 70px rgba(15, 23, 42, 0.075);
+}
+
+body {
+  background:
+    radial-gradient(circle at 22% -10%, rgba(37, 99, 235, 0.08), transparent 34%),
+    linear-gradient(180deg, #fbfcfe 0%, var(--bg) 44%, #f3f5f8 100%);
+}
+
+/* 1. Shrink chrome. The old 220px sidebar compressed the reading area. */
+.wiki-shell {
+  grid-template-columns: 156px minmax(0, 1fr) !important;
+}
+.left-nav {
+  padding: 18px 12px !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(18px);
+}
+.brand {
+  padding: 4px !important;
+  margin-bottom: 26px !important;
+}
+.brand-mark {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 12px !important;
+  background: #111827 !important;
+}
+.brand strong {
+  font-size: 13px !important;
+  line-height: 1.15;
+}
+.brand span {
+  font-size: 11px !important;
+}
+.nav-flat {
+  gap: 4px !important;
+}
+.nav-flat a {
+  padding: 9px 10px !important;
+  border-radius: 12px !important;
+  color: #4b5563 !important;
+  font-size: 13px;
+  font-weight: 760 !important;
+}
+.nav-flat a:hover,
+.nav-flat a.active {
+  background: #111827 !important;
+  color: #ffffff !important;
+}
+
+.main-area {
+  width: min(100%, 1540px);
+  margin: 0 auto;
+  padding: 22px 34px 44px !important;
+}
+
+/* 2. Page command becomes quiet chrome instead of competing with content. */
+.workspace-head {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 430px) auto !important;
+  gap: 16px !important;
+  margin: 0 0 22px !important;
+  padding: 0 0 18px !important;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.82) !important;
+}
+.workspace-head.home-head {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+}
+.head-copy h1 {
+  font-size: 28px !important;
+  letter-spacing: -0.055em !important;
+}
+.head-copy p {
+  max-width: 660px;
+  color: #7a8290 !important;
+  font-size: 13px !important;
+}
+.compact-command {
+  border-color: var(--soft-border) !important;
+  box-shadow: none !important;
+  background: rgba(255,255,255,.72) !important;
+}
+.compact-command input {
+  color: #111827;
+}
+.small-metrics {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* 3. Content first: auxiliary pane is narrower and visually lighter. */
+.two-column {
+  grid-template-columns: minmax(0, 1fr) 288px !important;
+  gap: 20px !important;
+}
+.context-pane {
+  top: 22px !important;
+  max-height: calc(100vh - 44px) !important;
+}
+.context-pane .pane-card,
+.pane-card {
+  border-color: var(--soft-border) !important;
+  box-shadow: none !important;
+  background: rgba(255,255,255,.76) !important;
+}
+.pane-card h3 {
+  font-size: 14px !important;
+  letter-spacing: -0.02em;
+}
+.pane-card p,
+.matched-reason,
+.info-row span {
+  color: #8a93a3 !important;
+}
+.pane-action-grid .button,
+.tile-actions .button {
+  justify-content: flex-start;
+  font-weight: 720 !important;
+}
+
+/* 4. Home page: one clear hero, then information tiles. */
+.home-hero-card {
+  grid-template-columns: minmax(0, 1.38fr) minmax(340px, .72fr) !important;
+  gap: 18px !important;
+  margin-bottom: 18px !important;
+}
+.hero-copy,
+.home-search-panel,
+.portal-tile,
+.panel,
+.search-card,
+.search-controls,
+.article-surface,
+.page-header-compact,
+.graph-canvas,
+.cloud-panel {
+  border-color: var(--soft-border) !important;
+  box-shadow: var(--shadow) !important;
+}
+.hero-copy {
+  min-height: 260px;
+  padding: 32px !important;
+  display: grid;
+  align-content: center;
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.96), rgba(31, 79, 216, 0.88)),
+    #111827 !important;
+  color: #ffffff;
+  border: 0 !important;
+  border-radius: 28px !important;
+}
+.hero-copy h2 {
+  max-width: 680px;
+  font-size: clamp(34px, 4vw, 56px) !important;
+  line-height: .96;
+  color: #fff;
+}
+.hero-copy p {
+  max-width: 620px;
+  margin-top: 14px !important;
+  color: rgba(255,255,255,.76) !important;
+  font-size: 15px !important;
+}
+.home-search-panel {
+  padding: 18px !important;
+  align-content: start;
+  border-radius: 24px !important;
+}
+.home-query-row {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+}
+.home-query-row #homeClearTagsBtn {
+  display: none;
+}
+.home-dropdown-row {
+  gap: 6px !important;
+}
+.term-drop-btn,
+.home-term-toggle,
+.quick-filter,
+.tab,
+.pane-tab {
+  border-color: var(--soft-border) !important;
+  box-shadow: none !important;
+}
+.home-selected-tags {
+  min-height: 22px !important;
+}
+
+.home-tile-grid {
+  grid-template-columns: minmax(360px, 1.28fr) repeat(3, minmax(210px, .82fr)) !important;
+  gap: 14px !important;
+}
+.portal-tile {
+  min-height: 230px !important;
+  padding: 18px !important;
+  border-radius: 24px !important;
+  background: rgba(255,255,255,.88) !important;
+}
+.tile-head {
+  grid-template-columns: 34px minmax(0, 1fr) 30px !important;
+}
+.tile-icon {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 12px !important;
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+}
+.tile-head h3 {
+  font-size: 15px !important;
+}
+.tile-list a,
+.chat-input-mini,
+.chat-bubble,
+.file-row,
+.mini-item {
+  border-color: var(--soft-border) !important;
+  background: #fbfcfd !important;
+}
+.home-graph-mini {
+  height: 150px !important;
+  background: linear-gradient(180deg, #fbfcfe, #f3f5f8) !important;
+}
+.dashboard-mini .metric {
+  background: #fbfcfd !important;
+}
+
+/* 5. Search page: results are the product; filters are quiet. */
+.search-controls {
+  padding: 12px 14px !important;
+  margin-bottom: 14px !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,.72) !important;
+  box-shadow: none !important;
+}
+.mode-row,
+.toggle-row {
+  color: #6b7280;
+  font-size: 13px;
+}
+.advanced-row {
+  gap: 8px !important;
+}
+.select-label {
+  min-width: 112px !important;
+}
+.select-label span {
+  color: #9aa3b2 !important;
+  font-size: 11px !important;
+}
+.result-toolbar {
+  margin: 0 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: #6b7280;
+}
+.result-summary,
+.admin-metrics {
+  gap: 10px !important;
+}
+.metric {
+  border-color: var(--soft-border) !important;
+  background: rgba(255,255,255,.75) !important;
+  box-shadow: none !important;
+}
+.results-list {
+  gap: 12px !important;
+}
+.search-card {
+  grid-template-columns: 22px minmax(0, 1fr) !important;
+  padding: 18px 18px 16px !important;
+  border-radius: 20px !important;
+  background: rgba(255,255,255,.92) !important;
+}
+.search-card:hover {
+  border-color: rgba(31,79,216,.32) !important;
+  box-shadow: var(--shadow-strong) !important;
+  transform: translateY(-1px);
+}
+.result-title {
+  font-size: 19px !important;
+  letter-spacing: -0.025em;
+}
+.search-card p {
+  color: #4b5563 !important;
+  max-width: 920px;
+}
+.entity-pill,
+.status-chip,
+.selected-tag {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+}
+.status-chip.update { color: #92400e !important; background: #fff7ed !important; }
+.status-chip.issue,
+.status-chip.error,
+.status-chip.risk { color: #991b1b !important; background: #fef2f2 !important; }
+.status-chip.ok { color: #166534 !important; background: #f0fdf4 !important; }
+
+/* 6. Page detail: article is the main canvas. */
+.page-header-compact {
+  margin-bottom: 16px !important;
+  padding: 20px 24px !important;
+  border-radius: 24px !important;
+  background: rgba(255,255,255,.86) !important;
+}
+.page-header-compact h2 {
+  font-size: 30px !important;
+  line-height: 1.08;
+}
+.page-header-compact p {
+  max-width: 860px;
+  color: #6b7280 !important;
+}
+.reader-grid {
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+}
+.toc {
+  position: static !important;
+  max-height: none !important;
+  padding: 10px 12px !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  background: rgba(255,255,255,.66) !important;
+}
+.toc-list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 0 !important;
+  list-style: none;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.toc-list .l2,
+.toc-list .l3 {
+  margin-left: 0 !important;
+}
+.article-surface {
+  padding: 28px clamp(24px, 5vw, 72px) !important;
+  border-radius: 28px !important;
+  background: rgba(255,255,255,.94) !important;
+}
+.wiki-article {
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  font-size: 16.5px !important;
+  line-height: 1.88 !important;
+}
+.wiki-article h1,
+.wiki-article h2,
+.wiki-article h3 {
+  letter-spacing: -0.05em !important;
+}
+.article-tabs {
+  justify-content: flex-end;
+}
+.info-row {
+  border-color: var(--soft-border) !important;
+}
+.info-row strong {
+  font-size: 12px !important;
+  color: #4b5563;
+}
+
+/* 7. Graph, backend and user pages: give primary working area room. */
+.graph-page,
+.user-center-v31 {
+  grid-template-columns: minmax(0, 1fr) 300px !important;
+  gap: 18px !important;
+}
+.graph-canvas {
+  min-height: 660px !important;
+  border-radius: 26px !important;
+  background: #ffffff !important;
+}
+.graph-svg {
+  min-height: 660px !important;
+}
+.admin-row {
+  grid-template-columns: minmax(0, 1.5fr) 86px minmax(0, 1fr) !important;
+  border-color: var(--soft-border) !important;
+  background: rgba(255,255,255,.72);
+}
+.file-tree {
+  max-height: 68vh !important;
+  border-color: var(--soft-border) !important;
+}
+
+/* 8. Form controls: simpler and quieter. */
+input,
+textarea,
+select {
+  border-color: var(--soft-border) !important;
+  background: rgba(255,255,255,.9) !important;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(31,79,216,.45) !important;
+  box-shadow: 0 0 0 4px rgba(31,79,216,.08) !important;
+}
+.button {
+  border-radius: 11px !important;
+  font-weight: 760 !important;
+}
+.button.primary {
+  background: #111827 !important;
+}
+.button.primary:hover {
+  background: #000000 !important;
+}
+.button.ghost {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+}
+.button.ghost:hover {
+  background: #e5e7eb !important;
+}
+pre {
+  border-radius: 18px !important;
+}
+
+@media (max-width: 1280px) {
+  .home-tile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .home-hero-card,
+  .graph-page,
+  .user-center-v31 {
+    grid-template-columns: 1fr !important;
+  }
+  .two-column {
+    grid-template-columns: minmax(0, 1fr) 260px !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .wiki-shell {
+    grid-template-columns: 1fr !important;
+  }
+  .left-nav {
+    position: relative !important;
+    height: auto !important;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    overflow-x: auto;
+  }
+  .brand {
+    margin: 0 !important;
+    min-width: 150px;
+  }
+  .nav-flat {
+    display: flex !important;
+    flex-wrap: nowrap;
+  }
+  .main-area {
+    padding: 18px 18px 34px !important;
+  }
+  .workspace-head,
+  .two-column {
+    grid-template-columns: 1fr !important;
+  }
+  .context-pane {
+    position: static !important;
+    max-height: none !important;
+  }
+  .home-tile-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-copy {
+    min-height: 220px;
+    padding: 26px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-area {
+    padding: 14px 12px 28px !important;
+  }
+  .head-copy h1 {
+    font-size: 24px !important;
+  }
+  .hero-copy h2 {
+    font-size: 34px !important;
+  }
+  .home-query-row,
+  .compact-command,
+  .advanced-row,
+  .result-summary,
+  .admin-metrics,
+  .dashboard-mini {
+    grid-template-columns: 1fr !important;
+  }
+  .article-surface {
+    padding: 20px 16px !important;
+  }
+  .page-header-compact {
+    display: grid !important;
+  }
+}
