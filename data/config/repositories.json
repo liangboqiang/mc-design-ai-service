@@ -1,0 +1,40 @@
+{
+  "agent_repository": {
+    "path": "data/notes/system/agent",
+    "soft_schema_id": "schema.agent"
+  },
+  "user_workbench": {
+    "path": "data/workbench/user",
+    "retention_days": 30,
+    "allow_submit_to_team": true
+  },
+  "repositories": [
+    {
+      "repo_id": "team.default",
+      "name": "团队默认知识仓库",
+      "repo_type": "team",
+      "path": "data/workbench/team",
+      "soft_schema_id": "schema.business_document",
+      "extraction_rule_id": "rule.default",
+      "index_mode": "incremental"
+    },
+    {
+      "repo_id": "team.part_design",
+      "name": "零部件设计知识仓库",
+      "repo_type": "team",
+      "path": "data/workbench/team/part_design",
+      "soft_schema_id": "schema.part_design",
+      "extraction_rule_id": "rule.part_document",
+      "index_mode": "incremental"
+    },
+    {
+      "repo_id": "system.notes",
+      "name": "系统 Note 仓库",
+      "repo_type": "system",
+      "path": "data/notes",
+      "soft_schema_id": "schema.business_document",
+      "extraction_rule_id": "rule.note",
+      "index_mode": "full"
+    }
+  ]
+}

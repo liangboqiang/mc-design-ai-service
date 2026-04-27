@@ -1,0 +1,20 @@
+id: lens.business_doc
+applies_to:
+  - Document
+  - Case
+  - Policy
+  - Rule
+suggested_fields:
+  summary:
+    aliases: ["摘要", "简介", "summary"]
+  source:
+    aliases: ["来源", "证据", "source"]
+  constraints:
+    aliases: ["约束", "constraints"]
+maturity_checks:
+  published:
+    recommended: [summary]
+  projectable:
+    required_any: [summary, source]
+  runtime_ready:
+    recommended: [constraints]

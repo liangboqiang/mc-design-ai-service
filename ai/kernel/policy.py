@@ -6,8 +6,9 @@ from dataclasses import dataclass, field
 @dataclass(slots=True)
 class KernelPolicy:
     agent_id: str = "memory.native.kernel"
-    mode: str = "runtime_preview"
+    mode: str = "runtime"
     max_steps: int = 8
+    max_prompt_chars: int = 18_000
     tool_permission_level: int = 1
     allowed_tool_categories: tuple[str, ...] = field(default_factory=tuple)
     denied_tool_categories: tuple[str, ...] = field(default_factory=tuple)

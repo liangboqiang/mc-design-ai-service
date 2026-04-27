@@ -5,11 +5,10 @@ import sys
 
 ROOT_DIR = Path(__file__).resolve().parent
 AI_DIR = ROOT_DIR / "ai"
-AI_SRC_DIR = AI_DIR / "src"
 WEB_DIR = ROOT_DIR / "web"
 WEB_DIST_DIR = WEB_DIR / "dist"
 
-for candidate in (ROOT_DIR, AI_DIR, AI_SRC_DIR):
+for candidate in (ROOT_DIR, AI_DIR):
     value = str(candidate)
     if value not in sys.path:
         sys.path.insert(0, value)

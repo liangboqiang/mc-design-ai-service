@@ -1,22 +1,4 @@
 {
-  "css": [
-    "assets/style.css"
-  ],
-  "js": [
-    "assets/api.js",
-    "assets/router.js",
-    "assets/state.js",
-    "pages/graph.js",
-    "pages/home.js",
-    "pages/search.js",
-    "pages/page_detail.js",
-    "pages/backend.js",
-    "pages/user.js",
-    "pages/notes.js",
-    "pages/review.js",
-    "pages/runtime_preview.js",
-    "pages/tests.js",
-    "pages/intake.js",
-    "assets/app.js"
-  ]
+  "css": ["assets/style.css"],
+  "js": ["assets/api.js", "assets/graphin_offline.js", "assets/app.js"]
 }

@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AI = ROOT / "ai"
-for candidate in (ROOT, AI, AI / "src"):
+for candidate in (ROOT, AI):
     if str(candidate) not in sys.path:
         sys.path.insert(0, str(candidate))
 
@@ -17,7 +17,7 @@ def main() -> int:
     notes = store.notes()
     checks: dict[str, bool] = {}
     checks["note_md_loaded"] = "agent.memory_native_kernel" in notes
-    checks["wiki_md_compatible"] = any(note.path.endswith("wiki.md") for note in notes.values())
+    checks["non_note_markdown_not_loaded"] = not any(note.path.endswith("wiki" + ".md") for note in notes.values())
     agent = notes.get("agent.memory_native_kernel")
     checks["frontmatter_parsed"] = agent is not None and agent.kind == "Agent" and agent.lens_id == "lens.agent"
     checks["relations_parsed"] = agent is not None and any(rel.predicate == "uses" for rel in agent.relations)
@@ -29,6 +29,9 @@ def main() -> int:
             print(f"- {issue}")
     return 0 if not issues else 1
 
-
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import os
+    code = main()
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(code)

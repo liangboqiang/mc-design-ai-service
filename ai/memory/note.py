@@ -6,17 +6,12 @@ from pathlib import Path
 from typing import Any
 
 from memory.types import MemoryNote, RelationHint
-from workspace_paths import data_root, src_root, workspace_root
+from workspace_paths import data_root, workspace_root
 
 try:
     import yaml
 except Exception:  # noqa: BLE001
     yaml = None
-
-try:
-    from wiki.adapter_bridge import extract_runtime_block
-except Exception:  # noqa: BLE001
-    extract_runtime_block = None
 
 
 FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n?", re.DOTALL)
@@ -42,8 +37,7 @@ KIND_HINTS = {
     "case": "Case",
     "part": "Part",
     "parameter": "Document",
-    "wiki": "Document",
-    "knowledge": "Document",
+        "knowledge": "Document",
 }
 
 
@@ -98,7 +92,7 @@ def render_note_markdown(note: MemoryNote) -> str:
     if note.source_refs:
         lines.extend(f"  - {item}" for item in note.source_refs)
     else:
-        lines.append("  - legacy.wiki.compat")
+        lines.append("  - memory.native.migrated")
     lines.append("tags:")
     if note.tags:
         lines.extend(f"  - {item}" for item in note.tags)
@@ -201,13 +195,6 @@ def _build_fields(meta: dict[str, Any], sections: dict[str, str], body: str) -> 
         if key not in FRONTMATTER_RESERVED:
             fields.setdefault(str(key), value)
     fields.update(_parse_field_lines(sections.get("fields", "")))
-    if extract_runtime_block is not None:
-        try:
-            runtime_block = extract_runtime_block(sections, body) or {}
-        except Exception:  # noqa: BLE001
-            runtime_block = {}
-        for key, value in runtime_block.items():
-            fields.setdefault(str(key), value)
     return fields
 
 
@@ -232,10 +219,11 @@ def _parse_field_lines(body: str) -> dict[str, Any]:
                 payload.setdefault(current_key, [])
                 if isinstance(payload[current_key], list):
                     payload[current_key].append(_clean_value(item))
-        elif current_key and stripped.startswith("  - "):
+        elif current_key and line.startswith("  - "):
             payload.setdefault(current_key, [])
-            if isinstance(payload[current_key], list):
-                payload[current_key].append(_clean_value(stripped[4:].strip()))
+            if not isinstance(payload[current_key], list):
+                payload[current_key] = [payload[current_key]]
+            payload[current_key].append(_clean_value(line.strip()[2:].strip()))
     return payload
 
 
@@ -289,7 +277,7 @@ def _extract_links(text: str) -> list[str]:
         if not label:
             continue
         if "|" in label:
-            _, label = label.split("|", 1)
+            label, _ = label.split("|", 1)
         targets.append(label.strip())
     return _unique(targets)
 
@@ -340,15 +328,10 @@ def _clean_value(value: str) -> Any:
 
 
 def _derive_note_id(project_root: Path, path: Path) -> str:
-    source_root = src_root(project_root)
     data_notes_root = data_root(project_root) / "notes"
-    if source_root in [path.parent, *path.parents]:
-        if path.name in {"note.md", "wiki.md"}:
-            return path.parent.relative_to(source_root).as_posix()
-        return path.relative_to(source_root).with_suffix("").as_posix().replace("/", ".")
     if data_notes_root in [path.parent, *path.parents]:
         rel = path.relative_to(data_notes_root)
-        if path.name in {"note.md", "wiki.md"}:
+        if path.name == "note.md":
             rel = rel.parent
         else:
             rel = rel.with_suffix("")
@@ -361,15 +344,10 @@ def _derive_kind(project_root: Path, path: Path, fields: dict[str, Any]) -> str:
         value = fields.get(key)
         if isinstance(value, str) and value.strip():
             return str(value).strip()
-    source_root = src_root(project_root)
     data_notes_root = data_root(project_root) / "notes"
     rel_parts = ()
-    if source_root in [path.parent, *path.parents]:
-        rel_parts = path.relative_to(source_root).parts
-    elif data_notes_root in [path.parent, *path.parents]:
+    if data_notes_root in [path.parent, *path.parents]:
         rel_parts = path.relative_to(data_notes_root).parts
-    if path.name in {"note.md", "wiki.md"} and path.parent.name and (path.parent / "toolbox.py").exists():
-        return "Toolbox"
     for part in rel_parts:
         hint = KIND_HINTS.get(part.lower())
         if hint:
@@ -378,7 +356,7 @@ def _derive_kind(project_root: Path, path: Path, fields: dict[str, Any]) -> str:
 
 
 def _default_status(path: Path) -> str:
-    return "published" if path.name == "wiki.md" else "draft"
+    return "draft"
 
 
 def _default_maturity(status: str, kind: str) -> str:

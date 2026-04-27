@@ -1,21 +1,30 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Any
+from collections import defaultdict
+from typing import Callable
+
+from kernel.state import Event
+
+Subscriber = Callable[[Event], None]
 
 
-@dataclass(slots=True)
-class KernelEvent:
-    name: str
-    payload: dict[str, Any] = field(default_factory=dict)
-
-
-class KernelEventBus:
+class EventBus:
     def __init__(self):
-        self._events: list[KernelEvent] = []
+        self._events: list[Event] = []
+        self._subscribers: dict[str, list[Subscriber]] = defaultdict(list)
 
-    def emit(self, name: str, **payload: Any) -> None:
-        self._events.append(KernelEvent(name=name, payload=payload))
+    def subscribe(self, event_name: str, callback: Subscriber) -> None:
+        self._subscribers[event_name].append(callback)
 
-    def recent(self) -> list[KernelEvent]:
-        return list(self._events[-20:])
+    def emit(self, event_name: str, **payload) -> Event:
+        event = Event(name=event_name, payload=payload)
+        self._events.append(event)
+        for callback in [*self._subscribers.get(event_name, []), *self._subscribers.get("*", [])]:
+            try:
+                callback(event)
+            except Exception:
+                pass
+        return event
+
+    def recent(self, limit: int = 20) -> list[Event]:
+        return self._events[-limit:]

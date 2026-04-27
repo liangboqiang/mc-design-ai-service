@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AI = ROOT / "ai"
-for candidate in (ROOT, AI, AI / "src"):
+for candidate in (ROOT, AI):
     if str(candidate) not in sys.path:
         sys.path.insert(0, str(candidate))
 
@@ -15,18 +15,23 @@ def read(path: Path) -> str:
 
 
 def main() -> int:
+    from kernel.loop import KernelService
+    from kernel.state import KernelRequest
     from workbench.preview import RuntimePreviewService
 
-    kernel_text = read(AI / "src/runtime/kernel.py")
-    prompt_text = read(AI / "src/runtime/prompt.py")
+    kernel_text = read(AI / "kernel" / "loop.py")
+    prompt_text = read(AI / "kernel" / "prompt.py")
     preview = RuntimePreviewService(AI).preview_runtime(task="检查新的 Prompt 结构")
     prompt = preview.get("prompt", "")
+    engine = KernelService().build(KernelRequest(agent_id="general_chat", project_root=AI, max_steps=1))
     checks: dict[str, bool] = {}
-    checks["kernel_no_wikihub_import"] = "from wiki.hub import WikiHub" not in kernel_text
-    checks["prompt_no_agent_wiki_section"] = "Agent Wiki" not in prompt_text and "Wiki Hub" not in prompt_text
+    checks["old_runtime_dir_removed"] = not (AI / "src" / "runtime").exists()
+    checks["old_protocol_dir_removed"] = not (AI / "src" / "protocol").exists()
+    checks["kernel_no_transition_import"] = "old kernel" not in kernel_text
+    checks["prompt_no_agent_wiki_section"] = "Agent Raw Note" not in prompt_text and "Memory Hub" not in prompt_text
     checks["prompt_has_memory_view"] = "## MemoryView" in prompt
     checks["prompt_has_capability_view"] = "## CapabilityView" in prompt
-    checks["prompt_has_no_raw_frontmatter"] = "---" not in prompt
+    checks["engine_chat_ok"] = isinstance(engine.chat("hello"), str)
     issues = [k for k, v in checks.items() if not v]
     print(f"Kernel checks: {sum(checks.values())}/{len(checks)}")
     if issues:
@@ -37,4 +42,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import os
+    code = main()
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(code)

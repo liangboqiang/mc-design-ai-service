@@ -1,0 +1,26 @@
+id: lens.skill
+applies_to:
+  - Skill
+suggested_fields:
+  summary:
+    aliases: ["摘要", "简介", "summary"]
+  tools:
+    aliases: ["工具", "可用工具", "使用工具"]
+    kind: link_list
+  refs:
+    aliases: ["引用技能", "refs", "关联技能"]
+    kind: link_list
+relation_hints:
+  tools:
+    predicate: can_activate
+    kind: declared
+  refs:
+    predicate: uses
+    kind: declared
+maturity_checks:
+  published:
+    recommended: [summary]
+  projectable:
+    required_any: [summary, tools]
+  runtime_ready:
+    required: [summary]

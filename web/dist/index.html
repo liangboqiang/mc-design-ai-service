@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图谱百科 · NoteGraph Console</title>
+    <style>
+:root {
+  --背景: #eef2f7;
+  --深底: #0b1120;
+  --深底2: #111827;
+  --面板: rgba(255,255,255,.92);
+  --玻璃: rgba(255,255,255,.72);
+  --墨色: #111827;
+  --正文: #334155;
+  --弱字: #64748b;
+  --边框: rgba(148,163,184,.28);
+  --主色: #2563eb;
+  --主色深: #1d4ed8;
+  --青色: #06b6d4;
+  --紫色: #8b5cf6;
+  --绿色: #22c55e;
+  --橙色: #f59e0b;
+  --红色: #ef4444;
+  --阴影: 0 18px 46px rgba(15,23,42,.09);
+  --重阴影: 0 26px 80px rgba(15,23,42,.16);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "微软雅黑", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; color: var(--墨色); background: radial-gradient(circle at 16% -8%, #dbeafe 0, transparent 32rem), radial-gradient(circle at 92% 8%, #ddd6fe 0, transparent 28rem), linear-gradient(180deg, #f8fafc, #edf2f7); }
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+input, textarea, select { width: 100%; border: 1px solid var(--边框); border-radius: 16px; padding: 11px 13px; outline: none; background: rgba(255,255,255,.94); color: var(--墨色); transition: .16s ease; }
+input:focus, textarea:focus, select:focus { border-color: rgba(37,99,235,.45); box-shadow: 0 0 0 4px rgba(37,99,235,.11); }
+pre { background: #0f172a; color: #dbeafe; border-radius: 18px; padding: 14px; overflow: auto; max-height: 460px; line-height: 1.58; border: 1px solid rgba(255,255,255,.08); }
+code { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 9px; padding: 2px 7px; color: #1e293b; }
+.应用壳 { min-height: 100vh; display: grid; grid-template-columns: 258px minmax(0, 1fr); }
+.侧栏 { position: sticky; top: 0; height: 100vh; padding: 18px 14px; background: linear-gradient(180deg, rgba(15,23,42,.96), rgba(17,24,39,.94)); color: #e5e7eb; border-right: 1px solid rgba(255,255,255,.08); overflow: auto; }
+.品牌 { display: flex; align-items: center; gap: 12px; padding: 9px; margin-bottom: 18px; cursor: pointer; border-radius: 18px; }
+.品牌:hover { background: rgba(255,255,255,.06); }
+.品牌标记 { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 18px; color: #fff; font-weight: 950; background: conic-gradient(from 210deg, #22d3ee, #2563eb, #8b5cf6, #22d3ee); box-shadow: 0 16px 36px rgba(59,130,246,.32); }
+.品牌 strong { display: block; letter-spacing: -.04em; font-size: 17px; }
+.品牌 span { display: block; margin-top: 2px; font-size: 12px; color: #94a3b8; }
+.侧栏 nav { display: grid; gap: 9px; }
+.侧栏 nav a { display: grid; grid-template-columns: 32px minmax(0,1fr); gap: 2px 10px; padding: 12px; border-radius: 17px; color: #cbd5e1; border: 1px solid transparent; }
+.侧栏 nav a i { grid-row: span 2; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 12px; background: rgba(255,255,255,.07); font-style: normal; color: #93c5fd; }
+.侧栏 nav a b { font-size: 14px; align-self: end; }
+.侧栏 nav a small { font-size: 11px; color: #94a3b8; align-self: start; }
+.侧栏 nav a:hover, .侧栏 nav a.激活 { background: rgba(37,99,235,.18); color: #fff; border-color: rgba(147,197,253,.25); }
+.侧栏 nav a.激活 i { background: linear-gradient(135deg, #2563eb, #8b5cf6); color: white; }
+.侧栏说明 { margin-top: 18px; padding: 13px; border-radius: 17px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); display: grid; gap: 6px; }
+.侧栏说明 b { font-size: 13px; color: #fff; }
+.侧栏说明 span { color: #94a3b8; font-size: 12px; line-height: 1.55; }
+.主区 { min-width: 0; padding: 20px 22px 40px; }
+.顶栏 { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; padding: 18px 4px 18px; margin-bottom: 16px; }
+.路径标识 { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 999px; background: rgba(37,99,235,.08); color: #1d4ed8; font-size: 12px; font-weight: 900; margin-bottom: 8px; }
+.顶栏 h1 { margin: 0 0 5px; font-size: 32px; letter-spacing: -.06em; line-height: 1.04; }
+.顶栏 p { margin: 0; color: var(--弱字); line-height: 1.6; max-width: 900px; }
+.内容网格 { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+.内容网格.单栏 { grid-template-columns: minmax(0, 1fr); }
+.主要内容 { min-width: 0; display: grid; gap: 16px; }
+.右栏 { position: sticky; top: 16px; display: grid; gap: 12px; max-height: calc(100vh - 32px); overflow: auto; }
+.侧卡, .检索头, .图谱面板, .百科结果, .Note标题, .Note正文, .Note目录, .Note治理, .下方标签, .仓库列表, .仓库主体, .治理总览, .问题列表, .问题详情, .指标, .知识卡片 { background: var(--面板); border: 1px solid rgba(148,163,184,.24); border-radius: 24px; box-shadow: var(--阴影); backdrop-filter: blur(18px); }
+.检索头, .侧卡, .百科结果, .Note标题, .Note正文, .Note目录, .Note治理, .下方标签, .仓库列表, .仓库主体, .治理总览, .问题列表, .问题详情 { padding: 17px; }
+.搜索框 { display: grid; grid-template-columns: minmax(0, 1fr) 132px; gap: 12px; margin-bottom: 14px; }
+.搜索框 input { min-height: 56px; font-size: 16px; border-radius: 20px; background: #fff; box-shadow: inset 0 1px 0 rgba(15,23,42,.02); }
+.词条栏 { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.词条下拉 { position: relative; }
+.词条下拉 summary { list-style: none; cursor: pointer; border: 1px solid rgba(148,163,184,.28); background: linear-gradient(180deg,#fff,#f8fafc); color: #334155; border-radius: 999px; padding: 9px 13px; font-size: 12px; font-weight: 900; box-shadow: 0 8px 20px rgba(15,23,42,.05); }
+.词条下拉 summary em { color: #2563eb; font-style: normal; }
+.词条下拉 summary::-webkit-details-marker { display: none; }
+.词条面板 { position: absolute; left: 0; top: 39px; z-index: 30; width: 250px; max-height: 330px; overflow: auto; padding: 10px; border-radius: 18px; background: rgba(255,255,255,.98); border: 1px solid rgba(148,163,184,.32); box-shadow: var(--重阴影); display: grid; gap: 7px; }
+.词条选项 { border: 0; background: transparent; color: #334155; border-radius: 12px; padding: 8px 9px; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; }
+.词条选项 span { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 7px; background: #f1f5f9; color: #64748b; }
+.词条选项:hover, .词条选项.选中 { background: #eff6ff; color: #1d4ed8; }
+.词条选项.选中 span { background: #2563eb; color: white; }
+.已激活词条 { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; color: var(--弱字); font-size: 12px; }
+.已激活词条 button, .标签 { border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 900; }
+.标签.类型 { background: #eef2ff; color: #3730a3; border-color: #c7d2fe; }
+.标签.状态 { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+.标签.成熟度 { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+.图谱百科布局 { display: grid; grid-template-columns: minmax(0, 1.28fr) minmax(350px, .72fr); gap: 16px; align-items: stretch; }
+.图谱面板 { min-height: 660px; padding: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); overflow: hidden; background: linear-gradient(180deg, #0f172a, #111827); border-color: rgba(255,255,255,.1); box-shadow: 0 28px 90px rgba(15,23,42,.22); }
+.图谱工具条 { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #cbd5e1; font-size: 12px; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,.08); background: linear-gradient(90deg, rgba(37,99,235,.16), rgba(139,92,246,.1)); }
+.图谱工具条 b { display: block; color: #fff; font-size: 14px; }
+.图谱工具条 span { display: block; margin-top: 2px; color: #94a3b8; }
+.开源图谱画布 { min-height: 600px; border-radius: 0; background: radial-gradient(circle at 34% 20%, rgba(37,99,235,.32), transparent 18rem), radial-gradient(circle at 78% 35%, rgba(139,92,246,.24), transparent 22rem), linear-gradient(135deg, #07111f, #111827 46%, #0b1120); overflow: hidden; position: relative; }
+.开源图谱画布::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(148,163,184,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.06) 1px, transparent 1px); background-size: 34px 34px; pointer-events: none; }
+.图谱后备 { height: 100%; background: transparent; box-shadow: none; border: 0; }
+.图谱后备 svg { width: 100%; height: 100%; min-height: 600px; display: block; }
+.声明边, .候选边, .弱边, .运行边, .推断边 { fill: none; }
+.声明边 { stroke: rgba(148,163,184,.62); stroke-width: 1.45; opacity: .76; }
+.弱边 { stroke: rgba(148,163,184,.28); stroke-width: 1; stroke-dasharray: 5 6; opacity: .26; }
+.运行边 { stroke: #22d3ee; stroke-width: 2.5; opacity: .95; filter: url(#glow); }
+.推断边 { stroke: #a78bfa; stroke-width: 1.6; stroke-dasharray: 2 5; opacity: .82; }
+.候选边 { stroke: #f59e0b; stroke-width: 1.6; stroke-dasharray: 8 6; opacity: .88; }
+.后备节点 { cursor: pointer; }
+.后备节点 circle { stroke: rgba(255,255,255,.85); stroke-width: 2.6; filter: url(#glow); }
+.后备节点 text { font-size: 12px; text-anchor: middle; fill: #e5e7eb; paint-order: stroke; stroke: #0f172a; stroke-width: 4px; stroke-linejoin: round; }
+.后备节点.agent circle { fill: #8b5cf6; }
+.后备节点.skill circle { fill: #06b6d4; }
+.后备节点.tool circle { fill: #f59e0b; }
+.后备节点.part circle { fill: #22c55e; }
+.后备节点.rule circle { fill: #64748b; }
+.后备节点.document circle { fill: #0ea5e9; }
+.后备节点.note circle { fill: #3b82f6; }
+.百科结果 { max-height: 760px; overflow: auto; display: grid; align-content: start; gap: 11px; }
+.区块标题 { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 11px; }
+.区块标题 h3 { margin: 0; letter-spacing: -.03em; }
+.区块标题 span { color: var(--弱字); font-size: 12px; font-weight: 900; }
+.知识卡片 { padding: 14px; display: grid; gap: 9px; box-shadow: none; cursor: pointer; transition: .16s ease; background: linear-gradient(180deg,#fff,#fbfdff); }
+.知识卡片:hover { border-color: #93c5fd; transform: translateY(-2px); box-shadow: 0 16px 38px rgba(37,99,235,.11); }
+.卡片头 { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.卡片头 strong { letter-spacing: -.025em; }
+.知识卡片 p { margin: 0; color: #475569; line-height: 1.58; }
+.卡片脚 { display: flex; justify-content: space-between; gap: 8px; color: var(--弱字); font-size: 12px; align-items: center; }
+.侧卡 { display: grid; gap: 11px; }
+.侧卡 h3, .侧卡 h4 { margin: 0; letter-spacing: -.03em; }
+.侧卡 p { margin: 0; color: var(--弱字); line-height: 1.68; }
+.节点详情卡 { display: grid; grid-template-columns: 54px minmax(0,1fr); gap: 12px; align-items: center; }
+.节点详情卡 h3 { margin: 0 0 4px; }
+.节点徽标 { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 20px; color: #fff; font-weight: 950; background: #3b82f6; box-shadow: 0 16px 34px rgba(59,130,246,.24); }
+.节点徽标.agent { background: #8b5cf6; } .节点徽标.skill { background: #06b6d4; } .节点徽标.tool { background: #f59e0b; } .节点徽标.part { background: #22c55e; } .节点徽标.document { background: #0ea5e9; } .节点徽标.rule { background: #64748b; }
+.节点操作 { display: flex; gap: 8px; flex-wrap: wrap; }
+.指标网格 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.指标 { padding: 13px; display: grid; gap: 4px; box-shadow: none; background: linear-gradient(180deg,#fff,#f8fafc); }
+.指标 span { color: var(--弱字); font-size: 12px; font-weight: 900; }
+.指标 b { font-size: 24px; letter-spacing: -.05em; overflow: hidden; text-overflow: ellipsis; }
+.指标 small { color: var(--弱字); }
+.小项, .字段项 { border: 1px solid var(--边框); background: #f8fafc; border-radius: 16px; padding: 11px; display: grid; gap: 5px; margin-bottom: 8px; }
+.小项 b, .字段项 span { font-size: 13px; }
+.小项 span, .字段项 small { color: var(--弱字); font-size: 12px; overflow-wrap: anywhere; }
+.按钮 { border: 0; border-radius: 14px; padding: 10px 14px; font-weight: 900; display: inline-flex; justify-content: center; align-items: center; gap: 7px; cursor: pointer; transition: .14s ease; }
+.按钮.主要 { background: linear-gradient(135deg, #2563eb, #4f46e5); color: #fff; box-shadow: 0 12px 24px rgba(37,99,235,.22); }
+.按钮.主要:hover { transform: translateY(-1px); box-shadow: 0 16px 32px rgba(37,99,235,.28); }
+.按钮.次要 { background: #eef2ff; color: #1e40af; }
+.按钮.次要:hover { background: #dbeafe; }
+.按钮.幽灵 { background: rgba(255,255,255,.1); color: inherit; border: 1px solid rgba(148,163,184,.26); }
+.图谱工具条 .按钮.幽灵 { color: #dbeafe; border-color: rgba(255,255,255,.18); }
+.按钮.幽灵:hover { background: rgba(255,255,255,.16); }
+.按钮.小 { padding: 6px 9px; font-size: 12px; background: #f1f5f9; color: #334155; border: 1px solid var(--边框); }
+.按钮.满宽 { width: 100%; }
+.操作组, .标签行 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.Note标题 { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
+.Note标题 h2 { margin: 0 0 6px; font-size: 32px; letter-spacing: -.055em; }
+.详情摘要 { display: grid; gap: 9px; }
+.Note详情布局 { display: grid; grid-template-columns: 178px minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+.Note目录 { position: sticky; top: 16px; display: grid; gap: 8px; box-shadow: none; }
+.Note目录 a { padding: 10px 11px; border-radius: 13px; color: var(--正文); font-weight: 850; }
+.Note目录 a:hover { background: #eff6ff; color: var(--主色); }
+.Note正文 { min-height: 72vh; }
+.Note阅读区 { max-width: 900px; margin: 0 auto; line-height: 1.84; color: #263244; }
+.Note阅读区 h1, .Note阅读区 h2, .Note阅读区 h3 { letter-spacing: -.045em; margin: 1.28em 0 .58em; color: #0f172a; }
+.Note阅读区 h1 { font-size: 30px; }
+.Note阅读区 h2 { font-size: 24px; border-bottom: 1px solid #e2e8f0; padding-bottom: 7px; }
+.Note阅读区 p { margin: 0 0 .8em; }
+.列表项 { padding-left: 12px; }
+.note跳转 { color: var(--主色); font-weight: 900; border-bottom: 1px dotted var(--主色); }
+.源码编辑 { width: 100%; min-height: 72vh; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Microsoft YaHei Mono", monospace; line-height: 1.56; background: #0f172a; color: #dbeafe; }
+.Note治理 { display: grid; gap: 10px; }
+.小图谱 { min-height: 220px; border: 1px solid rgba(148,163,184,.22); border-radius: 18px; background: #0f172a; overflow: hidden; }
+.小图谱 .开源图谱画布, #小图谱 { min-height: 220px; }
+.下方标签 { display: grid; gap: 10px; }
+.下方标签 details { border: 1px solid var(--边框); border-radius: 18px; padding: 11px; background: #fff; }
+.下方标签 summary { cursor: pointer; font-weight: 900; }
+.行 { display: grid; grid-template-columns: minmax(0, 1fr) 180px auto; gap: 10px; align-items: center; padding: 11px; border-bottom: 1px solid #edf2f7; }
+.行 span { color: var(--弱字); font-size: 12px; }
+.仓库布局 { display: grid; grid-template-columns: 310px minmax(0, 1fr); gap: 16px; }
+.仓库列表 { display: grid; gap: 10px; align-content: start; }
+.仓库卡 { text-align: left; border: 1px solid var(--边框); background: #fff; border-radius: 18px; padding: 13px; display: grid; gap: 6px; cursor: pointer; transition: .15s ease; }
+.仓库卡:hover { transform: translateY(-1px); border-color: #93c5fd; }
+.仓库卡.选中 { border-color: #93c5fd; background: linear-gradient(180deg,#eff6ff,#fff); color: var(--主色); box-shadow: 0 14px 32px rgba(37,99,235,.09); }
+.仓库卡 span, .仓库卡 small { color: var(--弱字); font-size: 12px; overflow-wrap: anywhere; }
+.仓库主体 { display: grid; gap: 16px; }
+.仓库表单 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--边框); }
+.仓库表单 label { display: grid; gap: 7px; font-size: 12px; color: var(--弱字); font-weight: 900; }
+.文件管理 { display: grid; gap: 11px; }
+.文件列表 { display: grid; gap: 9px; }
+.文件行 { display: grid; grid-template-columns: 34px minmax(0, 1fr) 220px auto; gap: 10px; align-items: center; border: 1px solid var(--边框); background: #fff; border-radius: 16px; padding: 11px; cursor: pointer; transition: .14s ease; }
+.文件行:hover { border-color: #93c5fd; background: #f8fbff; transform: translateY(-1px); }
+.文件行 small { color: var(--弱字); }
+.治理布局 { display: grid; grid-template-columns: 390px minmax(0, 1fr); gap: 16px; }
+.问题列表 { display: grid; gap: 10px; max-height: 76vh; overflow: auto; align-content: start; }
+.问题卡 { text-align: left; border: 1px solid var(--边框); border-radius: 18px; padding: 13px; display: grid; gap: 6px; background: #fff; cursor: pointer; transition: .14s ease; }
+.问题卡:hover { transform: translateY(-1px); box-shadow: 0 14px 32px rgba(15,23,42,.08); }
+.问题卡.high { border-color: #fecaca; background: linear-gradient(180deg,#fff7f7,#fff); }
+.问题卡.normal { border-color: #fed7aa; background: linear-gradient(180deg,#fffaf0,#fff); }
+.问题卡.low { border-color: #bae6fd; background: linear-gradient(180deg,#f0f9ff,#fff); }
+.问题卡 span, .问题卡 small { color: var(--弱字); font-size: 12px; line-height: 1.48; }
+.问题详情 { min-height: 540px; }
+.空状态, .加载, .错误 { padding: 32px; border-radius: 22px; background: rgba(255,255,255,.86); border: 1px dashed var(--边框); color: var(--弱字); text-align: center; display: grid; gap: 8px; place-items: center; }
+.空状态 span { font-size: 28px; color: #94a3b8; }
+.加载点 { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #dbeafe; border-top-color: #2563eb; animation: 旋转 .8s linear infinite; }
+@keyframes 旋转 { to { transform: rotate(360deg); } }
+.错误 { color: #991b1b; border-color: #fecaca; }
+.提示 { position: fixed; right: 18px; bottom: 18px; background: #0f172a; color: #fff; padding: 13px 15px; border-radius: 16px; box-shadow: var(--重阴影); z-index: 60; }
+.隐藏 { display: none !important; }
+@media (max-width: 1260px) {
+  .应用壳 { grid-template-columns: 1fr; }
+  .侧栏 { position: static; height: auto; }
+  .侧栏 nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .内容网格, .图谱百科布局, .Note详情布局, .仓库布局, .治理布局 { grid-template-columns: 1fr; }
+  .右栏, .Note目录 { position: static; max-height: none; }
+}
+@media (max-width: 760px) {
+  .主区 { padding: 12px; }
+  .顶栏, .Note标题 { display: grid; }
+  .侧栏 nav { grid-template-columns: 1fr; }
+  .搜索框, .仓库表单, .文件行, .行 { grid-template-columns: 1fr; }
+  .开源图谱画布 { min-height: 460px; }
+  .图谱面板 { min-height: 520px; }
+}
+
+/* 图谱百科 v2：力导向激活视图 */
+.图谱检索台 { background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,250,252,.94)); border-radius: 28px; }
+.搜索说明 { margin: -5px 0 12px; color: var(--弱字); font-size: 12px; font-weight: 800; }
+.选项栏 { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.已激活选项 { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; color: var(--弱字); font-size: 12px; }
+.已激活选项 button { border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8; border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 900; cursor: pointer; }
+.图谱百科布局 { grid-template-columns: minmax(0, 1.55fr) minmax(360px, .58fr); }
+.图谱面板 { min-height: 760px; border-radius: 28px; box-shadow: 0 32px 110px rgba(2,6,23,.28); }
+.图谱画布包装 { position: relative; min-height: 700px; overflow: hidden; }
+.开源图谱画布 { min-height: 700px; }
+.图谱图例 { position: absolute; left: 16px; top: 16px; z-index: 5; width: min(390px, calc(100% - 32px)); padding: 14px; border-radius: 22px; background: rgba(15,23,42,.78); border: 1px solid rgba(148,163,184,.22); color: #e5e7eb; box-shadow: 0 24px 70px rgba(0,0,0,.26); backdrop-filter: blur(18px); pointer-events: none; }
+.图例标题 { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-bottom: 10px; }
+.图例标题 b { color: #fff; letter-spacing: -.03em; }
+.图例标题 span { color: #93c5fd; font-size: 12px; font-weight: 850; }
+.图例统计 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 10px; }
+.图例统计 span { display: grid; gap: 2px; padding: 8px; border-radius: 14px; background: rgba(255,255,255,.07); color: #94a3b8; font-size: 11px; }
+.图例统计 b { color: #fff; font-size: 18px; letter-spacing: -.04em; }
+.图例行 { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; color: #cbd5e1; font-size: 12px; margin-top: 7px; }
+.图例提示 { margin-top: 10px; color: #94a3b8; font-size: 12px; line-height: 1.45; }
+.点 { width: 10px; height: 10px; border-radius: 50%; display: inline-block; box-shadow: 0 0 0 3px rgba(255,255,255,.08); }
+.点.agent { background: #a78bfa; } .点.skill { background: #22d3ee; } .点.tool { background: #f59e0b; } .点.part { background: #34d399; }
+.线 { width: 30px; height: 0; border-top: 2px solid #cbd5e1; display: inline-block; }
+.线.runtime { border-top-color: #22d3ee; box-shadow: 0 0 12px #22d3ee; }
+.线.inferred { border-top-color: #c084fc; border-top-style: dotted; }
+.线.linked { border-top-color: rgba(148,163,184,.45); border-top-style: dashed; }
+.百科结果 { border-radius: 28px; max-height: 840px; }
+.右侧提示 { margin-top: 12px; padding: 10px 12px; border-radius: 16px; color: #64748b; background: #f8fafc; border: 1px dashed #cbd5e1; font-size: 12px; line-height: 1.55; }
+.激活笔记卡 { display: grid; gap: 12px; padding: 15px; border-radius: 22px; border: 1px solid #fecdd3; background: linear-gradient(180deg, #fff1f2, #ffffff); box-shadow: 0 18px 44px rgba(244,63,94,.12); margin-bottom: 12px; }
+.激活笔记卡 p { margin: 0; color: #475569; line-height: 1.62; }
+.小标题 { margin-top: 14px; }
+.关系项 { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: center; padding: 10px; border-radius: 14px; background: #f8fafc; border: 1px solid #e2e8f0; margin-bottom: 7px; font-size: 12px; }
+.关系项 b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.关系项 span { padding: 4px 8px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-weight: 900; }
+.图谱问题条 { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 12px 14px; border: 1px solid rgba(148,163,184,.24); background: rgba(255,255,255,.86); border-radius: 22px; box-shadow: var(--阴影); }
+.图谱问题条 b { margin-right: 6px; }
+.图谱问题条 span { padding: 6px 9px; border-radius: 999px; background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; font-size: 12px; }
+@media (max-width: 1260px) {
+  .图谱百科布局 { grid-template-columns: 1fr; }
+  .图谱面板 { min-height: 640px; }
+  .图谱画布包装, .开源图谱画布 { min-height: 580px; }
+}
+
+/* AntV G6 开源图谱渲染样式 */
+.开源图谱画布 canvas { border-radius: 0 0 28px 28px; }
+.开源图谱失败 { min-height: 620px; display: grid; place-items: center; align-content: center; gap: 12px; padding: 48px; color: #dbeafe; text-align: center; background: radial-gradient(circle at 50% 28%, rgba(59,130,246,.18), transparent 38%), #020617; }
+.开源图谱失败 b { font-size: 22px; color: #fff; }
+.开源图谱失败 p { max-width: 680px; margin: 0; color: #93a4b8; line-height: 1.7; }
+.开源图谱失败 code { color: #bfdbfe; background: rgba(255,255,255,.08); padding: 2px 6px; border-radius: 8px; }
+.g6-tooltip, .图谱提示 { border-radius: 14px !important; background: rgba(15,23,42,.92) !important; color: #e5e7eb !important; border: 1px solid rgba(148,163,184,.28) !important; box-shadow: 0 18px 50px rgba(0,0,0,.28) !important; padding: 10px 12px !important; font-size: 12px !important; }
+.图谱提示 { display: grid; gap: 5px; }
+.图谱提示 b { color: #fff; font-size: 13px; }
+.图谱提示 span { color: #93c5fd; }
+.图谱提示 code { color: #cbd5e1; }
+
+/* 记事本：系统内置笔记本 + 源文件治理 */
+.记事本布局 { align-items: start; }
+.记事本头 { display: grid; grid-template-columns: 82px minmax(0,1fr); gap: 16px; align-items: center; padding: 18px; border-radius: 24px; background: linear-gradient(135deg,#eff6ff,#ffffff 58%,#f8fafc); border: 1px solid #dbeafe; box-shadow: 0 18px 48px rgba(37,99,235,.08); }
+.记事本头 h2 { margin: 0 0 8px; font-size: 30px; letter-spacing: -.055em; }
+.记事本头 p { margin: 0 0 10px; color: #475569; line-height: 1.65; }
+.记事本封面 { width: 74px; height: 74px; border-radius: 26px; display: grid; place-items: center; background: radial-gradient(circle at 35% 25%,#bfdbfe,#2563eb); box-shadow: 0 20px 48px rgba(37,99,235,.22); }
+.记事本封面 span { font-size: 34px; }
+.记事本双栏 { display: grid; grid-template-columns: minmax(0,1fr) minmax(360px,.8fr); gap: 16px; align-items: start; }
+.笔记摘要列表 { display: grid; gap: 10px; }
+.笔记摘要卡 { border: 1px solid var(--边框); border-radius: 18px; background: linear-gradient(180deg,#fff,#fbfdff); padding: 14px; display: grid; gap: 8px; cursor: pointer; transition: .14s ease; }
+.笔记摘要卡:hover { border-color: #93c5fd; transform: translateY(-1px); box-shadow: 0 16px 36px rgba(37,99,235,.10); }
+.笔记摘要卡 div { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.笔记摘要卡 span { color: var(--弱字); font-size: 12px; white-space: nowrap; }
+.笔记摘要卡 p { margin: 0; color: #475569; line-height: 1.58; }
+.笔记摘要卡 code { color: #64748b; overflow-wrap: anywhere; }
+@media (max-width: 1260px) { .记事本双栏 { grid-template-columns: 1fr; } }
+
+/* 原子系统收束优化：更轻的视觉层级、更顺滑的交互、更少的重绘成本 */
+:root {
+  --背景: #f3f6fb;
+  --面板: rgba(255,255,255,.96);
+  --玻璃: rgba(255,255,255,.82);
+  --主色: #2157d6;
+  --青色: #04adc7;
+  --紫色: #7c4dff;
+  --阴影: 0 12px 34px rgba(15,23,42,.075);
+  --重阴影: 0 22px 70px rgba(15,23,42,.14);
+}
+html { scroll-behavior: smooth; }
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+.主要内容 > *, .右栏 > *, .百科结果 > *, .仓库主体 > *, .问题详情 > * { content-visibility: auto; contain-intrinsic-size: 1px 320px; }
+.侧栏 { background: linear-gradient(180deg, #081120, #111827 58%, #0d1322); }
+.品牌标记 { box-shadow: 0 14px 38px rgba(33,87,214,.28); }
+.侧栏 nav a { transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease; }
+.侧栏 nav a:hover { transform: translateX(2px); }
+.顶栏 { padding-top: 14px; }
+.顶栏 h1 { font-size: clamp(25px, 2.4vw, 34px); }
+.侧卡, .检索头, .百科结果, .Note标题, .Note正文, .Note目录, .Note治理, .下方标签, .仓库列表, .仓库主体, .治理总览, .问题列表, .问题详情, .指标, .知识卡片 { border-color: rgba(148,163,184,.22); }
+.搜索框 input { border-radius: 18px; }
+.按钮 { transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease; }
+.按钮:hover { transform: translateY(-1px); }
+.开源图谱画布 { min-height: clamp(560px, 66vh, 760px); }
+.图谱面板 { min-height: clamp(620px, 72vh, 820px); }
+.百科结果 { scrollbar-gutter: stable; }
+.知识卡片 { border-radius: 20px; }
+.知识卡片:hover { transform: translateY(-2px); }
+.仓库卡, .问题卡, .笔记摘要卡, .文件行 { transition: transform .16s ease, border-color .16s ease, background .16s ease, box-shadow .16s ease; }
+.仓库卡:hover, .问题卡:hover, .笔记摘要卡:hover, .文件行:hover { transform: translateY(-1px); }
+@media (max-width: 980px) {
+  .应用壳 { grid-template-columns: 1fr; }
+  .侧栏 { position: relative; height: auto; }
+  .侧栏 nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .侧栏说明 { display: none; }
+  .内容网格, .图谱百科布局, .Note详情布局, .治理布局 { grid-template-columns: 1fr !important; }
+  .右栏 { position: relative; max-height: none; }
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <main class="fatal">
+        <h1>图谱百科</h1>
+        <p>前端正在启动。如果这里一直不变化，请打开浏览器控制台查看错误，或访问 /health 检查后端。</p>
+      </main>
+    </div>
+    <script>
+(function () {
+  const BASE = '/app/action/';
+  async function postJson(action, payload) {
+    const response = await fetch(BASE + action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload || {}),
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || data.ok === false) {
+      const message = data && data.error && data.error.message ? data.error.message : ('请求失败：' + response.status);
+      throw new Error(message);
+    }
+    return data.data;
+  }
+  const action = (name, payload) => postJson(name, payload);
+  const api = {
+    action,
+    postJson,
+    memory(name, payload) { return action(name, payload); },
+    workbench(name, payload) { return action(name, payload); },
+    note: {
+      search(payload) { return action('graphpedia_search', payload); },
+      read(note_id) { return action('memory_read_note_detail', { note_id }); },
+      save(note_id, markdown, commit, message) { return action('memory_save_note_source', { note_id, markdown, commit: !!commit, message }); },
+      proposal(note_id, markdown, proposal_type, review_notes) { return action('memory_create_note_proposal', { note_id, markdown, proposal_type: proposal_type || 'note_patch', review_notes: review_notes || '' }); },
+      publish(note_id, maturity) { return action('memory_publish_note', { note_id, maturity: maturity || 'projectable' }); },
+      fromFile(scope, path, target_kind, mode) { return action('memory_generate_note_from_file', { scope, path, target_kind: target_kind || 'Document', mode: mode || 'proposal' }); },
+    },
+    graph: {
+      view(include_hidden) { return action('memory_graph_view', { include_hidden: include_hidden !== false }); },
+      compile(include_hidden, write_store) { return action('memory_compile_graph', { include_hidden: include_hidden !== false, write_store: write_store !== false }); },
+      neighbors(note_id, depth) { return action('memory_graph_neighbors', { note_id, depth: depth || 1 }); },
+    },
+    workspace: {
+      roots() { return action('workspace_roots', {}); },
+      list(scope, path, recursive) { return action('workspace_list_files', { scope, path: path || '', recursive: !!recursive }); },
+      read(scope, path) { return action('workspace_read_file', { scope, path }); },
+      write(scope, path, content) { return action('workspace_write_file', { scope, path, content }); },
+      upload(scope, path, files) { return action('workspace_upload_files', { scope, path: path || '', files: files || [] }); },
+      mkdir(scope, path) { return action('workspace_make_dir', { scope, path }); },
+      remove(scope, path) { return action('workspace_delete_file', { scope, path }); },
+      move(scope, source, target) { return action('workspace_move_file', { scope, source, target }); },
+      extract(scope, path) { return action('workspace_extract_file', { scope, path }); },
+      createUserSession(user_id, session_id) { return action('user_workspace_create_session', { user_id, session_id }); },
+      submitUserFile(user_id, session_id, path, target) { return action('user_workspace_submit_to_team', { user_id, session_id, path, target: target || 'incoming' }); },
+    },
+    repo: {
+      config() { return action('repo_config_read', {}); },
+      saveConfig(config) { return action('repo_config_save', { config }); },
+      list() { return action('repo_list', {}); },
+      save(repository) { return action('repo_save', { repository }); },
+      remove(repo_id) { return action('repo_delete', { repo_id }); },
+    },
+    notebook: {
+      list() { return action('notebook_list', {}); },
+      read(notebook_id) { return action('notebook_read', { notebook_id }); },
+      save(notebook) { return action('notebook_save', { notebook }); },
+      remove(notebook_id) { return action('notebook_delete', { notebook_id }); },
+    },
+    schema: {
+      list() { return action('soft_schema_list', {}); },
+      read(schema_id) { return action('soft_schema_read', { schema_id }); },
+      save(schema) { return action('soft_schema_save', { schema }); },
+      discover(schema_id, repo_id) { return action('soft_schema_discover', { schema_id, repo_id }); },
+      acceptField(schema_id, field_name, config) { return action('soft_schema_accept_field', { schema_id, field_name, config: config || {} }); },
+    },
+    version: {
+      status() { return action('version_status', {}); },
+      commit(message, author, scope) { return action('version_commit_notes', { message, author, scope }); },
+      commits(limit) { return action('version_list_commits', { limit: limit || 50 }); },
+      history(note_id, note_path) { return action('version_note_history', { note_id: note_id || '', note_path: note_path || '' }); },
+      diff(note_id, from_commit, to_commit) { return action('version_diff_note', { note_id, from_commit: from_commit || '', to_commit: to_commit || 'WORKTREE' }); },
+      restore(note_id, commit_id) { return action('version_restore_note', { note_id, commit_id }); },
+      release(name, message) { return action('version_create_release', { name, message }); },
+      releases() { return action('version_list_releases', {}); },
+      rollback(release_id) { return action('version_rollback_release', { release_id }); },
+    },
+    governance: {
+      dashboard() { return action('governance_dashboard', {}); },
+      issues(payload) { return action('governance_issue_list', payload || {}); },
+      applyFix(issue_id, fix_mode, payload) { return action('governance_apply_fix', { issue_id, fix_mode: fix_mode || 'proposal', payload: payload || {} }); },
+      proposal(id, status) { return action('governance_read_proposal', { proposal_id: id, status: status || '' }); },
+      conflicts() { return action('governance_conflict_report', {}); },
+      review(ids, decision, review_notes) { return action('governance_bulk_review', { proposal_ids: ids, decision, review_notes }); },
+      apply(id, status) { return action('governance_apply_proposal', { proposal_id: id, status: status || 'accepted' }); },
+      suggest(proposal_id, diagnostic_code) { return action('governance_suggest_fix', { proposal_id: proposal_id || '', diagnostic_code: diagnostic_code || '' }); },
+      list(status) { return action('memory_list_proposals', { status: status || 'candidate' }); },
+      decide(proposal_id, decision, review_notes) { return action('memory_review_proposal', { proposal_id, decision, review_notes: review_notes || '' }); },
+    },
+  };
+  window.NoteGraph = window.NoteGraph || {};
+  window.NoteGraph.api = api;
+  window.GraphPedia = window.GraphPedia || {};
+  window.GraphPedia.api = api;
+  window.图谱百科 = window.图谱百科 || {};
+  window.图谱百科.api = api;
+})();
+
+
+(function(){
+  'use strict';
+  const KIND = {
+    agent: {c:'#8b5cf6', s:'#ddd6fe', r:26, shape:'hex', label:'Agent'},
+    skill: {c:'#06b6d4', s:'#cffafe', r:22, shape:'round', label:'Skill'},
+    tool: {c:'#f59e0b', s:'#fde68a', r:24, shape:'diamond', label:'Tool'},
+    workflow: {c:'#fb7185', s:'#ffe4e6', r:23, shape:'round', label:'Workflow'},
+    part: {c:'#10b981', s:'#bbf7d0', r:25, shape:'circle', label:'Part'},
+    rule: {c:'#64748b', s:'#e2e8f0', r:21, shape:'tag', label:'Rule'},
+    document: {c:'#38bdf8', s:'#dbeafe', r:20, shape:'doc', label:'Document'},
+    note: {c:'#3b82f6', s:'#bfdbfe', r:20, shape:'circle', label:'Note'},
+  };
+  function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+  function kindOf(k){ k=String(k||'note').toLowerCase(); if(k.includes('agent'))return'agent'; if(k.includes('skill'))return'skill'; if(k.includes('tool'))return'tool'; if(k.includes('workflow'))return'workflow'; if(k.includes('part'))return'part'; if(k.includes('rule')||k.includes('policy'))return'rule'; if(k.includes('document')||k.includes('case')||k.includes('sop'))return'document'; return'note'; }
+  function short(t,n){ t=String(t||''); return t.length>n?t.slice(0,n-1)+'…':t; }
+  function curvePoint(a,b,t,offset){ const x=a.x+(b.x-a.x)*t, y=a.y+(b.y-a.y)*t; const dx=b.x-a.x, dy=b.y-a.y; const len=Math.hypot(dx,dy)||1; return {x:x+(-dy/len)*offset, y:y+(dx/len)*offset}; }
+  class NoteGraphForce {
+    constructor(dom, graph, options){
+      this.dom=dom; this.options=options||{}; this.small=!!this.options.small; this.selected=null; this.hover=null; this.scale=1; this.tx=0; this.ty=0; this.dragNode=null; this.dragCanvas=false; this.last={x:0,y:0}; this.running=true;
+      this.canvas=document.createElement('canvas'); this.canvas.className='离线图谱Canvas'; this.ctx=this.canvas.getContext('2d'); dom.innerHTML=''; dom.appendChild(this.canvas);
+      this.resize(); this.setData(graph||{}); this.bind(); this.fitView(false); this.start();
+    }
+    resize(){ const dpr=window.devicePixelRatio||1; const r=this.dom.getBoundingClientRect(); this.w=Math.max(360, r.width||900); this.h=Math.max(this.small?220:560, r.height||(this.small?240:650)); this.canvas.style.width=this.w+'px'; this.canvas.style.height=this.h+'px'; this.canvas.width=this.w*dpr; this.canvas.height=this.h*dpr; this.ctx.setTransform(dpr,0,0,dpr,0,0); }
+    setData(graph){
+      const rawNodes=[...(graph.nodes||[])].slice(0,this.options.limit||240); const ids=new Set(rawNodes.map(n=>n.id)); const rawEdges=[...((graph.visible_edges&&graph.visible_edges.length?graph.visible_edges:graph.edges)||[])].filter(e=>ids.has(e.source)&&ids.has(e.target)).slice(0,(this.options.limit||240)*2);
+      const groups={agent:0,skill:1,tool:2,workflow:3,part:4,rule:5,document:6,note:7}; const R=Math.min(this.w,this.h)*(this.small?.25:.36); const cx=this.w/2, cy=this.h/2;
+      this.nodes=rawNodes.map((n,i)=>{ const k=kindOf(n.kind); const a=(groups[k]/8)*Math.PI*2 + (i%17)*0.035; const rr=R*(0.45+((i%11)/16)); return {id:n.id,label:short(n.title||n.id,this.small?8:16),title:n.title||n.id,kind:n.kind||'Note',type:k,status:n.status||'',maturity:n.maturity||'',x:cx+Math.cos(a)*rr+(Math.random()-.5)*40,y:cy+Math.sin(a)*rr+(Math.random()-.5)*40,vx:0,vy:0,r:(KIND[k]||KIND.note).r*(this.small?.72:1)}; });
+      this.nodeMap=new Map(this.nodes.map(n=>[n.id,n])); this.edges=rawEdges.map((e,i)=>({id:e.edge_id||'e'+i,source:e.source,target:e.target,predicate:e.predicate||'',kind:e.kind||'',status:e.status||'',a:this.nodeMap.get(e.source),b:this.nodeMap.get(e.target)})).filter(e=>e.a&&e.b);
+      this.neighbor=new Map(); this.nodes.forEach(n=>this.neighbor.set(n.id,new Set([n.id]))); this.edges.forEach(e=>{this.neighbor.get(e.source)?.add(e.target); this.neighbor.get(e.target)?.add(e.source);}); this.iter=0;
+    }
+    bind(){
+      window.addEventListener('resize',()=>{ if(!this.running)return; this.resize(); this.draw(); });
+      this.canvas.addEventListener('wheel',e=>{ e.preventDefault(); const old=this.scale; const delta=e.deltaY>0?.9:1.1; const ns=clamp(old*delta,.2,3); const p=this.screenToWorld(e.offsetX,e.offsetY); this.scale=ns; this.tx=e.offsetX-p.x*ns; this.ty=e.offsetY-p.y*ns; this.draw(); },{passive:false});
+      this.canvas.addEventListener('mousedown',e=>{ const n=this.hit(e.offsetX,e.offsetY); this.last={x:e.offsetX,y:e.offsetY}; if(n){this.dragNode=n; n.fixed=true;} else {this.dragCanvas=true;} });
+      this.canvas.addEventListener('mousemove',e=>{ const p=this.screenToWorld(e.offsetX,e.offsetY); if(this.dragNode){this.dragNode.x=p.x; this.dragNode.y=p.y; this.dragNode.vx=0; this.dragNode.vy=0; this.draw(); return;} if(this.dragCanvas){this.tx+=e.offsetX-this.last.x; this.ty+=e.offsetY-this.last.y; this.last={x:e.offsetX,y:e.offsetY}; this.draw(); return;} const h=this.hit(e.offsetX,e.offsetY); if(h!==this.hover){this.hover=h; this.canvas.style.cursor=h?'pointer':'grab'; this.draw();} });
+      this.canvas.addEventListener('mouseup',()=>{ if(this.dragNode)this.dragNode.fixed=false; this.dragNode=null; this.dragCanvas=false; });
+      this.canvas.addEventListener('mouseleave',()=>{this.dragNode=null; this.dragCanvas=false; this.hover=null; this.draw();});
+      this.canvas.addEventListener('click',e=>{ const n=this.hit(e.offsetX,e.offsetY); if(n){ this.selectNode(n.id); this.options.onSelect&&this.options.onSelect(n.id); } else { this.clear(); this.options.onClear&&this.options.onClear(); } });
+    }
+    screenToWorld(x,y){return {x:(x-this.tx)/this.scale,y:(y-this.ty)/this.scale};}
+    worldToScreen(x,y){return {x:x*this.scale+this.tx,y:y*this.scale+this.ty};}
+    hit(x,y){ const p=this.screenToWorld(x,y); for(let i=this.nodes.length-1;i>=0;i--){ const n=this.nodes[i]; if(Math.hypot(p.x-n.x,p.y-n.y)<n.r+8) return n; } return null; }
+    start(){ const loop=()=>{ if(!this.running)return; if(this.iter<420){ this.step(); this.iter++; } this.draw(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+    relayout(){ this.iter=0; this.nodes.forEach((n,i)=>{ n.vx+=(Math.random()-.5)*8; n.vy+=(Math.random()-.5)*8; n.fixed=false; }); }
+    step(){ const cx=this.w/2, cy=this.h/2; const alpha=Math.max(.02, .75*(1-this.iter/430));
+      for(let i=0;i<this.nodes.length;i++){ const a=this.nodes[i]; for(let j=i+1;j<this.nodes.length;j++){ const b=this.nodes[j]; let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+.01; const f=(this.small?900:2200)/d2*alpha; const d=Math.sqrt(d2); dx/=d; dy/=d; a.vx+=dx*f; a.vy+=dy*f; b.vx-=dx*f; b.vy-=dy*f; }}
+      this.edges.forEach(e=>{ const a=e.a,b=e.b; const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1; const target=this.small?72:135; const f=(d-target)*0.012*alpha; const nx=dx/d,ny=dy/d; a.vx+=nx*f; a.vy+=ny*f; b.vx-=nx*f; b.vy-=ny*f; });
+      this.nodes.forEach((n)=>{ if(!n.fixed){ n.vx+=(cx-n.x)*0.002*alpha; n.vy+=(cy-n.y)*0.002*alpha; n.vx*=0.86; n.vy*=0.86; n.x+=n.vx; n.y+=n.vy; }});
+    }
+    fitView(animated=true){ if(!this.nodes.length){this.scale=1;this.tx=0;this.ty=0;return;} let minx=Infinity,miny=Infinity,maxx=-Infinity,maxy=-Infinity; this.nodes.forEach(n=>{minx=Math.min(minx,n.x-n.r);maxx=Math.max(maxx,n.x+n.r);miny=Math.min(miny,n.y-n.r);maxy=Math.max(maxy,n.y+n.r);}); const pad=this.small?30:90; const sx=(this.w-pad*2)/Math.max(1,maxx-minx); const sy=(this.h-pad*2)/Math.max(1,maxy-miny); this.scale=clamp(Math.min(sx,sy),.25,1.8); this.tx=(this.w-(minx+maxx)*this.scale)/2; this.ty=(this.h-(miny+maxy)*this.scale)/2; this.draw(); }
+    selectNode(id){ this.selected=id; this.draw(); }
+    clear(){ this.selected=null; this.draw(); }
+    opacityFor(id){ if(!this.selected) return 1; const set=this.neighbor.get(this.selected); return set&&set.has(id)?1:.08; }
+    edgeOpacity(e){ if(!this.selected) return String(e.kind).toLowerCase()==='linked'?.16:.56; return (e.source===this.selected||e.target===this.selected)?.92:.035; }
+    drawShape(n, alpha){ const ctx=this.ctx, st=KIND[n.type]||KIND.note; ctx.save(); ctx.globalAlpha=alpha; ctx.shadowColor=st.c; ctx.shadowBlur=this.hover===n||this.selected===n.id?30:12; ctx.fillStyle=st.c; ctx.strokeStyle=st.s; ctx.lineWidth=this.selected===n.id?4:2; ctx.beginPath(); const r=n.r; if(st.shape==='diamond'){ctx.moveTo(n.x,n.y-r);ctx.lineTo(n.x+r,n.y);ctx.lineTo(n.x,n.y+r);ctx.lineTo(n.x-r,n.y);ctx.closePath();} else if(st.shape==='hex'){for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3; const x=n.x+Math.cos(a)*r, y=n.y+Math.sin(a)*r; i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.closePath();} else if(st.shape==='round'){ctx.roundRect(n.x-r*1.18,n.y-r*.72,r*2.36,r*1.44,10);} else if(st.shape==='tag'){ctx.roundRect(n.x-r,n.y-r*.66,r*2,r*1.32,6); ctx.moveTo(n.x+r*.65,n.y-r*.66);ctx.lineTo(n.x+r,n.y);ctx.lineTo(n.x+r*.65,n.y+r*.66);} else if(st.shape==='doc'){ctx.roundRect(n.x-r*.8,n.y-r,r*1.6,r*2,5); ctx.moveTo(n.x+r*.25,n.y-r);ctx.lineTo(n.x+r*.8,n.y-r*.45);ctx.lineTo(n.x+r*.25,n.y-r*.45);} else {ctx.arc(n.x,n.y,r,0,Math.PI*2);} ctx.fill(); ctx.stroke(); ctx.shadowBlur=0; ctx.fillStyle='#fff'; ctx.font=`700 ${Math.max(10,n.r*.58)}px Inter, sans-serif`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText((n.kind||'N').slice(0,1).toUpperCase(),n.x,n.y+1); ctx.restore(); }
+    draw(){ const ctx=this.ctx; ctx.clearRect(0,0,this.w,this.h); const g=ctx.createLinearGradient(0,0,this.w,this.h); g.addColorStop(0,'#07111f'); g.addColorStop(.55,'#0b1220'); g.addColorStop(1,'#111827'); ctx.fillStyle=g; ctx.fillRect(0,0,this.w,this.h); ctx.save(); ctx.translate(this.tx,this.ty); ctx.scale(this.scale,this.scale);
+      this.edges.forEach(e=>{ const a=e.a,b=e.b; const alpha=this.edgeOpacity(e); const kind=String(e.kind||'').toLowerCase(); const col=kind==='runtime'?'#22d3ee':kind==='inferred'?'#c084fc':kind==='linked'?'#64748b':'#94a3b8'; ctx.save(); ctx.globalAlpha=alpha; ctx.strokeStyle=col; ctx.lineWidth=(kind==='runtime'?2.5:kind==='linked'?.65:1.15)/this.scale; if(kind==='linked')ctx.setLineDash([5/this.scale,5/this.scale]); if(kind==='inferred')ctx.setLineDash([2/this.scale,5/this.scale]); const dx=b.x-a.x,dy=b.y-a.y; const off=clamp(Math.hypot(dx,dy)*.08,10,46); const m=curvePoint(a,b,.5,off); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.quadraticCurveTo(m.x,m.y,b.x,b.y); ctx.stroke(); ctx.restore(); });
+      this.nodes.forEach(n=>this.drawShape(n,this.opacityFor(n.id)));
+      this.nodes.forEach(n=>{ const alpha=this.opacityFor(n.id); if(alpha<.12)return; ctx.save(); ctx.globalAlpha=alpha; ctx.font=`700 ${this.small?10:12}px Inter, sans-serif`; ctx.textAlign='center'; ctx.textBaseline='top'; ctx.fillStyle='#e5e7eb'; ctx.strokeStyle='#020617'; ctx.lineWidth=4/this.scale; ctx.strokeText(n.label,n.x,n.y+n.r+8); ctx.fillText(n.label,n.x,n.y+n.r+8); ctx.restore(); });
+      ctx.restore();
+      if(this.hover){ const p=this.worldToScreen(this.hover.x,this.hover.y); ctx.save(); ctx.fillStyle='rgba(15,23,42,.88)'; ctx.strokeStyle='rgba(148,163,184,.45)'; ctx.lineWidth=1; const w=260,h=72,x=clamp(p.x+18,10,this.w-w-10),y=clamp(p.y+18,10,this.h-h-10); ctx.roundRect(x,y,w,h,14); ctx.fill(); ctx.stroke(); ctx.fillStyle='#f8fafc'; ctx.font='700 13px Inter, sans-serif'; ctx.fillText(short(this.hover.title,28),x+16,y+18); ctx.fillStyle='#93c5fd'; ctx.font='11px ui-monospace, monospace'; ctx.fillText(this.hover.id,x+16,y+40); ctx.fillStyle='#cbd5e1'; ctx.font='11px Inter, sans-serif'; ctx.fillText(`${this.hover.kind} · ${this.hover.status||'未标注'}`,x+16,y+59); ctx.restore(); }
+    }
+    destroy(){ this.running=false; this.dom.innerHTML=''; }
+  }
+  window.NoteGraphForce = {
+    version:'0.1.0-local-offline',
+    mount(dom, graph, options){ return new NoteGraphForce(dom, graph, options||{}); }
+  };
+})();
+
+
+const api = (window.NoteGraph && window.NoteGraph.api) || (window.图谱百科 && window.图谱百科.api) || (window.GraphPedia && window.GraphPedia.api);
+if (!api) { throw new Error('前端 API 未初始化：请确认 api.js 已在 app.js 之前加载。'); }
+
+const 状态 = {
+  查询: '',
+  激活词条: { kind: [], domain: [], relation: [], status: [], repo: [], issue: [] },
+  最近搜索: null,
+  当前Note: '',
+  当前仓库: 'team.default',
+  当前模式: 'schema.part_design',
+  当前问题: null,
+  当前选中节点: null,
+  图谱库状态: '离线图谱组件准备中',
+  图谱布局: 'force',
+  图谱实例: null,
+  图谱实例表: {},
+  当前图谱: null,
+  当前笔记列表: [],
+  当前激活邻居: [],
+};
+
+const 取 = (id) => document.getElementById(id);
+const 转义 = (v) => String(v ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+const 截断 = (v, n = 96) => { const s = String(v ?? ''); return s.length > n ? s.slice(0, n - 1) + '…' : s; };
+const 编码 = encodeURIComponent;
+const JSON文本 = (v) => 转义(JSON.stringify(v, null, 2));
+const 唯一 = (arr) => [...new Set((arr || []).filter(Boolean))];
+function 跳转(hash) { location.hash = hash; }
+function 参数() { return new URLSearchParams((location.hash.split('?')[1] || '').trim()); }
+function 页面名() {
+  const h = location.hash || '#/';
+  if (h.startsWith('#/note')) return '笔记详情';
+  if (h.startsWith('#/repo')) return '记事本';
+  if (h.startsWith('#/governance')) return '审核治理';
+  return '图谱百科';
+}
+function 页面副标题() {
+  const name = 页面名();
+  if (name === '图谱百科') return '用一个页面完成检索、图谱索引、百科阅读和问题定位。';
+  if (name === '记事本') return '以记事本组织系统内置笔记、团队资料和用户临时文件；每个笔记仍然进入 note.md 详情治理。';
+  if (name === '审核治理') return '健康检查优先，集中处理冲突、缺证据、断链、待审核和修复建议。';
+  return '以 note.md 为主体，治理版本、关系、证据和局部图谱。';
+}
+function 提示(text) {
+  const node = document.createElement('div');
+  node.className = '提示';
+  node.textContent = text;
+  document.body.appendChild(node);
+  setTimeout(() => node.remove(), 2400);
+}
+function 空状态(text = '暂无数据') { return `<div class="空状态"><span>∅</span><p>${转义(text)}</p></div>`; }
+function 加载(text = '正在加载...') { 渲染外壳(`<div class="加载"><span class="加载点"></span><p>${转义(text)}</p></div>`); }
+function 指标(label, value, hint = '') { return `<div class="指标"><span>${转义(label)}</span><b>${转义(value)}</b>${hint ? `<small>${转义(hint)}</small>` : ''}</div>`; }
+function 标签(text, cls = '') { return `<span class="标签 ${cls}">${转义(text || '未标注')}</span>`; }
+function 按钮(label, onclick, cls = '次要') { return `<button class="按钮 ${cls}" onclick="${onclick}">${转义(label)}</button>`; }
+function note链接(id) { return `#/note?id=${编码(id || '')}`; }
+function 仓库相对路径(path, scope) {
+  const p = String(path || '').replaceAll('\\', '/').replace(/^\/+/, '');
+  if (scope === 'team' && p.startsWith('data/workbench/team/')) return p.slice('data/workbench/team/'.length);
+  if (scope === 'user' && p.startsWith('data/workbench/user/')) return p.slice('data/workbench/user/'.length);
+  return '';
+}
+
+function 渲染外壳(main, side = '', topExtra = '') {
+  document.title = 页面名() + ' · NoteGraph';
+  const h = location.hash || '#/';
+  const nav = [
+    ['#/', '图谱百科', '统一检索与图谱索引', '◈'],
+    ['#/repo', '记事本', '系统笔记、源文件、软模式', '▦'],
+    ['#/governance', '审核治理', '健康检查与修复', '◎'],
+  ];
+  取('root').innerHTML = `<div class="应用壳">
+    <aside class="侧栏">
+      <div class="品牌" onclick="跳转('#/')"><div class="品牌标记">N</div><div><strong>NoteGraph</strong><span>笔记图谱 · 原子动作</span></div></div>
+      <nav>${nav.map(([href, label, desc, icon]) => `<a href="${href}" class="${(href === '#/' ? h === '#/' || h.startsWith('#/?') : h.startsWith(href)) ? '激活' : ''}"><i>${icon}</i><b>${label}</b><small>${desc}</small></a>`).join('')}</nav>
+      <div class="侧栏说明"><b>四步闭环</b><span>图谱检索 → 笔记详情 → 仓库更新 → 健康治理</span></div>
+    </aside>
+    <main class="主区">
+      <header class="顶栏"><div><div class="路径标识">NoteGraph 原子系统</div><h1>${转义(页面名())}</h1><p>${转义(页面副标题())}</p></div>${topExtra || ''}</header>
+      <div class="内容网格 ${side ? '' : '单栏'}"><section class="主要内容">${main}</section>${side ? `<aside class="右栏">${side}</aside>` : ''}</div>
+    </main>
+  </div>`;
+}
+
+function 取节点类别(kind) {
+  const k = String(kind || 'Note').toLowerCase();
+  if (k.includes('agent')) return 'agent';
+  if (k.includes('skill')) return 'skill';
+  if (k.includes('tool')) return 'tool';
+  if (k.includes('workflow')) return 'workflow';
+  if (k.includes('part')) return 'part';
+  if (k.includes('rule') || k.includes('policy')) return 'rule';
+  if (k.includes('document') || k.includes('case') || k.includes('sop')) return 'document';
+  return 'note';
+}
+function 图谱渲染状态() {
+  if (window.NoteGraphForce && window.NoteGraphForce.mount) {
+    状态.图谱库状态 = '离线高质量力导向图谱已启用';
+    return true;
+  }
+  状态.图谱库状态 = '离线图谱组件未加载';
+  return false;
+}
+function G6节点样式(kind, small = false) {
+  const type = 取节点类别(kind);
+  const table = {
+    agent: ['#8b5cf6', '#ddd6fe', 50], skill: ['#06b6d4', '#cffafe', 42], tool: ['#f59e0b', '#fde68a', 46], workflow: ['#fb7185', '#ffe4e6', 44], part: ['#10b981', '#bbf7d0', 48], rule: ['#64748b', '#e2e8f0', 40], document: ['#38bdf8', '#dbeafe', 38], note: ['#3b82f6', '#bfdbfe', 36],
+  };
+  const [fill, stroke, size] = table[type] || table.note;
+  return { size: small ? Math.max(20, size - 14) : size, style: { fill, stroke } };
+}
+function G6图谱数据(graph, limit = 220, small = false) {
+  const sortedNodes = [...(graph.nodes || [])]
+    .sort((a, b) => String(a.kind || '').localeCompare(String(b.kind || '')) || String(a.id).localeCompare(String(b.id)))
+    .slice(0, limit);
+  const nodeIds = new Set(sortedNodes.map((n) => n.id));
+  const edgeSource = graph.visible_edges && graph.visible_edges.length ? graph.visible_edges : graph.edges || [];
+  const edges = edgeSource.filter((e) => nodeIds.has(e.source) && nodeIds.has(e.target)).slice(0, limit * 2);
+  return { ...graph, nodes: sortedNodes, edges, visible_edges: edges };
+}
+function 开源图谱加载失败(dom) {
+  dom.innerHTML = `<div class="开源图谱失败"><b>离线图谱组件未加载</b><p>请确认 <code>assets/graphin_offline.js</code> 已包含在 <code>web/src/manifest.json</code> 中，并重新执行 <code>python scripts/build_web.py</code>。</p></div>`;
+}
+async function 挂载图谱(domId, graph, options = {}) {
+  const dom = 取(domId);
+  if (!dom) return;
+  const ok = 图谱渲染状态();
+  dom.innerHTML = '';
+  if (!ok || !window.NoteGraphForce || !window.NoteGraphForce.mount) {
+    开源图谱加载失败(dom);
+    return;
+  }
+  if (状态.图谱实例表[domId]) { try { 状态.图谱实例表[domId].destroy(); } catch (e) { /* ignore */ } }
+  const data = G6图谱数据(graph, options.limit || 220, !!options.small);
+  const inst = window.NoteGraphForce.mount(dom, data, {
+    ...options,
+    onSelect: (id) => 激活图谱节点(id),
+    onClear: () => 清空图谱激活(),
+  });
+  状态.图谱实例表[domId] = inst;
+  if (domId === '主图谱') 状态.图谱实例 = inst;
+  if (!options.small && 状态.当前选中节点) setTimeout(() => 应用图谱激活(状态.当前选中节点), 80);
+}
+
+function 笔记卡片(note, reason = '') {
+  const id = note.note_id || note.id || note.page_id || '';
+  return `<article class="知识卡片" onclick="跳转('${note链接(id)}')">
+    <div class="卡片头"><strong>${转义(note.title || id)}</strong>${标签(note.kind || 'Note', '类型')}</div>
+    <p>${转义(截断(note.summary || '暂无摘要', 150))}</p>
+    <div class="卡片脚"><code>${转义(id)}</code><span>${转义(note.status || '')} / ${转义(note.maturity || '')}</span></div>
+    ${reason ? `<small>${转义(reason)}</small>` : ''}
+  </article>`;
+}
+function 下拉词条组(key, label, items) {
+  const active = new Set(状态.激活词条[key] || []);
+  const rows = items.map((item) => `<button class="词条选项 ${active.has(item) ? '选中' : ''}" onclick="切换词条('${key}', '${转义(item)}')"><span>${active.has(item) ? '✓' : '+'}</span>${转义(item)}</button>`).join('');
+  const count = active.size ? ` ${active.size}` : '';
+  return `<details class="词条下拉"><summary>${转义(label)}<em>${count}</em></summary><div class="词条面板">${rows}</div></details>`;
+}
+function 图谱查节点(id) {
+  return (状态.当前图谱?.nodes || []).find((n) => n.id === id || n.note_id === id) || null;
+}
+function 图谱查笔记(id) {
+  return (状态.当前笔记列表 || []).find((n) => (n.note_id || n.id || n.page_id) === id) || null;
+}
+function 图谱相关边(id) {
+  const graph = 状态.当前图谱 || {};
+  const edges = graph.visible_edges && graph.visible_edges.length ? graph.visible_edges : graph.edges || [];
+  return edges.filter((e) => e.source === id || e.target === id);
+}
+function 图谱邻居节点(id) {
+  const ids = new Set(图谱相关边(id).flatMap((e) => [e.source, e.target]).filter((x) => x && x !== id));
+  return [...ids].map((nid) => 图谱查节点(nid)).filter(Boolean);
+}
+function 图谱图例(graph, notes) {
+  const edges = graph.visible_edges && graph.visible_edges.length ? graph.visible_edges : graph.edges || [];
+  const countKind = (kind) => edges.filter((e) => String(e.kind || '').toLowerCase() === kind).length;
+  return `<div class="图谱图例">
+    <div class="图例标题"><b>图谱画板</b><span>${转义(状态.图谱库状态)} · 力导向</span></div>
+    <div class="图例统计"><span>节点 <b>${graph.nodes?.length || 0}</b></span><span>关系 <b>${edges.length}</b></span><span>笔记 <b>${notes.length}</b></span><span>问题 <b>${graph.diagnostics?.length || 0}</b></span></div>
+    <div class="图例行"><i class="点 agent"></i>智能体 <i class="点 skill"></i>技能 <i class="点 tool"></i>工具 <i class="点 part"></i>零部件</div>
+    <div class="图例行"><i class="线 declared"></i>声明 ${countKind('declared')} <i class="线 runtime"></i>运行 ${countKind('runtime')} <i class="线 inferred"></i>推断 ${countKind('inferred')} <i class="线 linked"></i>链接 ${countKind('linked')}</div>
+    <div class="图例提示">单击节点只激活局部邻域；右侧卡片负责打开详情。</div>
+  </div>`;
+}
+function 搜索选项栏(facets = {}) {
+  const kinds = 唯一(['Agent', 'Skill', 'Tool', 'Workflow', 'Part', 'Parameter', 'Rule', 'SOP', 'Case', 'Document', ...(facets.kind || []).map((x) => x.value)]);
+  return `<div class="选项栏">
+    ${下拉词条组('kind', '对象类型', kinds)}
+    ${下拉词条组('domain', '业务域', ['连杆', '曲轴', '凸轮轴', 'NX', '数据库', '参数化设计', '报告生成', '设计校核'])}
+    ${下拉词条组('relation', '关系类型', ['uses', 'can_activate', 'depends_on', 'constrains', 'derived_from', 'produces', 'references', 'implements', 'configured_by'])}
+    ${下拉词条组('status', '状态', ['published', 'draft', 'candidate', 'conflict', 'deprecated', 'runtime_ready', 'missing_evidence'])}
+    ${下拉词条组('repo', '仓库', ['智能体仓库', '团队仓库', '用户临时仓库', '系统配置'])}
+    ${下拉词条组('issue', '质量问题', ['缺 Evidence', '缺 Relations', '断链', '冲突', '重复 note_id', 'runtime_ready 失败', '软模式 推荐字段缺失'])}
+  </div><div class="已激活选项">${Object.entries(状态.激活词条).flatMap(([k, arr]) => arr.map((v) => `<button onclick="切换词条('${k}', '${转义(v)}')">${转义(v)} ×</button>`)).join('') || '<span>选择下拉选项进行检索增强</span>'}</div>`;
+}
+function 渲染激活结果(id) {
+  const box = 取('百科结果内容');
+  const title = 取('右侧结果标题');
+  const graph = 状态.当前图谱 || {};
+  const node = 图谱查节点(id) || {};
+  const note = 图谱查笔记(id) || { note_id: id, id, title: node.title || node.full || id, kind: node.kind || 'Note', status: node.status || '', maturity: node.maturity || '', summary: node.summary || '该节点来自图谱索引，点击下方按钮进入 note.md 详情。' };
+  const edges = 图谱相关边(id);
+  const neighbors = 图谱邻居节点(id).slice(0, 12).map((n) => ({ note_id: n.id, id: n.id, title: n.title || n.id, kind: n.kind || 'Note', status: n.status || '', maturity: n.maturity || '' }));
+  if (title) title.innerHTML = `<h3>已激活笔记</h3><span>${转义(id)}</span>`;
+  if (!box) return;
+  box.innerHTML = `<article class="激活笔记卡">
+    <div class="节点详情卡"><div class="节点徽标 ${取节点类别(note.kind)}">${转义(String(note.kind || 'N').slice(0, 1))}</div><div><h3>${转义(note.title || id)}</h3><code>${转义(id)}</code></div></div>
+    <p>${转义(截断(note.summary || '暂无摘要', 180))}</p>
+    <div class="标签行">${标签(note.kind || 'Note', '类型')}${标签(note.status || '', '状态')}${标签(note.maturity || '', '成熟度')}</div>
+    <div class="操作组"><button class="按钮 主要" onclick="跳转('${note链接(id)}')">打开 note.md 详情</button><button class="按钮 次要" onclick="清空图谱激活()">清除激活</button></div>
+  </article>
+  <div class="区块标题 小标题"><h3>局部关系</h3><span>${edges.length} 条</span></div>
+  ${edges.slice(0, 10).map((e) => `<div class="关系项"><b>${转义(e.source)}</b><span>${转义(e.predicate || e.kind || '关联')}</span><b>${转义(e.target)}</b></div>`).join('') || 空状态('暂无关系')}
+  <div class="区块标题 小标题"><h3>邻近笔记</h3><span>${neighbors.length} 个</span></div>
+  ${neighbors.map((n) => 笔记卡片(n)).join('') || 空状态('暂无邻居')}`;
+}
+function 应用图谱激活(id) {
+  const g = 状态.图谱实例;
+  if (g && g.selectNode) g.selectNode(id);
+}
+window.激活图谱节点 = (id) => {
+  状态.当前选中节点 = id;
+  应用图谱激活(id);
+  渲染激活结果(id);
+};
+window.清空图谱激活 = () => {
+  状态.当前选中节点 = null;
+  const g = 状态.图谱实例;
+  if (g && g.clear) g.clear();
+  const title = 取('右侧结果标题');
+  const box = 取('百科结果内容');
+  if (title) title.innerHTML = `<h3>百科结果</h3><span>${(状态.当前笔记列表 || []).length} 条</span>`;
+  if (box) box.innerHTML = (状态.当前笔记列表 || []).map((n) => 笔记卡片(n)).join('') || 空状态('没有匹配的笔记');
+};
+window.选择后备节点 = (id) => { 激活图谱节点(id); };
+
+async function 渲染图谱百科() {
+  const q = 参数().get('q');
+  if (q !== null) 状态.查询 = q;
+  加载('正在进行图谱式 + 百科式混合检索...');
+  const filters = { ...状态.激活词条 };
+  const data = await api.note.search({ query: 状态.查询, filters, include_hidden: true, limit: 140 });
+  状态.最近搜索 = data;
+  const notes = data.notes || [];
+  const graph = data.graph || { nodes: [], edges: [], diagnostics: [] };
+  状态.当前图谱 = graph;
+  状态.当前笔记列表 = notes;
+  const main = `<section class="检索头 图谱检索台">
+    <div class="搜索框"><input id="统一搜索框" value="${转义(状态.查询)}" placeholder="检索 note、参数、工具、关系、文件与问题节点..."/><button class="按钮 主要" onclick="执行搜索()">检索图谱</button></div>
+    <div class="搜索说明">搜索框、下拉选项和已激活选项共同组成一次图谱检索。</div>
+    ${搜索选项栏(data.facets || {})}
+  </section>
+  <section class="图谱百科布局">
+    <div class="图谱面板"><div class="图谱工具条"><div><b>离线力导向图谱</b><span id="图谱状态">${转义(状态.图谱库状态)}</span></div><div>${按钮('全量重建', '全量重建图谱()', '幽灵')}${按钮('重排力图', '重排图谱()', '幽灵')}${按钮('适配视图', '适配图谱()', '幽灵')}</div></div><div class="图谱画布包装"><div id="主图谱" class="开源图谱画布"></div>${图谱图例(graph, notes)}</div></div>
+    <aside class="百科结果"><div class="区块标题" id="右侧结果标题"><h3>百科结果</h3><span>${notes.length} 条</span></div><div id="百科结果内容">${notes.map((n) => 笔记卡片(n)).join('') || 空状态('没有匹配的笔记')}</div><div class="右侧提示">图谱节点只负责激活局部范围；从这里点击卡片进入笔记详情。</div></aside>
+  </section>
+  <section class="图谱问题条"><b>问题摘要</b>${(graph.diagnostics || []).slice(0, 5).map((d) => `<span>${转义(d.code || '诊断')}：${转义(截断(d.message || d.note_id || '', 58))}</span>`).join('') || '<span>当前检索范围暂无明显问题</span>'}<button class="按钮 小" onclick="跳转('#/governance')">进入审核治理</button></section>`;
+  渲染外壳(main);
+  取('统一搜索框').onkeydown = (e) => { if (e.key === 'Enter') 执行搜索(); };
+  await 挂载图谱('主图谱', graph, { limit: 220 });
+  const status = 取('图谱状态'); if (status) status.textContent = 状态.图谱库状态;
+  if (状态.当前选中节点) 渲染激活结果(状态.当前选中节点);
+}
+
+window.执行搜索 = () => {
+  const input = 取('统一搜索框');
+  if (input) 状态.查询 = input.value.trim();
+  状态.当前选中节点 = null;
+  location.hash = '#/?q=' + 编码(状态.查询.trim());
+  渲染图谱百科();
+};
+window.全量重建图谱 = async () => { await api.graph.compile(true, true); 提示('图谱已全量重建'); 渲染图谱百科(); };
+window.适配图谱 = () => { if (状态.图谱实例 && 状态.图谱实例.fitView) 状态.图谱实例.fitView(); };
+window.重排图谱 = () => { if (状态.图谱实例 && 状态.图谱实例.relayout) 状态.图谱实例.relayout(); };
+
+function 渲染Markdown(md) {
+  const lines = String(md || '').split('\n');
+  return lines.map((line) => {
+    if (/^###\s+/.test(line)) return `<h3>${转义(line.replace(/^###\s+/, ''))}</h3>`;
+    if (/^##\s+/.test(line)) return `<h2>${转义(line.replace(/^##\s+/, ''))}</h2>`;
+    if (/^#\s+/.test(line)) return `<h1>${转义(line.replace(/^#\s+/, ''))}</h1>`;
+    if (/^[-*]\s+/.test(line)) return `<p class="列表项">• ${转义(line.replace(/^[-*]\s+/, ''))}</p>`;
+    if (!line.trim()) return '<br/>';
+    const html = 转义(line).replace(/\[\[([^\]]+)\]\]/g, (_, id) => `<a class="note跳转" href="${note链接(id)}">${转义(id)}</a>`);
+    return `<p>${html}</p>`;
+  }).join('');
+}
+async function 渲染笔记详情() {
+  const id = 参数().get('id') || 状态.当前Note;
+  if (!id) { 跳转('#/'); return; }
+  状态.当前笔记 = id;
+  加载('正在读取 note.md 详情...');
+  const [data, neighborData] = await Promise.all([api.note.read(id), api.graph.neighbors(id, 1).catch(() => ({ nodes: [], edges: [] }))]);
+  const note = data.note || {};
+  const markdown = data.markdown || '';
+  const history = data.history || [];
+  const diagnostics = data.diagnostics || [];
+  const graph = data.neighbors || neighborData || { nodes: [], edges: [] };
+  const front = `<div class="详情摘要"><div>${标签(note.kind, '类型')}${标签(note.status, '状态')}${标签(note.maturity, '成熟度')}</div><code>${转义(id)}</code></div>`;
+  const main = `<section class="Note标题"><div><h2>${转义(note.title || id)}</h2>${front}</div><div class="操作组">${按钮('编辑源码', '切换编辑器()', '幽灵')}${按钮('保存', `保存Note源码('${转义(id)}', false)`, '次要')}${按钮('提交审核', `提交Note审核('${转义(id)}')`, '主要')}${按钮('发布', `发布笔记('${转义(id)}')`, '幽灵')}</div></section>
+  <section class="Note详情布局"><aside class="Note目录"><a href="#摘要">摘要</a><a href="#字段">字段</a><a href="#关系">关系</a><a href="#证据">证据</a><a href="#历史">历史版本</a></aside><article class="Note正文"><div id="Note阅读区">${渲染Markdown(markdown)}</div><textarea id="Note源码" class="源码编辑 隐藏">${转义(markdown)}</textarea></article><aside class="Note治理"><h3>治理侧栏</h3>${指标('诊断问题', diagnostics.length)}${指标('历史版本', history.length)}${指标('邻居节点', graph.nodes?.length || 0)}<div id="小图谱" class="小图谱"></div><button class="按钮 次要 满宽" onclick="跳转('#/governance')">查看健康问题</button></aside></section>
+  <section class="下方标签"><details open><summary>历史版本</summary>${history.slice(0, 8).map((h) => `<div class="行"><b>${转义(h.message || h.commit_id)}</b><span>${转义(h.created_at || '')}</span><button class="按钮 小" onclick="恢复笔记('${转义(id)}','${转义(h.commit_id)}')">回退</button></div>`).join('') || 空状态('暂无历史')}</details><details><summary>诊断与冲突</summary><pre>${JSON文本(diagnostics)}</pre></details><details><summary>原始详情</summary><pre>${JSON文本(note)}</pre></details></section>`;
+  渲染外壳(main);
+  await 挂载图谱('小图谱', graph, { limit: 26, small: true });
+}
+window.切换编辑器 = () => { 取('Note阅读区')?.classList.toggle('隐藏'); 取('Note源码')?.classList.toggle('隐藏'); };
+window.保存Note源码 = async (id, commit) => { const md = 取('Note源码')?.value || ''; await api.note.save(id, md, commit, commit ? '人工保存并提交' : '人工保存草稿'); 提示(commit ? '已保存并提交版本' : '已保存 note.md'); };
+window.提交Note审核 = async (id) => { const md = 取('Note源码')?.value || ''; await api.note.proposal(id, md, 'note_patch', '从详情页提交审核'); 提示('已创建待审核 Proposal'); };
+window.发布笔记 = async (id) => { await api.note.publish(id, 'projectable'); 提示('已发布笔记'); 渲染笔记详情(); };
+window.恢复笔记 = async (id, commit) => { if (!confirm('确认回退该笔记到选中版本？')) return; await api.version.restore(id, commit); 提示('已执行回退'); 渲染笔记详情(); };
+
+// 记事本是唯一文件与配置入口；旧仓库表单已删除，避免双入口与兼容分叉。
+window.增量索引当前仓库 = async () => { await api.graph.compile(true, true); 提示('已完成当前索引更新'); };
+window.切换模式 = (id) => { 状态.当前模式 = id; 渲染模式摘要(); };
+async function 渲染模式摘要() { const box = 取('模式摘要'); if (!box) return; const data = await api.schema.read(状态.当前模式).catch(() => ({ schema: {} })); const s = data.schema || {}; box.innerHTML = `<div class="小项"><b>${转义(s.name || s.schema_id)}</b><span>${转义(s.description || '')}</span></div><h4>推荐字段</h4>${(s.recommended_fields || []).slice(0, 12).map((f) => `<div class="字段项"><span>${转义(f.name)}</span><small>${转义(f.type || 'text')}</small></div>`).join('') || 空状态('暂无推荐字段')}<h4>候选字段</h4>${(s.candidate_fields || []).slice(0, 12).map((f) => `<div class="字段项"><span>${转义(f.name)}</span><button class="按钮 小" onclick="接受字段('${转义(f.name)}')">接受</button></div>`).join('') || 空状态('暂无候选字段')}`; }
+window.发现模式字段 = async () => { await api.schema.discover(状态.当前模式, 状态.当前仓库); 提示('已自动增量发现字段'); 渲染模式摘要(); };
+window.接受字段 = async (name) => { const type = prompt('字段类型', 'text') || 'text'; await api.schema.acceptField(状态.当前模式, name, { type }); 提示('字段已加入软模式'); 渲染模式摘要(); };
+
+
+function 笔记本源定位(nb) {
+  const src = String(nb.source_path || '').replaceAll('\\', '/');
+  if (src.startsWith('data/workbench/user')) return { scope: 'user', base: src.slice('data/workbench/user'.length).replace(/^\/+/, '') };
+  if (src.startsWith('data/workbench/team')) return { scope: 'team', base: src.slice('data/workbench/team'.length).replace(/^\/+/, '') };
+  return { scope: 'team', base: src };
+}
+function 笔记本文件路径(nb, itemPath) {
+  const loc = 笔记本源定位(nb);
+  return [loc.base, itemPath || ''].filter(Boolean).join('/');
+}
+async function 渲染记事本() {
+  加载('正在打开记事本...');
+  const [nbData, schemaData] = await Promise.all([api.notebook.list().catch(() => ({ notebooks: [] })), api.schema.list().catch(() => ({ schemas: [] }))]);
+  const notebooks = nbData.notebooks || [];
+  if (!notebooks.find((x) => x.notebook_id === 状态.当前仓库) && notebooks[0]) 状态.当前仓库 = notebooks[0].notebook_id;
+  const currentId = 状态.当前仓库 || (notebooks[0] && notebooks[0].notebook_id) || '';
+  const detail = currentId ? await api.notebook.read(currentId).catch(() => ({ notebook: null })) : { notebook: null };
+  const nb = detail.notebook || notebooks.find((x) => x.notebook_id === currentId) || {};
+  const schemas = schemaData.schemas || [];
+  const sourceLoc = 笔记本源定位(nb);
+  const schemaOptions = schemas.map((s) => `<option value="${转义(s.schema_id)}" ${s.schema_id === (nb.soft_schema_id || 状态.当前模式) ? 'selected' : ''}>${转义(s.name || s.schema_id)}</option>`).join('');
+  const cards = notebooks.map((x) => `<button class="仓库卡 ${x.notebook_id === currentId ? '选中' : ''}" onclick="选择笔记本('${转义(x.notebook_id)}')"><b>${转义(x.icon || '📒')} ${转义(x.name)}</b><span>${转义(x.notebook_type)} · ${转义(x.path)}</span><small>${转义(x.note_kind || '全部类型')} · ${x.note_count || 0} 条笔记 · 软模式：${转义(x.soft_schema_id || '无')}</small></button>`).join('');
+  const noteRows = (nb.notes || nb.notes_preview || []).map((note) => `<article class="笔记摘要卡" onclick="跳转('${note链接(note.note_id)}')"><div><b>${转义(note.title || note.note_id)}</b><span>${转义(note.kind)} · ${转义(note.status)} / ${转义(note.maturity)}</span></div><p>${转义(截断(note.summary || '暂无摘要', 150))}</p><code>${转义(note.note_id)}</code></article>`).join('') || 空状态('这个记事本暂无 note.md。');
+  const sourceFiles = (nb.source_files || []).slice(0, 80).map((f) => `<div class="文件行" onclick="打开笔记本源文件('${转义(nb.notebook_id)}','${转义(f.path)}')"><span>${f.kind === 'folder' ? '📁' : '📄'}</span><b>${转义(f.name)}</b><small>${转义(f.kind)} · ${转义(f.modified_at || '')}</small><button class="按钮 小" onclick="event.stopPropagation(); 从笔记本文件生成Note('${转义(nb.notebook_id)}','${转义(f.path)}')">生成笔记</button></div>`).join('') || 空状态('暂无源文件。可在记事本设置中上传文件或文件夹。');
+  const main = `<section class="仓库布局 记事本布局"><aside class="仓库列表"><div class="区块标题"><h3>记事本</h3><button class="按钮 小" onclick="新建笔记本()">新增</button></div>${cards || 空状态('暂无记事本')}</aside><section class="仓库主体"><section class="记事本头"><div class="记事本封面"><span>${转义(nb.icon || '📒')}</span></div><div><h2>${转义(nb.name || '未选择记事本')}</h2><p>${转义(nb.summary || nb.description || '记事本用于组织 note.md、源文件、软模式和抽取规则。')}</p><div class="标签行">${标签(nb.notebook_type || 'team', '状态')}${标签(nb.note_kind || '全部类型', '类型')}${标签(`${nb.note_count || 0} 条笔记`, '成熟度')}</div></div></section><section class="仓库表单"><label>记事本名称<input id="笔记本名称" value="${转义(nb.name || '')}"/></label><label>笔记本路径<input id="笔记本路径" value="${转义(nb.path || '')}"/></label><label>笔记类型<input id="笔记类型" value="${转义(nb.note_kind || '')}" placeholder="Agent / Skill / Toolbox / Tool"/></label><label>类型<select id="笔记本类型"><option value="builtin" ${nb.notebook_type === 'builtin' ? 'selected' : ''}>系统内置</option><option value="team" ${nb.notebook_type === 'team' ? 'selected' : ''}>团队记事本</option><option value="user" ${nb.notebook_type === 'user' ? 'selected' : ''}>用户临时</option></select></label><label>源文件路径<input id="源文件路径" value="${转义(nb.source_path || '')}"/></label><label>软模式<select id="笔记本模式" ${nb.notebook_type === 'user' ? 'disabled' : ''}>${schemaOptions}</select></label><label>抽取规则<input id="笔记本规则" value="${转义(nb.extraction_rule_id || 'rule.default')}"/></label><label>图标<input id="笔记本图标" value="${转义(nb.icon || '📒')}"/></label><div class="操作组">${按钮('保存记事本', '保存当前笔记本()', '主要')}${按钮('自动发现字段', '发现当前笔记本字段()', '次要')}${按钮('增量索引', '增量索引当前仓库()', '次要')}${按钮('全量重建', '全量重建图谱()', '幽灵')}</div></section><section class="记事本双栏"><div><div class="区块标题"><h3>笔记摘要</h3><span>点击卡片进入 note.md 详情页</span></div><div class="笔记摘要列表">${noteRows}</div></div><div><div class="区块标题"><h3>源文件</h3><div>${按钮('新建文件夹', '新建笔记本文件夹()', '幽灵')}${按钮('上传源文件 / 文件夹', '触发笔记本上传()', '主要')}</div></div><input id="笔记本源上传" type="file" multiple webkitdirectory class="隐藏"/><div class="文件列表">${sourceFiles}</div></div></section></section></section>`;
+  const side = `<section class="侧卡"><h3>详情摘要</h3><p>记事本只是组织入口；每个笔记仍然以 note.md 详情页为主，可在详情页完成编辑、审核、版本回溯和小型图谱跳转。</p>${指标('笔记数', nb.note_count || 0)}${指标('源文件', (nb.source_files || []).length)}${指标('软模式', nb.soft_schema_id || '无')}</section><section class="侧卡"><h3>当前软模式</h3><button class="按钮 次要 满宽" onclick="发现当前笔记本字段()">从当前记事本增量发现字段</button><div id="模式摘要"></div></section>`;
+  状态.当前模式 = nb.soft_schema_id || 状态.当前模式;
+  渲染外壳(main, side);
+  const upload = 取('笔记本源上传');
+  if (upload) upload.onchange = 上传笔记本源文件;
+  await 渲染模式摘要();
+}
+window.选择笔记本 = (id) => { 状态.当前仓库 = id; 渲染记事本(); };
+window.新建笔记本 = async () => { const id = prompt('请输入记事本 ID，例如 notebook.connecting_rod'); if (!id) return; await api.notebook.save({ notebook_id: id, name: id, notebook_type: 'team', path: `data/notes/custom/${id.replaceAll('.', '_')}`, note_kind: 'Document', soft_schema_id: 'schema.business_document', extraction_rule_id: 'rule.default', source_path: `data/workbench/team/notebooks/${id.replaceAll('.', '_')}/sources`, icon: '📒' }); 状态.当前仓库 = id; 渲染记事本(); };
+window.保存当前笔记本 = async () => { const nb = { notebook_id: 状态.当前仓库, name: 取('笔记本名称').value, path: 取('笔记本路径').value, note_kind: 取('笔记类型').value, notebook_type: 取('笔记本类型').value, source_path: 取('源文件路径').value, soft_schema_id: 取('笔记本模式')?.value || '', extraction_rule_id: 取('笔记本规则').value, icon: 取('笔记本图标').value || '📒' }; await api.notebook.save(nb); 提示('记事本已保存'); 渲染记事本(); };
+window.触发笔记本上传 = () => 取('笔记本源上传').click();
+async function 上传笔记本源文件(e) { const files = [...(e.target.files || [])]; if (!files.length) return; const data = await api.notebook.read(状态.当前仓库); const nb = data.notebook || {}; const loc = 笔记本源定位(nb); const rows = await Promise.all(files.map(async (file) => ({ name: file.name, relative_path: file.webkitRelativePath || file.name, content: await file.text() }))); await api.workspace.upload(loc.scope, loc.base, rows); 提示(`已上传 ${rows.length} 个源文件`); 渲染记事本(); }
+window.新建笔记本文件夹 = async () => { const name = prompt('新建源文件夹名称'); if (!name) return; const data = await api.notebook.read(状态.当前仓库); const nb = data.notebook || {}; const loc = 笔记本源定位(nb); await api.workspace.mkdir(loc.scope, [loc.base, name].filter(Boolean).join('/')); 渲染记事本(); };
+window.打开笔记本源文件 = async (notebookId, itemPath) => { const data = await api.notebook.read(notebookId); const nb = data.notebook || {}; const loc = 笔记本源定位(nb); const full = 笔记本文件路径(nb, itemPath); const payload = await api.workspace.read(loc.scope, full); const content = prompt(`编辑源文件：${itemPath}`, payload.content || ''); if (content !== null) { await api.workspace.write(loc.scope, full, content); 提示('源文件已保存'); 渲染记事本(); } };
+window.从笔记本文件生成Note = async (notebookId, itemPath) => { const data = await api.notebook.read(notebookId); const nb = data.notebook || {}; const loc = 笔记本源定位(nb); const full = 笔记本文件路径(nb, itemPath); await api.note.fromFile(loc.scope, full, nb.note_kind || 'Document', 'proposal'); 提示('已从源文件生成 note 候选'); };
+window.发现当前笔记本字段 = async () => { const data = await api.notebook.read(状态.当前仓库); const nb = data.notebook || {}; const schema = nb.soft_schema_id || 状态.当前模式; if (!schema) return 提示('用户临时记事本不绑定软模式'); 状态.当前模式 = schema; await api.schema.discover(schema, 状态.当前仓库); 提示('已从当前记事本增量发现字段'); 渲染模式摘要(); };
+
+async function 渲染审核治理() {
+  加载('正在执行健康检查...');
+  const [dashboard, issues] = await Promise.all([api.governance.dashboard().catch(() => ({})), api.governance.issues().catch(() => ({ issues: [] }))]);
+  const rows = issues.issues || [];
+  const main = `<section class="治理总览"><div class="指标网格">${指标('待审核', dashboard.proposals?.candidate || 0)}${指标('冲突项', dashboard.conflicts?.count || 0)}${指标('诊断问题', dashboard.graph?.diagnostics || rows.length)}${指标('图谱节点', dashboard.graph?.nodes || 0)}</div></section><section class="治理布局"><aside class="问题列表">${rows.map((x) => `<button class="问题卡 ${x.severity}" onclick="查看问题('${转义(x.issue_id)}')"><b>${转义(x.title)}</b><span>${转义(截断(x.summary, 120))}</span><small>${转义(x.code)} · ${转义(x.risk_level)}</small></button>`).join('') || 空状态('暂无健康问题')}</aside><section class="问题详情" id="问题详情"><h3>问题摘要</h3><p>选择左侧问题节点查看摘要、Diff、影响分析和修复建议。</p></section></section>`;
+  const side = `<section class="侧卡"><h3>批量治理</h3><p>低风险项可按建议批量处理；涉及 note_id、执行器、删除、回退的高风险项必须逐项确认。</p><button class="按钮 主要 满宽" onclick="批量接受候选()">批量接受候选</button><button class="按钮 次要 满宽" onclick="全量重建图谱()">重新健康检查</button></section><section class="侧卡"><h3>版本状态</h3><pre>${JSON文本(dashboard.version || {})}</pre></section>`;
+  渲染外壳(main, side);
+  window.__当前问题 = rows;
+}
+window.查看问题 = async (issueId) => { const issue = (window.__当前问题 || []).find((x) => x.issue_id === issueId) || {}; const box = 取('问题详情'); if (!box) return; let proposalDetail = ''; if (issue.kind === 'proposal' && issue.issue_id?.startsWith('proposal:')) { const pid = issue.issue_id.split(':')[1]; try { const data = await api.governance.proposal(pid); proposalDetail = `<h4>Diff 预览</h4><pre>${JSON文本(data.diff || {})}</pre><h4>影响分析</h4><pre>${JSON文本(data.impact || {})}</pre>`; } catch (e) { proposalDetail = `<p>${转义(e.message)}</p>`; } } box.innerHTML = `<h3>${转义(issue.title || '健康问题')}</h3><p>${转义(issue.summary || '')}</p><div class="标签行">${标签(issue.severity, '状态')}${标签(issue.risk_level, '成熟度')}${标签(issue.kind, '类型')}</div><h4>修复建议</h4><p>${转义(issue.suggestion || '查看详情后生成修复 Proposal。')}</p><div class="操作组"><button class="按钮 主要" onclick="智能修复('${转义(issue.issue_id)}')">按建议智能处理</button>${issue.note_id ? `<button class="按钮 次要" onclick="跳转('${note链接(issue.note_id)}')">打开笔记</button>` : ''}</div>${proposalDetail}<h4>原始问题</h4><pre>${JSON文本(issue.details || issue)}</pre>`; };
+window.智能修复 = async (issueId) => { const mode = confirm('是否直接接受/应用可处理候选？取消则仅生成修复建议。') ? 'accept' : 'proposal'; const res = await api.governance.applyFix(issueId, mode); 提示(res.status === 'accepted' ? '已按建议接受候选' : '已生成修复建议'); 渲染审核治理(); };
+window.批量接受候选 = async () => { const rows = (window.__当前问题 || []).filter((x) => x.kind === 'proposal' && x.issue_id.startsWith('proposal:')).map((x) => x.issue_id.split(':')[1]); if (!rows.length) return 提示('没有可批量接受的候选'); await api.governance.review(rows, 'accepted', '低风险批量接受'); 提示(`已接受 ${rows.length} 个候选`); 渲染审核治理(); };
+
+async function renderCurrent() {
+  try {
+    const h = location.hash || '#/';
+    if (h.startsWith('#/note')) return 渲染笔记详情();
+    if (h.startsWith('#/repo')) return 渲染记事本();
+    if (h.startsWith('#/governance')) return 渲染审核治理();
+    return 渲染图谱百科();
+  } catch (err) {
+    console.error(err);
+    渲染外壳(`<div class="错误"><h2>页面错误</h2><p>${转义(err.message || err)}</p><button class="按钮 主要" onclick="renderCurrent()">重试</button></div>`);
+  }
+}
+window.renderCurrent = renderCurrent;
+window.addEventListener('hashchange', renderCurrent);
+renderCurrent();
+
+// AntV G6 / @antv/g6 兼容说明：当前离线沙盒无法拉取官方包，本地使用离线高质量力导向图谱组件；生产环境可替换为官方 Graphin/G6 bundle。
+
+    </script>
+  </body>
+</html>

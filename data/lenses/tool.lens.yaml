@@ -1,0 +1,20 @@
+id: lens.tool
+applies_to:
+  - Tool
+suggested_fields:
+  input_schema:
+    aliases: ["输入结构", "input_schema"]
+  output_schema:
+    aliases: ["输出结构", "output_schema"]
+  categories:
+    aliases: ["分类", "categories"]
+    kind: link_list
+  safety:
+    aliases: ["安全边界", "safety", "约束"]
+maturity_checks:
+  published:
+    recommended: [safety]
+  projectable:
+    required_any: [input_schema, safety]
+  runtime_ready:
+    required: [input_schema]

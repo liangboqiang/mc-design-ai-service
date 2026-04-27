@@ -1,20 +1,23 @@
 from __future__ import annotations
 
-import time
 from dataclasses import dataclass, field
+from time import time
 from typing import Any
 
 
 @dataclass(slots=True)
-class AuditRecord:
-    event: str
-    created_at: str
-    payload: dict[str, Any] = field(default_factory=dict)
+class AuditEntry:
+    decision: str
+    payload: dict[str, Any]
+    ts: float = field(default_factory=time)
 
 
-class KernelAuditLog:
+class AuditLog:
     def __init__(self):
-        self.records: list[AuditRecord] = []
+        self.entries: list[AuditEntry] = []
 
-    def record(self, event: str, **payload: Any) -> None:
-        self.records.append(AuditRecord(event=event, created_at=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), payload=payload))
+    def record(self, decision: str, **payload) -> None:
+        self.entries.append(AuditEntry(decision, payload))
+
+    def recent(self, limit: int = 10) -> list[AuditEntry]:
+        return self.entries[-limit:]

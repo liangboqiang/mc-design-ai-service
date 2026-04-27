@@ -1,18 +1,20 @@
 # Action Contract
 
-唯一前后端交互入口：
+系统只有一个动作面：
 
 ```text
-POST /app/wiki/action/{action}
+POST /app/action/{action}
+GET  /app/actions
 ```
 
-成功响应：
+请求体必须是 JSON 对象。成功响应：
 
 ```json
 {
   "ok": true,
-  "action": "wiki_search",
-  "data": []
+  "namespace": "app",
+  "action": "graphpedia_search",
+  "data": {}
 }
 ```
 
@@ -21,10 +23,24 @@ POST /app/wiki/action/{action}
 ```json
 {
   "ok": false,
-  "action": "wiki_read_page",
+  "namespace": "app",
+  "action": "graphpedia_search",
   "error": {
-    "code": "MISSING_REQUIRED_PARAM",
-    "message": "缺少必要参数：page_id"
+    "code": "ACTION_ERROR",
+    "message": "错误说明",
+    "type": "ValueError"
   }
 }
+```
+
+动作按对象命名，保持原子、显式、可审计：
+
+```text
+graphpedia_search
+memory_read_note_detail
+notebook_list
+workspace_read_file
+soft_schema_discover
+governance_issue_list
+version_commit_notes
 ```

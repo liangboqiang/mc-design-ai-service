@@ -1,0 +1,35 @@
+id: lens.agent
+applies_to:
+  - Agent
+suggested_fields:
+  role:
+    aliases: ["角色定位", "智能体使命", "定位"]
+  input:
+    aliases: ["输入", "入参", "输入说明"]
+  output:
+    aliases: ["输出", "出参", "输出说明"]
+  skills:
+    aliases: ["推荐技能", "可用技能", "使用技能"]
+    kind: link_list
+  tools:
+    aliases: ["推荐工具", "可用工具"]
+    kind: link_list
+relation_hints:
+  skills:
+    predicate: uses
+    kind: declared
+  tools:
+    predicate: can_activate
+    kind: declared
+projection_hints:
+  memory_view:
+    include: [role, input, output]
+  runtime:
+    include: [skills, tools, policy]
+maturity_checks:
+  published:
+    recommended: [role]
+  projectable:
+    required_any: [summary, role]
+  runtime_ready:
+    required: [role, skills]

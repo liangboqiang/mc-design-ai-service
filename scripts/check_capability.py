@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AI = ROOT / "ai"
-for candidate in (ROOT, AI, AI / "src"):
+for candidate in (ROOT, AI):
     if str(candidate) not in sys.path:
         sys.path.insert(0, str(candidate))
 
@@ -18,7 +18,7 @@ def main() -> int:
     preview = RuntimePreviewService(AI).preview_runtime(task="请预览当前智能体运行时")
     checks: dict[str, bool] = {}
     checks["capabilities_loaded"] = len(registry.capabilities()) > 0
-    checks["legacy_tools_projected"] = any(item.kind == "Tool" for item in registry.capabilities().values())
+    checks["tools_projected"] = any(item.kind == "Tool" for item in registry.capabilities().values())
     checks["preview_has_capability_view"] = isinstance(preview.get("capability_view"), dict)
     checks["visible_tools_field_present"] = "visible_tools" in preview.get("capability_view", {})
     issues = [k for k, v in checks.items() if not v]
@@ -31,4 +31,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import os
+    code = main()
+    sys.stdout.flush()
+    sys.stderr.flush()
+    os._exit(code)

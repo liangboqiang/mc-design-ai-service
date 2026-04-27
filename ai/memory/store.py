@@ -6,10 +6,15 @@ from pathlib import Path
 
 from memory.note import parse_note_file
 from memory.types import MemoryNote
-from workspace_paths import data_root, src_root
+from workspace_paths import data_root
 
 
 class NoteStore:
+    """Single-source note.md store.
+
+    Memory only scans note.md. Only note.md is recognized as a MemoryNote source.
+    """
+
     def __init__(self, project_root: Path):
         self.project_root = Path(project_root).resolve()
         self.data_root = data_root(self.project_root)
@@ -116,25 +121,20 @@ class NoteStore:
 
     def _iter_note_files(self) -> list[Path]:
         files: list[Path] = []
-        if self.notes_root.exists():
-            files.extend(path for path in self.notes_root.rglob("*.md") if path.is_file())
-
-        source_root = src_root(self.project_root)
-        preferred: dict[Path, Path] = {}
-        if source_root.exists():
-            for path in sorted(source_root.rglob("note.md")):
-                if _include_src_note(path):
-                    preferred[path.parent] = path
-            for path in sorted(source_root.rglob("wiki.md")):
-                if _include_src_note(path) and path.parent not in preferred:
-                    preferred[path.parent] = path
-        files.extend(preferred.values())
+        files.extend(_note_files(self.notes_root))
         return sorted({path.resolve() for path in files})
 
 
-def _include_src_note(path: Path) -> bool:
+def _note_files(root: Path) -> list[Path]:
+    if not root.exists():
+        return []
+    return [path for path in sorted(root.rglob("note.md")) if _include_note(path)]
+
+
+def _include_note(path: Path) -> bool:
     rel = path.as_posix().lower()
-    return "/src/wiki/store/" not in rel and "/src/wiki/workbench/store/" not in rel and "__pycache__" not in rel
+    blocked = ("__pycache__",)
+    return not any(token in rel for token in blocked)
 
 
 def _score_note(note: MemoryNote, query: str) -> int:

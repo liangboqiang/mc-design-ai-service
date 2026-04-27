@@ -1,0 +1,76 @@
+{
+  "notebooks": [
+    {
+      "notebook_id": "builtin.agent",
+      "name": "智能体笔记本",
+      "description": "系统内置 Agent 笔记集合。",
+      "notebook_type": "builtin",
+      "path": "data/notes/system/agent",
+      "note_kind": "Agent",
+      "soft_schema_id": "schema.agent",
+      "extraction_rule_id": "rule.agent",
+      "source_path": "data/workbench/team/notebooks/builtin_agent/sources",
+      "icon": "🤖"
+    },
+    {
+      "notebook_id": "builtin.skill",
+      "name": "技能笔记本",
+      "description": "系统 Skill、能力说明与使用边界。",
+      "notebook_type": "builtin",
+      "path": "data/notes/system/skill",
+      "note_kind": "Skill",
+      "soft_schema_id": "schema.business_document",
+      "extraction_rule_id": "rule.skill",
+      "source_path": "data/workbench/team/notebooks/builtin_skill/sources",
+      "icon": "🧩"
+    },
+    {
+      "notebook_id": "builtin.toolbox",
+      "name": "工具箱笔记本",
+      "description": "工具箱级能力与工具集合说明。",
+      "notebook_type": "builtin",
+      "path": "data/notes/system/tool",
+      "note_kind": "Toolbox",
+      "soft_schema_id": "schema.tool",
+      "extraction_rule_id": "rule.toolbox",
+      "source_path": "data/workbench/team/notebooks/builtin_toolbox/sources",
+      "icon": "🧰"
+    },
+    {
+      "notebook_id": "builtin.tool",
+      "name": "工具笔记本",
+      "description": "可被 Capability 激活和调度的工具笔记。",
+      "notebook_type": "builtin",
+      "path": "data/notes/system/tool",
+      "note_kind": "Tool",
+      "soft_schema_id": "schema.tool",
+      "extraction_rule_id": "rule.tool",
+      "source_path": "data/workbench/team/notebooks/builtin_tool/sources",
+      "icon": "🔧"
+    },
+    {
+      "notebook_id": "builtin.knowledge",
+      "name": "系统知识笔记本",
+      "description": "LLM、平台说明、系统知识与运行背景。",
+      "notebook_type": "builtin",
+      "path": "data/notes/system/knowledge",
+      "note_kind": "knowledge",
+      "soft_schema_id": "schema.business_document",
+      "extraction_rule_id": "rule.knowledge",
+      "source_path": "data/workbench/team/notebooks/builtin_knowledge/sources",
+      "icon": "📚"
+    },
+    {
+      "notebook_id": "user.temporary",
+      "name": "用户临时笔记本",
+      "description": "用户会话附件、生成文件和临时 note 候选。",
+      "notebook_type": "user",
+      "path": "data/workbench/user",
+      "note_kind": "",
+      "soft_schema_id": "",
+      "extraction_rule_id": "rule.user_temp",
+      "source_path": "data/workbench/user",
+      "icon": "📎"
+    }
+  ]
+}

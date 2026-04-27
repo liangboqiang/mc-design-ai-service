@@ -1,0 +1,2941 @@
+{
+  "proposal_id": "proposal_911013033b6c",
+  "proposal_type": "runtime_hint",
+  "status": "candidate",
+  "source": "runtime",
+  "payload": {
+    "proposal_type": "runtime_hint",
+    "source": "runtime",
+    "observation": "hello",
+    "assistant_message": "[mock:mock] hello",
+    "tool_results": [],
+    "memory_view": {
+      "task_brief": "hello",
+      "system_cards": [
+        {
+          "note_id": "agent.memory_native_kernel",
+          "title": "Memory-Native Agent Kernel",
+          "kind": "Agent",
+          "summary": "统一以 MemoryView 和 CapabilityView 驱动运行时，不再直接拼接 Memory 原文进入 Prompt。",
+          "fields": {
+            "role": "负责 Observe -> Orient -> Act -> Reflect -> Commit 的智能体内核",
+            "input": [
+              "用户任务",
+              "附件",
+              "运行时状态"
+            ],
+            "output": [
+              "结构化回复",
+              "工具调用和 Proposal 提示"
+            ],
+            "skills": [
+              "skill/core/memory",
+              "skill/core/query"
+            ],
+            "tools": [
+              "tool.system.runtime.inspect_tool"
+            ]
+          },
+          "source_refs": [
+            "evidence.system.memory_native_blueprint"
+          ],
+          "tags": [
+            "architecture",
+            "kernel"
+          ]
+        },
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "kind": "Agent",
+          "summary": "摘要：通用对话智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+          "fields": {
+            "实体类型": "智能体",
+            "实体名称": "通用对话智能体",
+            "唯一标识": "general_chat",
+            "当前状态": "可用"
+          },
+          "source_refs": [
+            "memory.native.migrated"
+          ],
+          "tags": [
+            "migrated"
+          ]
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "kind": "Agent",
+          "summary": "摘要：零部件设计对话智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+          "fields": {
+            "实体类型": "智能体",
+            "实体名称": "零部件设计对话智能体",
+            "唯一标识": "parts_design_chat",
+            "当前状态": "可用"
+          },
+          "source_refs": [
+            "memory.native.migrated"
+          ],
+          "tags": [
+            "migrated"
+          ]
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "kind": "Agent",
+          "summary": "摘要：审查智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+          "fields": {
+            "实体类型": "智能体",
+            "实体名称": "审查智能体",
+            "唯一标识": "review_agent",
+            "当前状态": "可用"
+          },
+          "source_refs": [
+            "memory.native.migrated"
+          ],
+          "tags": [
+            "migrated"
+          ]
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "kind": "Agent",
+          "summary": "摘要：员工智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+          "fields": {
+            "实体类型": "智能体",
+            "实体名称": "员工智能体",
+            "唯一标识": "worker_agent",
+            "当前状态": "可用"
+          },
+          "source_refs": [
+            "memory.native.migrated"
+          ],
+          "tags": [
+            "migrated"
+          ]
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "kind": "Skill",
+          "summary": "摘要：记忆技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "fields": {
+            "实体类型": "技能",
+            "实体名称": "记忆技能",
+            "唯一标识": "skill/core/memory",
+            "当前状态": "可用"
+          },
+          "source_refs": [
+            "memory.native.migrated"
+          ],
+          "tags": [
+            "migrated"
+          ]
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "kind": "Skill",
+          "summary": "摘要：查询用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "fields": {
+            "实体类型": "技能",
+            "实体名称": "查询",
+            "唯一标识": "skill/core/query",
+            "当前状态": "可用"
+          },
+          "source_refs": [
+            "memory.native.migrated"
+          ],
+          "tags": [
+            "migrated"
+          ]
+        },
+        {
+          "note_id": "tool.memory_preview_runtime",
+          "title": "Runtime Preview Tool",
+          "kind": "Tool",
+          "summary": "用于在 Workbench 中预览 MemoryView、CapabilityView 和最终 Prompt，不直接执行副作用工具。",
+          "fields": {
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "task": {
+                  "type": "string"
+                }
+              }
+            },
+            "output_schema": {
+              "type": "object",
+              "properties": {
+                "memory_view": {
+                  "type": "object"
+                },
+                "capability_view": {
+                  "type": "object"
+                },
+                "prompt": {
+                  "type": "string"
+                }
+              }
+            },
+            "categories": [
+              "preview",
+              "workbench"
+            ],
+            "安全边界": "只读预览，不调用外部执行器"
+          },
+          "source_refs": [
+            "evidence.system.runtime_preview_contract"
+          ],
+          "tags": [
+            "preview",
+            "workbench"
+          ]
+        }
+      ],
+      "business_cards": [],
+      "constraints": [
+        "safety: 只读预览，不调用外部执行器"
+      ],
+      "relations": [
+        {
+          "edge_id": "edge.agent.memory_native_kernel.can_activate.tool.system.runtime.inspect_tool.declared",
+          "source": "agent.memory_native_kernel",
+          "target": "tool.system.runtime.inspect_tool",
+          "predicate": "can_activate",
+          "label": "can_activate",
+          "kind": "declared",
+          "status": "published",
+          "confidence": 1.0,
+          "evidence": "can_activate: [[tool.system.runtime.inspect_tool]]",
+          "source_note": "agent.memory_native_kernel",
+          "source_field": "Relations.can_activate"
+        },
+        {
+          "edge_id": "edge.agent.memory_native_kernel.links_to.skill.core.memory.linked",
+          "source": "agent.memory_native_kernel",
+          "target": "skill/core/memory",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[skill/core/memory]]",
+          "source_note": "agent.memory_native_kernel",
+          "source_field": null
+        },
+        {
+          "edge_id": "edge.agent.memory_native_kernel.links_to.skill.core.query.linked",
+          "source": "agent.memory_native_kernel",
+          "target": "skill/core/query",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[skill/core/query]]",
+          "source_note": "agent.memory_native_kernel",
+          "source_field": null
+        },
+        {
+          "edge_id": "edge.agent.memory_native_kernel.links_to.tool.system.runtime.inspect_tool.linked",
+          "source": "agent.memory_native_kernel",
+          "target": "tool.system.runtime.inspect_tool",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[tool.system.runtime.inspect_tool]]",
+          "source_note": "agent.memory_native_kernel",
+          "source_field": null
+        },
+        {
+          "edge_id": "edge.agent.memory_native_kernel.uses.skill.core.memory.declared",
+          "source": "agent.memory_native_kernel",
+          "target": "skill/core/memory",
+          "predicate": "uses",
+          "label": "uses",
+          "kind": "declared",
+          "status": "published",
+          "confidence": 1.0,
+          "evidence": "uses: [[skill/core/memory]]",
+          "source_note": "agent.memory_native_kernel",
+          "source_field": "Relations.uses"
+        },
+        {
+          "edge_id": "edge.agent.memory_native_kernel.uses.skill.core.query.declared",
+          "source": "agent.memory_native_kernel",
+          "target": "skill/core/query",
+          "predicate": "uses",
+          "label": "uses",
+          "kind": "declared",
+          "status": "published",
+          "confidence": 1.0,
+          "evidence": "uses: [[skill/core/query]]",
+          "source_note": "agent.memory_native_kernel",
+          "source_field": "Relations.uses"
+        },
+        {
+          "edge_id": "edge.agent.general_chat.links_to.通用根技能.linked",
+          "source": "agent/general_chat",
+          "target": "通用根技能",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[通用根技能]]",
+          "source_note": "agent/general_chat",
+          "source_field": null
+        },
+        {
+          "edge_id": "edge.agent.parts_design_chat.links_to.零部件设计根技能.linked",
+          "source": "agent/parts_design_chat",
+          "target": "零部件设计根技能",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[零部件设计根技能]]",
+          "source_note": "agent/parts_design_chat",
+          "source_field": null
+        },
+        {
+          "edge_id": "edge.agent.review_agent.links_to.通用根技能.linked",
+          "source": "agent/review_agent",
+          "target": "通用根技能",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[通用根技能]]",
+          "source_note": "agent/review_agent",
+          "source_field": null
+        },
+        {
+          "edge_id": "edge.agent.worker_agent.links_to.通用根技能.linked",
+          "source": "agent/worker_agent",
+          "target": "通用根技能",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[通用根技能]]",
+          "source_note": "agent/worker_agent",
+          "source_field": null
+        },
+        {
+          "edge_id": "edge.tool.memory_preview_runtime.can_activate.agent.memory_native_kernel.declared",
+          "source": "tool.memory_preview_runtime",
+          "target": "agent.memory_native_kernel",
+          "predicate": "can_activate",
+          "label": "can_activate",
+          "kind": "declared",
+          "status": "published",
+          "confidence": 1.0,
+          "evidence": "can_activate: [[agent.memory_native_kernel]]",
+          "source_note": "tool.memory_preview_runtime",
+          "source_field": "Relations.can_activate"
+        },
+        {
+          "edge_id": "edge.tool.memory_preview_runtime.links_to.agent.memory_native_kernel.linked",
+          "source": "tool.memory_preview_runtime",
+          "target": "agent.memory_native_kernel",
+          "predicate": "links_to",
+          "label": "链接到",
+          "kind": "linked",
+          "status": "published",
+          "confidence": 0.8,
+          "evidence": "Body link [[agent.memory_native_kernel]]",
+          "source_note": "tool.memory_preview_runtime",
+          "source_field": null
+        }
+      ],
+      "unknowns": [
+        "runtime_ready 缺少关键字段：role",
+        "runtime_ready 缺少关键字段：skills",
+        "runtime_ready 缺少关键字段：summary"
+      ],
+      "activation_hints": [
+        {
+          "capability_id": "tool.system.runtime.inspect_tool",
+          "reason": "agent.memory_native_kernel recommended via tools",
+          "source_note_id": "agent.memory_native_kernel",
+          "kind": "recommended"
+        },
+        {
+          "capability_id": "skill/core/memory",
+          "reason": "agent.memory_native_kernel recommended via skills",
+          "source_note_id": "agent.memory_native_kernel",
+          "kind": "recommended"
+        },
+        {
+          "capability_id": "skill/core/query",
+          "reason": "agent.memory_native_kernel recommended via skills",
+          "source_note_id": "agent.memory_native_kernel",
+          "kind": "recommended"
+        },
+        {
+          "capability_id": "skill/core/memory",
+          "reason": "agent.memory_native_kernel relation uses",
+          "source_note_id": "agent.memory_native_kernel",
+          "kind": "declared"
+        },
+        {
+          "capability_id": "skill/core/query",
+          "reason": "agent.memory_native_kernel relation uses",
+          "source_note_id": "agent.memory_native_kernel",
+          "kind": "declared"
+        },
+        {
+          "capability_id": "tool.system.runtime.inspect_tool",
+          "reason": "agent.memory_native_kernel relation can_activate",
+          "source_note_id": "agent.memory_native_kernel",
+          "kind": "declared"
+        },
+        {
+          "capability_id": "agent.memory_native_kernel",
+          "reason": "tool.memory_preview_runtime relation can_activate",
+          "source_note_id": "tool.memory_preview_runtime",
+          "kind": "declared"
+        }
+      ],
+      "citations": [
+        {
+          "evidence_id": "evidence.system.memory_native_blueprint",
+          "title": "evidence.system.memory_native_blueprint",
+          "uri": ""
+        },
+        {
+          "evidence_id": "memory.native.migrated",
+          "title": "memory.native.migrated",
+          "uri": ""
+        },
+        {
+          "evidence_id": "evidence.system.runtime_preview_contract",
+          "title": "evidence.system.runtime_preview_contract",
+          "uri": ""
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "published.missing_recommended",
+          "severity": "info",
+          "message": "建议补充字段：role",
+          "note_id": "agent/general_chat",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "projectable.missing_required_any",
+          "severity": "warning",
+          "message": "projectable 至少需要其一字段：summary, role",
+          "note_id": "agent/general_chat",
+          "field": "",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：role",
+          "note_id": "agent/general_chat",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：skills",
+          "note_id": "agent/general_chat",
+          "field": "skills",
+          "details": {}
+        },
+        {
+          "code": "published.missing_recommended",
+          "severity": "info",
+          "message": "建议补充字段：role",
+          "note_id": "agent/parts_design_chat",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "projectable.missing_required_any",
+          "severity": "warning",
+          "message": "projectable 至少需要其一字段：summary, role",
+          "note_id": "agent/parts_design_chat",
+          "field": "",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：role",
+          "note_id": "agent/parts_design_chat",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：skills",
+          "note_id": "agent/parts_design_chat",
+          "field": "skills",
+          "details": {}
+        },
+        {
+          "code": "published.missing_recommended",
+          "severity": "info",
+          "message": "建议补充字段：role",
+          "note_id": "agent/review_agent",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "projectable.missing_required_any",
+          "severity": "warning",
+          "message": "projectable 至少需要其一字段：summary, role",
+          "note_id": "agent/review_agent",
+          "field": "",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：role",
+          "note_id": "agent/review_agent",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：skills",
+          "note_id": "agent/review_agent",
+          "field": "skills",
+          "details": {}
+        },
+        {
+          "code": "published.missing_recommended",
+          "severity": "info",
+          "message": "建议补充字段：role",
+          "note_id": "agent/worker_agent",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "projectable.missing_required_any",
+          "severity": "warning",
+          "message": "projectable 至少需要其一字段：summary, role",
+          "note_id": "agent/worker_agent",
+          "field": "",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：role",
+          "note_id": "agent/worker_agent",
+          "field": "role",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：skills",
+          "note_id": "agent/worker_agent",
+          "field": "skills",
+          "details": {}
+        },
+        {
+          "code": "published.missing_recommended",
+          "severity": "info",
+          "message": "建议补充字段：summary",
+          "note_id": "skill/core/memory",
+          "field": "summary",
+          "details": {}
+        },
+        {
+          "code": "projectable.missing_required_any",
+          "severity": "warning",
+          "message": "projectable 至少需要其一字段：summary, tools",
+          "note_id": "skill/core/memory",
+          "field": "",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：summary",
+          "note_id": "skill/core/memory",
+          "field": "summary",
+          "details": {}
+        },
+        {
+          "code": "published.missing_recommended",
+          "severity": "info",
+          "message": "建议补充字段：summary",
+          "note_id": "skill/core/query",
+          "field": "summary",
+          "details": {}
+        },
+        {
+          "code": "projectable.missing_required_any",
+          "severity": "warning",
+          "message": "projectable 至少需要其一字段：summary, tools",
+          "note_id": "skill/core/query",
+          "field": "",
+          "details": {}
+        },
+        {
+          "code": "runtime_ready.missing_required",
+          "severity": "error",
+          "message": "runtime_ready 缺少关键字段：summary",
+          "note_id": "skill/core/query",
+          "field": "summary",
+          "details": {}
+        }
+      ]
+    },
+    "capability_view": {
+      "visible_skills": [
+        {
+          "capability_id": "skill/core/memory",
+          "kind": "Skill",
+          "title": "技能：记忆技能",
+          "description": "摘要：记忆技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/core/memory",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/core/memory/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/core/query",
+          "kind": "Skill",
+          "title": "技能：查询",
+          "description": "摘要：查询用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/core/query",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/core/query/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/core/report",
+          "kind": "Skill",
+          "title": "技能：报告",
+          "description": "摘要：报告用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/core/report",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/core/report/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/core/routing",
+          "kind": "Skill",
+          "title": "技能：路由技能",
+          "description": "摘要：路由技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/core/routing",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/core/routing/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/core/task",
+          "kind": "Skill",
+          "title": "技能：任务技能",
+          "description": "摘要：任务技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/core/task",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/core/task/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/general/root",
+          "kind": "Skill",
+          "title": "技能：通用根技能",
+          "description": "摘要：通用根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/general/root",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/general/root/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [
+              "查询",
+              "任务技能",
+              "报告"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/governance/agent_build",
+          "kind": "Skill",
+          "title": "技能：智能体构建治理",
+          "description": "摘要：智能体构建治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/governance/agent_build",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/governance/agent_build/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/governance/compact_guard",
+          "kind": "Skill",
+          "title": "技能：上下文压缩守护",
+          "description": "摘要：上下文压缩守护用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/governance/compact_guard",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/governance/compact_guard/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/governance/protocol_governance",
+          "kind": "Skill",
+          "title": "技能：协议治理",
+          "description": "摘要：协议治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/governance/protocol_governance",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/governance/protocol_governance/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/governance/refs_bridge",
+          "kind": "Skill",
+          "title": "技能：引用桥接",
+          "description": "摘要：引用桥接用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/governance/refs_bridge",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/governance/refs_bridge/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/governance/task_governance",
+          "kind": "Skill",
+          "title": "技能：任务治理",
+          "description": "摘要：任务治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/governance/task_governance",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/governance/task_governance/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/governance/tool_surface",
+          "kind": "Skill",
+          "title": "技能：工具表面治理",
+          "description": "摘要：工具表面治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/governance/tool_surface",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/governance/tool_surface/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/governance/workspace_governance",
+          "kind": "Skill",
+          "title": "技能：工作区治理",
+          "description": "摘要：工作区治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/governance/workspace_governance",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/governance/workspace_governance/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/parts_design/camshaft/root",
+          "kind": "Skill",
+          "title": "技能：凸轮轴设计根技能",
+          "description": "摘要：凸轮轴设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/parts_design/camshaft/root",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/parts_design/camshaft/root/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [
+              "报告生成"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/parts_design/common/report",
+          "kind": "Skill",
+          "title": "技能：报告生成",
+          "description": "摘要：报告生成用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/parts_design/common/report",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/parts_design/common/report/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/parts_design/common/requirement_parse",
+          "kind": "Skill",
+          "title": "技能：需求解析",
+          "description": "摘要：需求解析用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/parts_design/common/requirement_parse",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/parts_design/common/requirement_parse/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/parts_design/conrod/root",
+          "kind": "Skill",
+          "title": "技能：连杆设计根技能",
+          "description": "摘要：连杆设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/parts_design/conrod/root",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/parts_design/conrod/root/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [
+              "需求解析",
+              "报告生成"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/parts_design/crankshaft/root",
+          "kind": "Skill",
+          "title": "技能：曲轴设计根技能",
+          "description": "摘要：曲轴设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/parts_design/crankshaft/root",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/parts_design/crankshaft/root/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [
+              "需求解析",
+              "报告生成"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "skill/parts_design/root",
+          "kind": "Skill",
+          "title": "技能：零部件设计根技能",
+          "description": "摘要：零部件设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "skill/parts_design/root",
+          "activation_mode": "always",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/skill/parts_design/root/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "",
+            "links": [
+              "查询",
+              "任务技能",
+              "需求解析",
+              "报告生成",
+              "连杆设计根技能",
+              "曲轴设计根技能",
+              "凸轮轴设计根技能",
+              "报告"
+            ],
+            "relations": []
+          }
+        }
+      ],
+      "visible_tools": [],
+      "visible_workflows": [
+        {
+          "capability_id": "autonomy",
+          "kind": "Workflow",
+          "title": "工具箱：自主任务工具箱",
+          "description": "摘要：自主任务工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/autonomy",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/autonomy/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "autonomy",
+            "links": [
+              "领取下一项任务"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "background",
+          "kind": "Workflow",
+          "title": "工具箱：后台任务工具箱",
+          "description": "摘要：后台任务工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/background",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/background/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "background",
+            "links": [
+              "检查后台任务",
+              "运行后台任务"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "cloude",
+          "kind": "Workflow",
+          "title": "工具箱：Cloude 企业接口工具箱",
+          "description": "摘要：Cloude 企业接口工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "外部"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/external/cloude",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/external/cloude/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "cloude",
+            "links": [
+              "查询 ECR 列表",
+              "查询 IPM 列表",
+              "连接 QPP"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "compact",
+          "kind": "Workflow",
+          "title": "工具箱：上下文压缩工具箱",
+          "description": "摘要：上下文压缩工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/compact",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/compact/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "compact",
+            "links": [
+              "立即压缩"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "design_report",
+          "kind": "Workflow",
+          "title": "工具箱：设计报告工具箱",
+          "description": "摘要：设计报告工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "外部"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/external/design_report",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/external/design_report/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "design_report",
+            "links": [
+              "列出报告",
+              "创建报告图片",
+              "创建设计报告",
+              "导出报告",
+              "更新设计报告",
+              "获取报告详情"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "engine",
+          "kind": "Workflow",
+          "title": "工具箱：引擎工具箱",
+          "description": "摘要：引擎工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "engine"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/runtime",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/runtime/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "engine",
+            "links": [
+              "列出下级技能",
+              "检查工具",
+              "检查技能",
+              "进入技能"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "fs",
+          "kind": "Workflow",
+          "title": "工具箱：f工具箱",
+          "description": "摘要：f工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "workspace_io"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/external/fs",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/external/fs/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "fs",
+            "links": [
+              "写入文本",
+              "列出目录",
+              "差异文本",
+              "编辑文本",
+              "读取文本"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "inspect",
+          "kind": "Workflow",
+          "title": "工具箱：检查工具箱",
+          "description": "摘要：检查工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "memory_read"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/inspect",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/inspect/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "inspect",
+            "links": [
+              "检查工具表面"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "isolation",
+          "kind": "Workflow",
+          "title": "工具箱：隔离工具箱",
+          "description": "摘要：隔离工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/isolation",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/isolation/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "isolation",
+            "links": [],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "normalize",
+          "kind": "Workflow",
+          "title": "工具箱：标准化工具箱",
+          "description": "摘要：标准化工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "system"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/normalize",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/normalize/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "normalize",
+            "links": [
+              "标准化工具结果"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "nx",
+          "kind": "Workflow",
+          "title": "工具箱：NX工具箱",
+          "description": "摘要：NX工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "外部"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/external/nx",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/external/nx/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "nx",
+            "links": [
+              "NXBuildCamLobe",
+              "NXBuildCamLobeArray",
+              "NXBuildCamhaft",
+              "NXBuildCamhaftOneClick",
+              "NXBuildJournalFace",
+              "NXBuildOr更新端部Bo",
+              "NXCut轴GrooveByBlock",
+              "NXExitAnimation",
+              "NXExportSnaphot",
+              "NXFind参数",
+              "NXFit查看",
+              "NXGetAll参数Lit",
+              "NXGetAll查看Name",
+              "NXGetDrawingSheetNameLit",
+              "NXGetDrive参数Lit",
+              "NXGetWork零件Info",
+              "NXGet查看Style",
+              "NXHighLightDim",
+              "NXImportCamProfile",
+              "NXLitSnaphotName",
+              "NXMountBoTo轴",
+              "NXMountCamLobeTo轴",
+              "NXOpenDrawingSheet",
+              "NXOpenTC零件",
+              "NXOpen零件",
+              "NXRotateAndScale查看",
+              "NXSet查看Style",
+              "NXSmoothSwitchTo查看",
+              "NXSwitch查看",
+              "NXTet",
+              "NXUniteLobeTo轴",
+              "NXbuildfeature",
+              "NXmodify参数",
+              "NX倒圆轴端部边",
+              "NX创建Image",
+              "NX创建prt",
+              "NX创建参数",
+              "NX创建新建零件",
+              "NX批量更新参数",
+              "NX更新参数",
+              "NX更新查看"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "refs",
+          "kind": "Workflow",
+          "title": "工具箱：引用工具箱",
+          "description": "摘要：引用工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "governance"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/system/refs",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/system/refs/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "refs",
+            "links": [
+              "加载引用"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "shell",
+          "kind": "Workflow",
+          "title": "工具箱：命令工具箱",
+          "description": "摘要：命令工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "local_compute"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/external/shell",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/external/shell/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "shell",
+            "links": [
+              "运行命令"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "subagent",
+          "kind": "Workflow",
+          "title": "工具箱：子智能体工具箱",
+          "description": "摘要：子智能体工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "workflow"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/workflow/subagent",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/workflow/subagent/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "subagent",
+            "links": [
+              "批量运行子智能体",
+              "询问子智能体"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "task",
+          "kind": "Workflow",
+          "title": "工具箱：任务工作流工具箱",
+          "description": "摘要：任务工作流工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "task"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/workflow/task",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/workflow/task/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "task",
+            "links": [
+              "列出任务",
+              "创建任务",
+              "更新任务",
+              "获取任务",
+              "领取任务"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "team",
+          "kind": "Workflow",
+          "title": "工具箱：团队协作工具箱",
+          "description": "摘要：团队协作工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "workflow"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/workflow/team",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/workflow/team/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "team",
+            "links": [
+              "列出员工",
+              "创建员工",
+              "发送消息",
+              "广播消息",
+              "读取收件箱"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "textops",
+          "kind": "Workflow",
+          "title": "工具箱：文本处理工具箱",
+          "description": "摘要：文本处理工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "外部"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/external/textops",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/external/textops/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "textops",
+            "links": [
+              "从链接解析文本",
+              "从链接解析文档",
+              "参数检查",
+              "工具目录查询",
+              "操作成本估算",
+              "文本检索",
+              "知识目录查询",
+              "设计规则查找",
+              "预览替换"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "todo",
+          "kind": "Workflow",
+          "title": "工具箱：待办工作流工具箱",
+          "description": "摘要：待办工作流工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "todo"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/workflow/todo",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/workflow/todo/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "todo",
+            "links": [
+              "更新待办",
+              "查看待办"
+            ],
+            "relations": []
+          }
+        },
+        {
+          "capability_id": "workspace",
+          "kind": "Workflow",
+          "title": "工具箱：工作区工具箱",
+          "description": "摘要：工作区工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+          "input_schema": {
+            "type": "object",
+            "properties": {}
+          },
+          "output_schema": {},
+          "permission_level": 1,
+          "categories": [
+            "workspace"
+          ],
+          "executor_ref": null,
+          "safety": "",
+          "source_note_id": "tool/external/workspace",
+          "activation_mode": "manual",
+          "activation_rules": [],
+          "metadata": {
+            "path": "data/notes/system/tool/external/workspace/note.md",
+            "status": "published",
+            "maturity": "projectable",
+            "toolbox": "workspace",
+            "links": [
+              "保留工作区",
+              "列出工作区",
+              "创建工作区",
+              "删除工作区",
+              "运行工作区"
+            ],
+            "relations": []
+          }
+        }
+      ],
+      "activation_reasons": [],
+      "denied_reasons": [
+        "autonomy.claim_next_task: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=False",
+        "background.check: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=False",
+        "background.run: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "cloude.connect_qpp: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=False",
+        "cloude.query_ecr_list: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=always; permission_level=3; category_allowed=False",
+        "cloude.query_ipm_list: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=False",
+        "compact.now: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=False",
+        "design_report.create_image: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "design_report.create_report: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "design_report.export_report: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "design_report.get_report_detail: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "design_report.list_reports: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "design_report.update_report: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "engine.enter_skill: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=True",
+        "engine.inspect_skill: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=True",
+        "engine.inspect_tool: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=True",
+        "engine.list_child_skills: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=True",
+        "fs.diff_text: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "fs.edit_text: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "fs.list_dir: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "fs.read_text: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "fs.write_text: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "inspect.inspect_tool_surface: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=True",
+        "normalize.normalize_tool_result: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=False",
+        "nx.BatchUpdateParams: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.BlendShaftEndEdges: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.BuildCamLobe: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.BuildCamLobeArray: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.BuildCamshaft: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.BuildCamshaftOneClick: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.BuildJournalFace: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.BuildOrUpdateEndBoss: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.CreateImage: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.CreateNewPart: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.CreateParam: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.CutShaftGrooveByBlock: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.ExitAnimation: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.ExportSnapshot: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.FindParams: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.FitView: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.GetAllParamsList: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.GetAllViewNames: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.GetDrawingSheetNameList: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.GetDriveParamsList: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.GetViewStyle: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.GetWorkPartInfo: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.HighLightDim: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.ImportCamProfile: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.ListSnapshotNames: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.MountBossToShaft: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.MountCamLobesToShaft: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.OpenDrawingSheet: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.OpenPart: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.OpenTCPart: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.RotateAndScaleView: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.SetViewStyle: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.SmoothSwitchToView: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.SwitchView: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.Test: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=always; permission_level=2; category_allowed=False",
+        "nx.UniteLobesToShaft: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.UpdateParam: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.UpdateView: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.build_feature: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.create_prt: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "nx.modify_parameter: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=2; category_allowed=False",
+        "refs.load_refs: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=3; category_allowed=True",
+        "shell.run: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "subagent.ask: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "subagent.batch_run: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "task.claim: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "task.create: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "task.get: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "task.list: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "task.update: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "team.broadcast: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "team.list_workers: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "team.read_inbox: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "team.send_message: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "team.spawn_worker: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "textops.design_rule_lookup: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=always; permission_level=1; category_allowed=False",
+        "textops.estimate_action_cost: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "textops.knowledge_catalog_query: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "textops.parameter_check: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=always; permission_level=1; category_allowed=False",
+        "textops.parse_docx_from_url: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "textops.parse_text_from_url: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "textops.preview_replace: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "textops.search: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "textops.tool_catalog_query: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "todo.update: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "todo.view: installed=True; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "tool: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=False",
+        "tool.memory_preview_runtime: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=always; permission_level=3; category_allowed=False",
+        "workspace.create: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "workspace.keep: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "workspace.list: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "workspace.remove: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True",
+        "workspace.run: installed=False; requested_by_memory=False; requested_by_skill=False; requested_by_observation=False; activation=manual; permission_level=1; category_allowed=True"
+      ],
+      "reasons_by_capability": {
+        "skill/core/memory": [
+          "visible_skill=False",
+          "requested_by_memory=True"
+        ],
+        "skill/core/query": [
+          "visible_skill=False",
+          "requested_by_memory=True"
+        ],
+        "skill/core/report": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/core/routing": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/core/task": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/general/root": [
+          "visible_skill=True",
+          "requested_by_memory=False"
+        ],
+        "skill/governance/agent_build": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/governance/compact_guard": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/governance/protocol_governance": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/governance/refs_bridge": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/governance/task_governance": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/governance/tool_surface": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/governance/workspace_governance": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/parts_design/camshaft/root": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/parts_design/common/report": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/parts_design/common/requirement_parse": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/parts_design/conrod/root": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/parts_design/crankshaft/root": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "skill/parts_design/root": [
+          "visible_skill=False",
+          "requested_by_memory=False"
+        ],
+        "autonomy.claim_next_task": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "background.check": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "background.run": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "cloude.connect_qpp": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "cloude.query_ecr_list": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=always",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "cloude.query_ipm_list": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "compact.now": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "design_report.create_image": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "design_report.create_report": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "design_report.export_report": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "design_report.get_report_detail": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "design_report.list_reports": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "design_report.update_report": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "engine.enter_skill": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=True"
+        ],
+        "engine.inspect_skill": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=True"
+        ],
+        "engine.inspect_tool": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=True"
+        ],
+        "engine.list_child_skills": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=True"
+        ],
+        "fs.diff_text": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "fs.edit_text": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "fs.list_dir": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "fs.read_text": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "fs.write_text": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "inspect.inspect_tool_surface": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=True"
+        ],
+        "normalize.normalize_tool_result": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "nx.BatchUpdateParams": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.BlendShaftEndEdges": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.BuildCamLobe": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.BuildCamLobeArray": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.BuildCamshaft": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.BuildCamshaftOneClick": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.BuildJournalFace": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.BuildOrUpdateEndBoss": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.CreateImage": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.CreateNewPart": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.CreateParam": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.CutShaftGrooveByBlock": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.ExitAnimation": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.ExportSnapshot": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.FindParams": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.FitView": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.GetAllParamsList": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.GetAllViewNames": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.GetDrawingSheetNameList": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.GetDriveParamsList": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.GetViewStyle": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.GetWorkPartInfo": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.HighLightDim": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.ImportCamProfile": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.ListSnapshotNames": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.MountBossToShaft": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.MountCamLobesToShaft": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.OpenDrawingSheet": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.OpenPart": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.OpenTCPart": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.RotateAndScaleView": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.SetViewStyle": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.SmoothSwitchToView": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.SwitchView": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.Test": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=always",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.UniteLobesToShaft": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.UpdateParam": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.UpdateView": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.build_feature": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.create_prt": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "nx.modify_parameter": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=2",
+          "category_allowed=False"
+        ],
+        "refs.load_refs": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=3",
+          "category_allowed=True"
+        ],
+        "shell.run": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "subagent.ask": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "subagent.batch_run": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "task.claim": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "task.create": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "task.get": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "task.list": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "task.update": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "team.broadcast": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "team.list_workers": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "team.read_inbox": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "team.send_message": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "team.spawn_worker": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "textops.design_rule_lookup": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=always",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "textops.estimate_action_cost": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "textops.knowledge_catalog_query": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "textops.parameter_check": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=always",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "textops.parse_docx_from_url": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "textops.parse_text_from_url": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "textops.preview_replace": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "textops.search": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "textops.tool_catalog_query": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "todo.update": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "todo.view": [
+          "installed=True",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "tool": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=False"
+        ],
+        "tool.memory_preview_runtime": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=always",
+          "permission_level=3",
+          "category_allowed=False"
+        ],
+        "workspace.create": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "workspace.keep": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "workspace.list": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "workspace.remove": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "workspace.run": [
+          "installed=False",
+          "requested_by_memory=False",
+          "requested_by_skill=False",
+          "requested_by_observation=False",
+          "activation=manual",
+          "permission_level=1",
+          "category_allowed=True"
+        ],
+        "autonomy": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "background": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "cloude": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "compact": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "design_report": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "engine": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "fs": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "inspect": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "isolation": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "normalize": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "nx": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "refs": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "shell": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "subagent": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "task": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "team": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "textops": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "todo": [
+          "requested_by_memory=False",
+          "manual=True"
+        ],
+        "workspace": [
+          "requested_by_memory=False",
+          "manual=True"
+        ]
+      }
+    }
+  },
+  "evidence_refs": [],
+  "created_at": "2026-04-27T05:33:52Z",
+  "review_notes": ""
+}

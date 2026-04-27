@@ -16,7 +16,10 @@ class ProposalQueue:
         self.project_root = Path(project_root).resolve()
         self.root = data_root(self.project_root) / "proposals"
         for name in ("candidate", "reviewed", "accepted", "rejected"):
-            (self.root / name).mkdir(parents=True, exist_ok=True)
+            try:
+                (self.root / name).mkdir(parents=True, exist_ok=True)
+            except OSError:
+                pass
 
     def capture_runtime_step(self, payload: dict[str, Any]) -> ProposalBatch:
         proposal = Proposal(
@@ -30,7 +33,11 @@ class ProposalQueue:
             review_notes="",
         )
         target = self.root / "candidate" / f"{proposal.proposal_id}.json"
-        target.write_text(json.dumps(asdict(proposal), ensure_ascii=False, indent=2), encoding="utf-8")
+        try:
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(json.dumps(asdict(proposal), ensure_ascii=False, indent=2), encoding="utf-8")
+        except OSError as exc:
+            proposal.review_notes = f"proposal not persisted: {exc}"
         return ProposalBatch([proposal])
 
     def list_proposals(self, status: str = "candidate") -> list[dict[str, Any]]:

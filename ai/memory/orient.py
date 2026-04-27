@@ -18,6 +18,8 @@ class MemoryOrienter:
     def orient(self, observation: Any, *, limit: int = 8, runtime_state=None) -> MemoryView:  # noqa: ANN001
         task_brief = _task_brief(observation)
         seed_notes = self.note_store.search(task_brief, limit=max(4, limit // 2))
+        if len(seed_notes) < 2:
+            seed_notes = _merge_notes(seed_notes, self._default_seed_notes(limit=max(4, limit)))
         graph_payload = self.graph.compile(write_store=False, include_hidden=True)
         related_ids = self._expand(seed_notes, graph_payload, depth=1)
         notes = [self.note_store.get(note_id) for note_id in related_ids]
@@ -66,6 +68,23 @@ class MemoryOrienter:
             citations=_dedupe_evidence(citations),
             diagnostics=_dedupe_diagnostics(diagnostics),
         )
+
+    def _default_seed_notes(self, *, limit: int) -> list[MemoryNote]:
+        notes = self.note_store.list_notes()
+        priority_ids = {"agent.memory_native_kernel", "tool.memory_preview_runtime"}
+
+        def rank(note: MemoryNote) -> tuple[int, str]:
+            if note.note_id in priority_ids:
+                return (0, note.note_id)
+            if note.kind == "Agent" and note.maturity in {"runtime_ready", "projectable"}:
+                return (1, note.note_id)
+            if note.kind in {"Skill", "Tool", "Workflow", "Toolbox"} and note.maturity in {"runtime_ready", "projectable"}:
+                return (2, note.note_id)
+            if note.status in {"published", "projectable", "runtime_ready"}:
+                return (3, note.note_id)
+            return (9, note.note_id)
+
+        return sorted(notes, key=rank)[: max(1, int(limit or 8))]
 
     @staticmethod
     def _expand(seed_notes: list[MemoryNote], graph_payload: dict, *, depth: int) -> list[str]:
@@ -144,6 +163,16 @@ class MemoryOrienter:
                     )
                 )
         return hints
+
+
+def _merge_notes(primary: list[MemoryNote], fallback: list[MemoryNote]) -> list[MemoryNote]:
+    seen: set[str] = set()
+    rows: list[MemoryNote] = []
+    for note in [*primary, *fallback]:
+        if note.note_id not in seen:
+            seen.add(note.note_id)
+            rows.append(note)
+    return rows
 
 
 def _task_brief(observation: Any) -> str:

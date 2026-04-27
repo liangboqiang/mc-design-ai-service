@@ -1,1 +1,0 @@
-"""Wiki Workbench backend package."""

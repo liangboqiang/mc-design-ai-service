@@ -97,7 +97,7 @@ class MemoryService:
 
     def summary(self) -> str:
         count = len(self.note_store.notes())
-        return f"Memory native store: {count} note(s), note.md preferred, wiki.md compatible."
+        return f"Memory native store: {count} note(s), note.md only."
 
     @staticmethod
     def _runtime_payload(step: Any) -> dict[str, Any]:  # noqa: ANN401

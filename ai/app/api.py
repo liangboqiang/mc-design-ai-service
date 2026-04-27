@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
 
 import config_loader as cfg
 from starlette.applications import Starlette
@@ -10,15 +9,13 @@ from starlette.responses import FileResponse, HTMLResponse, JSONResponse, Respon
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 
-from app.actions import LegacyWikiActionRouter, MemoryActionRouter, WorkbenchActionRouter
+from app.actions import ActionRouter
 from app.diagnostics import collect_diagnostics
 
 
 class AppRuntime:
     def __init__(self):
-        self.memory = MemoryActionRouter()
-        self.workbench = WorkbenchActionRouter()
-        self.legacy = LegacyWikiActionRouter()
+        self.actions = ActionRouter()
 
 
 def create_app(*, root_dir: Path, ai_dir: Path, web_dir: Path, web_dist_dir: Path) -> Starlette:
@@ -29,17 +26,13 @@ def create_app(*, root_dir: Path, ai_dir: Path, web_dir: Path, web_dist_dir: Pat
 
     def _diagnostic_html(title: str, message: str) -> HTMLResponse:
         return HTMLResponse(
-            f"""<!doctype html>
-            <html lang=\"zh-CN\"><head><meta charset=\"utf-8\" />
+            f"""<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\" />
             <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
-            <title>{title}</title>
-            <style>
-              body {{ margin:0; font-family:system-ui,-apple-system,Segoe UI,sans-serif; background:#f8fafc; color:#0f172a; }}
-              main {{ max-width:860px; margin:10vh auto; background:white; border:1px solid #e2e8f0; border-radius:24px; padding:32px; box-shadow:0 20px 60px rgba(15,23,42,.08); }}
-              code {{ background:#f1f5f9; padding:2px 6px; border-radius:6px; }}
-              pre {{ background:#0f172a; color:#e2e8f0; padding:16px; border-radius:16px; overflow:auto; }}
-            </style></head>
-            <body><main><h1>{title}</h1><p>{message}</p><pre>python __main__.py --rebuild-web</pre></main></body></html>""",
+            <title>{title}</title><style>
+            body {{ margin:0; font-family:system-ui,-apple-system,Segoe UI,sans-serif; background:#f8fafc; color:#0f172a; }}
+            main {{ max-width:860px; margin:10vh auto; background:white; border:1px solid #e2e8f0; border-radius:24px; padding:32px; box-shadow:0 20px 60px rgba(15,23,42,.08); }}
+            pre {{ background:#0f172a; color:#e2e8f0; padding:16px; border-radius:16px; overflow:auto; }}
+            </style></head><body><main><h1>{title}</h1><p>{message}</p><pre>python __main__.py --rebuild-web</pre></main></body></html>""",
             status_code=200,
         )
 
@@ -50,7 +43,7 @@ def create_app(*, root_dir: Path, ai_dir: Path, web_dir: Path, web_dist_dir: Pat
                 "server": cfg.SERVER_NAME,
                 "port": cfg.SERVER_PORT,
                 "mode": "memory-native-agent-kernel",
-                "legacy_mode": "unified-direct-functions",
+                "transport": "atomic-actions",
                 "project_root": str(cfg.PROJECT_ROOT),
             }
         )
@@ -58,10 +51,8 @@ def create_app(*, root_dir: Path, ai_dir: Path, web_dir: Path, web_dist_dir: Pat
     async def app_config(request: Request) -> JSONResponse:
         return JSONResponse(
             {
-                "wikiActionBase": "/app/wiki/action",
-                "memoryActionBase": "/app/memory/action",
-                "workbenchActionBase": "/app/workbench/action",
-                "mode": "same-origin-direct-functions",
+                "actionBase": "/app/action",
+                "mode": "same-origin-atomic-actions",
                 "serverPort": cfg.SERVER_PORT,
             }
         )
@@ -69,23 +60,11 @@ def create_app(*, root_dir: Path, ai_dir: Path, web_dir: Path, web_dist_dir: Pat
     async def app_diagnostics(request: Request) -> JSONResponse:
         return JSONResponse(collect_diagnostics(root_dir, ai_dir, web_dir, cfg.PROJECT_ROOT))
 
-    async def list_wiki_actions(request: Request) -> JSONResponse:
-        return JSONResponse({"ok": True, "data": runtime.legacy.catalog()})
+    async def list_actions(request: Request) -> JSONResponse:
+        return JSONResponse({"ok": True, "data": runtime.actions.catalog()})
 
-    async def list_memory_actions(request: Request) -> JSONResponse:
-        return JSONResponse({"ok": True, "data": runtime.memory.catalog()})
-
-    async def list_workbench_actions(request: Request) -> JSONResponse:
-        return JSONResponse({"ok": True, "data": runtime.workbench.catalog()})
-
-    async def wiki_action(request: Request) -> JSONResponse:
-        return await _dispatch(runtime.legacy, "wiki", request)
-
-    async def memory_action(request: Request) -> JSONResponse:
-        return await _dispatch(runtime.memory, "memory", request)
-
-    async def workbench_action(request: Request) -> JSONResponse:
-        return await _dispatch(runtime.workbench, "workbench", request)
+    async def app_action(request: Request) -> JSONResponse:
+        return await _dispatch(runtime.actions, "app", request)
 
     async def spa_index(request: Request) -> Response:
         index = _index_path()
@@ -106,12 +85,8 @@ def create_app(*, root_dir: Path, ai_dir: Path, web_dir: Path, web_dist_dir: Pat
             Route("/health", health, methods=["GET"]),
             Route("/app-config.json", app_config, methods=["GET"]),
             Route("/app/diagnostics", app_diagnostics, methods=["GET"]),
-            Route("/app/wiki/actions", list_wiki_actions, methods=["GET"]),
-            Route("/app/memory/actions", list_memory_actions, methods=["GET"]),
-            Route("/app/workbench/actions", list_workbench_actions, methods=["GET"]),
-            Route("/app/wiki/action/{action}", wiki_action, methods=["POST"]),
-            Route("/app/memory/action/{action}", memory_action, methods=["POST"]),
-            Route("/app/workbench/action/{action}", workbench_action, methods=["POST"]),
+            Route("/app/actions", list_actions, methods=["GET"]),
+            Route("/app/action/{action}", app_action, methods=["POST"]),
             Mount("/assets", StaticFiles(directory=web_dist_dir / "assets", check_dir=False), name="assets"),
             Route("/", spa_index, methods=["GET"]),
             Route("/{path:path}", web_fallback, methods=["GET"]),

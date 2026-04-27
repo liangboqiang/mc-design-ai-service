@@ -5,10 +5,10 @@ port = 18080
 project_root = "."
 
 [web]
-action_base = "/app/wiki/action"
+action_base = "/app/action"
 dist = "web/dist"
 auto_open_browser = true
 
-[wiki]
+[memory]
 allow_publish = false
 auto_refresh_index_on_start = true

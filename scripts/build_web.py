@@ -16,7 +16,7 @@ ASSETS_SRC = SRC / "assets"
 ASSETS_DIST = DIST / "assets"
 VENDOR_SRC = WEB / "vendor"
 VENDOR_DIST = DIST / "vendor"
-STAMP = DIST / ".wiki_app_build.json"
+STAMP = DIST / ".memory_native_build.json"
 
 
 def source_hash() -> str:
@@ -61,7 +61,7 @@ def _inline_index() -> str:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memory-Native Agent Workbench</title>
+    <title>图谱百科 · NoteGraph Console</title>
     <style>
 {css}
     </style>
@@ -69,7 +69,7 @@ def _inline_index() -> str:
   <body>
     <div id="root">
       <main class="fatal">
-        <h1>Memory-Native Agent Workbench</h1>
+        <h1>图谱百科</h1>
         <p>前端正在启动。如果这里一直不变化，请打开浏览器控制台查看错误，或访问 /health 检查后端。</p>
       </main>
     </div>

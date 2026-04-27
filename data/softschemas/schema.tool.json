@@ -1,0 +1,87 @@
+{
+  "schema_id": "schema.tool",
+  "name": "tool",
+  "description": "Soft Schema 只提供推荐抽取字段，不限制智能体额外抽取。",
+  "allow_extra_fields": true,
+  "allow_extra_relations": true,
+  "recommended_fields": [
+    {
+      "name": "工具用途",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "输入参数",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "输出结果",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "权限等级",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "执行器引用",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    }
+  ],
+  "recommended_relations": [
+    {
+      "predicate": "uses",
+      "source_kinds": [
+        "Agent",
+        "Skill"
+      ],
+      "target_kinds": [
+        "Tool",
+        "Workflow"
+      ],
+      "evidence_required": true
+    },
+    {
+      "predicate": "depends_on",
+      "source_kinds": [
+        "Part",
+        "Rule",
+        "Document"
+      ],
+      "target_kinds": [
+        "Parameter",
+        "Document"
+      ],
+      "evidence_required": true
+    },
+    {
+      "predicate": "references",
+      "source_kinds": [
+        "Document",
+        "Case",
+        "SOP"
+      ],
+      "target_kinds": [
+        "Evidence",
+        "Document"
+      ],
+      "evidence_required": true
+    }
+  ],
+  "candidate_fields": [],
+  "candidate_relations": [],
+  "updated_at": "2026-04-27T10:45:18Z"
+}

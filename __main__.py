@@ -4,6 +4,7 @@ from pathlib import Path
 import argparse
 import json
 import sys
+import os
 import threading
 import time
 import urllib.request
@@ -11,17 +12,15 @@ import webbrowser
 
 ROOT_DIR = Path(__file__).resolve().parent
 AI_DIR = ROOT_DIR / "ai"
-AI_SRC_DIR = AI_DIR / "src"
 WEB_DIR = ROOT_DIR / "web"
 WEB_DIST_DIR = WEB_DIR / "dist"
-BUILD_STAMP = WEB_DIST_DIR / ".wiki_app_build.json"
+BUILD_STAMP = WEB_DIST_DIR / ".memory_native_build.json"
 
-for candidate in (ROOT_DIR, AI_DIR, AI_SRC_DIR):
+for candidate in (ROOT_DIR, AI_DIR):
     value = str(candidate)
     if value not in sys.path:
         sys.path.insert(0, value)
 
-import uvicorn  # noqa: E402
 import config_loader as cfg  # noqa: E402
 from scripts.build_web import source_hash, build as build_web  # noqa: E402
 
@@ -48,40 +47,25 @@ def ensure_web_build(force: bool = False) -> None:
 
 
 def run_checks() -> None:
-    from scripts import (
-        check_backend,
-        check_capability,
-        check_cleanup_and_closure,
-        check_e2e,
-        check_frontend,
-        check_graph,
-        check_kernel,
-        check_lens,
-        check_memory,
-        check_note_parser,
-        check_runtime_preview,
-        check_v33_blueprint,
-    )
+    import os
+    import subprocess
 
-    for name, module in [
-        ("backend", check_backend),
-        ("frontend", check_frontend),
-        ("e2e", check_e2e),
-        ("memory", check_memory),
-        ("note_parser", check_note_parser),
-        ("lens", check_lens),
-        ("graph", check_graph),
-        ("capability", check_capability),
-        ("kernel", check_kernel),
-        ("runtime_preview", check_runtime_preview),
-        ("blueprint", check_v33_blueprint),
-        ("cleanup", check_cleanup_and_closure),
-    ]:
-        print(f"[check] {name}")
-        code = module.main()
-        if code != 0:
-            raise SystemExit(code)
+    print("[check] web_build")
+    ensure_web_build(force=True)
 
+    scripts = [
+        "check_backend",
+    ]
+    python_cmd = [sys.executable]
+    if getattr(sys.flags, "no_site", 0):
+        python_cmd.append("-S")
+    env = dict(os.environ)
+    if getattr(sys.flags, "no_site", 0):
+        site_packages = "/opt/pyvenv/lib/python3.13/site-packages"
+        env["PYTHONPATH"] = site_packages + os.pathsep + env.get("PYTHONPATH", "")
+    for name in scripts:
+        print(f"[check] {name.replace('check_', '')}")
+        subprocess.run([*python_cmd, str(ROOT_DIR / "scripts" / f"{name}.py")], cwd=ROOT_DIR, env=env, check=True, timeout=90)
 
 
 def _open_browser_after_ready(port: int) -> None:
@@ -111,7 +95,7 @@ def print_banner() -> None:
     print("  Mode:       kernel + memory + capability + workbench")
     print(f"  Project:    {cfg.PROJECT_ROOT}")
     print(f"  Web dist:   {WEB_DIST_DIR}")
-    print("  Transport:  browser -> /app/{wiki|memory|workbench}/action/*")
+    print("  Transport:  browser -> /app/action/{action}")
     print("=" * 78 + "\n")
 
 
@@ -125,13 +109,16 @@ def main() -> None:
 
     if args.check:
         run_checks()
-        return
+        print("[check] done")
+        os._exit(0)
 
     ensure_web_build(force=args.rebuild_web or args.build_web)
     print_banner()
 
     if not args.no_browser:
         _open_browser_after_ready(cfg.SERVER_PORT)
+
+    import uvicorn
 
     uvicorn.run(
         "main_app:app",

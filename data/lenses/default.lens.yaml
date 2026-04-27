@@ -1,0 +1,23 @@
+id: lens.default
+applies_to:
+  - Document
+  - Case
+  - Policy
+  - Rule
+suggested_fields:
+  summary:
+    aliases: ["摘要", "简介", "summary"]
+  constraints:
+    aliases: ["约束", "constraints", "限制"]
+  unknowns:
+    aliases: ["未知项", "gaps", "unknowns"]
+projection_hints:
+  memory_view:
+    include: [summary, constraints, unknowns]
+maturity_checks:
+  published:
+    recommended: [summary]
+  projectable:
+    required_any: [summary]
+  runtime_ready:
+    recommended: [constraints]

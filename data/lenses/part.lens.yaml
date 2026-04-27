@@ -1,0 +1,17 @@
+id: lens.part
+applies_to:
+  - Part
+suggested_fields:
+  summary:
+    aliases: ["摘要", "简介"]
+  parameters:
+    aliases: ["参数", "parameters"]
+  constraints:
+    aliases: ["约束", "constraints"]
+maturity_checks:
+  published:
+    recommended: [summary]
+  projectable:
+    required_any: [summary, parameters]
+  runtime_ready:
+    required: [summary]

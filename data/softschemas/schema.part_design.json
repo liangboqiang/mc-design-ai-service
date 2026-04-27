@@ -1,0 +1,927 @@
+{
+  "schema_id": "schema.part_design",
+  "name": "part_design",
+  "description": "Soft Schema 只提供推荐抽取字段，不限制智能体额外抽取。",
+  "allow_extra_fields": true,
+  "allow_extra_relations": true,
+  "recommended_fields": [
+    {
+      "name": "零件类型",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "关键参数",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "材料",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "工况",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "设计约束",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    },
+    {
+      "name": "适用对象",
+      "aliases": [],
+      "type": "text",
+      "required_for_runtime": false,
+      "evidence_required": true
+    }
+  ],
+  "recommended_relations": [
+    {
+      "predicate": "uses",
+      "source_kinds": [
+        "Agent",
+        "Skill"
+      ],
+      "target_kinds": [
+        "Tool",
+        "Workflow"
+      ],
+      "evidence_required": true
+    },
+    {
+      "predicate": "depends_on",
+      "source_kinds": [
+        "Part",
+        "Rule",
+        "Document"
+      ],
+      "target_kinds": [
+        "Parameter",
+        "Document"
+      ],
+      "evidence_required": true
+    },
+    {
+      "predicate": "references",
+      "source_kinds": [
+        "Document",
+        "Case",
+        "SOP"
+      ],
+      "target_kinds": [
+        "Evidence",
+        "Document"
+      ],
+      "evidence_required": true
+    }
+  ],
+  "candidate_fields": [
+    {
+      "name": "唯一标识",
+      "count": 139,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "general_chat"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "parts_design_chat"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "review_agent"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "worker_agent"
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "value": "skill/core/memory"
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "value": "skill/core/query"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "实体名称",
+      "count": 139,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "通用对话智能体"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "零部件设计对话智能体"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "审查智能体"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "员工智能体"
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "value": "记忆技能"
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "value": "查询"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "实体类型",
+      "count": 139,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "智能体"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "智能体"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "智能体"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "智能体"
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "value": "技能"
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "value": "技能"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "当前状态",
+      "count": 139,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "可用"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "可用"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "可用"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "可用"
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "value": "可用"
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "value": "可用"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "最近更新",
+      "count": 139,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "2026-04-25"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "2026-04-25"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "2026-04-25"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "2026-04-25"
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "value": "2026-04-25"
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "value": "2026-04-25"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "禁用状态",
+      "count": 139,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "未禁用"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "未禁用"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "未禁用"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "未禁用"
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "value": "未禁用"
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "value": "未禁用"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "锁定状态",
+      "count": 139,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "未锁定"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "未锁定"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "未锁定"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "未锁定"
+        },
+        {
+          "note_id": "skill/core/memory",
+          "title": "技能：记忆技能",
+          "value": "未锁定"
+        },
+        {
+          "note_id": "skill/core/query",
+          "title": "技能：查询",
+          "value": "未锁定"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "权限等级",
+      "count": 96,
+      "examples": [
+        {
+          "note_id": "tool",
+          "title": "工具：工具",
+          "value": "只读"
+        },
+        {
+          "note_id": "tool/external/cloude/connect_qpp",
+          "title": "工具：连接 QPP",
+          "value": "治理"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ecr_list",
+          "title": "工具：查询 ECR 列表",
+          "value": "治理"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ipm_list",
+          "title": "工具：查询 IPM 列表",
+          "value": "治理"
+        },
+        {
+          "note_id": "tool/external/design_report/create_image",
+          "title": "工具：创建报告图片",
+          "value": "草稿"
+        },
+        {
+          "note_id": "tool/external/design_report/create_report",
+          "title": "工具：创建设计报告",
+          "value": "草稿"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "激活方式",
+      "count": 96,
+      "examples": [
+        {
+          "note_id": "tool",
+          "title": "工具：工具",
+          "value": "手动激活"
+        },
+        {
+          "note_id": "tool/external/cloude/connect_qpp",
+          "title": "工具：连接 QPP",
+          "value": "手动激活"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ecr_list",
+          "title": "工具：查询 ECR 列表",
+          "value": "默认激活"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ipm_list",
+          "title": "工具：查询 IPM 列表",
+          "value": "手动激活"
+        },
+        {
+          "note_id": "tool/external/design_report/create_image",
+          "title": "工具：创建报告图片",
+          "value": "手动激活"
+        },
+        {
+          "note_id": "tool/external/design_report/create_report",
+          "title": "工具：创建设计报告",
+          "value": "手动激活"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "所属工具箱",
+      "count": 95,
+      "examples": [
+        {
+          "note_id": "tool/external/cloude/connect_qpp",
+          "title": "工具：连接 QPP",
+          "value": "Cloude 企业接口工具箱"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ecr_list",
+          "title": "工具：查询 ECR 列表",
+          "value": "Cloude 企业接口工具箱"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ipm_list",
+          "title": "工具：查询 IPM 列表",
+          "value": "Cloude 企业接口工具箱"
+        },
+        {
+          "note_id": "tool/external/design_report/create_image",
+          "title": "工具：创建报告图片",
+          "value": "设计报告工具箱"
+        },
+        {
+          "note_id": "tool/external/design_report/create_report",
+          "title": "工具：创建设计报告",
+          "value": "设计报告工具箱"
+        },
+        {
+          "note_id": "tool/external/design_report/export_report",
+          "title": "工具：导出报告",
+          "value": "设计报告工具箱"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "所属分类",
+      "count": 61,
+      "examples": [
+        {
+          "note_id": "tool/external/cloude/connect_qpp",
+          "title": "工具：连接 QPP",
+          "value": "['外部', '企业接口', '云服务']"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ecr_list",
+          "title": "工具：查询 ECR 列表",
+          "value": "['外部', '企业接口', '云服务']"
+        },
+        {
+          "note_id": "tool/external/cloude/query_ipm_list",
+          "title": "工具：查询 IPM 列表",
+          "value": "['外部', '企业接口', '云服务']"
+        },
+        {
+          "note_id": "tool/external/design_report/create_image",
+          "title": "工具：创建报告图片",
+          "value": "['外部', '报告', '文档']"
+        },
+        {
+          "note_id": "tool/external/design_report/create_report",
+          "title": "工具：创建设计报告",
+          "value": "['外部', '报告', '文档']"
+        },
+        {
+          "note_id": "tool/external/design_report/export_report",
+          "title": "工具：导出报告",
+          "value": "['外部', '报告', '文档']"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "可用工具箱",
+      "count": 4,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "['design_report', 'cloude', 'nx', 'files', 'shell', 'textops', 'refs', 'inspect', 'todo', 'task', 'compact', 'background', 'subagent']"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "['design_report', 'cloude', 'nx', 'files', 'shell', 'textops', 'refs', 'inspect', 'normalize', 'todo', 'task', 'compact', 'workspace', 'background', 'subagent']"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "['files', 'textops', 'inspect', 'normalize', 'compact', 'task']"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "['files', 'shell', 'textops', 'todo', 'task', 'compact', 'autonomy']"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "最大上下文长度",
+      "count": 4,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "18000"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "22000"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "16000"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "16000"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "根技能",
+      "count": 4,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "skill/general/root"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "skill/parts_design/root"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "skill/general/root"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "skill/general/root"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "模块路径",
+      "count": 4,
+      "examples": [
+        {
+          "note_id": "tool/external/cloude",
+          "title": "工具箱：Cloude 企业接口工具箱",
+          "value": "tool.external.cloude.toolbox"
+        },
+        {
+          "note_id": "tool/external/design_report",
+          "title": "工具箱：设计报告工具箱",
+          "value": "tool.external.design_report.toolbox"
+        },
+        {
+          "note_id": "tool/external/nx",
+          "title": "工具箱：NX工具箱",
+          "value": "tool.external.nx.toolbox"
+        },
+        {
+          "note_id": "tool/external/textops",
+          "title": "工具箱：文本处理工具箱",
+          "value": "tool.external.textops.toolbox"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "模型名称",
+      "count": 4,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "mock"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "mock"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "mock"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "mock"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "模型服务",
+      "count": 4,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "mock"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "mock"
+        },
+        {
+          "note_id": "agent/review_agent",
+          "title": "智能体：审查智能体",
+          "value": "mock"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "mock"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "类名称",
+      "count": 4,
+      "examples": [
+        {
+          "note_id": "tool/external/cloude",
+          "title": "工具箱：Cloude 企业接口工具箱",
+          "value": "CloudeToolbox"
+        },
+        {
+          "note_id": "tool/external/design_report",
+          "title": "工具箱：设计报告工具箱",
+          "value": "DesignReportToolbox"
+        },
+        {
+          "note_id": "tool/external/nx",
+          "title": "工具箱：NX工具箱",
+          "value": "NXToolbox"
+        },
+        {
+          "note_id": "tool/external/textops",
+          "title": "工具箱：文本处理工具箱",
+          "value": "TextOpsToolbox"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "允许工具分类",
+      "count": 3,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "['data_processing', 'local_compute', 'document', 'report', 'enterprise_api', 'remote_api', 'cad', 'engine', 'workspace_io', 'text', 'memory_read', 'task', 'todo"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "['data_processing', 'local_compute', 'document', 'report', 'enterprise_api', 'remote_api', 'cad', 'engine', 'workspace_io', 'text', 'memory_read', 'task', 'todo"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "['engine', 'workspace_io', 'text', 'task', 'todo', 'memory_read']"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "工具权限等级",
+      "count": 3,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "发布"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "发布"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "草稿"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "禁止工具分类",
+      "count": 3,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "external_mcp"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "external_mcp"
+        },
+        {
+          "note_id": "agent/worker_agent",
+          "title": "智能体：员工智能体",
+          "value": "['shell_exec', 'external_mcp']"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "禁止工具",
+      "count": 2,
+      "examples": [
+        {
+          "note_id": "agent/general_chat",
+          "title": "智能体：通用对话智能体",
+          "value": "shell.run"
+        },
+        {
+          "note_id": "agent/parts_design_chat",
+          "title": "智能体：零部件设计对话智能体",
+          "value": "shell.run"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "activation_mode",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "tool.memory_preview_runtime",
+          "title": "Runtime Preview Tool",
+          "value": "always"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "categories",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "tool.memory_preview_runtime",
+          "title": "Runtime Preview Tool",
+          "value": "['preview', 'workbench']"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "input_schema",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "tool.memory_preview_runtime",
+          "title": "Runtime Preview Tool",
+          "value": "{'type': 'object', 'properties': {'task': {'type': 'string'}}}"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "output_schema",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "tool.memory_preview_runtime",
+          "title": "Runtime Preview Tool",
+          "value": "{'type': 'object', 'properties': {'memory_view': {'type': 'object'}, 'capability_view': {'type': 'object'}, 'prompt': {'type': 'string'}}}"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "安全边界",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "tool.memory_preview_runtime",
+          "title": "Runtime Preview Tool",
+          "value": "只读预览，不调用外部执行器"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "推荐工具",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "agent.memory_native_kernel",
+          "title": "Memory-Native Agent Kernel",
+          "value": "tool.system.runtime.inspect_tool"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "推荐技能",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "agent.memory_native_kernel",
+          "title": "Memory-Native Agent Kernel",
+          "value": "skill/core/memory, skill/core/query"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "角色定位",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "agent.memory_native_kernel",
+          "title": "Memory-Native Agent Kernel",
+          "value": "负责 Observe -> Orient -> Act -> Reflect -> Commit 的智能体内核"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "输入",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "agent.memory_native_kernel",
+          "title": "Memory-Native Agent Kernel",
+          "value": "['用户任务', '附件', '运行时状态']"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    },
+    {
+      "name": "输出",
+      "count": 1,
+      "examples": [
+        {
+          "note_id": "agent.memory_native_kernel",
+          "title": "Memory-Native Agent Kernel",
+          "value": "['结构化回复', '工具调用和 Proposal 提示']"
+        }
+      ],
+      "status": "candidate",
+      "source": "note_fields"
+    }
+  ],
+  "candidate_relations": [],
+  "updated_at": "2026-04-27T10:45:36Z",
+  "last_discovered_at": "2026-04-27T10:45:36Z"
+}

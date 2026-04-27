@@ -183,7 +183,75 @@ def _load_yaml(path: Path) -> dict[str, Any]:
             return payload if isinstance(payload, dict) else {}
         except Exception:  # noqa: BLE001
             pass
-    return {}
+    return _load_yaml_subset(text)
+
+
+def _load_yaml_subset(text: str) -> dict[str, Any]:
+    """Parse the small YAML subset used by data/lenses/*.yaml.
+
+    This keeps LensStore usable in minimal Python environments where PyYAML is not
+    installed. It intentionally supports only dict/list/scalar structures used by
+    the built-in lens files; arbitrary YAML should still use PyYAML.
+    """
+    raw_lines = [line.rstrip() for line in text.splitlines() if line.strip() and not line.lstrip().startswith("#")]
+    root: dict[str, Any] = {}
+    stack: list[tuple[int, Any]] = [(-1, root)]
+
+    for idx, raw_line in enumerate(raw_lines):
+        indent = len(raw_line) - len(raw_line.lstrip(" "))
+        line = raw_line.strip()
+        while stack and indent <= stack[-1][0]:
+            stack.pop()
+        parent = stack[-1][1] if stack else root
+
+        if line.startswith("- "):
+            if isinstance(parent, list):
+                parent.append(_yaml_scalar(line[2:].strip()))
+            continue
+
+        if ":" not in line or not isinstance(parent, dict):
+            continue
+        key, value = line.split(":", 1)
+        key = key.strip()
+        value = value.strip()
+        if value:
+            parent[key] = _yaml_scalar(value)
+            continue
+
+        child: Any = [] if _next_content_is_list(raw_lines, idx, indent) else {}
+        parent[key] = child
+        stack.append((indent, child))
+    return root
+
+
+def _next_content_is_list(lines: list[str], idx: int, indent: int) -> bool:
+    for following in lines[idx + 1 :]:
+        next_indent = len(following) - len(following.lstrip(" "))
+        if next_indent <= indent:
+            return False
+        stripped = following.strip()
+        if stripped:
+            return stripped.startswith("- ")
+    return False
+
+
+def _yaml_scalar(value: str) -> Any:
+    raw = value.strip()
+    if not raw:
+        return ""
+    if raw.startswith("[") and raw.endswith("]"):
+        inner = raw[1:-1].strip()
+        if not inner:
+            return []
+        return [_yaml_scalar(part.strip()) for part in inner.split(",") if part.strip()]
+    if (raw.startswith('"') and raw.endswith('"')) or (raw.startswith("'") and raw.endswith("'")):
+        return raw[1:-1]
+    if raw.lower() in {"true", "false"}:
+        return raw.lower() == "true"
+    try:
+        return int(raw)
+    except ValueError:
+        return raw
 
 
 def _first_field_value(fields: dict[str, Any], aliases: list[str]) -> Any:

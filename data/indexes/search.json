@@ -1,0 +1,844 @@
+{
+  "items": [
+    {
+      "note_id": "agent.memory_native_kernel",
+      "title": "Memory-Native Agent Kernel",
+      "kind": "Agent",
+      "summary": "统一以 MemoryView 和 CapabilityView 驱动运行时，不再直接拼接 Memory 原文进入 Prompt。",
+      "path": "data/notes/system/agent/memory_native_kernel/note.md"
+    },
+    {
+      "note_id": "agent/general_chat",
+      "title": "智能体：通用对话智能体",
+      "kind": "Agent",
+      "summary": "摘要：通用对话智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "data/notes/system/agent/general_chat/note.md"
+    },
+    {
+      "note_id": "agent/parts_design_chat",
+      "title": "智能体：零部件设计对话智能体",
+      "kind": "Agent",
+      "summary": "摘要：零部件设计对话智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "data/notes/system/agent/parts_design_chat/note.md"
+    },
+    {
+      "note_id": "agent/review_agent",
+      "title": "智能体：审查智能体",
+      "kind": "Agent",
+      "summary": "摘要：审查智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "data/notes/system/agent/review_agent/note.md"
+    },
+    {
+      "note_id": "agent/worker_agent",
+      "title": "智能体：员工智能体",
+      "kind": "Agent",
+      "summary": "摘要：员工智能体是系统中的智能体入口，负责按照中文提示词和工具治理规则完成任务。",
+      "path": "data/notes/system/agent/worker_agent/note.md"
+    },
+    {
+      "note_id": "tool",
+      "title": "系统工具体系",
+      "kind": "Document",
+      "summary": "本系统工具箱采用稳定原子能力集合：文件、代码、文档、笔记、图谱、版本、本地检查，以及垂类 NX 和报告工具。工具必须通过 CapabilitySpec 暴露，不允许绕过权限直接执行。",
+      "path": "data/notes/system/tool/note.md"
+    },
+    {
+      "note_id": "skill/core/memory",
+      "title": "技能：记忆技能",
+      "kind": "Skill",
+      "summary": "摘要：记忆技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/core/memory/note.md"
+    },
+    {
+      "note_id": "skill/core/query",
+      "title": "技能：查询",
+      "kind": "Skill",
+      "summary": "摘要：查询用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/core/query/note.md"
+    },
+    {
+      "note_id": "skill/core/report",
+      "title": "技能：报告",
+      "kind": "Skill",
+      "summary": "摘要：报告用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/core/report/note.md"
+    },
+    {
+      "note_id": "skill/core/routing",
+      "title": "技能：路由技能",
+      "kind": "Skill",
+      "summary": "摘要：路由技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/core/routing/note.md"
+    },
+    {
+      "note_id": "skill/core/task",
+      "title": "技能：任务技能",
+      "kind": "Skill",
+      "summary": "摘要：任务技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/core/task/note.md"
+    },
+    {
+      "note_id": "skill/general/root",
+      "title": "技能：通用根技能",
+      "kind": "Skill",
+      "summary": "摘要：通用根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/general/root/note.md"
+    },
+    {
+      "note_id": "skill/governance/agent_build",
+      "title": "技能：智能体构建治理",
+      "kind": "Skill",
+      "summary": "摘要：智能体构建治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/governance/agent_build/note.md"
+    },
+    {
+      "note_id": "skill/governance/compact_guard",
+      "title": "技能：上下文压缩守护",
+      "kind": "Skill",
+      "summary": "摘要：上下文压缩守护用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/governance/compact_guard/note.md"
+    },
+    {
+      "note_id": "skill/governance/protocol_governance",
+      "title": "技能：协议治理",
+      "kind": "Skill",
+      "summary": "摘要：协议治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/governance/protocol_governance/note.md"
+    },
+    {
+      "note_id": "skill/governance/refs_bridge",
+      "title": "技能：引用桥接",
+      "kind": "Skill",
+      "summary": "摘要：引用桥接用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/governance/refs_bridge/note.md"
+    },
+    {
+      "note_id": "skill/governance/task_governance",
+      "title": "技能：任务治理",
+      "kind": "Skill",
+      "summary": "摘要：任务治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/governance/task_governance/note.md"
+    },
+    {
+      "note_id": "skill/governance/tool_surface",
+      "title": "技能：工具表面治理",
+      "kind": "Skill",
+      "summary": "摘要：工具表面治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/governance/tool_surface/note.md"
+    },
+    {
+      "note_id": "skill/governance/workspace_governance",
+      "title": "技能：工作区治理",
+      "kind": "Skill",
+      "summary": "摘要：工作区治理用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/governance/workspace_governance/note.md"
+    },
+    {
+      "note_id": "skill/parts_design/camshaft/root",
+      "title": "技能：凸轮轴设计根技能",
+      "kind": "Skill",
+      "summary": "摘要：凸轮轴设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/parts_design/camshaft/root/note.md"
+    },
+    {
+      "note_id": "skill/parts_design/common/report",
+      "title": "技能：报告生成",
+      "kind": "Skill",
+      "summary": "摘要：报告生成用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/parts_design/common/report/note.md"
+    },
+    {
+      "note_id": "skill/parts_design/common/requirement_parse",
+      "title": "技能：需求解析",
+      "kind": "Skill",
+      "summary": "摘要：需求解析用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/parts_design/common/requirement_parse/note.md"
+    },
+    {
+      "note_id": "skill/parts_design/conrod/root",
+      "title": "技能：连杆设计根技能",
+      "kind": "Skill",
+      "summary": "摘要：连杆设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/parts_design/conrod/root/note.md"
+    },
+    {
+      "note_id": "skill/parts_design/crankshaft/root",
+      "title": "技能：曲轴设计根技能",
+      "kind": "Skill",
+      "summary": "摘要：曲轴设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/parts_design/crankshaft/root/note.md"
+    },
+    {
+      "note_id": "skill/parts_design/root",
+      "title": "技能：零部件设计根技能",
+      "kind": "Skill",
+      "summary": "摘要：零部件设计根技能用于组织智能体执行过程中的能力、流程和工具调用边界。",
+      "path": "data/notes/system/skill/parts_design/root/note.md"
+    },
+    {
+      "note_id": "tool/external/code/glob",
+      "title": "代码文件匹配",
+      "kind": "Tool",
+      "summary": "按 glob 模式查找代码库文件。",
+      "path": "data/notes/system/tool/external/code/glob/note.md"
+    },
+    {
+      "note_id": "tool/external/code/grep",
+      "title": "代码内容检索",
+      "kind": "Tool",
+      "summary": "在代码库中进行正则文本检索。",
+      "path": "data/notes/system/tool/external/code/grep/note.md"
+    },
+    {
+      "note_id": "tool/external/code/read_window",
+      "title": "代码窗口读取",
+      "kind": "Tool",
+      "summary": "按行号读取代码片段，适合大文件查看。",
+      "path": "data/notes/system/tool/external/code/read_window/note.md"
+    },
+    {
+      "note_id": "tool/external/code/repo_map",
+      "title": "仓库地图",
+      "kind": "Tool",
+      "summary": "生成简洁代码仓库地图，列出关键文件和符号。",
+      "path": "data/notes/system/tool/external/code/repo_map/note.md"
+    },
+    {
+      "note_id": "tool/external/code/symbols",
+      "title": "代码符号提取",
+      "kind": "Tool",
+      "summary": "提取 Python/JS/TS 文件中的类和函数符号。",
+      "path": "data/notes/system/tool/external/code/symbols/note.md"
+    },
+    {
+      "note_id": "tool/external/design_report/create_image",
+      "title": "工具：创建报告图片",
+      "kind": "Tool",
+      "summary": "摘要：创建报告图片用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/design_report/create_image/note.md"
+    },
+    {
+      "note_id": "tool/external/design_report/create_report",
+      "title": "工具：创建设计报告",
+      "kind": "Tool",
+      "summary": "摘要：创建设计报告用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/design_report/create_report/note.md"
+    },
+    {
+      "note_id": "tool/external/design_report/export_report",
+      "title": "工具：导出报告",
+      "kind": "Tool",
+      "summary": "摘要：导出报告用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/design_report/export_report/note.md"
+    },
+    {
+      "note_id": "tool/external/design_report/get_report_detail",
+      "title": "工具：获取报告详情",
+      "kind": "Tool",
+      "summary": "摘要：获取报告详情用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/design_report/get_report_detail/note.md"
+    },
+    {
+      "note_id": "tool/external/design_report/list_reports",
+      "title": "工具：列出报告",
+      "kind": "Tool",
+      "summary": "摘要：列出报告用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/design_report/list_reports/note.md"
+    },
+    {
+      "note_id": "tool/external/design_report/update_report",
+      "title": "工具：更新设计报告",
+      "kind": "Tool",
+      "summary": "摘要：更新设计报告用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/design_report/update_report/note.md"
+    },
+    {
+      "note_id": "tool/external/docs/extract_text",
+      "title": "抽取文档文本",
+      "kind": "Tool",
+      "summary": "从 txt、md、json、csv、html、docx、xlsx、pdf 等文件中抽取文本。",
+      "path": "data/notes/system/tool/external/docs/extract_text/note.md"
+    },
+    {
+      "note_id": "tool/external/docs/metadata",
+      "title": "读取文档元数据",
+      "kind": "Tool",
+      "summary": "读取文件后缀、大小和修改时间。",
+      "path": "data/notes/system/tool/external/docs/metadata/note.md"
+    },
+    {
+      "note_id": "tool/external/docs/table_preview",
+      "title": "表格预览",
+      "kind": "Tool",
+      "summary": "预览 CSV/XLSX 表格前若干行。",
+      "path": "data/notes/system/tool/external/docs/table_preview/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/apply_patch",
+      "title": "应用补丁",
+      "kind": "Tool",
+      "summary": "对单个文件应用一组精确文本替换。",
+      "path": "data/notes/system/tool/external/fs/apply_patch/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/copy",
+      "title": "复制文件",
+      "kind": "Tool",
+      "summary": "在工作区内复制文件或目录。",
+      "path": "data/notes/system/tool/external/fs/copy/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/delete",
+      "title": "删除文件",
+      "kind": "Tool",
+      "summary": "删除工作区内文件或递归删除目录。高风险，需治理权限。",
+      "path": "data/notes/system/tool/external/fs/delete/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/diff_text",
+      "title": "文本差异",
+      "kind": "Tool",
+      "summary": "生成两个文本文件的 unified diff。",
+      "path": "data/notes/system/tool/external/fs/diff_text/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/list",
+      "title": "列出文件",
+      "kind": "Tool",
+      "summary": "列出工作区目录内容，支持递归和数量限制。",
+      "path": "data/notes/system/tool/external/fs/list/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/mkdir",
+      "title": "新建文件夹",
+      "kind": "Tool",
+      "summary": "在工作区内创建文件夹。",
+      "path": "data/notes/system/tool/external/fs/mkdir/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/move",
+      "title": "移动文件",
+      "kind": "Tool",
+      "summary": "在工作区内移动或重命名文件。",
+      "path": "data/notes/system/tool/external/fs/move/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/read_text",
+      "title": "读取文本",
+      "kind": "Tool",
+      "summary": "按路径读取文本文件，可限制行范围和最大字符数。",
+      "path": "data/notes/system/tool/external/fs/read_text/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/replace_text",
+      "title": "替换文本",
+      "kind": "Tool",
+      "summary": "在单个文件中替换明确匹配的文本片段。",
+      "path": "data/notes/system/tool/external/fs/replace_text/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/stat",
+      "title": "文件状态",
+      "kind": "Tool",
+      "summary": "读取工作区文件或目录的存在性、类型、大小和修改时间。",
+      "path": "data/notes/system/tool/external/fs/stat/note.md"
+    },
+    {
+      "note_id": "tool/external/fs/write_text",
+      "title": "写入文本",
+      "kind": "Tool",
+      "summary": "在工作区内写入文本文件。用于草稿、报告和受控输出。",
+      "path": "data/notes/system/tool/external/fs/write_text/note.md"
+    },
+    {
+      "note_id": "tool/external/graph/health",
+      "title": "图谱健康检查",
+      "kind": "Tool",
+      "summary": "读取图谱节点、关系和诊断问题摘要。",
+      "path": "data/notes/system/tool/external/graph/health/note.md"
+    },
+    {
+      "note_id": "tool/external/graph/neighbors",
+      "title": "读取图谱邻域",
+      "kind": "Tool",
+      "summary": "读取指定 note 的一跳或多跳关系邻域。",
+      "path": "data/notes/system/tool/external/graph/neighbors/note.md"
+    },
+    {
+      "note_id": "tool/external/graph/rebuild",
+      "title": "重建图谱索引",
+      "kind": "Tool",
+      "summary": "全量重建 note 索引和图谱索引。",
+      "path": "data/notes/system/tool/external/graph/rebuild/note.md"
+    },
+    {
+      "note_id": "tool/external/graph/search",
+      "title": "图谱百科检索",
+      "kind": "Tool",
+      "summary": "基于 note.md 和图谱索引进行混合检索。",
+      "path": "data/notes/system/tool/external/graph/search/note.md"
+    },
+    {
+      "note_id": "tool/external/notes/check",
+      "title": "检查笔记",
+      "kind": "Tool",
+      "summary": "对 note.md 执行 Lens 诊断和 runtime_ready 检查。",
+      "path": "data/notes/system/tool/external/notes/check/note.md"
+    },
+    {
+      "note_id": "tool/external/notes/create",
+      "title": "新建笔记",
+      "kind": "Tool",
+      "summary": "创建草稿状态 note.md。",
+      "path": "data/notes/system/tool/external/notes/create/note.md"
+    },
+    {
+      "note_id": "tool/external/notes/generate_from_text",
+      "title": "文本生成笔记",
+      "kind": "Tool",
+      "summary": "从给定文本生成草稿 note.md。",
+      "path": "data/notes/system/tool/external/notes/generate_from_text/note.md"
+    },
+    {
+      "note_id": "tool/external/notes/list",
+      "title": "列出笔记",
+      "kind": "Tool",
+      "summary": "按关键词和类型检索 note.md。",
+      "path": "data/notes/system/tool/external/notes/list/note.md"
+    },
+    {
+      "note_id": "tool/external/notes/read",
+      "title": "读取笔记",
+      "kind": "Tool",
+      "summary": "读取指定 note.md 的结构化内容。",
+      "path": "data/notes/system/tool/external/notes/read/note.md"
+    },
+    {
+      "note_id": "tool/external/notes/update_source",
+      "title": "更新笔记源码",
+      "kind": "Tool",
+      "summary": "更新指定 note.md 源码。需版本和审核治理配合。",
+      "path": "data/notes/system/tool/external/notes/update_source/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BatchUpdateParams",
+      "title": "工具：NX批量更新参数",
+      "kind": "Tool",
+      "summary": "摘要：NX批量更新参数用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BatchUpdateParams/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BlendShaftEndEdges",
+      "title": "工具：NX倒圆轴端部边",
+      "kind": "Tool",
+      "summary": "摘要：NX倒圆轴端部边用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BlendShaftEndEdges/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BuildCamLobe",
+      "title": "工具：NXBuildCamLobe",
+      "kind": "Tool",
+      "summary": "摘要：NXBuildCamLobe用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BuildCamLobe/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BuildCamLobeArray",
+      "title": "工具：NXBuildCamLobeArray",
+      "kind": "Tool",
+      "summary": "摘要：NXBuildCamLobeArray用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BuildCamLobeArray/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BuildCamshaft",
+      "title": "工具：NXBuildCamhaft",
+      "kind": "Tool",
+      "summary": "摘要：NXBuildCamhaft用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BuildCamshaft/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BuildCamshaftOneClick",
+      "title": "工具：NXBuildCamhaftOneClick",
+      "kind": "Tool",
+      "summary": "摘要：NXBuildCamhaftOneClick用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BuildCamshaftOneClick/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BuildJournalFace",
+      "title": "工具：NXBuildJournalFace",
+      "kind": "Tool",
+      "summary": "摘要：NXBuildJournalFace用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BuildJournalFace/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/BuildOrUpdateEndBoss",
+      "title": "工具：NXBuildOr更新端部Bo",
+      "kind": "Tool",
+      "summary": "摘要：NXBuildOr更新端部Bo用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/BuildOrUpdateEndBoss/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/CreateImage",
+      "title": "工具：NX创建Image",
+      "kind": "Tool",
+      "summary": "摘要：NX创建Image用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/CreateImage/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/CreateNewPart",
+      "title": "工具：NX创建新建零件",
+      "kind": "Tool",
+      "summary": "摘要：NX创建新建零件用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/CreateNewPart/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/CreateParam",
+      "title": "工具：NX创建参数",
+      "kind": "Tool",
+      "summary": "摘要：NX创建参数用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/CreateParam/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/CutShaftGrooveByBlock",
+      "title": "工具：NXCut轴GrooveByBlock",
+      "kind": "Tool",
+      "summary": "摘要：NXCut轴GrooveByBlock用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/CutShaftGrooveByBlock/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/ExitAnimation",
+      "title": "工具：NXExitAnimation",
+      "kind": "Tool",
+      "summary": "摘要：NXExitAnimation用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/ExitAnimation/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/ExportSnapshot",
+      "title": "工具：NXExportSnaphot",
+      "kind": "Tool",
+      "summary": "摘要：NXExportSnaphot用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/ExportSnapshot/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/FindParams",
+      "title": "工具：NXFind参数",
+      "kind": "Tool",
+      "summary": "摘要：NXFind参数用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/FindParams/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/FitView",
+      "title": "工具：NXFit查看",
+      "kind": "Tool",
+      "summary": "摘要：NXFit查看用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/FitView/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/GetAllParamsList",
+      "title": "工具：NXGetAll参数Lit",
+      "kind": "Tool",
+      "summary": "摘要：NXGetAll参数Lit用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/GetAllParamsList/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/GetAllViewNames",
+      "title": "工具：NXGetAll查看Name",
+      "kind": "Tool",
+      "summary": "摘要：NXGetAll查看Name用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/GetAllViewNames/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/GetDrawingSheetNameList",
+      "title": "工具：NXGetDrawingSheetNameLit",
+      "kind": "Tool",
+      "summary": "摘要：NXGetDrawingSheetNameLit用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/GetDrawingSheetNameList/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/GetDriveParamsList",
+      "title": "工具：NXGetDrive参数Lit",
+      "kind": "Tool",
+      "summary": "摘要：NXGetDrive参数Lit用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/GetDriveParamsList/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/GetViewStyle",
+      "title": "工具：NXGet查看Style",
+      "kind": "Tool",
+      "summary": "摘要：NXGet查看Style用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/GetViewStyle/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/GetWorkPartInfo",
+      "title": "工具：NXGetWork零件Info",
+      "kind": "Tool",
+      "summary": "摘要：NXGetWork零件Info用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/GetWorkPartInfo/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/HighLightDim",
+      "title": "工具：NXHighLightDim",
+      "kind": "Tool",
+      "summary": "摘要：NXHighLightDim用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/HighLightDim/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/ImportCamProfile",
+      "title": "工具：NXImportCamProfile",
+      "kind": "Tool",
+      "summary": "摘要：NXImportCamProfile用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/ImportCamProfile/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/ListSnapshotNames",
+      "title": "工具：NXLitSnaphotName",
+      "kind": "Tool",
+      "summary": "摘要：NXLitSnaphotName用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/ListSnapshotNames/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/MountBossToShaft",
+      "title": "工具：NXMountBoTo轴",
+      "kind": "Tool",
+      "summary": "摘要：NXMountBoTo轴用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/MountBossToShaft/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/MountCamLobesToShaft",
+      "title": "工具：NXMountCamLobeTo轴",
+      "kind": "Tool",
+      "summary": "摘要：NXMountCamLobeTo轴用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/MountCamLobesToShaft/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/OpenDrawingSheet",
+      "title": "工具：NXOpenDrawingSheet",
+      "kind": "Tool",
+      "summary": "摘要：NXOpenDrawingSheet用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/OpenDrawingSheet/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/OpenPart",
+      "title": "工具：NXOpen零件",
+      "kind": "Tool",
+      "summary": "摘要：NXOpen零件用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/OpenPart/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/OpenTCPart",
+      "title": "工具：NXOpenTC零件",
+      "kind": "Tool",
+      "summary": "摘要：NXOpenTC零件用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/OpenTCPart/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/RotateAndScaleView",
+      "title": "工具：NXRotateAndScale查看",
+      "kind": "Tool",
+      "summary": "摘要：NXRotateAndScale查看用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/RotateAndScaleView/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/SetViewStyle",
+      "title": "工具：NXSet查看Style",
+      "kind": "Tool",
+      "summary": "摘要：NXSet查看Style用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/SetViewStyle/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/SmoothSwitchToView",
+      "title": "工具：NXSmoothSwitchTo查看",
+      "kind": "Tool",
+      "summary": "摘要：NXSmoothSwitchTo查看用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/SmoothSwitchToView/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/SwitchView",
+      "title": "工具：NXSwitch查看",
+      "kind": "Tool",
+      "summary": "摘要：NXSwitch查看用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/SwitchView/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/Test",
+      "title": "工具：NXTet",
+      "kind": "Tool",
+      "summary": "摘要：NXTet用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/Test/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/UniteLobesToShaft",
+      "title": "工具：NXUniteLobeTo轴",
+      "kind": "Tool",
+      "summary": "摘要：NXUniteLobeTo轴用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/UniteLobesToShaft/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/UpdateParam",
+      "title": "工具：NX更新参数",
+      "kind": "Tool",
+      "summary": "摘要：NX更新参数用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/UpdateParam/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/UpdateView",
+      "title": "工具：NX更新查看",
+      "kind": "Tool",
+      "summary": "摘要：NX更新查看用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/UpdateView/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/build_feature",
+      "title": "工具：NXbuildfeature",
+      "kind": "Tool",
+      "summary": "摘要：NXbuildfeature用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/build_feature/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/create_prt",
+      "title": "工具：NX创建prt",
+      "kind": "Tool",
+      "summary": "摘要：NX创建prt用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/create_prt/note.md"
+    },
+    {
+      "note_id": "tool/external/nx/modify_parameter",
+      "title": "工具：NXmodify参数",
+      "kind": "Tool",
+      "summary": "摘要：NXmodify参数用于支撑系统中的相关能力，页面采用note.md 知识格式描述，并通过唯一标识保持运行时可定位。",
+      "path": "data/notes/system/tool/external/nx/modify_parameter/note.md"
+    },
+    {
+      "note_id": "tool/external/shell/check",
+      "title": "命令安全检查",
+      "kind": "Tool",
+      "summary": "检查命令是否符合离线安全策略。",
+      "path": "data/notes/system/tool/external/shell/check/note.md"
+    },
+    {
+      "note_id": "tool/external/shell/run",
+      "title": "运行本地命令",
+      "kind": "Tool",
+      "summary": "运行受限离线命令。默认不激活，需高权限。",
+      "path": "data/notes/system/tool/external/shell/run/note.md"
+    },
+    {
+      "note_id": "tool/external/version/commit",
+      "title": "提交笔记版本",
+      "kind": "Tool",
+      "summary": "提交当前 note.md 工作树快照。",
+      "path": "data/notes/system/tool/external/version/commit/note.md"
+    },
+    {
+      "note_id": "tool/external/version/diff",
+      "title": "版本差异",
+      "kind": "Tool",
+      "summary": "对比指定 note 的两个版本。",
+      "path": "data/notes/system/tool/external/version/diff/note.md"
+    },
+    {
+      "note_id": "tool/external/version/history",
+      "title": "查看版本历史",
+      "kind": "Tool",
+      "summary": "查看全局或指定 note 的版本历史。",
+      "path": "data/notes/system/tool/external/version/history/note.md"
+    },
+    {
+      "note_id": "tool/external/version/release",
+      "title": "创建发布快照",
+      "kind": "Tool",
+      "summary": "创建发布快照。",
+      "path": "data/notes/system/tool/external/version/release/note.md"
+    },
+    {
+      "note_id": "tool/external/version/restore",
+      "title": "恢复笔记版本",
+      "kind": "Tool",
+      "summary": "将某个 note 恢复到指定提交。",
+      "path": "data/notes/system/tool/external/version/restore/note.md"
+    },
+    {
+      "note_id": "tool/external/version/rollback",
+      "title": "回退发布",
+      "kind": "Tool",
+      "summary": "回退到指定 release。",
+      "path": "data/notes/system/tool/external/version/rollback/note.md"
+    },
+    {
+      "note_id": "tool/external/version/status",
+      "title": "版本状态",
+      "kind": "Tool",
+      "summary": "查看 note.md 工作树状态和变更文件。",
+      "path": "data/notes/system/tool/external/version/status/note.md"
+    },
+    {
+      "note_id": "tool/external/code",
+      "title": "代码检索工具箱",
+      "kind": "Toolbox",
+      "summary": "提供离线代码库文件发现、正则检索、窗口读取、符号提取和仓库地图能力。",
+      "path": "data/notes/system/tool/external/code/note.md"
+    },
+    {
+      "note_id": "tool/external/design_report",
+      "title": "工具箱：设计报告工具箱",
+      "kind": "Toolbox",
+      "summary": "摘要：设计报告工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "data/notes/system/tool/external/design_report/note.md"
+    },
+    {
+      "note_id": "tool/external/docs",
+      "title": "文档读取工具箱",
+      "kind": "Toolbox",
+      "summary": "提供离线文档文本抽取、元数据读取和表格预览能力。",
+      "path": "data/notes/system/tool/external/docs/note.md"
+    },
+    {
+      "note_id": "tool/external/fs",
+      "title": "文件工具箱",
+      "kind": "Toolbox",
+      "summary": "提供工作区内安全文件读写、差异、移动、删除和目录管理能力。",
+      "path": "data/notes/system/tool/external/fs/note.md"
+    },
+    {
+      "note_id": "tool/external/graph",
+      "title": "图谱索引工具箱",
+      "kind": "Toolbox",
+      "summary": "提供图谱式检索、邻域读取、索引重建和健康检查能力。",
+      "path": "data/notes/system/tool/external/graph/note.md"
+    },
+    {
+      "note_id": "tool/external/notes",
+      "title": "笔记工具箱",
+      "kind": "Toolbox",
+      "summary": "提供 note.md 的检索、读取、检查、创建和受控更新能力。",
+      "path": "data/notes/system/tool/external/notes/note.md"
+    },
+    {
+      "note_id": "tool/external/nx",
+      "title": "工具箱：NX工具箱",
+      "kind": "Toolbox",
+      "summary": "摘要：NX工具箱用于组织一组可被智能体调用的能力，页面采用中文格式描述工具集合、边界和版本信息。",
+      "path": "data/notes/system/tool/external/nx/note.md"
+    },
+    {
+      "note_id": "tool/external/shell",
+      "title": "本地检查工具箱",
+      "kind": "Toolbox",
+      "summary": "提供受限离线命令检查和运行能力，只用于构建、测试、静态检查和只读状态。",
+      "path": "data/notes/system/tool/external/shell/note.md"
+    },
+    {
+      "note_id": "tool/external/version",
+      "title": "版本治理工具箱",
+      "kind": "Toolbox",
+      "summary": "提供 note.md 的 Git-like 状态、提交、历史、差异、恢复、发布和回退能力。",
+      "path": "data/notes/system/tool/external/version/note.md"
+    },
+    {
+      "note_id": "llm",
+      "title": "系统页面：模型服务",
+      "kind": "knowledge",
+      "summary": "摘要：模型服务是系统 Memory 中的知识页面，采用中文真相格式维护。",
+      "path": "data/notes/system/knowledge/llm/note.md"
+    }
+  ]
+}

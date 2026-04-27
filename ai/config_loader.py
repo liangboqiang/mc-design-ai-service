@@ -37,15 +37,15 @@ def load_config() -> ServerConfig:
     raw = load_raw()
     server = dict(raw.get("server") or {})
     web = dict(raw.get("web") or {})
-    wiki = dict(raw.get("wiki") or {})
+    memory = dict(raw.get("memory") or {})
     return ServerConfig(
         name=str(os.getenv("DESIGN_AGENTS_APP_NAME", server.get("name") or "mc-design-ai-service")),
         host=str(os.getenv("DESIGN_AGENTS_HOST", server.get("host") or "0.0.0.0")),
         port=int(os.getenv("DESIGN_AGENTS_PORT", server.get("port") or 18080)),
         project_root=_resolve_project_root(server.get("project_root") or "."),
-        action_base=str(web.get("action_base") or "/app/wiki/action").rstrip("/"),
-        allow_publish=bool(wiki.get("allow_publish", False)),
-        auto_refresh_index_on_start=bool(wiki.get("auto_refresh_index_on_start", True)),
+        action_base=str(web.get("action_base") or "/app/action").rstrip("/"),
+        allow_publish=bool(memory.get("allow_publish", False)),
+        auto_refresh_index_on_start=bool(memory.get("auto_refresh_index_on_start", True)),
     )
 
 

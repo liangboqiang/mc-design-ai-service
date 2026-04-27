@@ -1,0 +1,722 @@
+{
+  "agent.memory_native_kernel": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Agent",
+    "has_source_refs": true
+  },
+  "agent/general_chat": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Agent",
+    "has_source_refs": true
+  },
+  "agent/parts_design_chat": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Agent",
+    "has_source_refs": true
+  },
+  "agent/review_agent": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Agent",
+    "has_source_refs": true
+  },
+  "agent/worker_agent": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Agent",
+    "has_source_refs": true
+  },
+  "tool": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Document",
+    "has_source_refs": true
+  },
+  "skill/core/memory": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/core/query": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/core/report": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/core/routing": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/core/task": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/general/root": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/governance/agent_build": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/governance/compact_guard": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/governance/protocol_governance": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/governance/refs_bridge": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/governance/task_governance": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/governance/tool_surface": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/governance/workspace_governance": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/parts_design/camshaft/root": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/parts_design/common/report": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/parts_design/common/requirement_parse": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/parts_design/conrod/root": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/parts_design/crankshaft/root": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "skill/parts_design/root": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Skill",
+    "has_source_refs": true
+  },
+  "tool/external/code/glob": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/code/grep": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/code/read_window": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/code/repo_map": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/code/symbols": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/design_report/create_image": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/design_report/create_report": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/design_report/export_report": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/design_report/get_report_detail": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/design_report/list_reports": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/design_report/update_report": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/docs/extract_text": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/docs/metadata": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/docs/table_preview": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/apply_patch": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/copy": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/delete": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/diff_text": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/list": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/mkdir": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/move": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/read_text": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/replace_text": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/stat": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/fs/write_text": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/graph/health": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/graph/neighbors": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/graph/rebuild": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/graph/search": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/notes/check": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/notes/create": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/notes/generate_from_text": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/notes/list": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/notes/read": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/notes/update_source": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BatchUpdateParams": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BlendShaftEndEdges": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BuildCamLobe": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BuildCamLobeArray": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BuildCamshaft": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BuildCamshaftOneClick": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BuildJournalFace": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/BuildOrUpdateEndBoss": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/CreateImage": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/CreateNewPart": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/CreateParam": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/CutShaftGrooveByBlock": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/ExitAnimation": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/ExportSnapshot": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/FindParams": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/FitView": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/GetAllParamsList": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/GetAllViewNames": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/GetDrawingSheetNameList": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/GetDriveParamsList": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/GetViewStyle": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/GetWorkPartInfo": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/HighLightDim": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/ImportCamProfile": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/ListSnapshotNames": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/MountBossToShaft": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/MountCamLobesToShaft": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/OpenDrawingSheet": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/OpenPart": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/OpenTCPart": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/RotateAndScaleView": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/SetViewStyle": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/SmoothSwitchToView": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/SwitchView": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/Test": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/UniteLobesToShaft": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/UpdateParam": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/UpdateView": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/build_feature": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/create_prt": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/nx/modify_parameter": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/shell/check": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/shell/run": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/version/commit": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/version/diff": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/version/history": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/version/release": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/version/restore": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/version/rollback": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/version/status": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Tool",
+    "has_source_refs": true
+  },
+  "tool/external/code": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/design_report": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/docs": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/fs": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/graph": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/notes": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/nx": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/shell": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "tool/external/version": {
+    "status": "published",
+    "maturity": "runtime_ready",
+    "kind": "Toolbox",
+    "has_source_refs": true
+  },
+  "llm": {
+    "status": "published",
+    "maturity": "projectable",
+    "kind": "knowledge",
+    "has_source_refs": true
+  }
+}

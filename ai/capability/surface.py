@@ -24,6 +24,7 @@ class CapabilitySurfaceResolver:
         requested_tool_ids = set(requested_tool_ids or ())
         visible_skill_ids = set(visible_skill_ids or ())
         manually_enabled = set(manually_enabled or ())
+        observation_text = str(observation or "")
         memory_requested = {hint.capability_id for hint in memory_view.activation_hints}
 
         visible_tools: list[CapabilitySpec] = []
@@ -37,10 +38,11 @@ class CapabilitySurfaceResolver:
             reasons: list[str] = []
             requested_by_memory = spec.capability_id in memory_requested
             requested_by_skill = spec.capability_id in requested_tool_ids or spec.capability_id in visible_skill_ids
-            manual = spec.capability_id in manually_enabled
+            requested_by_observation = spec.capability_id in observation_text or str(spec.executor_ref or "").replace("builtin:", "") in observation_text
+            manual = spec.capability_id in manually_enabled or requested_by_observation
 
             if spec.kind == "Tool":
-                installed = not installed_tool_ids or spec.capability_id in installed_tool_ids
+                installed = not installed_tool_ids or self._installed(spec, installed_tool_ids)
                 activation = self._activation_passed(spec, requested_by_memory, requested_by_skill, manual)
                 permission = self._permission_passed(spec, policy)
                 category = self._category_allowed(spec, policy)
@@ -49,6 +51,7 @@ class CapabilitySurfaceResolver:
                         f"installed={installed}",
                         f"requested_by_memory={requested_by_memory}",
                         f"requested_by_skill={requested_by_skill}",
+                        f"requested_by_observation={requested_by_observation}",
                         f"activation={spec.activation_mode}",
                         f"permission_level={spec.permission_level}",
                         f"category_allowed={category}",
@@ -83,6 +86,15 @@ class CapabilitySurfaceResolver:
             denied_reasons=denied_reasons,
             reasons_by_capability=reasons_by_capability,
         )
+
+    @staticmethod
+    def _installed(spec: CapabilitySpec, installed_tool_ids: set[str]) -> bool:
+        if spec.capability_id in installed_tool_ids:
+            return True
+        ref = str(spec.executor_ref or "")
+        if ref.startswith("builtin:") and ref.split(":", 1)[1] in installed_tool_ids:
+            return True
+        return False
 
     @staticmethod
     def _activation_passed(spec: CapabilitySpec, requested_by_memory: bool, requested_by_skill: bool, manual: bool) -> bool:
