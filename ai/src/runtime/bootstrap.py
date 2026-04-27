@@ -10,10 +10,10 @@ from .types import RuntimeRequest
 
 
 class RuntimeBootstrap:
-    """Thin bootstrap: Wiki -> ProtocolView -> RuntimeKernel -> Engine."""
+    """Thin bootstrap: Memory Notes -> ProtocolView compat -> RuntimeKernel -> Engine."""
 
     def build(self, request: RuntimeRequest) -> Engine:
-        registry = RuntimeRegistry.from_wiki(request.project_root)
+        registry = RuntimeRegistry.from_memory(request.project_root)
         errors = registry.view.errors()
         if errors:
             rendered = "\n".join(f"[{e.level}] {e.node_id}: {e.message}" for e in errors)

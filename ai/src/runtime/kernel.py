@@ -5,14 +5,15 @@ from typing import Any
 
 from llm.config import resolve_llm_config
 from llm.factory import LLMFactory
+from capability.registry import CapabilityRegistry
+from capability.runtime import RuntimeCapability
+from memory.compat_wiki import RuntimeMemoryBridge
 from protocol.registry import RuntimeRegistry
 from protocol.types import AgentSpec
 from shared.ids import new_id
 from tool.binder import ToolExecutorBinder
 from tool.loader import ToolboxClassLoader
-from wiki.hub import WikiHub
 from .audit import AuditLog
-from .dispatcher import ToolDispatcher
 from .events import EventBus
 from .guard import RuntimeGuard
 from .normalizer import Normalizer
@@ -30,7 +31,9 @@ class RuntimeKernel:
     settings: EngineSettings
     session: SessionState
     context: EngineContext
-    wiki: WikiHub
+    memory: Any
+    capability_registry: Any
+    capability: Any
     skill_state: SkillState
     events: EventBus
     audit: AuditLog
@@ -41,7 +44,6 @@ class RuntimeKernel:
     active_tool_ids: set[str] = field(default_factory=set)
     surface: Any = None
     prompt: Any = None
-    dispatcher: Any = None
     engine_id: str = ""
 
     @classmethod
@@ -94,14 +96,16 @@ class RuntimeKernel:
             agent_name=agent.agent_id,
             agent_context=agent.context,
         )
-        wiki = WikiHub(project_root=registry.project_root, registry=registry, session=session)
+        memory_bridge = RuntimeMemoryBridge(project_root=registry.project_root, session=session)
         kernel = cls(
             registry=registry,
             agent=agent,
             settings=settings,
             session=session,
             context=context,
-            wiki=wiki,
+            memory=memory_bridge,
+            capability_registry=CapabilityRegistry(registry.project_root, memory=memory_bridge.service, legacy_registry=registry),
+            capability=None,
             skill_state=skill_state,
             events=events,
             audit=audit,
@@ -112,9 +116,9 @@ class RuntimeKernel:
             engine_id=engine_id,
         )
         kernel._install_toolboxes(request.toolboxes or agent.installation_names())
+        kernel.capability = RuntimeCapability(kernel)
         kernel.surface = ToolSurface(kernel)
         kernel.prompt = PromptCompiler(kernel)
-        kernel.dispatcher = ToolDispatcher(kernel)
         return kernel
 
     def _install_toolboxes(self, requested: list[str]) -> None:
@@ -132,7 +136,7 @@ class RuntimeKernel:
 
     def state_fragments(self) -> list[str]:
         rows: list[str] = []
-        rows.extend(self.wiki.state_fragments())
+        rows.extend(self.memory.state_fragments())
         for extension in self.runtime_state.installed_toolboxes.values():
             hook = getattr(extension, "state_fragments", None)
             if hook:
@@ -145,7 +149,7 @@ class RuntimeKernel:
     def ingest_attachments(self, files: list[dict] | None) -> str | None:
         if not files:
             return None
-        return self.wiki.ingest_user_files(files)
+        return self.memory.ingest_user_files(files)
 
 
 def _tuple(value) -> tuple[str, ...]:  # noqa: ANN001

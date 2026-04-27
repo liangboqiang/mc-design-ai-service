@@ -48,12 +48,32 @@ def ensure_web_build(force: bool = False) -> None:
 
 
 def run_checks() -> None:
-    from scripts import check_backend, check_frontend, check_e2e, check_v33_blueprint, check_cleanup_and_closure
+    from scripts import (
+        check_backend,
+        check_capability,
+        check_cleanup_and_closure,
+        check_e2e,
+        check_frontend,
+        check_graph,
+        check_kernel,
+        check_lens,
+        check_memory,
+        check_note_parser,
+        check_runtime_preview,
+        check_v33_blueprint,
+    )
 
     for name, module in [
         ("backend", check_backend),
         ("frontend", check_frontend),
         ("e2e", check_e2e),
+        ("memory", check_memory),
+        ("note_parser", check_note_parser),
+        ("lens", check_lens),
+        ("graph", check_graph),
+        ("capability", check_capability),
+        ("kernel", check_kernel),
+        ("runtime_preview", check_runtime_preview),
         ("blueprint", check_v33_blueprint),
         ("cleanup", check_cleanup_and_closure),
     ]:
@@ -86,17 +106,17 @@ def _open_browser_after_ready(port: int) -> None:
 
 def print_banner() -> None:
     print("\n" + "=" * 78)
-    print("  MC Design AI Service - Unified Direct Wiki App")
+    print("  MC Design AI Service - Memory-Native Agent Kernel")
     print(f"  URL:        http://127.0.0.1:{cfg.SERVER_PORT}/")
-    print("  Mode:       direct internal functions")
+    print("  Mode:       kernel + memory + capability + workbench")
     print(f"  Project:    {cfg.PROJECT_ROOT}")
     print(f"  Web dist:   {WEB_DIST_DIR}")
-    print("  Transport:  browser -> /app/wiki/action/* -> WikiHub/WikiWorkbench")
+    print("  Transport:  browser -> /app/{wiki|memory|workbench}/action/*")
     print("=" * 78 + "\n")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Start MC Design AI Service unified Wiki app.")
+    parser = argparse.ArgumentParser(description="Start MC Design AI Service Memory-Native Agent Kernel app.")
     parser.add_argument("--build-web", action="store_true", help="Build web if missing or stale.")
     parser.add_argument("--rebuild-web", action="store_true", help="Force rebuild web before starting.")
     parser.add_argument("--no-browser", action="store_true", help="Do not open browser automatically.")

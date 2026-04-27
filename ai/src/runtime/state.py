@@ -10,6 +10,10 @@ class RuntimeState:
     tool_registry: dict[str, Any] = field(default_factory=dict)
     installed_toolboxes: dict[str, Any] = field(default_factory=dict)
     fault_history: list[str] = field(default_factory=list)
+    step: int = 0
+    last_tool_result: str = ""
+    tool_results: list[str] = field(default_factory=list)
+    last_memory_view: Any | None = None
 
 
 class SkillState:

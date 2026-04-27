@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import shutil
 import time
 import uuid
 from dataclasses import dataclass
@@ -10,6 +9,9 @@ from typing import Any
 
 from wiki.hub import WikiHub
 from wiki.workbench import WikiWorkbench
+from workbench.graph_service import WorkbenchGraphService
+from workbench.user_file_service import UserFileEvidenceService
+from workspace_paths import data_root
 
 from .errors import PublishNotAllowed, MissingRequiredParam
 
@@ -84,6 +86,8 @@ class WikiAppService:
         self.project_root = Path(context.project_root).resolve()
         self.workbench = WikiWorkbench(self.project_root)
         self.hub = WikiHub(project_root=self.project_root)
+        self.memory_graph = WorkbenchGraphService(self.project_root)
+        self.user_files = UserFileEvidenceService(self.project_root)
         self.sessions = WikiAppSessionManager(self.project_root, context.session_root)
 
     def create_session(self, user_id: str = "", task_id: str = "", metadata_json: str = "{}") -> dict:
@@ -98,18 +102,27 @@ class WikiAppService:
     def server_status(self) -> dict:
         catalog_path = self.project_root / "src/wiki/store/catalog.json"
         index_path = self.project_root / "src/wiki/store/index.json"
+        memory_catalog_path = data_root(self.project_root) / "indexes" / "catalog.json"
         catalog_count = 0
         if catalog_path.exists():
             try:
                 catalog_count = len(json.loads(catalog_path.read_text(encoding="utf-8")).get("pages") or {})
             except Exception:
                 catalog_count = 0
+        memory_catalog_count = 0
+        if memory_catalog_path.exists():
+            try:
+                memory_catalog_count = len(json.loads(memory_catalog_path.read_text(encoding="utf-8")).get("notes") or {})
+            except Exception:
+                memory_catalog_count = 0
         return {
             "project_root": str(self.project_root),
             "catalog_exists": catalog_path.exists(),
             "index_exists": index_path.exists(),
             "catalog_count": catalog_count,
-            "mode": "direct-functions",
+            "memory_catalog_exists": memory_catalog_path.exists(),
+            "memory_catalog_count": memory_catalog_count,
+            "mode": "memory-native-compat",
         }
 
     def refresh_index(self, extract_graph: bool = True) -> dict:
@@ -127,7 +140,18 @@ class WikiAppService:
 
     def graph_enhanced_search(self, query: str = "", limit: int = 20, include_disabled: bool = False) -> dict:
         try:
-            return self.workbench.graph.graph_enhanced_search(str(query or ""), limit=int(limit or 20), include_disabled=include_disabled)
+            graph = self.memory_graph.graph_view(include_hidden=include_disabled)
+            q = str(query or "").lower()
+            scored = []
+            for node in graph.get("nodes", []):
+                hay = " ".join([str(node.get("id")), str(node.get("title")), str(node.get("kind")), str(node.get("summary"))]).lower()
+                score = hay.count(q) if q else 1
+                related = [edge for edge in graph.get("edges", []) if edge.get("source") == node.get("id") or edge.get("target") == node.get("id")]
+                score += len(related)
+                if score > 0:
+                    scored.append((score, {**node, "score": score, "related_count": len(related), "related_sample": related[:5]}))
+            scored.sort(key=lambda item: (-item[0], str(item[1].get("id") or "")))
+            return {"query": query, "items": [row for _, row in scored[: int(limit or 20)]], "graph": graph}
         except Exception as exc:
             graph = self._fallback_graph(query=query, limit=int(limit or 20), include_disabled=include_disabled, reason=str(exc))
             return {"query": query, "results": graph["nodes"], "graph": graph, "fallback": True, "error": str(exc)}
@@ -203,10 +227,11 @@ class WikiAppService:
 
     def extract_knowledge_graph(self, include_disabled: bool = False, write_store: bool = True, include_graph: bool = False) -> dict:
         try:
-            data = self.workbench.graph.extract_knowledge_graph(include_disabled=include_disabled, write_store=write_store, include_graph=include_graph)
-            if isinstance(data, dict) and ("nodes" in data or "graph" in data or "triples" in data):
-                return data
-            return {"graph": data, "nodes": [], "edges": [], "triples": []}
+            data = self.memory_graph.compile_graph(include_hidden=include_disabled, write_store=write_store)
+            if not include_graph:
+                data = dict(data)
+                data["graph"] = None
+            return data
         except Exception as exc:
             graph = self._fallback_graph(query="", limit=80, include_disabled=include_disabled, reason=str(exc))
             return {**graph, "graph": graph, "error": str(exc), "message": "知识图谱抽取失败，已返回可用的降级图谱，避免前端 500。"}
@@ -215,7 +240,15 @@ class WikiAppService:
     def page_scope_relations(self, page_id: str) -> dict:
         page_id = _required(page_id, "page_id")
         try:
-            return self.workbench.graph.page_scope_relations(page_id)
+            graph = self.memory_graph.graph_neighbors(page_id=page_id, depth=1)
+            return {
+                "page_id": page_id,
+                "scope": "memory_graph",
+                "relations": graph.get("edges", []),
+                "local_relations": graph.get("edges", []),
+                "links": [edge.get("target") for edge in graph.get("edges", []) if edge.get("source") == page_id],
+                "disabled": False,
+            }
         except Exception as exc:
             return {"page_id": page_id, "scope": "", "relations": [], "fallback": True, "error": str(exc)}
 
@@ -393,7 +426,8 @@ class WikiAppService:
                 preview = self.preview_user_folder_wikis(root_path=root_path)
             except Exception as exc:
                 preview = {"error": str(exc)}
-        return {"root_path": str(root), "inside_project": allowed, "preview": preview}
+        base = self.user_files.user_center_summary(root_path=root_path)
+        return {**base, "inside_project": allowed, "preview": preview}
 
     def _fast_status_from_row(self, row: dict) -> dict:
         page_id = str(row.get("page_id") or row.get("id") or row.get("path") or "")
@@ -461,80 +495,37 @@ class WikiAppService:
         }
 
     def _user_files_root(self) -> Path:
-        root = self.project_root / "user_files"
-        root.mkdir(parents=True, exist_ok=True)
-        return root.resolve()
+        return self.user_files._user_files_root()
 
     def _safe_user_path(self, relative_path: str = "") -> Path:
-        root = self._user_files_root()
-        rel = str(relative_path or "").strip().lstrip("/\\")
-        target = (root / rel).resolve()
-        if root not in [target, *target.parents]:
-            raise ValueError("用户文件路径越界。")
-        return target
+        return self.user_files._safe_user_path(relative_path)
 
     def user_file_tree(self, relative_path: str = "") -> dict:
-        root = self._user_files_root()
-        folder = self._safe_user_path(relative_path)
-        if not folder.exists():
-            folder.mkdir(parents=True, exist_ok=True)
-        if not folder.is_dir():
-            folder = folder.parent
-        rows = []
-        for item in sorted(folder.iterdir(), key=lambda p: (p.is_file(), p.name.lower())):
-            if item.name.startswith("."):
-                continue
-            rows.append(
-                {
-                    "name": item.name,
-                    "relative_path": item.relative_to(root).as_posix(),
-                    "type": "folder" if item.is_dir() else "file",
-                    "size": item.stat().st_size if item.is_file() else None,
-                    "modified": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(item.stat().st_mtime)),
-                }
-            )
-        return {"root": str(root), "relative_path": folder.relative_to(root).as_posix() if folder != root else "", "items": rows}
+        return self.user_files.user_file_tree(relative_path)
 
     def user_file_read(self, relative_path: str) -> dict:
-        path = self._safe_user_path(relative_path)
-        if not path.exists() or not path.is_file():
-            raise FileNotFoundError(f"用户文件不存在：{relative_path}")
-        if path.stat().st_size > 1024 * 1024:
-            return {"relative_path": path.relative_to(self._user_files_root()).as_posix(), "content": "", "binary_or_large": True, "message": "文件超过 1MB，仅显示元数据。"}
-        try:
-            content = path.read_text(encoding="utf-8")
-        except UnicodeDecodeError:
-            content = path.read_text(encoding="utf-8", errors="replace")
-        return {"relative_path": path.relative_to(self._user_files_root()).as_posix(), "content": content, "size": path.stat().st_size}
+        return self.user_files.user_file_read(relative_path)
 
     def user_file_write(self, relative_path: str, content: str = "") -> dict:
-        path = self._safe_user_path(relative_path)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(str(content or ""), encoding="utf-8")
-        return {"relative_path": path.relative_to(self._user_files_root()).as_posix(), "status": "saved", "size": path.stat().st_size}
+        return self.user_files.user_file_write(relative_path, content)
 
     def user_file_mkdir(self, relative_path: str) -> dict:
-        path = self._safe_user_path(relative_path)
-        path.mkdir(parents=True, exist_ok=True)
-        return {"relative_path": path.relative_to(self._user_files_root()).as_posix(), "status": "created"}
+        return self.user_files.user_file_mkdir(relative_path)
 
     def user_file_delete(self, relative_path: str) -> dict:
-        path = self._safe_user_path(relative_path)
-        if path.is_dir():
-            shutil.rmtree(path)
-        elif path.exists():
-            path.unlink()
-        return {"relative_path": str(relative_path or ""), "status": "deleted"}
+        return self.user_files.user_file_delete(relative_path)
 
 
     def app_diagnostics(self) -> dict:
         status = self.server_status()
         graph_path = self.project_root / "src/wiki/store/knowledge_graph.json"
+        memory_graph_path = data_root(self.project_root) / "indexes" / "graph.json"
         return {
             **status,
             "graph_exists": graph_path.exists(),
-            "action_mode": "direct-functions",
-            "ui_version": "wiki_workbench_v31_polished",
+            "memory_graph_exists": memory_graph_path.exists(),
+            "action_mode": "memory-native-compat",
+            "ui_version": "memory_native_workbench_v1",
         }
 
     def page_update_hint(self, page_id: str) -> dict:
@@ -588,30 +579,7 @@ class WikiAppService:
     def graph_neighbors(self, page_id: str, depth: int = 1, include_disabled: bool = False) -> dict:
         page_id = _required(page_id, "page_id")
         try:
-            graph_data = self.extract_knowledge_graph(include_disabled=include_disabled, write_store=True, include_graph=True)
-            graph = graph_data.get("graph") or graph_data
-            nodes = graph.get("nodes") or []
-            edges = graph.get("edges") or graph.get("links") or []
-            node_ids = {page_id}
-            for _ in range(max(1, int(depth or 1))):
-                expanded = set(node_ids)
-                for edge in edges:
-                    source = str(edge.get("source") or edge.get("from") or "")
-                    target = str(edge.get("target") or edge.get("to") or "")
-                    if source in node_ids:
-                        expanded.add(target)
-                    if target in node_ids:
-                        expanded.add(source)
-                node_ids = expanded
-            return {
-                "page_id": page_id,
-                "nodes": [n for n in nodes if str(n.get("id") or n.get("page_id") or "") in node_ids],
-                "edges": [
-                    e for e in edges
-                    if str(e.get("source") or e.get("from") or "") in node_ids
-                    and str(e.get("target") or e.get("to") or "") in node_ids
-                ],
-            }
+            return self.memory_graph.graph_neighbors(note_id=page_id, depth=max(1, int(depth or 1)))
         except Exception:
             relations = self.page_scope_relations(page_id)
             return {"page_id": page_id, "nodes": [{"id": page_id, "label": page_id, "type": "page"}], "edges": [], "relations": relations}

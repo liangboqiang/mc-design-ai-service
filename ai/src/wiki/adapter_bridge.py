@@ -179,12 +179,22 @@ class WikiAdapterBridge:
 
     def iter_nodes(self) -> list[WikiNode]:
         nodes: list[WikiNode] = []
-        for path in sorted(self.src_root.rglob("*.md")):
+        preferred: dict[Path, Path] = {}
+        for path in sorted(self.src_root.rglob("note.md")):
             if "__pycache__" in path.parts:
                 continue
             rel = path.relative_to(self.project_root).as_posix()
             if rel.startswith("src/wiki/store/") or rel.startswith("src/wiki/workbench/store/"):
                 continue
+            preferred[path.parent] = path
+        for path in sorted(self.src_root.rglob("wiki.md")):
+            if "__pycache__" in path.parts:
+                continue
+            rel = path.relative_to(self.project_root).as_posix()
+            if rel.startswith("src/wiki/store/") or rel.startswith("src/wiki/workbench/store/"):
+                continue
+            preferred.setdefault(path.parent, path)
+        for path in sorted(preferred.values()):
             text = path.read_text(encoding="utf-8")
             sections = split_sections(text)
             node_id = self._node_id(path)
@@ -206,7 +216,7 @@ class WikiAdapterBridge:
 
     def _node_id(self, path: Path) -> str:
         rel_folder = path.parent.relative_to(self.src_root).as_posix()
-        if path.name == "wiki.md":
+        if path.name in {"wiki.md", "note.md"}:
             return rel_folder
         return f"wiki/{path.relative_to(self.src_root).as_posix()}"
 

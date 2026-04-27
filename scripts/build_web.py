@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "web"
 SRC = WEB / "src"
 DIST = WEB / "dist"
+MANIFEST = SRC / "manifest.json"
 ASSETS_SRC = SRC / "assets"
 ASSETS_DIST = DIST / "assets"
 VENDOR_SRC = WEB / "vendor"
@@ -29,9 +30,30 @@ def source_hash() -> str:
     return digest.hexdigest()
 
 
+def load_manifest() -> dict[str, list[str]]:
+    if not MANIFEST.exists():
+        return {"css": ["assets/style.css"], "js": ["assets/app.js"]}
+    raw = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    return {
+        "css": [str(item) for item in raw.get("css") or ["assets/style.css"]],
+        "js": [str(item) for item in raw.get("js") or ["assets/app.js"]],
+    }
+
+
+def resolve_manifest_paths(entries: list[str]) -> list[Path]:
+    rows: list[Path] = []
+    for entry in entries:
+        if any(token in entry for token in "*?["):
+            rows.extend(sorted(SRC.glob(entry)))
+        else:
+            rows.append(SRC / entry)
+    return [path for path in rows if path.exists() and path.is_file()]
+
+
 def _inline_index() -> str:
-    css = (ASSETS_SRC / "style.css").read_text(encoding="utf-8")
-    js = (ASSETS_SRC / "app.js").read_text(encoding="utf-8")
+    manifest = load_manifest()
+    css = "\n\n".join(path.read_text(encoding="utf-8") for path in resolve_manifest_paths(manifest["css"]))
+    js = "\n\n".join(path.read_text(encoding="utf-8") for path in resolve_manifest_paths(manifest["js"]))
     if "</script" in js.lower():
         raise RuntimeError("app.js 中包含 </script>，不能安全内联。")
     return f"""<!doctype html>
@@ -39,7 +61,7 @@ def _inline_index() -> str:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wiki Workbench</title>
+    <title>Memory-Native Agent Workbench</title>
     <style>
 {css}
     </style>
@@ -47,7 +69,7 @@ def _inline_index() -> str:
   <body>
     <div id="root">
       <main class="fatal">
-        <h1>Wiki Workbench</h1>
+        <h1>Memory-Native Agent Workbench</h1>
         <p>前端正在启动。如果这里一直不变化，请打开浏览器控制台查看错误，或访问 /health 检查后端。</p>
       </main>
     </div>

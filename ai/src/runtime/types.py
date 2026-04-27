@@ -107,6 +107,9 @@ class SurfaceSnapshot:
     activated_tools: list[dict[str, str | int]] = field(default_factory=list)
     visible_tool_cards: list[dict[str, Any]] = field(default_factory=list)
     reasons: list[ToolVisibility] = field(default_factory=list)
+    memory_view: Any | None = None
+    capability_view: Any | None = None
+    observation: str = ""
 
 
 @dataclass(slots=True)

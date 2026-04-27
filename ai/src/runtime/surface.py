@@ -12,28 +12,23 @@ class ToolSurface:
     def __init__(self, kernel):  # noqa: ANN001
         self.kernel = kernel
 
-    def resolve(self) -> SurfaceSnapshot:
+    def resolve(self, *, observation: str = "", memory_view=None) -> SurfaceSnapshot:  # noqa: ANN001
         skill_ids = self.kernel.skill_state.base_skill_ids()
-        requested_tools: set[str] = set()
-        for skill_id in skill_ids:
-            skill = self.kernel.registry.skill(skill_id)
-            requested_tools.update(skill.tools)
+        memory_view = memory_view or self.kernel.memory.orient(observation, runtime_state=self.kernel.runtime_state)
+        capability_view = self.kernel.capability.orient(observation=observation, memory_view=memory_view)
 
         visible: list[ToolSpec] = []
         reasons: list[ToolVisibility] = []
         installed_tool_ids = set(self.kernel.runtime_state.tool_registry)
+        visible_tool_ids = {item.capability_id for item in capability_view.visible_tools}
         for tool_id, spec in sorted(self.kernel.runtime_state.tool_registry.items()):
             installed = tool_id in installed_tool_ids
-            requested = tool_id in requested_tools
-            activation = self._activation_passed(spec, requested)
-            permission = self._permission_passed(spec)
-            category = self._category_allowed(spec)
-            is_visible = installed and activation and permission and category
-            reason_rows = []
-            reason_rows.append(f"installed={installed}")
-            reason_rows.append(f"requested_by_skill={requested}")
-            reason_rows.append(f"activation={spec.activation_mode}")
-            reason_rows.append(f"permission_level={spec.permission_level}")
+            requested = tool_id in self.kernel.capability_registry.requested_tools_for_skills(skill_ids)
+            is_visible = tool_id in visible_tool_ids
+            reason_rows = list(capability_view.reasons_by_capability.get(tool_id) or [])
+            activation = is_visible or any(row.startswith("requested_by_memory=True") or row.startswith("requested_by_skill=True") for row in reason_rows)
+            permission = is_visible or not any("permission_level" in row for row in reason_rows if "False" in row)
+            category = is_visible or not any(row == "category_allowed=False" for row in reason_rows)
             if is_visible:
                 visible.append(spec)
             reasons.append(
@@ -58,38 +53,12 @@ class ToolSurface:
             activated_skill_ids=skill_ids,
             visible_tool_cards=cards,
             reasons=reasons,
+            memory_view=memory_view,
+            capability_view=capability_view,
+            observation=observation,
         )
         self.kernel.runtime_state.last_surface_snapshot = snapshot
         return snapshot
-
-    def _activation_passed(self, spec: ToolSpec, requested: bool) -> bool:
-        mode = str(spec.activation_mode or "skill")
-        if mode in {"always", "permanent"}:
-            return True
-        if mode in {"skill", "manual"}:
-            return requested
-        if mode == "rule":
-            event_names = {event.name for event in self.kernel.events.recent()}
-            state_blob = "\n".join(self.kernel.state_fragments()).lower()
-            return any(rule in event_names or rule.lower() in state_blob for rule in spec.activation_rules)
-        return requested
-
-    def _permission_passed(self, spec: ToolSpec) -> bool:
-        settings = self.kernel.settings
-        if spec.tool_id in settings.denied_tools:
-            return False
-        if settings.allowed_tools and spec.tool_id not in settings.allowed_tools:
-            return False
-        return int(spec.permission_level or 1) <= int(settings.tool_permission_level or 1)
-
-    def _category_allowed(self, spec: ToolSpec) -> bool:
-        settings = self.kernel.settings
-        categories = set(spec.categories or ())
-        if categories.intersection(settings.denied_tool_categories):
-            return False
-        if settings.allowed_tool_categories and not categories.intersection(settings.allowed_tool_categories):
-            return False
-        return True
 
     @staticmethod
     def _card(spec: ToolSpec) -> ToolCard:

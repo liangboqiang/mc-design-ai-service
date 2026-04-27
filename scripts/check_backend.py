@@ -24,15 +24,19 @@ def main() -> int:
 
     client = TestClient(main_app.app)
     r = client.get("/health")
-    checks["health_ok"] = r.status_code == 200 and r.json().get("mode") == "unified-direct-functions"
+    checks["health_ok"] = r.status_code == 200 and r.json().get("mode") == "memory-native-agent-kernel"
     r = client.get("/app/diagnostics")
     checks["diagnostics_ok"] = r.status_code == 200 and "project_root" in r.json()
     r = client.get("/app/wiki/actions")
     checks["actions_catalog_ok"] = r.status_code == 200 and len(r.json().get("data", [])) >= 30
+    r = client.get("/app/memory/actions")
+    checks["memory_actions_catalog_ok"] = r.status_code == 200 and len(r.json().get("data", [])) >= 10
     r = client.post("/app/wiki/action/wiki_server_status", json={})
     checks["server_status_ok"] = r.status_code == 200 and r.json().get("ok") is True
     r = client.post("/app/wiki/action/wiki_search", json={"query": "Wiki", "limit": 2})
     checks["search_ok"] = r.status_code == 200 and r.json().get("ok") is True and isinstance(r.json().get("data"), list)
+    r = client.post("/app/memory/action/memory_list_notes", json={"limit": 3})
+    checks["memory_list_notes_ok"] = r.status_code == 200 and r.json().get("ok") is True and isinstance(r.json().get("data"), list)
     r = client.post("/app/wiki/action/wiki_read_page", json={})
     checks["error_shape_ok"] = r.status_code in {400, 500} and r.json().get("ok") is False and "error" in r.json()
 

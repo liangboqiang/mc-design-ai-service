@@ -10,7 +10,7 @@ class RuntimeRegistry:
     """Runtime facade over ProtocolView.
 
     The registry does not scan files and does not discover Python toolbox classes.
-    It consumes the hard ProtocolView compiled from the unified Wiki Hub.
+    It consumes the legacy ProtocolView projected from Memory Notes.
     """
 
     def __init__(self, view: ProtocolView, *, project_root: Path):
@@ -18,9 +18,13 @@ class RuntimeRegistry:
         self.project_root = Path(project_root).resolve()
 
     @classmethod
-    def from_wiki(cls, project_root: Path) -> "RuntimeRegistry":
-        compiler = ProtocolCompiler.from_wiki(project_root)
+    def from_memory(cls, project_root: Path) -> "RuntimeRegistry":
+        compiler = ProtocolCompiler.from_memory(project_root)
         return cls(compiler.compile(), project_root=project_root)
+
+    @classmethod
+    def from_wiki(cls, project_root: Path) -> "RuntimeRegistry":
+        return cls.from_memory(project_root)
 
     @property
     def agents(self) -> dict[str, AgentSpec]:
